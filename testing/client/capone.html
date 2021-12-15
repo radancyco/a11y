@@ -41,7 +41,14 @@
 
 
     <meta name="ff-client-sc" content="True" />
-
+<script>
+    var jsFeatureFlags = {
+        get: function (featureName) {
+            var featureMetaSelector = "meta[name='{featureName}']".replace("{featureName}", featureName);
+            return document.querySelector(featureMetaSelector) !== null ? document.querySelector(featureMetaSelector).getAttribute("content").toLowerCase() === "true" : false;
+        }
+    }
+</script>
     <meta name="cookie-management" content="None" data-cmid="0" data-stype="LocationBased" data-ae="Modal" data-cdnv="https://tbcdn.talentbrew.com/" data-ct="We use cookies and other tracking technologies to support navigation, to improve our products and services, to support our marketing activities and to provide content from third parties.To manage your preferences, select &quot;Manage Settings&quot; or choose &quot;Accept&quot; to consent to the use of Cookies." data-abt="Accept" data-mpt="Manage Settings" data-xb="False" data-rb="False" data-rbt="Reject" data-ulc="" />
 <script src="https://tbcdn.talentbrew.com/bundles/cookiemanagement.js"></script>
 
@@ -65,7 +72,7 @@
   <title>Working at Capital One - US</title>
 </head>
 
-<body id="home" data-site-geolocation="true" data-location-geoType="html5" data-geolocation-url="/search-jobs/GetSearchRequestGeoLocation">
+<body id="home" data-site-geolocation="true" data-location-geoType="html5" data-geolocation-url="https://www.capitalonecareers.com/search-jobs/GetSearchRequestGeoLocation">
 
 
 <script src="https://tbcdn.talentbrew.com/js/client/xvalid.js"></script>
@@ -249,7 +256,7 @@
 
 
 
-<form id="search-form-d75096a912" role="search" class="search-form" action="/search-jobs" data-selector-name="searchform" data-filtered-categories="" data-location-geoType="html5" data-geolocation-url="/search-jobs/GetSearchRequestGeoLocation" data-module-name="Search Form" data-limited-facets="False" data-default-radius="50" data-location-cookie-lifespan="5" data-use-location-pin="true">
+<form id="search-form-d75096a912" role="search" class="search-form" action="/search-jobs" data-selector-name="searchform" data-filtered-categories="" data-location-geoType="html5" data-geolocation-url="https://www.capitalonecareers.com/search-jobs/GetSearchRequestGeoLocation" data-module-name="Search Form" data-limited-facets="False" data-default-radius="50" data-location-cookie-lifespan="5" data-use-location-pin="true">
 
   <div class="search-form-fields">
 
