@@ -41,7 +41,7 @@ padding: .5em;
   <ol>
     <li>If static labels are not desired, the floating label technique should be used. See <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> demo.</li>
     <li>Certain types of forms are so ubiquitous that they have become a common and well understood convention across the web. For example, a global site search that utilizes a single input field and button may not require a visible label.</li>
-    <li>Certain types of information may have labels omitted if they are grouped together properly. For example, three separate fields for a date or telephone number. Here, a fieldset and legend (or equivalent ARIA) could be used to group them, along with aria-label, etc. See <a href="#omitting-label">grouping</a> example.</li>
+    <li>Certain types of information may have labels omitted if they are grouped together properly. See <a href="#omitting-label">grouping</a> example.</li>
   </ol>
 
 </section>
@@ -108,7 +108,7 @@ padding: .5em;
 
   <h3 id="omitting-label">Omitting Labels in Group</h3>
 
-  <p>Here, we have a code example of what one might do to group associated fields together without individual labels. This is a rare exception.</p>
+  <p>This is a code example of what one might do to group associated fields together without individual labels. For example, three separate fields for a single date entry. Here, a <code>fieldset</code> and <code>legend</code> (or equivalent ARIA) could be used to group them, along with <code>aria-label</code> for each input field.</p>
 
 <pre><code>&lt;fieldset>
   &lt;legend>Date (Month, Day, Year)&lt;/legend>
