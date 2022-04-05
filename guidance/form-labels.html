@@ -1,0 +1,111 @@
+---
+title: "Guidance on Designing & Implementing Form Labels"
+---
+
+<style>
+
+#examples label, #examples input {
+display: block;
+font-size: 1.5rem;
+}
+
+#examples label {
+font-weight: bold;
+margin-bottom: 0;
+}
+
+#examples input {
+border: 1px #000 solid;
+padding: .5em;
+}
+
+</style>
+
+<p>In an effort improve the way Radancy should be including form labels on our sites and produts, this document seeks to introduce more clearly defined guidance that we can share with all team memebers. Especially designers, developers, and QA engineers. Omission or poor implementation of a label is considered a direct failure of <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">Success Criterion 3.3.2 Labels or Instructions</a>. This guideline was intentionally omitted from the intial <a href="https://radancy.dev/a11y/baselines/">baseline</a> release to give us enough time to educate and acclimate ourselves. We will begin to test against it more stringently beginning in October of 2022.</p>
+
+<h2>The Rules</h2>
+
+<ol>
+  <li>All form fields must include a visible label. See <a href="#exceptions">exceptions</a>.</li>
+  <li><a href="#placeholder-as-label">Placeholder values are not an appropriate stand-in for labels.</a></li>
+  <li><a href="#placeholder-redundancy">Placeholder values may not duplicate what is already found in a label.</a></li>
+  <li><a href="#proper-placeholder-use">Placeholder values may only be used to provide supplemental or suggestive information.</li>
+  <li><a href="#critical-information">Critical information should be placed outside the field.</a></li>
+  <li><a href="#contrast-friendly">Placeholder values must always be contrast friendly.</a></li>
+</ol>
+
+<section id="exceptions">
+
+  <h2>Exceptions</h2>
+
+  <ol>
+    <li>If static labels are not desired, the floating label technique should be used. See <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> demo.</li>
+    <li>Certain types of forms are so ubiquitous that they have become a common and well understood convention across the web. For example, a global site search that utilizes a single input field and button may not require a visible label.</li>
+    <li>Certain types of information may have labels omitted if they are grouped together properly. For example, three separate fields for a telephone number. Here, a fieldset and legend (or equivalent ARIA) could be used to group them, along with aria-label or visually hidden techniques for the labels themselves, etc. (Will share examples)</li>
+  </ol>
+
+</section>
+
+<section id="examples">
+
+  <h2>Examples</h2>
+
+  <p>The following examples are meant to illustrate poor and best practice of labeling form fields.</p>
+
+  <h3 id="placeholder-as-label">Placeholder Used as Label <span class="alert">(Avoid)</span></h3>
+
+  <p>While placeholders as labels may seem like a great way to reduce visual clutter, placeholders and labels are very different things. Please familiarize with the <a href="https://codepen.io/stevef/post/placeholder-the-piss-take-label?s=09">numerous pitfalls</a> of using placeholder text to stand-in for proper labels.</p>
+
+  <input placeholder="Keyword">
+
+  <p><strong>Note:</strong> Placeholders should also not be used with accessibly hidden labels. While this may seem like a way to address accessibility, it is still prone to many of the same issues outlined below. Use the <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> pattern instead.</p>
+
+  <h3 id="placeholder-redundancy">Placeholder Redundancy <span class="alert">(Avoid)</span></h3>
+
+  <p>Do not duplicate the label as placeholder text. Not only is this visually redundant, but assistive technology users may have to listen to it twice, too.</p>
+
+  <label for="example-2-first-name">First Name</label>
+
+  <input id="example-2-first-name" placeholder="First Name">
+
+  <h3 id="proper-placeholder-use">Proper Placeholder Use</h3>
+
+  <p>Placeholder text should be used to provide <em>supplemental information</em>. For example, formatting or suggestive instruction is an ideal use of placeholder text.</p>
+
+  <label for="example-3-phone-number">Phone Number</label>
+
+  <input id="example-3-phone-number" placeholder="123-456-7890">
+
+  <h3 id="critical-information">Critical Information</h3>
+
+  <p>Placeholder text does have its limitations. If a field is pre-populated with data or a user begins typing, the placeholder text will vanish (a problem for people who have cognitive disabilities, to name one group). If formatted or supplemental information is critical, then instructions should be placed outside of a field, where it will <em>always</em> be present.</p>
+
+  <label for="example-4-email-address">Email Address</label>
+
+  <input aria-describedby="email-message" id="example-4-email-address">
+
+  <p id="email-message"><em>Your email address will not be shared with third-parties.</em></p>
+
+  <p>To convey this information to assistive technology users, use <code>aria-describedby</code>.</p>
+
+<pre><code>&lt;label for="example-4-email-address"&gt;Email Address&lt;/label&gt;
+
+&lt;input <strong>aria-describedby="email-message"</strong> id="example-4-email-address"&gt;
+
+&lt;p <strong>id="email-message"&gt;</strong>&lt;em&gt;Your email address will not be shared with third-parties.&lt;/em&gt;&lt;/p&gt;</code></pre>
+
+  <h3 id="contrast-friendly">Contrast Friendly</h3>
+
+  <p>Default placeholder text, often a lighter shade of gray, can be hard to read in some browsers, so always aim for a color of <a href="https://webaim.org/resources/contrastchecker/?fcolor=767676&bcolor=FFFFFF">#767676 on white backgrounds</a>.
+
+  <figure>
+
+    <img alt="" src="data:image/png;base64,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">
+
+    <figcaption>Example of default placeholder text on Safari</figcaption>
+
+  </figure>
+
+</section>
+
+<p><b>Last Updated:</b> <time>April 5, 2022</time></p>
