@@ -21,7 +21,7 @@ padding: .5em;
 
 </style>
 
-<p>In an effort improve the way Radancy should be including form labels on our sites and produts, this document seeks to introduce more clearly defined guidance that we can share with all team memebers. Especially designers, developers, and QA engineers. Omission or poor implementation of a label is considered a direct failure of <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">Success Criterion 3.3.2 Labels or Instructions</a>. This guideline was intentionally omitted from the intial <a href="https://radancy.dev/a11y/baselines/">baseline</a> release to give us enough time to educate and acclimate ourselves. We will begin to test against it more stringently beginning in October of 2022.</p>
+<p>In an effort improve the way in which Radancy includes form labels on our sites and produts, this document seeks to introduce more clearly defined guidance that we can share with all team memebers. Especially designers, developers, and QA engineers. Inclusion of a proper label is critial and allows more people to understand and use the form. Omission or poor implementation of a label is also considered a direct failure of <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">Success Criterion 3.3.2 Labels or Instructions</a>. This guideline was intentionally omitted from the intial <a href="https://radancy.dev/a11y/baseline/">baseline</a> release to give us enough time to educate and acclimate ourselves to the advice presented here, but its time has now come. We will begin to test against this guideline more vigorously, beginning in the 4th quarter of 2022.</p>
 
 <section>
 
@@ -29,10 +29,10 @@ padding: .5em;
 
   <ol>
     <li>All form fields must include a visible label. See <a href="#exceptions">exceptions</a>.</li>
-    <li><a href="#placeholder-as-label">Placeholder values are not an appropriate stand-in for labels.</a></li>
+    <li><a href="#placeholder-as-label">Placeholder values are not an appropriate alternative for labels.</a></li>
     <li><a href="#placeholder-redundancy">Placeholder values may not duplicate what is already found in a label.</a></li>
     <li><a href="#proper-placeholder-use">Placeholder values may only be used to provide supplemental or suggestive information.</a></li>
-    <li><a href="#critical-information">Critical information should be placed outside the field.</a></li>
+    <li><a href="#critical-information">Critical information about a form field, must always be placed outside of the field.</a></li>
     <li><a href="#contrast-friendly">Placeholder values must always be contrast friendly.</a></li>
   </ol>
 
@@ -43,7 +43,7 @@ padding: .5em;
   <h2>Exceptions</h2>
 
   <ol>
-    <li>If static labels are not desired, the floating label technique should be used. See <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> demo.</li>
+    <li>If static labels are not desired above the input field, the floating label technique may be used. See <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> demo.</li>
     <li>Certain types of forms are so ubiquitous that they have become a common and well understood convention across the web. For example, a global site search that utilizes a single input field and button may not require a visible label.</li>
     <li>Certain types of information may have labels omitted if they are grouped together properly. See <a href="#omitting-label">grouping</a> example.</li>
   </ol>
@@ -54,11 +54,11 @@ padding: .5em;
 
   <h2>Examples</h2>
 
-  <p>The following examples are meant to illustrate poor and best practice of labeling form fields.</p>
+  <p>The following examples are meant to explain and illustrate poor and best practice of labeling form fields.</p>
 
   <h3 id="placeholder-as-label">Placeholder Used as Label <span class="alert">(Avoid)</span></h3>
 
-  <p>While placeholders as labels may seem like a great way to reduce visual clutter, placeholders and labels are very different things. Please familiarize with the <a href="https://codepen.io/stevef/post/placeholder-the-piss-take-label?s=09">numerous pitfalls</a> of using placeholder text to stand-in for proper labels.</p>
+  <p>While using placeholders as labels may seem like a great way to reduce visual clutter, placeholders and labels are very different things. Please familiarize with the <a href="https://codepen.io/stevef/post/placeholder-the-piss-take-label?s=09">numerous pitfalls</a> of using placeholder text to stand-in for proper labels.</p>
 
   <input placeholder="Keyword">
 
@@ -82,7 +82,7 @@ padding: .5em;
 
   <h3 id="critical-information">Critical Information</h3>
 
-  <p>Placeholder text does have its limitations. If a field is pre-populated with data or a user begins typing, the placeholder text will vanish (a problem for people who have cognitive disabilities, to name one group). If formatted or supplemental information is critical, then instructions should be placed outside of a field, where it will <em>always</em> be present.</p>
+  <p>Placeholder text does have its limitations. If a field is pre-populated with data or a user begins typing, the placeholder text will vanish (a problem for people who have cognitive disabilities, to name but one group). If formatted or supplemental information is critical, then instructions should be placed outside of a field, where it will <em>always</em> be present.</p>
 
   <label for="example-4-email-address">Email Address</label>
 
@@ -93,9 +93,7 @@ padding: .5em;
   <p>To convey this information to assistive technology users, use <code>aria-describedby</code>.</p>
 
 <pre><code>&lt;label for="example-4-email-address"&gt;Email Address&lt;/label&gt;
-
 &lt;input <strong>aria-describedby="email-message"</strong> id="example-4-email-address"&gt;
-
 &lt;p <strong>id="email-message"&gt;</strong>&lt;em&gt;Your email address will not be shared with third-parties.&lt;/em&gt;&lt;/p&gt;</code></pre>
 
   <h3 id="contrast-friendly">Contrast Friendly</h3>
