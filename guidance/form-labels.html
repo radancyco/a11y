@@ -18,14 +18,20 @@ background-color: #eee;
 margin: 0 0 1em;
 }
 
-#examples label, #examples input {
+#examples label, #examples input, #examples legend {
 display: block;
 font-size: 1.5rem;
 }
 
-#examples label {
+#examples label, #examples legend {
 font-weight: bold;
 margin-bottom: 0;
+}
+
+#examples fieldset {
+padding: 1em;
+border: 1px #000 solid;
+border-radius: 10px;
 }
 
 #examples input {
@@ -33,9 +39,19 @@ border: 1px #000 solid;
 padding: .5em;
 }
 
+#examples fieldset input {
+display: inline-block;
+margin: .5em .5em .5em 0;
+max-width: 100px;
+}
+
+#examples h4 {
+margin-top: 2em;
+}
+
 </style>
 
-<p>In an effort to improve the way in which Radancy includes form labels within it's sites and products, this document seeks to introduce more clearly defined guidance that can be shared with all team members. Especially designers, developers, and QA engineers. Inclusion of a proper label is critical and allows more people to understand and use the form. Omission or poor implementation of a label is also considered a direct failure of <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">Success Criterion 3.3.2 Labels or Instructions</a>. This guideline was intentionally omitted from the initial <a href="https://radancy.dev/a11y/baseline/">baseline</a> release to give us enough time to educate and acclimate ourselves to the advice presented here. We will begin to test against this guideline more vigorously, beginning in the 4th quarter of 2022.</p>
+<p>In an effort to improve the way in which Radancy includes form labels within its sites and products, this document seeks to introduce more clearly defined guidance that can be shared with all team members. Especially designers, developers, and QA engineers. Inclusion of a proper label is critical and allows more people to understand and use the form. Omission or poor implementation of a label is also considered a direct failure of <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">Success Criterion 3.3.2 Labels or Instructions</a>. This guideline was intentionally omitted from our initial <a href="https://radancy.dev/a11y/baseline/">baseline</a> release to give us enough time to educate and acclimate ourselves to the advice presented here. We will begin to test against this guideline more vigorously, beginning in the summer of 2022.</p>
 
 <details class="nav">
 
@@ -57,6 +73,7 @@ padding: .5em;
     <li>All form fields must include a visible label. See <a href="#exceptions">exceptions</a>.</li>
     <li><a href="#placeholder-as-label">Placeholder values are not an appropriate alternative for labels.</a></li>
     <li><a href="#placeholder-redundancy">Placeholder values may not duplicate what is already found in a label.</a></li>
+    <li><a href="#placeholder-hidden-label">Placeholders may not be used with hidden labels.</a></li>
     <li><a href="#proper-placeholder-use">Placeholder values may only be used to provide supplemental or suggestive information.</a></li>
     <li><a href="#critical-information">Critical information about a form field must always be placed outside of the field.</a></li>
     <li><a href="#contrast-friendly">Placeholder values must always be contrast friendly.</a></li>
@@ -69,9 +86,9 @@ padding: .5em;
   <h2>Exceptions</h2>
 
   <ol>
-    <li>If static labels are not desired adjacent to the form field, the floating label technique may be used. However, labels and form fields place adjacently to each other, is the most bulletproof way to implement them and will always be strongly suggested over all other solutions or if time is a factor. See the <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> demo for more details.</li>
+    <li>Placing labels adjacent to form fields is always the <strong>best</strong> solution, but development realizes this may not always be desirable. If static labels are not desired adjacent to the form field, the <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> technique may be used, but there are <a href="">risks with this technique</a> one should be familiar with before deciding to use.</li>
     <li>Certain types of forms are so ubiquitous that they have become a common and well understood convention across the web. For example, a global site search that utilizes a single input field and button may not require a visible label.</li>
-    <li>Certain types of information may have labels omitted if they are grouped together properly. See <a href="#omitting-label">grouping</a> example.</li>
+    <li>Certain types of information may have labels omitted if they are grouped together properly. See <a href="#grouping-inputs">grouping inputs</a> example.</li>
   </ol>
 
 </section>
@@ -80,23 +97,27 @@ padding: .5em;
 
   <h2>Examples</h2>
 
-  <p>The following examples are meant to illustrate poor and best practice of labeling form fields.</p>
+  <p>The following examples are meant to illustrate best (and poor) practices of labeling form fields.</p>
+
+  <p><strong>Note:</strong> The placeholder attribute used in some examples may not be read back at all in some browser/AT combinations. This is but one reason we can't fully rely on it to stand in as a label.</p>
 
   <section id="placeholder-as-label">
 
-    <h3>Placeholder Used as Label <span class="alert">(Avoid)</span></h3>
+    <h3>Placeholder Values Are Not An Appropriate Alternative For Labels <span class="alert">(Avoid)</span></h3>
 
-    <p>While using placeholders as labels may seem like a great way to reduce visual clutter, placeholders and labels are very different things. Please familiarize with the <a href="https://codepen.io/stevef/post/placeholder-the-piss-take-label?s=09">numerous pitfalls</a> of using placeholder text to stand-in for proper labels.</p>
+    <p>While using placeholders as labels may seem like a great way to reduce visual clutter, placeholders and labels are very different things. Please familiarize with the <a href="https://www.w3.org/WAI/GL/low-vision-a11y-tf/wiki/Placeholder_Research">numerous pitfalls</a> of using placeholder text to stand-in for proper labels.</p>
 
     <input placeholder="Keyword">
 
-    <p><strong>Note:</strong> Placeholders should also not be used alongside <a href="">inclusively hidden</a> labels. While this may seem like a teriffic way to address accessibility, the problems we seek to solve below are often still present. Use the <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> pattern instead.</p>
+    <h4>Assistive Technology</h4>
+
+    <p>"Keyword edit blank"</p>
 
   </section>
 
   <section id="placeholder-redundancy">
 
-    <h3>Placeholder Redundancy <span class="alert">(Avoid)</span></h3>
+    <h3>Placeholder Values May Not Duplicate What is Already Found In a Label <span class="alert">(Avoid)</span></h3>
 
     <p>Do not duplicate the label as placeholder text. Not only is this visually redundant, but assistive technology users may have to listen to it twice, too.</p>
 
@@ -104,43 +125,81 @@ padding: .5em;
 
     <input id="example-2-first-name" placeholder="First Name">
 
+    <h4>Assistive Technology</h4>
+
+    <p>"First Name edit First Name blank"</p>
+
+  </section>
+
+  <section id="placeholder-hidden-label">
+
+    <h3>Placeholders May Not Be Used With Hidden Labels <span class="alert">(Avoid)</span></h3>
+
+    <p>Using a placeholder value and hiding the label does not solve the problems we seek to avoid. While hiding labels may seem like a terrific way to address accessibility, it is often prone to issue. For example, we may be hiding a label that includes <a href="#placeholder-redundancy">redundant placeholder text</a>. All we have done is mask the issue, visually. Include labels or use the <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> pattern instead.</p>
+
+    <label class="sr-only" for="example-3-keyword">Keyword</label>
+
+    <input id="example-3-keyword" placeholder="Keyword">
+
+    <h4>Code</h4>
+
+<pre><code>&lt;label <strong>class="sr-only"</strong> for="example-3-keyword"&gt;Keyword&lt;/label&gt;
+
+&lt;input id="example-3-keyword"&gt;</code></pre>
+
+<h4>Assistive Technology</h4>
+
+<p>"Keyword edit Keyword blank"</p>
+
   </section>
 
   <section id="proper-placeholder-use">
 
-    <h3>Proper Placeholder Use</h3>
+    <h3>Placeholder Values May Only Be Used To Provide Supplemental or Suggestive Information</h3>
 
-    <p>Placeholder text should be used to provide <em>supplemental information</em>. For example, formatting or suggestive instruction is an ideal use of placeholder text.</p>
+    <p>Placeholder text should be used to provide <em>supplemental information</em>. For example, formatting or suggestive hints are an ideal use of placeholder text.</p>
 
     <label for="example-3-phone-number">Phone Number</label>
 
     <input id="example-3-phone-number" placeholder="e.g., 123-456-7890">
 
+    <h4>Assistive Technology</h4>
+
+    <p>"Phone Number edit e.g., 123-456-7890  blank"</p>
+
   </section>
 
   <section id="critical-information">
 
-    <h3>Critical Information</h3>
+    <h3>Critical Information About a Form Field Must Always Be Placed Outside of the Field</h3>
 
-    <p>Placeholder text does have its limitations. If a field is pre-populated with data or a user begins typing, the placeholder text will vanish (a problem for people who have cognitive disabilities, to name but one group). If formatted or supplemental information is critical, then instructions should be placed outside of a field, where it will <em>always</em> be present.</p>
+    <p>Placeholder text does have its limitations. If a field is pre-populated with data or a user begins typing, the placeholder text will vanish. A problem for people who have cognitive disabilities, to name but one group it may affect. If formatted or supplemental information is critical, then instructions should be placed outside of a field, where it will <em>always</em> be present.</p>
 
-    <label for="example-4-email-address">Email Address</label>
+    <label for="example-4-phone-number">Phone Number</label>
 
-    <input aria-describedby="email-message" id="example-4-email-address">
+    <input aria-describedby="phone-formatting" id="example-4-phone-number">
 
-    <p id="email-message"><em>Your email address will not be shared with third-parties.</em></p>
+    <p id="phone-formatting"><em>Required format: 123-456-7890</em></p>
 
-    <p>To convey this information to assistive technology users, use <code>aria-describedby</code>.</p>
+    <h4>Code</h4>
 
-<pre><code>&lt;label for="example-4-email-address"&gt;Email Address&lt;/label&gt;
-&lt;input <strong>aria-describedby="email-message"</strong> id="example-4-email-address"&gt;
-&lt;p <strong>id="email-message"&gt;</strong>&lt;em&gt;Your email address will not be shared with third-parties.&lt;/em&gt;&lt;/p&gt;</code></pre>
+    <p>To convey this information to assistive technology users, use <code>aria-describedby</code>, which will append the message to the input field.</p>
+
+<pre><code>&lt;label for="example-4-phone-number"&gt;Phone Number&lt;/label&gt;
+
+&lt;input <strong>aria-describedby="phone-formatting"</strong> id="example-4-phone-formatting"&gt;
+
+&lt;p <strong>id="phone-formatting"&gt;</strong>&lt;em&gt;Required format: 123-456-7890&lt;/em&gt;&lt;/p&gt;</code></pre>
+
+    <h4>Assistive Technology</h4>
+
+    <p>"Phone Number edit  Required format: 123-456-7890  blank"</p>
 
   </section>
 
   <section id="contrast-friendly">
 
-    <h3>Contrast Friendly</h3>
+    <h3>Placeholder Values Must Always Be Contrast Friendly</h3>
 
     <p>Default placeholder text, often a lighter shade of gray, can be hard to read in some browsers, so always aim for a color of <a href="https://webaim.org/resources/contrastchecker/?fcolor=767676&bcolor=FFFFFF">#767676 on white backgrounds</a>.</p>
 
@@ -154,18 +213,33 @@ padding: .5em;
 
   </section>
 
-  <section id="omitting-label">
+  <section id="grouping-inputs">
 
-    <h3>Omitting Labels in Group</h3>
+    <h3>Grouping Inputs Without Visible Form Labels</h3>
 
-    <p>This is a code example of what one might do to group associated fields together without individual labels. For example, three separate fields for a single date entry. Here, a <code>fieldset</code> and <code>legend</code> (or equivalent ARIA) could be used to group them, along with <code>aria-label</code> for each input field.</p>
+    <p>In certain circumstance, traditional labels can be omitted, but should be grouped together via a <code>fieldset</code>. For example, three separate fields for a single date entry. In addition to the <code>fieldset</code>, we would include a <code>legend</code> as our primary label, along with <code>aria-label</code> to distinguish each field.</p>
+
+    <p><strong>Note:</strong> This is not a technique we would normally use on a search form, but to better organize the collection of certain types of fields <em>within</em> a complex form.</p>
+
+    <fieldset>
+      <legend>Select Date (Month, Day, Year)</legend>
+      <input aria-label="Month" placeholder="MM">
+      <input aria-label="Day" placeholder="DD">
+      <input aria-label="Year" placeholder="YY">
+    </fieldset>
+
+    <h4>Code</h4>
 
 <pre><code>&lt;fieldset>
-  &lt;legend>Date (Month, Day, Year)&lt;/legend>
+  &lt;legend>Select Date (Month, Day, Year)&lt;/legend>
   &lt;input aria-label="Month" placeholder="MM">
   &lt;input aria-label="Day" placeholder="DD">
   &lt;input aria-label="Year" placeholder="YY"&gt;
 &lt;/fieldset&gt;</code></pre>
+
+  <h4>Assistive Technology</h4>
+
+  <p>"Select Date (Month, Day, Year) grouping, Month  edit  MM  blank"
 
   </section>
 
