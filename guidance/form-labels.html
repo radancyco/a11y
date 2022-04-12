@@ -1,4 +1,5 @@
 ---
+noindex: true
 title: "Guidance on Designing & Implementing Form Labels"
 ---
 
@@ -86,7 +87,7 @@ margin-top: 2em;
   <h2>Exceptions</h2>
 
   <ol>
-    <li>Including a visible label, adjacent to it's form field, is always the <strong>best solution</strong>. However, the development team realizes this may not always be desirable. If static labels are not desired adjacent to form fields, the <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> technique may be used, but there are <a href="">risks with this technique</a> one should be familiar with before deciding to use.</li>
+    <li>Including a visible label, adjacent to it's form field, is always the <strong>best solution</strong>. However, the development team realizes this may not always be desirable. If static labels are not desired adjacent to form fields, the <a href="https://radancy.dev/pattern-library/floating-labels/">floating label</a> technique may be used, but there are <a href="https://medium.com/simple-human/floating-labels-are-a-bad-idea-82edb64220f6">risks with this technique</a> one should be familiar with before deciding to use.</li>
     <li>Certain types of forms are so ubiquitous that they have become a common and well understood convention across the web. For example, a global site search that utilizes a single input field and button may not require a visible label.</li>
     <li>Certain types of information may have labels omitted if they are grouped together properly. See <a href="#grouping-inputs">grouping inputs</a> example.</li>
   </ol>
@@ -99,7 +100,7 @@ margin-top: 2em;
 
   <p>The following examples are meant to illustrate best (and poor) practices of labeling form fields.</p>
 
-  <p><strong>Note:</strong> The placeholder attribute used in some examples may not be read back at all in some browser/AT combinations. This is but one reason we can't fully rely on it to stand in as a label.</p>
+  <p class="alert"><strong>Note:</strong> The placeholder attribute used in some examples may not be included in some assistive technology/browser combinations. This is but one reason we can't fully rely on it to stand in as a label.</p>
 
   <section id="placeholder-as-label">
 
