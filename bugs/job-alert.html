@@ -1,0 +1,77 @@
+Overview
+
+In the interest of improving the accessibility of our forms, lessening the amount of issues brought to our attention via accessibility audits, and lowering potential legal risk for our clients, the following issues need to be addressed on GST generated Job Alert forms only. Much of what is cited here are common issues across all form types, but in the interest of keeping such request better managed and easier to tackle, we will submit seperate tickets for each form type, in the near future.
+
+As we begin to sunset Legacy, we will only ask that such issues be addressed on GST, unless they happen to present a large risk to our clients. Oftentimes, we can circumvent such problems with JavaScript, using MagicBullet on Legacy, without involving the product team.
+
+Global
+
+Please remove aria-required="true" attributes from all input types. The required attribute is well-supported now and is all that is needed.
+
+Replace all <p class="form-field"> elements, with a <div>. This is not a matter of prefrence, but an issue that has been flagged in the past.
+
+<p class="form-field">
+
+  ...
+
+</p>
+
+<div class="form-field">
+
+  ...
+
+</div>
+
+On confirm email container, remove aria-hidden and style attribute and replace with hidden attribute.
+
+<p class="form-field confirm-email" aria-hidden="true" style="display:block;height:0;overflow:hidden;position:absolute;text-indent:-9999em;width:0;z-index:-1">
+
+  ...
+
+</p>
+
+<div class="form-field confirm-email" hidden>
+
+  ...
+
+</div>
+
+On inputs that require validation, please include aria-valid="false". If the field proves to be invalid, this value should change to "true".
+
+Default State
+
+<input ... aria-invalid="false" required>
+
+Invalid State
+
+<input ... aria-invalid="true" required>
+
+Any field that includes instructional text, must use aria-describedby to link to it, so that it too may be ready back to assistive technology users.
+
+<input ... aria-describedby="{{unique-id}}" aria-invalid="true" required >
+
+<span class="instruction-text" id="{{unique id}}">Required format: 123-456-7890</span>
+
+Note: If this field is invalid, the ID of the error should be appended to the already existing aria-describedby attribute. Do not include an additional aria-describedby attribute.The aria-describedby attribute can accept space seperated, unique ID's.
+For example:
+
+<input aria-describedby="{{unique-id}} form-field-9517114070-error" aria-invalid="true" required>
+
+<span class="instruction-text" id="{{unique id}}"></span>
+
+<span class="field-validation-error" ... role="status">
+
+  <span id="form-field-9517114070-error" class="">This field is required.</span>
+
+</span>
+
+Issue: When form is submitted, fields that are not required are including aria-describedby anyway. The aria-describedby attribute should only be appened to form element, or have ID append to aria-described, if it exists, only when field is required.
+
+Steps to reproduce:
+
+https://clarityrobotics-site-type2.runmytests.com/en/a11y-job-alerts
+
+1. Click submit.
+2. Check input of any field that does not require validation. Here you will see aria-describedby, refrencing an ID that does not exist on the page.
+
+TODO: come back to this one. aria-described by seems to vanish and reappers when element clic ked on - weird.
