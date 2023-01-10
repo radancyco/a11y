@@ -1,16 +1,54 @@
 ---
-title: "Form Test"
+title: "Career Site Accessibility Issue"
 ---
 
-<form method="post" action="https://script.google.com/macros/s/AKfycbysjs7lUQBKrD1d8CiBCZ0oPP4Rw-YQlg9i9Fd6Dd4QF-M2pyasLoGwlYgO_ezU2fhptg/exec">
-  <input name="Email" type="email" placeholder="Email" required>
-  <input name="Name" type="text" placeholder="Name" required>
-  <select name="Test">
-    <option>Item 1</option>
-    <option>Item 2</option>
-    <option>Item 3</option>
-  </select>
-  <button type="submit">Send</button>
-</form>
+<p>If you have encountered any accessibility issues on a Radancy career site, please this form to report it. All fields are required.</p>
 
-<!-- deploy id - AKfycbysjs7lUQBKrD1d8CiBCZ0oPP4Rw-YQlg9i9Fd6Dd4QF-M2pyasLoGwlYgO_ezU2fhptg -->
+<form action="https://script.google.com/macros/s/AKfycbysjs7lUQBKrD1d8CiBCZ0oPP4Rw-YQlg9i9Fd6Dd4QF-M2pyasLoGwlYgO_ezU2fhptg/exec" method="post">
+  
+    <input name="Assignee" value="MSpellac" type="hidden">
+    <input name="Reporter" value="MSpellac" type="hidden">
+
+    <div class="radancy-form__field">
+
+        <label class="radancy-form__field__label" for="jira-priority">Priority <span class="radancy-form__required"><span aria-hidden="true" class="radancy-form__field__icon"></span></span></label>
+
+        <select aria-invalid="false" data-error-message="Please select priority" id="jira-priority" name="Priority" required>
+            <option value="S3-Medium">S3-Medium</option>
+            <option value="S3-Low">S4-Low</option>
+        </select>
+
+    </div>
+
+    <div class="radancy-form__field">
+
+        <label class="radancy-form__field__label" for="jira-summary">Summary <span class="radancy-form__required"><span aria-hidden="true" class="radancy-form__field__icon"></span></span></label>
+
+        <input aria-invalid="false" data-error-message="Please enter summary" id="jira-summary" name="Summary" required type="text">
+
+    </div>
+
+    <div class="radancy-form__field">
+
+        <label class="radancy-form__field__label" for="jira-description">Description <span class="radancy-form__required"><span aria-hidden="true" class="radancy-form__field__icon"></span></span></label>
+
+        <textarea aria-invalid="false" data-error-message="Please enter description" id="jira-description" name="Description" required></textarea>
+
+        <textarea id="jira-description"></textarea>
+
+    </div>
+
+    <input name="Assignee" value="MSpellac" type="hidden">
+    <input name="Reporter" value="MSpellac" type="hidden">
+    <input name="Identified By" value="Other" type="hidden">
+    <input name="Priority Category" value="Client Maintenance (SLA)" type="hidden">
+    <input name="Task Type" value="Back End" type="hidden">
+    <input name="Client Name" value="**Multiple Clients**" type="hidden">
+
+    <div class="radancy-form__section__buttons">
+
+        <button class="radancy-form__button radancy-form__button--submit" type="submit">Submit</button>
+
+    </div>
+
+</form>
