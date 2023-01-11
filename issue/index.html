@@ -1,9 +1,12 @@
 ---
 localcss: init.css
-title: "Report an Accessibility Issue"
+localjs: init.js
+title: "Report Product Accessibility Issue"
 ---
 
 <p>If you have encountered an accessibility issue on one of Radancy"s career sites, please report it using this form. All fields are required.</p>
+
+<div id="form-message" tabindex="-1"></div>
 
 <form name="radancy-form">
 
@@ -60,26 +63,4 @@ title: "Report an Accessibility Issue"
 
     </div>
 
-    <div aria-live="polite" id="form-message"></div>
-
 </form>
-
-<script>
-
-const scriptURL = "https://script.google.com/macros/s/AKfycbysjs7lUQBKrD1d8CiBCZ0oPP4Rw-YQlg9i9Fd6Dd4QF-M2pyasLoGwlYgO_ezU2fhptg/exec"
-const form = document.forms["radancy-form"];
-const formMsg=document.getElementById("form-message");
-    
-form.addEventListener("submit", e => {
-    
-    e.preventDefault()
-    
-    fetch(scriptURL, { method: "POST", body: new FormData(form)}).then(response => console.log("Success!", response), formMsg.innerText = "Success! Your issue has been sent."
-
-    ).catch(error => formMsg.innerText="Uh-oh! Something went wrong!")
-
-    form.reset();
-    
-})
-
-</script>
