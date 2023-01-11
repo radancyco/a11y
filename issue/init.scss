@@ -559,7 +559,7 @@
       input:not([type="checkbox"]):not([type="radio"]), select, textarea {
       background-color: $ha-color-light;
       border: 1px $ha-color-neutral solid;
-      font-size: inherit;
+      font: inherit;
       padding: .7em;
       width: 100%;
   
