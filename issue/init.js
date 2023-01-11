@@ -21,7 +21,7 @@ form.addEventListener("submit", e => {
 
         formMsg.classList.remove("radancy-form__error");
         formMsg.classList.add("radancy-form__success");
-        formMsg.innerText = "Success! Your issue has been sent.";
+        formMsg.innerHTML = "Success! Your issue has been sent.";
         console.log("Success!", response);
 
 
@@ -29,7 +29,7 @@ form.addEventListener("submit", e => {
 
         formMsg.classList.remove("radancy-form__success");
         formMsg.classList.add("radancy-form__error");
-        formMsg.innerText="Uh-oh! Something went wrong!";
+        formMsg.innerHTML="Uh-oh! Something went wrong! Please <a href='mailto:michael.spellacy@radancy.com'>let us know about it</a>.";
         console.log("Error!", error);
 
     });

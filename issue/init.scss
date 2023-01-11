@@ -188,6 +188,14 @@
       }
   
     }
+
+    &__success {
+    color: $ha-color-complete;    
+    }
+
+    &__error {
+    color: $ha-color-error;       
+    }
   
     &__primary-heading {
     margin: .5em 0;
