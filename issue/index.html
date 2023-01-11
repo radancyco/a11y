@@ -3,9 +3,9 @@ localcss: init.css
 title: "Report an Accessibility Issue"
 ---
 
-<p>If you have encountered an accessibility issue on one of Radancy's career sites, please report it using this form. All fields are required.</p>
+<p>If you have encountered an accessibility issue on one of Radancy"s career sites, please report it using this form. All fields are required.</p>
 
-<form action="https://script.google.com/macros/s/AKfycbysjs7lUQBKrD1d8CiBCZ0oPP4Rw-YQlg9i9Fd6Dd4QF-M2pyasLoGwlYgO_ezU2fhptg/exec" method="post">
+<form name="radancy-form" method="post">
 
     <div class="radancy-form__field">
 
@@ -61,3 +61,19 @@ title: "Report an Accessibility Issue"
     </div>
 
 </form>
+
+<script>
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbysjs7lUQBKrD1d8CiBCZ0oPP4Rw-YQlg9i9Fd6Dd4QF-M2pyasLoGwlYgO_ezU2fhptg/exec"
+const form = document.forms["radancy-form"]
+
+form.addEventListener("submit", e => {
+
+    e.preventDefault()
+    fetch(scriptURL, { method: "POST", body: new FormData(form)})
+    .then(response => console.log("Success!", response) Response.redirect("thank-you.html"))
+    .catch(error => console.error("Error!", error.message))
+
+})
+
+</script>
