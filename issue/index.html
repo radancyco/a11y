@@ -74,9 +74,9 @@ form.addEventListener("submit", e => {
     
     e.preventDefault()
     
-    fetch(scriptURL, { method: "POST", body: new FormData(form)}).then(response => console.log("Success!", response), formMsg.innerText = "Success! Your issue has been submitted."
+    fetch(scriptURL, { method: "POST", body: new FormData(form)}).then(response => console.log("Success!", response), Response.redirect("thank-you.html")
 
-    ).catch(error => formMsg.innerText="Uh-oh! Something went wrong! ")
+    ).catch(error => Response.redirect("error.html")
 
     form.reset();
     
