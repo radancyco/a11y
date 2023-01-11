@@ -74,11 +74,9 @@ form.addEventListener("submit", e => {
     
     e.preventDefault()
     
-    fetch(scriptURL, { method: "POST", body: new FormData(form)}).then(response => console.log("Success!", response), Response.redirect("thank-you.html")
+    fetch(scriptURL, { method: "POST", body: new FormData(form)}).then(response => console.log("Success!", response), window.location.replace("thank-you.html")
 
-    ).catch(error => Response.redirect("error.html")
-
-    form.reset();
+    ).catch(error => window.location.replace("error.html")
     
 })
 
