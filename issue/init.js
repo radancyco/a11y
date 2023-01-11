@@ -9,6 +9,9 @@
 
 */
 
+// Form Validation: Use https://codepen.io/aarongustafson/pen/eYMXMPP
+
+
 const scriptURL = "https://script.google.com/macros/s/AKfycbysjs7lUQBKrD1d8CiBCZ0oPP4Rw-YQlg9i9Fd6Dd4QF-M2pyasLoGwlYgO_ezU2fhptg/exec"
 const form = document.forms["radancy-form"];
 const formMsg = document.getElementById("form-message");
