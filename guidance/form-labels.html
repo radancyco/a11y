@@ -4,70 +4,119 @@ title: "Guidance on Designing & Implementing Form Labels"
 
 <style>
 
-#examples section {
+.examples section {
 border-radius: 10px;
 padding: 1em;
 border: 2px transparent solid;
 }
 
-#examples section:target {
+.examples section:target {
 background-color: #eee;
 }
 
-#examples section h3 {
+.examples section h3 {
 margin: 0 0 1em;
 }
 
-#examples label, #examples input, #examples legend {
+.examples label, .examples input, .examples legend {
 display: block;
 font-size: 1.5rem;
 }
 
-#examples label, #examples legend {
+.examples label, .examples legend {
 font-weight: bold;
 margin-bottom: 0;
 }
 
-#examples fieldset {
+.examples fieldset {
 padding: 1em;
 border: 1px #000 solid;
 border-radius: 10px;
 }
 
-#examples input {
+.examples input {
 border: 1px #000 solid;
 padding: .5em;
 }
 
-#examples fieldset input {
+.examples fieldset input {
 display: inline-block;
 margin: .5em .5em .5em 0;
 max-width: 100px;
 }
 
-#examples h4 {
+.examples h4 {
 margin-top: 2em;
+}
+
+.examples .float-example {
+position: relative;
+}
+
+.examples .float-example label {
+display: inline-block;
+inset-inline-start: 10px;
+line-height: normal;
+position: absolute;
+font-weight: normal;
+inset-block-start: 8px;
+transition: all .2s ease;
+z-index: 2;
+}
+
+.examples .float-example input:focus ~ label,  .examples .float-example input:valid ~ label {
+inset-block-start: -9px;
+font-size: .8rem;
+background-color: #fff;
+padding: 0 1em;
 }
 
 </style>
 
-<p>In an effort to improve the way in which Radancy includes form labels within its sites and products, this document seeks to introduce more clearly defined guidance that can be shared with all team members. Especially designers, developers, and QA engineers. Inclusion of a proper label is critical and allows more people to understand and use the form. Omission or poor implementation of a label is also considered a direct failure of <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">Success Criterion 3.3.2 Labels or Instructions</a>. This guideline was intentionally omitted from our initial <a href="https://radancy.dev/a11y/baseline/">baseline</a> release to give us enough time to educate and acclimate ourselves to the advice presented here. We will begin to test against this guideline more vigorously, beginning in the summer of 2022.</p>
+<p>In an effort to improve the way in which Radancy includes form labels within its sites and products, this document seeks to introduce more clearly defined guidance that can be shared with all team members. Especially designers, developers, and QA engineers. Inclusion of a proper label is critical and allows more people to understand and use the form. Omission or poor implementation of a label is also considered a direct failure of <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">Success Criterion 3.3.2 Labels or Instructions</a>.</p>
 
 <details class="nav">
 
   <summary class="btn">Table of Contents</summary>
 
   <ul>
-    <li><a href="#rules">The Rules</a></li>
+    <li><a href="#overview">Label Placement Overview</a></li>
+    <li><a href="#rules">Rules</a></li>
     <li><a href="#exceptions">Exceptions</a></li>
-    <li><a href="#examples">Examples</a></li>
+    <li><a href=".examples">Examples</a></li>
   </ul>
 
 </details>
 
+<section class="examples" id="overview">
+
+  <h2>Label Placement Overview</h2>
+
+  <input placeholder="Keyword">
+
+  <p>This is very bad. Don't do it. Development will likely ask you to alter it with one of the two solutions below.</p>
+
+  <form class="float-example">
+
+    <input id="overview-1" required>
+
+    <label for="overview-1">Keyword</label>
+
+  </form>
+
+  <p>This is better, but not a perfect solution. Development considers this an anti-pattern. <a href="https://medium.com/simple-human/floating-labels-are-a-bad-idea-82edb64220f6">Know the risks</a>.</p>
+
+  <label for="overview-2">Keyword</label>
+
+  <input id="overview-2">
+
+  <p>This is best. Simple and bulletproof. Can be styled in several different ways. The only limit is your imagination.</p>
+
+</section>
+
 <section id="rules">
 
-  <h2>The Rules</h2>
+  <h2>Rules</h2>
 
   <ol>
     <li>All form fields must include a visible label. See <a href="#exceptions">exceptions</a>.</li>
@@ -104,7 +153,7 @@ margin-top: 2em;
 
 </section>
 
-<section id="examples">
+<section class="examples"  id="examples">
 
   <h2>Examples</h2>
 
