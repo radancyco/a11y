@@ -92,10 +92,14 @@ padding: 0 1em;
 
   <h2>Label Placement Overview</h2>
 
+  <h3>Placeholder as Label Replacement</h3>
+
   <input placeholder="Keyword">
 
   <p>This is very bad. Don't do it. Placeholder text, as seen here, is not a replacement for a label. Development will likely ask you to alter it with one of the two solutions below.</p>
 
+  <h3>Floating Label</h3>
+  
   <form class="float-example">
 
     <input id="overview-1" required>
@@ -106,11 +110,13 @@ padding: 0 1em;
 
   <p>This is better, but not a perfect solution (go ahead and click on it). Development considers this an anti-pattern. <a href="https://medium.com/simple-human/floating-labels-are-a-bad-idea-82edb64220f6">Know the risks</a>. While we can make an exception to use this technique on basic search forms, more complex forms, like Job Alerts, should use the below technique only.</p>
 
+  <h3>Label Outside of Field</h3>
+  
   <label for="overview-2">Keyword</label>
 
   <input id="overview-2">
 
-  <p>This is best. Simple and bulletproof. Can be designed in several different ways. The only limit is your imagination.</p>
+  <p>This is best. Simple and bulletproof and clear to all users, including those with disabilities. Can be designed in several different ways. The only limit is your imagination.</p>
 
 </section>
 
