@@ -1,0 +1,222 @@
+https://app.brazenconnect.com/cc/#!login
+
+Form errors - No errors are programmatically associated to their respective form fields.
+
+
+
+
+
+
+
+
+
+-----
+
+
+
+
+
+
+
+
+
+
+Multi-factor Auth: https://app.brazenconnect.com/cc/#!mfa 
+
+Same issus as above. 
+
+----
+
+No focus state in header. https://app.screencast.com/QIb6m81gRHBq7 
+
+-----
+
+Make login menu a button. https://app.screencast.com/ie6JfZ62jX6HG 
+
+login menu appears to have no accessible name. add aria-label. 
+
+-----
+
+brazen logo appear to be interactive, but does nothign when accessed. 
+
+brazen logo needs alt text
+
+https://app.screencast.com/x7OpyZB4H16Ae
+
+----
+
+Support link should be encapsulated in a <li> element, like the dropdown next to it. The link is not read as a part of the list, which is should be. 
+
+Critical 
+
+https://app.screencast.com/qHSuk8xg1bKVv 
+
+---
+
+Remove role="form" from form element. 
+
+https://app.screencast.com/hYJqfAU9qo5l8
+
+-----
+
+Page needs h1
+
+Make this your h1, style as needed to retain same look and feel. Headings must never be selected based on size, but used for structural meaning to better understanding. 
+
+https://app.screencast.com/8QPqCDO4JEhas 
+
+----
+
+General note - look into forms using autocomplete for redundant information. 
+
+----
+
+
+
+Forgot PW Page
+
+https://app.brazenconnect.com/app/password-change#!setPassword
+
+
+The navigation intermittently expands when zooming in to 200%. 
+
+https://app.screencast.com/rZYd3inFlAzfE 
+
+
+-----
+
+No <title> value. Should say "Forgot Password". 
+
+-----
+
+zoom disabled
+
+role="form"
+
+main landmark nested in another landmark. consider removing role="main"
+
+----
+
+no h1 
+
+https://app.screencast.com/aGtbSLw7dRMHc
+
+----
+
+in the error message, two links are present, as there is only field, there should be a single error here.
+
+https://app.screencast.com/icbaDo9trwlYA
+
+----- 
+
+Event Registration
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false
+
+
+
+
+All options in the select dropdown appear to have aria on them that is not required. Please remove these attributes: 
+
+role="option"
+
+aria-selected="true"
+
+These roles and states are typically used with custom built components, not with native HTML, whic already has these properties built in. 
+
+https://app.screencast.com/9eEQVKe4IhVVJ
+
+critical
+
+axe is reporting 379 instances of this issue. 
+
+
+------
+
+Select fields apepar to have aria on them that is meant for custom built components. Please remove following from all select fields: 
+
+aria-multiselectable="false" 
+
+https://app.screencast.com/2PTA8DR2vnBtd 
+
+-----
+
+The multiselect form included aria that is should have. 
+
+Remove aria-multselect="true"
+
+https://app.screencast.com/RMyAure4PwJmo
+
+Using ARIA attributes in roles where they are not allowed can interfere with the accessibility of the web page. Using an invalid role-attribute combination will, at best, result in no effect on the accessibility of the application and, at worst, may trigger behavior that disables accessibility for entire portions of an application.
+
+
+----
+
+Regarding multiselect boxes. I strong consider removing these as an option from your admin form and instead rely on the possibly using checkboxs, possibly in a disclosure. Multiselct can't be used by many disabled people. 
+
+
+----
+
+
+When magnifying content to 200%, an overlay appears that decreases contrast across the board. 
+
+
+-----
+
+
+Page title "Event Registration" does not describe the event the user is registering for.
+
+
+-----
+
+Field-level error messages are not provided for any form fields. Errors are provided at the top of form.
+
+
+(is this a bad thing? - double check?)
+
+------
+
+
+No errors are programmatically associated to their respective form fields.
+
+
+-----
+
+
+No form fields that collect information about the user have the autocomplete attribute.
+
+
+-----
+
+On profile picture, when remove button is clicked on, the focus needs to be placed on choose image. removing a button that has focus on it is not a good idea. 
+
+
+
+----
+
+in left nav, when profile or edit password are click on, the title should be changed. 
+
+need to find out about focus - don;t think it needs to be managed here. 
+
+----
+
+"Event Registration" should be h1. See https://app.screencast.com/jvDY7JL8KroiH
+
+-----
+
+
+monday - deep analysis of each fied in registration for and test the profile and edit password forms. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

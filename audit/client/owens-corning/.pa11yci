@@ -1,0 +1,12 @@
+{
+  "defaults": {
+    "reporters": ["pa11y-ci-reporter-html"],
+    "runners": ["axe"],
+    "includeNotices": false,
+    "includeWarnings": true,
+    "standard": "WCAG2AA"
+  },
+  "urls": [
+    "https://careers.owenscorning.com"
+  ]
+}

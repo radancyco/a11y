@@ -1,0 +1,689 @@
+DIGITAL ACCESSIBILITY REPORT
+
+This report details critical and high priority issues which the Digital Accessibility team identified when testing to WCAG 2.1 Level AA success criteria. 
+* Critical impact access issues block a user from being able to complete a task or function within the content.
+* High impact access issues do not completely block a user from completing a task or function within the content but create significant difficulties in using the content.
+Digital Content: State Farm Career Experience
+Date Tested: 08/04/2023
+Browser/iOS Version: MS EDGE Version 113.0.1774.57
+Screen Reader Version: NVDA 2022.4
+        Summary of Issues
+Success CriteriaTotal Number IssuesNumber of Unique Issues1.3.1 – Info and Relationships221.4.10 – Reflow441.4.11 – Non-Text Contrast56271.4.3 - Contrast (Minimum)43322.1.1 – Keyboard32232.4.3 – Focus Order1082.4.7 - Focus Visible962.5.3 – Label in name114.1.2 – Name, Role, Value31204.1.3 – Status Messages22Total - (10)190125
+1.3.1 – INFO AND RELATIONSHIPS ISSUES
+Understanding Success Criteria - 1.3.1 – Info and Relationships
+Group(s) Affected by Issue: People who are blind or with limited vision who use a screen reader.
+Issue(s) Impact to User: If the Information, structure, and relationships unable to convey through presentation and cannot be programmatically determined or are available in text then it will impact persons who are deaf, hard of hearing and deaf-blind.   Not associating the label programmatically with the respective text field will be difficult for the users in understanding the purpose of the respective field and the data to be entered.  Not associating the cell programmatically with the respective table header will be difficult for the users in understanding the content in the table
+ISSUE 1
+Description: All the toggle buttons are not associated with their respective information.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    6. Manage Schedule129992Desktop
+ISSUE 2
+Description: All the Input fields are not associated with their respective label.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    18.New Series130139Desktop
+1.4.10 – REFLOW ISSUES
+Understanding Success Criteria - 1.4.10 – Reflow
+Group(s) Affected by Issue: People with low vision 
+Issue(s) Impact to User: If there is a loss of information or all the content is not reachable with keyboard without horizontal scrolling, it will impact people with low vision who need to enlarge text and read it in a single column when zoomed in 400%. 
+ISSUE 1
+Description: When browser zoom is set to 400%, Video option is not completely visible and accessible which is present at the right side of the Log in page
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    1. Log in129931Desktop
+ISSUE 2
+Description: When browser zoom is set to 400%, content under your account section is not completely visible and accessible in the page
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129942Desktop
+ISSUE 3
+Description: When browser zoom is set to 400%, content under History section is not completely visible and accessible in the page
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    4. History129967Desktop
+ISSUE 4
+Description: When browser zoom is set to 400%, body content are getting overlapped. There is no way for the keyboard user to visually access the content.
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129979Desktop
+1.4.11 – NON-TEXT CONTRAST ISSUES
+Understanding Success Criteria - 1.4.11 – Non-Text Contrast
+Group(s) Affected by Issue: 1. People with Limited Vision or No Vision. 2. People who are Colorblind.
+Issue(s) Impact to User: When there is not enough color contrast betweeen User Interface Components and Graphical Objects against adjacent colors of at least 3:1, people with low vision and/or people who do not see full range of colors will experience difficulty perceiving graphics.
+ISSUE 1
+Description: The visual boundary for the 'Email Address' and 'Password' input fields without selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.4:1 Foreground color: #D8D8D8 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    1. Log in129935Desktop
+ISSUE 2
+Description: The visual boundary for the 'Log in with Linkedin' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.3:1 Foreground color: #0A80B8 Background color: #3395C4
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    1. Log in129934Desktop
+ISSUE 3
+Description: The visual boundary for the 'Log in' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    1. Log in129932Desktop
+ISSUE 4
+Description: The visual boundary for the 'View History' & 'Enter' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129943Desktop
+ISSUE 5
+Description: The visual boundary for 'Input fields' without selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.5:1 Foreground color: #D8D8D8 Background color: #FF9933
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    3. Edit Profile129961Desktop    7. Registration129998Desktop    8. User Profile130009Desktop    10. Search Booth130024Desktop    13. Edit Password130044Desktop    14.Account home130053Desktop    15.Account Branding130077Desktop    16.New Template130092Desktop    17.New Event130108Desktop    18.New Series130129Desktop    20.Templates130170Desktop    21.Reports130187Desktop    24.Settings-Career Site-C E O 130226Desktop    25.Settings-General-C & B130233Desktop    26.Settings-General-E & S130244Desktop    28.Settings-Create FAQ130280Desktop    29.Settings-Edit FAQ130292Desktop    30.Settings-Testimonials130305Desktop    32.Settings-Integrations-EA130322Desktop    33.Settings-Integrations-CFM130335Desktop    34.Settings-Integration-Webhook130348Desktop
+ISSUE 6
+Description: The visual boundary for the 'Save' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    3. Edit Profile129958Desktop    7. Registration129995Desktop    8. User Profile130006Desktop    13. Edit Password130041Desktop    16.New Template130089Desktop    17.New Event130105Desktop    28.Settings-Create FAQ130275Desktop    30.Settings-Testimonials130300Desktop    31.Settings-SSO130309Desktop
+ISSUE 7
+Description: The visual boundary for the 'Enter Event' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    7. Registration130001Desktop
+ISSUE 8
+Description: The visual boundary for 'New Series', 'New Events' & 'New Template' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.9:1 Foreground color: #FEA751 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130049Desktop
+ISSUE 9
+Description: The visual boundary for the 'Save' & 'Enter Event' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    15.Account Branding130074Desktop
+ISSUE 10
+Description: The visual boundary for the list items in the 'Event type & Time Zone' combo box with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    16.New Template130095Desktop
+ISSUE 11
+Description: The visual boundary for the list items in the Time Zone combo box with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    17.New Event130111Desktop    18.New Series130132Desktop
+ISSUE 12
+Description: The visual boundary for the 'Save, Ok, Assign & Next' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    18.New Series130126Desktop
+ISSUE 13
+Description: The visual boundary for 'New & View' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.9:1 Foreground color: #FEA751 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    19.Series130153Desktop
+ISSUE 14
+Description: The visual boundary for 'New' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.9:1 Foreground color: #FEA751 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    20.Templates130167Desktop
+ISSUE 15
+Description: The visual boundary for the 'Download' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    21.Reports130184Desktop
+ISSUE 16
+Description: The visual boundary for the list items in All the combo box with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    21.Reports130188Desktop
+ISSUE 17
+Description: 1. The visual boundary for the 'Save', 'Upload', & 'Content and Branding' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    23.Settings-Career Site-C & B130208Desktop
+ISSUE 18
+Description: 3. The visual boundary for 'Input fields' without selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.5:1 Foreground color: #D8D8D8 Background color: #FF9933
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    23.Settings-Career Site-C & B130210Desktop
+ISSUE 19
+Description: The visual boundary for the 'Save' & 'Custom Engagement Opttions' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    24.Settings-Career Site-C E O 130223Desktop
+ISSUE 20
+Description: The visual boundary for the 'Save', 'Upload', & 'Content and Branding' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    25.Settings-General-C & B130231Desktop
+ISSUE 21
+Description: The visual boundary for the 'Event and Series' button with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    26.Settings-General-E & S130241Desktop
+ISSUE 22
+Description: 1. The visual boundary for the 'Add FAQ', 'New', 'Bulk Upload', 'Save' and 'Select File' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    27.Settings-FAQ Library130254Desktop
+ISSUE 23
+Description: 7. The visual boundary for 'Input fields' without selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.5:1 Foreground color: #D8D8D8 Background color: #FF9933
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    27.Settings-FAQ Library130260Desktop
+ISSUE 24
+Description: The visual boundary for the 'Save', 'Add FAQ' & 'Delete' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    29.Settings-Edit FAQ130287Desktop
+ISSUE 25
+Description: The visual boundary for the 'Save', 'Send', 'New', 'Test' & 'Enterprise Application' buttons with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    32.Settings-Integrations-EA130317Desktop
+ISSUE 26
+Description: The visual boundary for the  'CFM tab', 'Save button', 'Yes button' with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    33.Settings-Integrations-CFM130330Desktop
+ISSUE 27
+Description: The visual boundary for the  'Webhook tab' & 'Save button' with selection does not have a contrast ratio at least 3:1 against either adjacent background. Current ratio is 1.1:1 Foreground color: #FF9B37 Background color: #FFA348
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    34.Settings-Integration-Webhook130343Desktop
+1.4.3 - CONTRAST (MINIMUM) ISSUES
+Understanding Success Criteria - 1.4.3 - Contrast (Minimum)
+Group(s) Affected by Issue: 1. People with Limited Vision or No Vision. 2. People who are Colorblind.
+Issue(s) Impact to User: When there is not enough color contrast between the text color and the background color of at least 4.5:1, people who are color blind or have low vision will experience difficulty reading the text.
+ISSUE 1
+Description: Element must have sufficient color contrast.  Element has insufficient color contrast of 1.89 (foreground color: #ffffff, background color: #00ccff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1  Element Location: .label <span class="label label-info">Your Home</span>
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129955Desktop    4. History129974Desktop
+ISSUE 2
+Description: Element must have sufficient color contrast.  Element has insufficient color contrast of 2.12 (foreground color: #aaaaaa, background color: #f2f5f8, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1  1. Element Location: .text-muted[target="_blank"]:nth-child(1) <a href="https://www.brazen.com/terms-of-use" class="text-muted" target="_blank">Legal</a>  2. Element Location: .text-muted[target="_blank"]:nth-child(2) <a href="https://www.brazen.com/privacy-policy" class="text-muted" target="_blank">Privacy</a>
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129956Desktop    4. History129975Desktop
+ISSUE 3
+Description: Element must have sufficient color contrast.  Element has insufficient color contrast of 2.84 (foreground color: #999999, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1  Element Location: h5 <h5>2023</h5>
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129954Desktop    4. History129973Desktop
+ISSUE 4
+Description: Element must have sufficient color contrast.  Element has insufficient color contrast of 2.57 (foreground color: #ffffff, background color: #29b866, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1  Element Location: .live > span <span>Live</span>
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129988Desktop    14.Account home130072Desktop    19.Series130165Desktop    20.Templates130183Desktop
+ISSUE 5
+Description: Element must have sufficient color contrast.  Element has insufficient color contrast of 2.7 (foreground color: #3498db, background color: #e1f0fa, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1   Element location div[aria-describedby="gwt-uid-421"] > .media > .inner > .pills-wrapper > div:nth-child(1) > .pill-info.pill Element source <span class="pill pill-info">Your Booth</span>
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129989Desktop
+ISSUE 6
+Description: Numbers for the Hours, Min & Sec under event calender in the left nav are failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 1.3:1 Foreground color: #F6993D Background color: #949CA8
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129981Desktop
+ISSUE 7
+Description: Resources Tab: Belo links are failed to meet the minimum contrast ratio of 4.5:1 Current Ratio: 2.1:1 Foreground color: #FF9933 background color: #FFFFFF  - Employment Application Process Overview - Employment Interviewing Best Practices - Employment Understanding Digital Interviewing
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    9. Your Booth- Representative130017Desktop
+ISSUE 8
+Description: Text 'Your booth' is failed to meet the minimum contrast ratio of 4.5:1 Current Ratio: 2.7:1 Foreground color: #3498DB background color: #E1F0FA
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    9. Your Booth- Representative130016Desktop    12. Your Booth- Host130037Desktop
+ISSUE 9
+Description: All the links under search booth are failed to meet the minimum contrast ratio of 4.5:1  Current Ratio: 2.1:1 Foreground color: #FF9C39 background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    10. Search Booth130030Desktop
+ISSUE 10
+Description: Text 'Your booth' under search booth are failed to meet the minimum contrast ratio of 4.5:1 Current Ratio: 2.7:1 Foreground color: #3498DB background color: #E1F0FA
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    10. Search Booth130029Desktop
+ISSUE 11
+Description: Event title link  'Test Event: Testing Environment for Aleef and Gopi' in the 1st row of the event table is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130057Desktop
+ISSUE 12
+Description: Event title link  'Test Event: Testing Environment for Aleef and Gopi' in the 2nd row of the event table is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 1.9:1 Foreground color: #FF9933 Background color: #F2F5F8
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130058Desktop
+ISSUE 13
+Description: Go to User Home link at the header section is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 1.9:1 Foreground color: #FF9933 Background color: #F2F5F8
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130056Desktop
+ISSUE 14
+Description: Texts "bilingual, customer service & sales" in the event table are failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130059Desktop
+ISSUE 15
+Description: Title text 'Acount' at the header section is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 1.8:1 Foreground color: #52CCFF Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130055Desktop
+ISSUE 16
+Description: All the radio buttons and check boxes in selected state are failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2:1 Foreground color: #FF9933 Background color: #F9FAFC
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    15.Account Branding130081Desktop    23.Settings-Career Site-C & B130215Desktop
+ISSUE 17
+Description: Status message text "Your changes were successfully cancelled" at the top of the page is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 1.5:1 Foreground color: #70CCFF Background color: #D9F1F9
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    15.Account Branding130082Desktop
+ISSUE 18
+Description: Below texts in the event table are failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFFF - Claims - Full-Time - Part-time - Underwriting - customer service
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    19.Series130157Desktop
+ISSUE 19
+Description: Event title link  and the Event date link are failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    19.Series130156Desktop
+ISSUE 20
+Description: Below texts in the event table are failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFFF - Claims - Full-Time - Part-time - Underwriting - customer service - bilingual - sales - college - finance - internship - technology - admin - arizona
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    20.Templates130174Desktop
+ISSUE 21
+Description: Template title link wit the White backgroung color row of the event table is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    20.Templates130172Desktop
+ISSUE 22
+Description: Template title link with the Gray background color row of the event table is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 1.9:1 Foreground color: #FF9933 Background color: #F2F5F8
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    20.Templates130173Desktop
+ISSUE 23
+Description: Below links under Content and Code Snipet saections are failed to meet the minimum contrast ratio of 4.5:1 - Go to FAQ library link - COPY TO CLIPBOARD link Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    23.Settings-Career Site-C & B130216Desktop
+ISSUE 24
+Description: Below links with Gray background are failed to meet the minimum contrast ratio of 4.5:1 - State Farm Virtual Career Connection! - Test Series: Brazen Live - Test Series: Brazen Live 2 Current ratio is 1.9:1 Foreground color: #FF9933 Background color: #F2F2F2
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    26.Settings-General-E & S130246Desktop
+ISSUE 25
+Description: Below links with white background are failed to meet the minimum contrast ratio of 4.5:1 - State Farm Virtual Career Connection! - Test Series: Brazen Live - Test Series: Brazen Live 2 Current ratio is 2.1:1 Foreground color: #FF9933 Background color: #FFFFF
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    26.Settings-General-E & S130245Desktop
+ISSUE 26
+Description: Below links are failed to meet the minimum contrast ratio of 4.5:1 - FAQ Library - Create Section - +Add Current ratio is 1.9:1 Foreground color: #FF9933 Background color: #F2F5F8
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    28.Settings-Create FAQ130282Desktop    29.Settings-Edit FAQ130294Desktop
+ISSUE 27
+Description: Status message text "Your changes have been saved" at the top of the page is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2:1 Foreground color: #00BF8F Background color: #D9EFEE
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    29.Settings-Edit FAQ130295Desktop
+ISSUE 28
+Description: All the check boxes in selected state are failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2:1 Foreground color: #FF9933 Background color: #F9FAFC
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    31.Settings-SSO130313Desktop
+ISSUE 29
+Description: Below links are failed to meet the minimum contrast ratio of 4.5:1 - Edit - Delete Current ratio is 1.9:1 Foreground color: #FF9933 Background color: #F2F5F8
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    32.Settings-Integrations-EA130325Desktop
+ISSUE 30
+Description: Check boxe in selected state is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2:1 Foreground color: #FF9933 Background color: #F9FAFC
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    32.Settings-Integrations-EA130324Desktop    33.Settings-Integrations-CFM130336Desktop    34.Settings-Integration-Webhook130351Desktop
+ISSUE 31
+Description: Below links are failed to meet the minimum contrast ratio of 4.5:1 - Disable - Remove - Add mapping Current ratio is 1.9:1 Foreground color: #FF9933 Background color: #F2F5F8
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    33.Settings-Integrations-CFM130337Desktop
+ISSUE 32
+Description: Status message text "Contact field removed for iCIMS Prod" at the top of the page is failed to meet the minimum contrast ratio of 4.5:1 Current ratio is 2:1 Foreground color: #00BF8F Background color: #D9EFEE
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    33.Settings-Integrations-CFM130338Desktop
+2.1.1 – KEYBOARD ISSUES
+Understanding Success Criteria - 2.1.1 – Keyboard
+Group(s) Affected by Issue: 1. People who are blind or with limited vision who use a screen reader 2. People with mobility limitations who use gestures only.
+Issue(s) Impact to User: If the content cannot be operated through a keyboard or keyboard interface then it will impact people with no vision (who cannot use devices such as mice that require eye-hand coordination) as well as by people who must use alternate keyboards or input devices that act as keyboard emulators.
+ISSUE 1
+Description: Chat support button and Brazen button at the bttom are not keyboard accessible. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129947Desktop
+ISSUE 2
+Description: Below interactives elements in the left nav are not keyboard accessible. AVT2/3 - History - Profile - Edit Password - Powered by Brazen link
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    4. History129969Desktop
+ISSUE 3
+Description: Static contents are not accessible for the screen reader user when there are no active eleements present in the history section. AVT3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    4. History129970Desktop
+ISSUE 4
+Description: 'Manage schedule' link in the left nav and 'Manage' button in the events tile are not keyboard accessible. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129983Desktop
+ISSUE 5
+Description: Ensure elements that have scrollable content are accessible by keyboard. AVT1/2/3 Element Location: div[aria-describedby="gwt-uid-660"] > .main-content > .booth-teaser <div class="booth-teaser" tabindex="-1">
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129987Desktop
+ISSUE 6
+Description: Below active elements in the manage schedule are not accessible with keyboard. AVT2/3 - Schedule tab - Registrants tab - Signups tab - Invite registrant chat button - All the toggle buttons
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    6. Manage Schedule129993Desktop
+ISSUE 7
+Description: On Mouse hover over on the 'Learn more' texts under the People tab, information is getting popped up, however the same experience is not available for the keyboard user. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    9. Your Booth- Representative130020Desktop
+ISSUE 8
+Description: The Chat pop up is not accessible for the keyboard user. The chat popup is already an open state by default when user enter into the booth, also this popup is overlapping the active element and without closing the popup user won't be able to visualise and perform any action of that overlapped element. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    9. Your Booth- Representative130018Desktop    12. Your Booth- Host130038Desktop
+ISSUE 9
+Description: Visual search button and setting button under the Tabs are not keayboard accessible. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    9. Your Booth- Representative130019Desktop
+ISSUE 10
+Description: Below tabs are not accessible for the keyboard user AVT2/3 - Registrants - Signups
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    11. Search Registrants130036Desktop
+ISSUE 11
+Description: Below active elements under Chat are not accessible forthe keyboard user- - Simultaneous Chat drop down - Learn more link - Hide link - Group video booth control
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    12. Your Booth- Host130040Desktop
+ISSUE 12
+Description: Visual search button and setting button under the Home tab are not keayboard accessible. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    12. Your Booth- Host130039Desktop
+ISSUE 13
+Description: On mouse hover over to all the help icons, info popup gets appeared however, same experience is not available for the keyboard user. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130060Desktop    16.New Template130100Desktop    20.Templates130175Desktop
+ISSUE 14
+Description: Event purpose radio buttons are not accessible for the keyboard users. Note: with mouse click they are accessible. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    17.New Event130120Desktop    18.New Series130144Desktop
+ISSUE 15
+Description: On mouse hover over to the help icons, info popup gets appeared however, same experience is not available for the keyboard user. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    18.New Series130145Desktop
+ISSUE 16
+Description: Third Wednesday and 19th day are active elements however they are not accessible for the keyboard user only. AVT2 only
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    18.New Series130137Desktop
+ISSUE 17
+Description: On mouse hover over to the how to change series button, info popup gets appeared however, same experience is not available for the keyboard user. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    19.Series130158Desktop
+ISSUE 18
+Description: Include Event radio buttons are not accessible for the keyboard users. Note: with mouse click they are accessible. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    21.Reports130194Desktop    22.Analytics130203Desktop
+ISSUE 19
+Description: Asscending and Descending options in the table header are not accessible for the keyboard user only. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    26.Settings-General-E & S130251Desktop    27.Settings-FAQ Library130268Desktop
+ISSUE 20
+Description: Check boxes are not accessible for the keyboard user only while the screenreader is turned on.
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    26.Settings-General-E & S130250Desktop    27.Settings-FAQ Library130267Desktop    31.Settings-SSO130316Desktop
+ISSUE 21
+Description: Move, Edit and Delete buttons present under FAQ section are not accessible for the keyboard user only. AVT2/3
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    27.Settings-FAQ Library130269Desktop
+ISSUE 22
+Description: Check box is not accessible for the keyboard user only while the screenreader is turned on.
+Priority: Critical
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    32.Settings-Integrations-EA130329Desktop
+ISSUE 23
+Description: With mouse hover on the help icon, help popup is appearing however, the same functionality is not available for the keyboard user. AVT2/3
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    34.Settings-Integration-Webhook130355Desktop    2. Your Events129946Desktop
+2.4.3 – FOCUS ORDER ISSUES
+Understanding Success Criteria - 2.4.3 – Focus Order
+Group(s) Affected by Issue: 1. People who are blind or with limited vision who use a screen reader 2. People with mobility limitations who use keyboard only
+Issue(s) Impact to User: If the navigation sequence is not in order then it will impact users while navigate sequentially through the content using keyboard or by using up and down arrow in screen reader
+ISSUE 1
+Description: On activating Lobby link from the left nav, content get loaded however, focus is not going to loaded content instantly, instead focus is staying on the Lobby link and user need to tab multiple time to reach in the loaded content. AVT2/3
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129984Desktop
+ISSUE 2
+Description: On activating Series link from the left nav, content get loaded however, focus is not going to loaded content instantly, instead focus is staying on the Series link and user need to tab multiple time to reach in the loaded content. AVT2/3
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    19.Series130161Desktop
+ISSUE 3
+Description: Bulk Upload modal: Focus is not going to the modal once the modal popup. User needs to tab several time to get into the modal, also on  continuous tabbing the focus is going out of the modal.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    27.Settings-FAQ Library130270Desktop
+ISSUE 4
+Description: Bulk Upload modal: On closing the modal focus is not moving back to the triggering element, instead focus is going back to the top of the page.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    27.Settings-FAQ Library130272Desktop
+ISSUE 5
+Description: New Section modal: Focus is not going to the modal once the modal popup. User needs to tab several time to get into the modal, also on  continuous tabbing the focus is going out of the modal.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    27.Settings-FAQ Library130271Desktop
+ISSUE 6
+Description: New Section modal: On closing the modal focus is not moving back to the triggering element, instead focus is going back to the top of the page.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    27.Settings-FAQ Library130273Desktop
+ISSUE 7
+Description: New Section modal: Focus is not going to the modal once the modal popup. User needs to tab several time to get into the modal, also on  continuous tabbing the focus is going out of the modal. AVT2/3
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    28.Settings-Create FAQ130284Desktop    29.Settings-Edit FAQ130297Desktop
+ISSUE 8
+Description: New Section modal: On closing the modal focus is not moving back to the triggering element, instead focus is going back to the top of the page. AVT2/3
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    28.Settings-Create FAQ130285Desktop    29.Settings-Edit FAQ130298Desktop
+2.4.7 - FOCUS VISIBLE ISSUES
+Understanding Success Criteria - 2.4.7 - Focus Visible
+Group(s) Affected by Issue: 1. People who relies on the keyboard to operate the page 2. People with attention limitations, short term memory limitations, or limitations in executive processes
+Issue(s) Impact to User: If the focus is not visible in keyboard operable section then it will impact people who relies on keyboard for page operation and people with attention limitations, short term memory limitations or limitations in executive processes.
+ISSUE 1
+Description: Focus indicator is not provided for None of the interactive elements in the page. Exception: 'View History' button, 'Legal' and 'Privacy' link
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129948Desktop
+ISSUE 2
+Description: Focus indicator is not provided for the unselected check boxes/ toggle buttons.  Exception: They are focusable only when they are checked
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    10. Search Booth130031Desktop
+ISSUE 3
+Description: Focus indicator is not provided for the below active elements in this entire page- - Brazen logo - State Farm link - Home link - Help link - User profile drop down - Acount button - Series button - Templates button - Reports button - Settings button - Make this screen your home check box - Upcoming Events button - Previous Events button - Show cancelled events button
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130061Desktop
+ISSUE 4
+Description: Focus indicator is not provided for none of the check boxes and radio buttons.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    17.New Event130115Desktop    18.New Series130138Desktop
+ISSUE 5
+Description: Focus indicator is not provided for all the active elements in the page.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    22.Analytics130199Desktop
+ISSUE 6
+Description: Focus indicator is not provided for None of the check boxes.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    26.Settings-General-E & S130247Desktop    27.Settings-FAQ Library130262Desktop    31.Settings-SSO130314Desktop
+2.5.3 – LABEL IN NAME ISSUES
+Understanding Success Criteria - 2.5.3 – Label in name
+Group(s) Affected by Issue: 1. People who uses Speech recognization software 2. People who uses text-to speech software like screen readers 
+Issue(s) Impact to User: If accessible name (programmatic name) doesn't match with visible text label for a control, it will impact;: - Users who uses speech recognization software to understand and remember that a particular accessible name belongs to control thereby creating an extra cognitive load for user - Users who uses text to speech software, to absorb and understand speech output that doesn't match with visible label thereby creating an extra cognitive load for user
+ISSUE 1
+Description: Visible name is not matching with the accessible name for the State Farm account link
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129951Desktop
+4.1.2 – NAME, ROLE, VALUE ISSUES
+Understanding Success Criteria - 4.1.2 – Name, Role, Value
+Group(s) Affected by Issue: People who are blind or with limited vision who use a screen reader
+Issue(s) Impact to User: If for all the user interface components (including but not limited to: form elements, links and components generated by scripts) names and roles are not programmatically determined then it will impact users with disabilities who uses assistive technologies (such as screen readers, screen magnifiers, and speech recognition software).
+ISSUE 1
+Description: No accessible name is provided for the Previous and Next button for the event calendar.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129952Desktop
+ISSUE 2
+Description: Upon actvating the Previous and Next button, calendar is getting moved to previous and next month however, that information is not conveyed to the screen reader user.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    2. Your Events129953Desktop
+ISSUE 3
+Description: Role is not identifyed for the Time Zone combo box.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    3. Edit Profile129966Desktop    8. User Profile130015Desktop    16.New Template130103Desktop    17.New Event130123Desktop    18.New Series130149Desktop
+ISSUE 4
+Description: Expanded and collapsed state is not annoucned upon actvating the Menu button.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    4. History129971Desktop
+ISSUE 5
+Description: Selected state and value is not announcing for all 3 tabs present at the header section on selection. Even on revisit the state is not announced.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    5. Lobby129985Desktop
+ISSUE 6
+Description: List of links in the Add to Calendar menu drop down are not marked up with role value, thus screen reader is not announcing the role.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    7. Registration130005Desktop
+ISSUE 7
+Description: Selected state is not announcing for the below tabs, even on revisit the state is not announcing. - Home - Resourses - About us - People - Content
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    9. Your Booth- Representative130022Desktop
+ISSUE 8
+Description: No accessible name is provided for the 3 dots menu button.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130066Desktop    20.Templates130178Desktop
+ISSUE 9
+Description: On activating Account button, expanded and collapsed state is not announced.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130068Desktop
+ISSUE 10
+Description: Selected state is not announcing for the Account Home link. Even on revisit the state is not annoucned.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    14.Account home130067Desktop
+ISSUE 11
+Description: Accessible name is not determined programmatically for the 'Singular' combo box which is provided under Terminology section.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    15.Account Branding130088Desktop
+ISSUE 12
+Description: Accessible name is not determined programmatically for the below elements under Color section- - Background Color combo box - Background color fill type button - Accent Color
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    15.Account Branding130087Desktop
+ISSUE 13
+Description: Incorrect state is annoucning for the checked radio buttons.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    17.New Event130124Desktop    18.New Series130150Desktop    21.Reports130195Desktop    22.Analytics130204Desktop
+ISSUE 14
+Description: No accessible name is provided for the 'Delete' button.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    18.New Series130151Desktop
+ISSUE 15
+Description: Selected state is not announcing for the Templates link. Even on revisit the state is not annoucned.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    20.Templates130179Desktop
+ISSUE 16
+Description: Accessible name is not provided for the 3 dots menu button.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    21.Reports130196Desktop    22.Analytics130205Desktop
+ISSUE 17
+Description: On activating Reports button, expanded and collapsed state is not announced.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    21.Reports130198Desktop
+ISSUE 18
+Description: Selected state is not announcing for the Reports link. Even on revisit the state is not annoucned.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    21.Reports130197Desktop    22.Analytics130206Desktop
+ISSUE 19
+Description: Accessible name is not determined programmatically for the below elements under Design section- - Background Color combo box - Background color fill type button - Accent Color button
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    23.Settings-Career Site-C & B130221Desktop
+ISSUE 20
+Description: Accessible name is not programmatically determined for the 3 dots menu buttons which are presents at the tables.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    26.Settings-General-E & S130253Desktop    27.Settings-FAQ Library130274Desktop
+4.1.3 – STATUS MESSAGES ISSUES
+Understanding Success Criteria - 4.1.3 – Status Messages
+Group(s) Affected by Issue: 1. People who are blind or with limited vision who use a screen reader                                                 2. People with certain cognitive, language and learning disabilities who use text-to-speech software
+Issue(s) Impact to User: If important changes in content are not announced by the screen reader will impact users with disabilities who uses assistive technologies (such as screen readers, screen magnifiers, and speech recognition software).
+ISSUE 1
+Description: Removed and Save related status message is not announced once they popped up.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    33.Settings-Integrations-CFM130342Desktop
+ISSUE 2
+Description: Save related status message is not announced once its popped up.
+Priority: High
+LIST OF DEFECTS
+Page AffectedDefect IDPlatform    34.Settings-Integration-Webhook130356Desktop
+
+
+
+
+
+
+Page 1 of 3
+
+
+
+
+
+

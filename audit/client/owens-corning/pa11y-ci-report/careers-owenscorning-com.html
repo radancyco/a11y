@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>
+		Pa11y results for "https://careers.owenscorning.com/"
+	</title>
+	<style>
+		html, body {
+			background-color: #ffffff;
+			color: rgb(51 51 51);
+			font-family: system-ui, sans-serif;
+			font-size: 16px;
+			line-height: 1.3rem;
+			margin: 0;
+			padding: 0;
+		}
+
+		main {
+			margin: 0 auto;
+			max-width: 900px;
+			padding: 1.25rem;
+		}
+
+		h1 {
+			font-size: 1.5rem;
+			line-height: 1.5rem;
+			margin: 0;
+			margin-bottom: 0.5rem;
+		}
+
+		h2, h3 {
+			font-size: 1.15rem;
+			font-weight: normal;
+			margin: 0;
+			padding-bottom: 0.5rem;
+		}
+
+		h3 { padding-bottom: 0; }
+
+		p { margin: 0; }
+
+		.filter {
+			display: inline-grid;
+			grid-template-columns: 8.5rem 1fr 1fr 1fr;
+			margin-top: 1rem;
+		}
+
+		.filter .label {
+			font-size: 1.15rem;
+			padding: 0.45rem 0;
+		}
+
+		.count {
+			border-radius: 0;
+			border-width: 0;
+			box-shadow: 0.1rem 0.25rem 0.5rem rgba(0 0 0 / 15%);
+			cursor: pointer;
+			display: inline-grid;
+			font-size: 1.15rem;
+			grid-template-columns: 0.35rem 1fr;
+			margin-right: 0.75rem;
+			min-width: 80px;
+		}
+
+		.count .body {
+			border-style: solid;
+			border-width: 1px 1px 1px 0;
+			overflow-x: hidden;
+			padding: 0.35rem 0.7rem;
+			text-align: center;
+		}
+
+		.count.hidden {
+			background-color: #f4f4f4;
+			color: rgb(51 51 51);
+		}
+
+		.count.hidden .left-bar { background-color: #808080; }
+
+		.count.hidden .body { border-color: #d4d4d4; }
+
+		.issues {
+			list-style: none;
+			margin: 0;
+			margin-top: 1.5rem;
+			padding-left: 0;
+		}
+
+		.issue {
+			border-radius: 0;
+			border-width: 0;
+			box-shadow: 0.1rem 0.25rem 0.5rem rgba(0 0 0 / 15%);
+			display: grid;
+			grid-template-columns: 0.5rem 1fr;
+			margin: 0;
+			margin-bottom: 1.5rem;
+			padding: 0;
+		}
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.issue .left-bar { background-color: #808080; }
+
+		.issue p:not(:last-child) { padding-bottom: 0.1rem; }
+
+		.issue.hidden { display: none; }
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.issue .body {
+ 			border-color: #bfbfbf;
+ 			border-style: solid;
+			border-width: 1px 1px 1px 0;
+			overflow-x: hidden;
+			padding: 0.5rem;
+			position: relative;
+		}
+
+		.issue .body h3 { padding-bottom: 0.25rem; }
+
+		.context, .selector {
+			font-family: monospace;
+			font-size: 0.95rem;
+			padding-top: 0.1rem;
+		}
+
+		.error {
+			background-color: #f8d7da;
+			color: rgb(103 25 31);
+		}
+
+		.warning {
+			background-color: #fff3cd;
+			color: rgb(84 64 3);
+		}
+
+		.notice {
+			background-color: #cfe2ff;
+			color: rgb(6 44 101);
+		}
+
+		.error a { color: #842029; }
+		.warning a { color: #664d03; }
+		.notice a { color: #074197; }
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.error .left-bar { background-color: #d53447; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.warning .left-bar { background-color: #c79500; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.notice .left-bar { background-color: #015cda; }
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.error .body { border-color: #f2bbc1; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.warning .body { border-color: #ffd761; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.notice .body { border-color: #a9cefe; }
+
+		.clipboard-button {
+			background-color: rgba(51 51 51 / 10%);
+			border: 2px solid;
+			border-color: rgba(51 51 51 / 30%);
+			border-radius: 2px;
+			color: rgba(51 51 51 / 40%);
+			font-size: 0.8rem;
+			margin: 0;
+			opacity: 0;
+			padding: 5px 7px 4px;
+			position: absolute;
+			right: 7px;
+			top: 7px;
+			transition: 0.1s;
+			visibility: hidden;
+			z-index: 1;
+		}
+
+		.error .clipboard-button {
+			background-color: rgba(103 25 31 / 10%);
+			border-color: rgba(103 25 31 / 30%);
+			color: rgba(103 25 31 / 40%);
+		}
+
+		.warning .clipboard-button {
+			background-color: rgba(84 64 3 / 10%);
+			border-color: rgba(84 64 3 / 30%);
+			color: rgba(84 64 3 / 40%);
+		}
+
+		.notice .clipboard-button {
+			background-color: rgba(6 44 101 / 10%);
+			border-color: rgba(6 44 101 / 30%);
+			color: rgba(6 44 101 / 40%);
+		}
+
+		.clipboard-button > svg { fill: rgba(51 51 51 / 40%); }
+		.error .clipboard-button > svg { fill: rgba(103 25 31 / 40%); }
+		.warning .clipboard-button > svg { fill: rgba(84 64 3 / 40%); }
+		.notice .clipboard-button > svg { fill: rgba(6 44 101 / 40%); }
+
+		.clipboard-button:focus { outline: 0; }
+
+		.clipboard-button:hover {
+			background-color: rgba(51 51 51 / 20%);
+			border-color: rgba(51 51 51 / 70%);
+			color: rgba(51 51 51 / 80%);
+			cursor: pointer;
+		}
+
+		.error .clipboard-button:hover {
+			background-color: rgba(103 25 31 / 20%);
+			border-color: rgba(103 25 31 / 70%);
+			color: rgba(103 25 31 / 80%);
+		}
+
+		.warning .clipboard-button:hover {
+			background-color: rgba(84 64 3 / 20%);
+			border-color: rgba(84 64 3 / 70%);
+			color: rgba(84 64 3 / 80%);
+		}
+
+		.notice .clipboard-button:hover {
+			background-color: rgba(6 44 101 / 20%);
+			border-color: rgba(6 44 101 / 70%);
+			color: rgba(6 44 101 / 80%);
+		}
+
+		.clipboard-button:hover > svg { fill: rgba(51 51 51 / 80%); }
+		.error .clipboard-button:hover > svg { fill: rgba(103 25 31 / 80%); }
+		.warning .clipboard-button:hover > svg { fill: rgba(84 64 3 / 80%); }
+		.notice .clipboard-button:hover > svg { fill: rgba(6 44 101 / 80%); }
+
+		.issue .body:hover > .clipboard-button {
+			opacity: 1;
+			transition: 0.2s;
+			visibility: visible;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<h1>Pa11y results for "https://careers.owenscorning.com/"</h1>
+		<h2>Generated at: Thu Jan 18 2024 10:48:30 GMT-0500 (Eastern Standard Time)</h2>
+		<h2>Runners (with issues): axe</h2>
+
+		<p class="filter">
+			<span class="label">Toggle by type</span>
+			<span class="count error" id="error-count" tabindex="0" role="button" aria-label="Toggle errors">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">39 errors</span>
+			</span>
+			<span class="count warning" id="warning-count" tabindex="0" role="button" aria-label="Toggle warnings">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">0 warnings</span>
+			</span>
+			<span class="count notice" id="notice-count" tabindex="0" role="button" aria-label="Toggle notices">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">0 notices</span>
+			</span>
+		</p>
+		<ul class="issues">
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Use aria-roledescription on elements with a semantic role</h3><p>Ensure aria-roledescription is only used on elements with an implicit or explicit role</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-roledescription?application&#x3D;axeAPI">axe: aria-roledescription</a></p><p class="context">&lt;div style&#x3D;&quot; &quot; aria-live&#x3D;&quot;off&quot; aria-roledescription&#x3D;&quot;carousel&quot; class&#x3D;&quot;imagecarousel3 rtltextaligneligible center unmodified backgroundimage displayD imagecarousel3dd38230659fcb4b3 &quot;&gt;
+                &lt;h2 class&#x3D;&quot;h1 ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20)")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.owenscorning.com/contact-us/&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot;&gt;Contact Us&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; ul &gt; li:nth-child(1) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;http://investor.owenscorning.com/investor-relations/default.aspx&quot; title&#x3D;&quot;
+&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot;&gt;Investors&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; ul &gt; li:nth-child(3) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.owenscorning.com/terms-of-use&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot;&gt;Terms of Use&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; ul &gt; li:nth-child(4) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.owenscorning.com/privacy-policy&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot;&gt;Privacy Policy&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; ul &gt; li:nth-child(5) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.facebook.com/WeAreOwensCorning&quot; class&#x3D;&quot;social-icon btn-facebook&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot; title&#x3D;&quot;facebook&quot;&gt;
+                              ...&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; div &gt; ul &gt; li:nth-child(1) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.twitter.com/OwensCorning&quot; class&#x3D;&quot;social-icon btn-twitter&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot; title&#x3D;&quot;twitter&quot;&gt;
+                              ...&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; div &gt; ul &gt; li:nth-child(2) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.youtube.com/owenscorning&quot; class&#x3D;&quot;social-icon btn-youtube&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot; title&#x3D;&quot;youtube&quot;&gt;
+                              ...&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; div &gt; ul &gt; li:nth-child(3) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.linkedin.com/company/owens-corning&quot; class&#x3D;&quot;social-icon btn-linkedin&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot; title&#x3D;&quot;linkedin&quot;&gt;
+                              ...&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; div &gt; ul &gt; li:nth-child(4) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: ARIA attributes must conform to valid names</h3><p>Ensures attributes that begin with aria- are valid ARIA attributes</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-valid-attr?application&#x3D;axeAPI">axe: aria-valid-attr</a></p><p class="context">&lt;a href&#x3D;&quot;https://www.instagram.com/WeAreOwensCorning/&quot; class&#x3D;&quot;social-icon btn-instagram&quot; target&#x3D;&quot;_blank&quot; aria-description&#x3D;&quot;Opens in a new tab.&quot; title&#x3D;&quot;instagram&quot;&gt;
+                              ...&lt;/a&gt;</p><p class="selector">(selector "#footerInnerLinksSocial &gt; div &gt; ul &gt; li:nth-child(5) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: &lt;ul&gt; and &lt;ol&gt; must only directly contain &lt;li&gt;, &lt;script&gt; or &lt;template&gt; elements</h3><p>Ensures that lists are structured correctly</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/list?application&#x3D;axeAPI">axe: list</a></p><p class="context">&lt;ul class&#x3D;&quot;slick-slider slick-initialized&quot;&gt;&lt;div class&#x3D;&quot;slick-list draggabl...&lt;/ul&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: &lt;li&gt; elements must be contained in a &lt;ul&gt; or &lt;ol&gt;</h3><p>Ensures &lt;li&gt; elements are used semantically</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/listitem?application&#x3D;axeAPI">axe: listitem</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: &lt;li&gt; elements must be contained in a &lt;ul&gt; or &lt;ol&gt;</h3><p>Ensures &lt;li&gt; elements are used semantically</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/listitem?application&#x3D;axeAPI">axe: listitem</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(2) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: &lt;li&gt; elements must be contained in a &lt;ul&gt; or &lt;ol&gt;</h3><p>Ensures &lt;li&gt; elements are used semantically</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/listitem?application&#x3D;axeAPI">axe: listitem</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(3) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: &lt;li&gt; elements must be contained in a &lt;ul&gt; or &lt;ol&gt;</h3><p>Ensures &lt;li&gt; elements are used semantically</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/listitem?application&#x3D;axeAPI">axe: listitem</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(4) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Ensure interactive controls are not nested</h3><p>Nested interactive controls are not announced by screen readers</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/nested-interactive?application&#x3D;axeAPI">axe: nested-interactive</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimage757c017c-451a-4cc5-8b7d-c scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Ensure interactive controls are not nested</h3><p>Nested interactive controls are not announced by screen readers</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/nested-interactive?application&#x3D;axeAPI">axe: nested-interactive</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimagec04cac91-658e-4127-b88e-0 scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(2) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Ensure interactive controls are not nested</h3><p>Nested interactive controls are not announced by screen readers</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/nested-interactive?application&#x3D;axeAPI">axe: nested-interactive</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimage6eb2cc0b-cac2-44af-a8a0-0 scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(3) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Ensure interactive controls are not nested</h3><p>Nested interactive controls are not announced by screen readers</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/nested-interactive?application&#x3D;axeAPI">axe: nested-interactive</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimagee934809a-e421-4a15-a7b8-8 scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(4) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Ensure interactive controls are not nested</h3><p>Nested interactive controls are not announced by screen readers</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/nested-interactive?application&#x3D;axeAPI">axe: nested-interactive</a></p><p class="context">&lt;div aria-hidden&#x3D;&quot;false&quot; class&#x3D;&quot;bgimage backgroundimagecc3a65df-b5cc-4c43-a9fb-1&quot; title&#x3D;&quot;Manufacturing and Operations Careers&quot; aria-label&#x3D;&quot;Manufacturing and Operations Careers&quot; role&#x3D;&quot;img&quot;&gt;
+                              ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(30) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Ensure interactive controls are not nested</h3><p>Nested interactive controls are not announced by screen readers</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/nested-interactive?application&#x3D;axeAPI">axe: nested-interactive</a></p><p class="context">&lt;div aria-hidden&#x3D;&quot;false&quot; class&#x3D;&quot;bgimage backgroundimage14859c72-ce57-4373-af1c-b&quot; title&#x3D;&quot;Experienced Professional Careers&quot; aria-label&#x3D;&quot;Experienced Professional Careers&quot; role&#x3D;&quot;img&quot;&gt;
+                              ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(30) &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Ensure interactive controls are not nested</h3><p>Nested interactive controls are not announced by screen readers</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/nested-interactive?application&#x3D;axeAPI">axe: nested-interactive</a></p><p class="context">&lt;div aria-hidden&#x3D;&quot;false&quot; class&#x3D;&quot;bgimage backgroundimageac749b78-0156-4d57-9981-6&quot; title&#x3D;&quot;Student Careers&quot; aria-label&#x3D;&quot;Student Careers&quot; role&#x3D;&quot;img&quot;&gt;
+                              ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(30) &gt; div:nth-child(3) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: [role&#x3D;&#x27;img&#x27;] elements have an alternative text</h3><p>Ensures [role&#x3D;&#x27;img&#x27;] elements have alternate text</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/role-img-alt?application&#x3D;axeAPI">axe: role-img-alt</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimage757c017c-451a-4cc5-8b7d-c scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: [role&#x3D;&#x27;img&#x27;] elements have an alternative text</h3><p>Ensures [role&#x3D;&#x27;img&#x27;] elements have alternate text</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/role-img-alt?application&#x3D;axeAPI">axe: role-img-alt</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimagec04cac91-658e-4127-b88e-0 scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(2) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: [role&#x3D;&#x27;img&#x27;] elements have an alternative text</h3><p>Ensures [role&#x3D;&#x27;img&#x27;] elements have alternate text</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/role-img-alt?application&#x3D;axeAPI">axe: role-img-alt</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimage6eb2cc0b-cac2-44af-a8a0-0 scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(3) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: [role&#x3D;&#x27;img&#x27;] elements have an alternative text</h3><p>Ensures [role&#x3D;&#x27;img&#x27;] elements have alternate text</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/role-img-alt?application&#x3D;axeAPI">axe: role-img-alt</a></p><p class="context">&lt;div class&#x3D;&quot;backgroundimagee934809a-e421-4a15-a7b8-8 scaled center&quot; role&#x3D;&quot;img&quot;&gt;&amp;nbsp;
+                        ...&lt;/div&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(4) &gt; div &gt; li &gt; div &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Use aria-roledescription on elements with a semantic role</h3><p>Ensure aria-roledescription is only used on elements with an implicit or explicit role</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-roledescription?application&#x3D;axeAPI">axe: aria-roledescription</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Use aria-roledescription on elements with a semantic role</h3><p>Ensure aria-roledescription is only used on elements with an implicit or explicit role</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-roledescription?application&#x3D;axeAPI">axe: aria-roledescription</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(2) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Use aria-roledescription on elements with a semantic role</h3><p>Ensure aria-roledescription is only used on elements with an implicit or explicit role</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-roledescription?application&#x3D;axeAPI">axe: aria-roledescription</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(3) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Use aria-roledescription on elements with a semantic role</h3><p>Ensure aria-roledescription is only used on elements with an implicit or explicit role</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/aria-roledescription?application&#x3D;axeAPI">axe: aria-roledescription</a></p><p class="context">&lt;li class&#x3D;&quot;backgroundcolorb6a533a1&quot; aria-roledescription&#x3D;&quot;slide&quot; style&#x3D;&quot;width: 100%; display: inline-block;&quot;&gt;
+                              ...&lt;/li&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(20) &gt; div:nth-child(3) &gt; ul &gt; div &gt; div &gt; div:nth-child(4) &gt; div &gt; li")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;h1 style&#x3D;&quot;font-size: 0px; margin: 0px;&quot;&gt;Owens Corning Careers&lt;/h1&gt;</p><p class="selector">(selector "#header &gt; h1")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;h2 class&#x3D;&quot;h1 fontcolorb6a533a1 fontalign-left&quot; style&#x3D;&quot;font-family:customdb698979439d4562ad576; font-size:36px;&quot;&gt;
+                              ...&lt;/h2&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(2) &gt; div &gt; div:nth-child(2) &gt; div &gt; h2")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;strong&gt;JOIN OUR TALENT COMMUNITY&lt;/strong&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(2) &gt; div &gt; div:nth-child(2) &gt; div &gt; div &gt; h2 &gt; strong")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;p&gt;Stay connected by joining our n...&lt;/p&gt;</p><p class="selector">(selector "#content &gt; div &gt; div:nth-child(2) &gt; div &gt; div:nth-child(2) &gt; div &gt; div &gt; p")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;h2 class&#x3D;&quot;fontcolorb6a533a1 fontalign-left&quot; style&#x3D;&quot;font-family:customdb698979439d4562ad576; font-size:36px;&quot;&gt;A GLOBAL MANUFACTURING LEADER&lt;/h2&gt;</p><p class="selector">(selector "#12c9f801099f96fa &gt; h2")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;p&gt;We are a company that is “globa...&lt;/p&gt;</p><p class="selector">(selector "#12c9f801099f96fa &gt; div &gt; p:nth-child(1)")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;p&gt;Here, you can make more possibl...&lt;/p&gt;</p><p class="selector">(selector "#12c9f801099f96fa &gt; div &gt; p:nth-child(2)")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;p&gt;It takes many talented team mem...&lt;/p&gt;</p><p class="selector">(selector "#12c9f801099f96fa &gt; div &gt; p:nth-child(3)")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: Frames should be tested with axe-core</h3><p>Ensures &lt;iframe&gt; and &lt;frame&gt; elements contain the axe-core script</p><p><a href="https://dequeuniversity.com/rules/axe/4.2/frame-tested?application&#x3D;axeAPI">axe: frame-tested</a></p><p class="context">&lt;iframe id&#x3D;&quot;iframe&quot; title&#x3D;&quot;Google job map&quot; src&#x3D;&quot;https://rmk-map.jobs2web.com/map/?esid&#x3D;qfB65tOY6qdvb6fukQjt0w%3D%3D&amp;amp;locale&#x3D;en_US&amp;amp;uselcl&#x3D;false&amp;amp;watercolor&#x3D;%23a9cbf9&amp;amp;jobdomain&#x3D;careers.owenscorning.com&amp;amp;maplbljob&#x3D;Job&amp;amp;maplbljobs&#x3D;job...</p><p class="selector">(selector "#iframe")</p></div>
+			</li>
+		</ul>
+	</main>
+	<script>
+		const toggleIssues = (btn, pageQuery) => {
+			const className = 'hidden';
+			document.getElementById(btn).classList.toggle(className);
+			document.querySelectorAll(pageQuery).forEach((page) => {
+				page.classList.toggle(className);
+			});
+		};
+
+		const errorCountFilter = document.getElementById('error-count');
+		errorCountFilter.addEventListener('click', () =>
+			toggleIssues('error-count', '.issues .issue.error')
+		);
+		errorCountFilter.addEventListener('keydown', (event) =>
+			event.key === "Enter" && toggleIssues('error-count', '.issues .issue.error')
+		);
+
+		const warningCountButton = document.getElementById('warning-count');
+		warningCountButton.addEventListener('click', () =>
+			toggleIssues('warning-count', '.issues .issue.warning')
+		);
+		warningCountButton.addEventListener('keydown', (event) =>
+			event.key === "Enter" && toggleIssues('warning-count', '.issues .issue.warning')
+		);
+
+		const noticeCountButton = document.getElementById('notice-count');
+		noticeCountButton.addEventListener('click', () =>
+			toggleIssues('notice-count', '.issues .issue.notice')
+		);
+		noticeCountButton.addEventListener('keydown', (event) =>
+			event.key === "Enter" && toggleIssues('notice-count', '.issues .issue.notice')
+		);
+	</script>
+	<script>
+		const svgCopy = '<svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg>';
+		const svgCheck = '<svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"><path fill-rule="evenodd" fill="rgb(63, 185, 80)" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>';
+
+		if (navigator && navigator.clipboard) {
+			document.querySelectorAll(".issue .body .selector").forEach((selectorNode) => {
+				const selector = selectorNode.innerText
+					.match(/\(selector "(?<selector>.+)"\)/).groups.selector;
+
+				const button = document.createElement("button");
+				button.className = "clipboard-button";
+				button.type = "button";
+				button.title = "Copy selector";
+				button.innerHTML = svgCopy;
+				button.addEventListener("click", () => {
+					navigator.clipboard.writeText(selector)
+						.then(() => {
+							button.blur();
+							button.innerHTML = svgCheck;
+							setTimeout(() => (button.innerHTML = svgCopy), 2000);
+						},
+						(error) => (button.innerHTML = "Error")
+					);
+				});
+
+				selectorNode.parentNode.insertBefore(button, selectorNode);
+			});
+		};
+	</script>
+</body>
+
+</html>
