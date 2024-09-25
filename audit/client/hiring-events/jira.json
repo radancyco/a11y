@@ -1,19 +1,27 @@
 {
     "issueUpdates": [
+      
+        {%- for bug in site.data.hiring-events -%}{
 
-        {% for bug in site.data.hiring-events %}{
-            {% assign description = "\n\n*Audit ID:* " | append: bug.ID | append: "\n\n*WCAG Success Criteria:* " | append: bug.SC | append: "\n\n*WCAG Level:* " | append: bug.Level | append: "\n\n*WCAG Synopsis:* " | append: bug.Synopsis | append: "\n\n*Issue/Recommendation:*\n\n" | append: bug.Issue | append: "\n\n*Testing Criteria:* \n\n" | append: bug.Testing | append: "\n\n*Links:* \n\n" | append: bug.Links | append: "\n\n*Screenshot/Video/URL:* \n\n" | append: bug.Screengrab | append: "\n\n*Impact/Severity:* " | append: bug.Impact %}{% if bug.ProductNote %}{% assign productNote = "\n\n*Note:* " | append: bug.ProductNote %}{% assign description = description | append: productNote %}{% endif %}
+            {%- assign description = "\n\n*Audit ID:* " | append: bug.ID | append: "\n\n*WCAG Success Criteria:* " | append: bug.SC | append: "\n\n*WCAG Level:* " | append: bug.Level | append: "\n\n*WCAG Synopsis:* " | append: bug.Synopsis | append: "\n\n*Issue/Recommendation:*\n\n" | append: bug.Issue | append: "\n\n*Testing Criteria:* \n\n" | append: bug.Testing | append: "\n\n*Links:* \n\n" | append: bug.Links | append: "\n\n*Screenshot/Video/URL:* \n\n" | append: bug.Screengrab | append: "\n\n*Impact/Severity:* " | append: bug.Impact -%}
+
+            {%- if bug.ProductNote -%}
+
+              {%- assign productNote = "\n\n*Note:* " | append: bug.ProductNote -%}
+            
+              {%- assign description = description | append: productNote -%}
+            
+            {%- endif %}
+
             "fields": {
-
-                "project": {
-
+            
+                "project": { 
                     "key": "BRAZ"
                 },
-
                 "summary": {{ bug.Summary | prepend: " - " | prepend: bug.ID | prepend: "Accessibility Audit Test: " | jsonify }},
                 "description": {{ description | jsonify | replace: "\\n", "\n" }},
                 "issuetype": {
-                    "name": "Story"
+                    "name": "Test"
                 },
                 "assignee": {
                     "name": "Mspellac"
@@ -22,10 +30,9 @@
             }
   
         }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
+
+        {%- endfor -%}
+
     ]
 
 }
-
-
-
