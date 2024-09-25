@@ -1,0 +1,30 @@
+{
+    "issueUpdates": [
+        {
+            "fields": {
+                "project": {
+                    "key": "UDS"
+                },
+                "summary": "Accessibility Audit Test: A11YFORMS004 - ",
+                "description": "*Audit ID:* A11YFORMS004\n\n*Issue/Recommendation:*\n\nThe interface does not allow a user to increase text size by up to 200%. This is because absolute units, like px, are used in the CSS. This also appears to be a global issue within the entire application. Revising the UI and using relative units, such as rem or em or %, will go a long way in creating a more flexible environment that anybody can use. Please reach out if any guidance is needed. Auditor assumes this may need a great deal of time to get right, possibly Q3\n\nTo duplicate, go into Chrome settings and increase text to 32px (200%) and return to the interface, here you will see that the UI's text size has not increased at all. \n\n*Testing Criteria:* \n\nRun steps above and ensure that text is enlarging properly. When increasing text size, the UI does not need to be perfect, but all text should be accessible, without the presence of overlapping content of horizontal scrolling.",
+                "issuetype": {
+                    "name": "Accessibility Request "
+                },
+                "assignee": {
+                    "name": "Rhammer"
+                },
+                "labels": ["A11yGroup"],
+                
+                // Custom field 1 expects an array of objects
+                "customfield_11112": [
+                    {
+                        "id": "11813"
+                    }
+                ],
+                
+                // Custom field 2 remains a string
+                "customfield_11113": "136728"
+            }
+        }
+    ]
+}

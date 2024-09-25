@@ -1,0 +1,413 @@
+ID,SC,Level,Synopsis,Understanding,Links,Summary,Steps,Issue,Testing,Screengrab,ProductNote,Impact,Status,Assignment,Implementation,Notes,Estimate
+A11YLOBBY001,1.4.10: Reflow,AA,Ensure content can be enlarged without requiring horizontal scrolling,Understanding SC 1.4.10,https://app.brazenconnect.com/app/events/LrNMp#!lobby;eventCode=LrNMp,,,"On the lobby page, a similar issue is present when the page is tested at 400% zoom as is present on other pages across the site. When I zoom in to 400% and resize my browser window to 1280x1024 (the conditions required for the test), the navigation opens and appears to overlap all page content. Please ensure that this behavior does not occur under these conditions. This issue has been reported by clients as well, in their own testing.",,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLOBBY002,1.4.10: Reflow,AA,Ensure content can be enlarged without requiring horizontal scrolling,Understanding SC 1.4.10,https://app.brazenconnect.com/app/events/LrNMp#!lobby;eventCode=LrNMp,,,"On the lobby page, the fixed header is very obtrusive, making the interface harder to use when zoomed in at 400% (1280x1024). Consider using media queries to place this header in a fixed position only under certain condiitions, including max-height of the viewport window. Alternatively, only having the header present ONLY when users scrolls back up is another great idea for improved usability on mobile and zoom conditions.",,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLOBBY003,1.4.10: Reflow,AA,Ensure content can be enlarged without requiring horizontal scrolling,Understanding SC 1.4.10,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,"On the lobby page, in the presenter section, the primary heading is being truncated when zoomed in on and on mobile. To address this issue, it is always best to allow content to wrap. Do not cut it off like this. People who use zoom (and people who do not if title is long) will not understand.",,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY001,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!viewConnections;eventCode=LrNMp;eventStatus=OVER;userId=emunster3,,,"The tab control needs a lot of work to comply, especially where keyboard support is concerned. Disabled users have certain expectations as to how tabs should operate which Radancy is not meeting here. 
+
+The list items are particularly problematic. 
+
+Before: 
+
+<li class=""active"" role=""tab"" aria-controls=""gwt-uid-5"" aria-label="""" aria-selected=""true"">
+
+<a href=""javascript:;"" data-toggle=""tab"" data-target=""tab-panel-0"" tabindex=""0"">Overview</a>
+
+</li>
+
+After:  
+
+<li class=""active"" role=""presentation"">
+
+<a aria-controls=""gwt-uid-5"" aria-selected=""true"" data-toggle=""tab"" data-target=""tab-panel-0"" href=""#"" id=""tab-item-01"" role=""tab"">Overview</a>
+
+</li>
+
+TODO/Success Criteria 
+
+1. Add role=""presentation"" to each li. Since there is a tablist role on the outer ul, this is no longer a text list, but a tablist, so child elements must have their list semantics replaced with ""presentation"". Getting semantics correct is critical to help convey understanding of the structure being engaged with. 
+
+2. Change href=""javascript:; to href=""#"". For future-friendly enhancement I may ask for. Replacing with hash should not be an issue if return false is used on the link, which it likely is already. 
+
+3. Move role=""tab"", aria-controls, and aria-selected to the link itself. ARIA like this should never be used on non-interactive elements like a li, unless tabindex is present. However, want to avoid tabindex here to avoid a double tab, so moving these attributes to the link or button is always the best choice. 
+
+4. If aria-label is not needed here, then please remove it. 
+
+5. Remove tabindex from link. The tabindex is redundant and not required on interactive elements like <a> or <button> as they can already be tabbed to without it.
+
+6. Give each link a unique ID. For example, id=""tab-item-01"". This will be used by the content panel below the list. 
+
+The tab panels themselves could must be improved as well: 
+
+Before: 
+
+<div class=""tab-pane fade active in"" id=""gwt-uid-5"" role=""tabpanel"" aria-hidden=""false"" tabindex=""0""> ... </div>
+
+After: 
+
+<div class=""tab-pane fade active in"" id=""gwt-uid-5"" role=""tabpanel"" aria-hidden=""false"" aria-labelledby=""tab-item-01"" tabindex=""0""> ... </div>
+
+1. Add aria-labelledby to the tab panel and reference the ID of the newly added ID on the link. Doing so is good practice and provides context as to which tab is currently in use. 
+
+Keyboard support needs MUCH improvement here to comply. Arrow keys are expectation here. 
+
+1. When user presses the right or down arrow key, the focus should move from the active tab the user is currently on, to the inactive tab on the right, making the active and previous tab inactive. 
+
+2. When the user presses the left or up arrow key, the focus should move from the active tab the user is currently on, to the inactive tab on the left, making the active and previous tab inactive. 
+
+3. The tabs should cycle endlessly when tabbed though. In other words, moving left or right will bring user to an inactive tab, thereby making it active.
+
+4. Inactive tabs and panels should always be set to tabindex -1, which currently appears to be present, so no action currently required. 
+
+5. Tabbing from an active tab should bring user to the active tab panel only. This currently occurs but the focus is being suppressed here, which appears to be a much larger issue sitewide. 
+
+6. Tabbing from the active tab panel should bring user to the active tab only. This currently occurs but the focus is being suppressed here, which appears to be a much larger issue sitewide. 
+
+Please see the pattern Radancy currently uses for many of its career site Tablist. The semantics and behavior are a good example of what the Hiring Events component should be striving for.  See https://radancy.dev/component-library/tablist/ 
+
+** This one is likely to be complicated to address, so reach out to Michael Spellacy (Spell) for guidance. Spell should also conduct testing in QA or Staging environment. If this functionality exists elsewhere in application, I wil not likely cited it again, so please make sure these issues are addressed wherever they exist.**",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY001.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY002,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,"There appears to be a bug in the tablist. When I am on an active tab and press any arrow key (not just my right, as stated in video), I am presented with a panel I did not anticipate, and my focus appears to vanish.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY002.mp4,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY003,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,Remove tabindex from the following elements. These are not interactive elements and therefore they should not receive focus at all.,,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY003-1.png  
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY003-2.png 
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY003-3.png ",,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY004,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,"The disclosures that are present within the content panels need improvement to comply.
+
+Before: 
+
+<div class=""panel-heading"" role=""tab"" data-toggle=""collapse"" tabindex=""0"" data-target=""#accordion-panel-5"" id=""gwt-uid-10"" aria-expanded=""true"">
+
+<h4 class=""panel-title"">Chat Details</h4>
+
+<span class=""small"" aria-hidden=""true"" style=""display: none; margin-left: 8px;""></span>
+
+<i class=""material-icons"" aria-hidden=""false"" aria-label=""Close panel"">keyboard_arrow_up</i>
+
+</div>
+
+<div class=""panel-collapse collapse in"" id=""accordion-panel-5"" aria-expanded=""true""> ... </div>
+
+After: 
+
+<div aria-controls=""accordion-panel-5"" aria-expanded=""true"" class=""panel-heading"" data-target=""#accordion-panel-5"" data-toggle=""collapse"" id=""gwt-uid-10"" role=""button"" tabindex=""0"">
+
+<span class=""panel-title"">Chat Details</span>
+
+<i class=""material-icons"" aria-hidden=""true""></i>
+
+</div>
+
+<div aria-labelledby=""gwt-uid-10"" class=""panel-collapse collapse in"" id=""accordion-panel-5"" role=""group"">
+
+TODO/Success Criteria
+
+1. Replace role=""tab"" with role=""button"" as this is a button and not a tab. 
+
+2. Add aria-controls and point it to the same target as data-target (but without the hash). 
+
+3. Replace h4 with a span element. There are too many issues on the app with headings and I feel that unnecessary headings likely will cause more of an issue than the benefit they provide. 
+
+4. Is this necessary? If not, remove it. <span class=""small"" aria-hidden=""true"" style=""display: none; margin-left: 8px;""></span>
+
+5. On materia-icons, remove aria-label=""Close panel"", set aria-hidden=""true"", and remove the text, ""keyboard_arrow_up"".
+
+6. On the disclosure content div (.panel-collapse), please remove aria-expanded. This is not allowed on non-interactive elements.
+
+7. On the disclosure content div (.panel-collapse), please add aria-labelledby and point it towards the ID of the button, in this example, aria-labelledby=""gwt-uid-10"". Similairy to the tab panel, we want to provide an accessible name (accName) to this group of controls for when we place focus it later.  See A11YHISTORY007
+
+8. On the disclosure content div (.panel-collapse), please add role=""group"".
+
+** This one is likely to be complicated to address, so reach out to Michael Spellacy (Spell) for guidance. Spell should also conduct testing in QA or Staging environment. If this functionality exists elsewhere in application, I wil not likely cited it again, so please make sure these issues are addressed wherever they exist.**
+",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY004.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY005,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,Understanding SC 4.1.2,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,"Please remove role=""main"" from <div class=""center-col"" role=""main""> ... </div>. Page landmarks should not be nested and this one appears to be a child of role=""application"".",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY005.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY006,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,The page is missing a primary heading. This seems to be commonplace across the application with the main heading. Likely an h3 was chosen for its site and ant its hierarchical value. Please h3 with h1 and adjust CSS styling as needed to match current heading style.,,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY006.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY007,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,"The ""Ratings and Notes"" section require improvement with keyboard operability to comply. Managing focus on a page is often necessary so that user does not become lost and can continue tabbing from certain positions with the component or page. Please do the following and reach out to Spell if there are any questions: 
+
+1. When the ""Edit"" button is pressed, place tabindex of -1 and focus on the outer parent element (panel-collapse). This is disclosure element content group we are requesting changes on  in A11YHISTORY004. By placing focus here, we should hear the accessible name of the group (Ratings and Notes) and the user may being tabbing from this location to the star ratings and then then notes and then, finally, to the ""Save"" or ""Cancel"" button. 
+
+2. When the ""Cancel"" button is pressed, keyboard focus should be placed on the edit button again. ",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY007.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY007,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,"The ""Ratings and Notes"" section require improvement with keyboard operability to comply. Managing focus on a page is often necessary so that user does not become lost and can continue tabbing from certain positions with the component or page. Please do the following and reach out to Spell if there are any questions: 
+
+1. When the ""Edit"" button is pressed, place tabindex of -1 and focus on the outer parent element (panel-collapse). This is disclosure element content group we are requesting changes on  in A11YHISTORY004. By placing focus here, we should hear the accessible name of the group (Ratings and Notes) and the user may being tabbing from this location to the star ratings and then then notes and then, finally, to the ""Save"" or ""Cancel"" button. 
+
+2. When the ""Cancel"" button is pressed, keyboard focus should be placed on the edit button again. 
+
+3. May need message saying that updates have been successfully saved. ",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY007.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHISTORY008,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/LrNMp/identify-peer-group#!booth;eventCode=LrNMp;boothCode=booth-3,,,"The data table on the page that contains headings for “Name”, “Rating”, and “Final Thought” is not keyboard operable. Making it so may be an undertaking, so I would like to table this for now (pun intended) and work closely with the team to bring it where it needs to be as it is simply too much to be listed here. In essence, we will need to follow W3C recommendations here to bring this component into compliance. When time comes, Kate should reach out to Spell to see how best proceed.  
+
+https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/ 
+",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YHISTORY008.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YFORMS001,1.4.4: Resize text,AA,Text can be resized to 200% without loss of content or function,Understanding SC 1.4.4,"https://app.brazenconnect.com/cc/#!login 
+
+https://app.brazenconnect.com/cc/#!mfa  
+
+https://app.brazenconnect.com/app/password-change#!setPassword 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false 
+
+https://app.brazenconnect.com/events/dbJPJ/login ",Enable pinch-to-zoom,,"Zooming and scaling appear to be programmatically disabled via the meta element. This issues also appears to be present on all pages of the applications, not just the login and registration form screens. Preventing a user the ability to pinch and zoom in on the application (no all of your users are on desktop), is a barrier for those with low vision. Here is the code in question: 
+
+{code}<meta name=""viewport"" content=""width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0""/>{code}
+
+Please remove  ""maximum-scale=1, user-scalable=0""",Look to see that meta element has been corrected and that pinch and zoom are now available on mobile devices. ,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS001.png,"This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41185 ,0
+A11YFORMS002,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,Understanding SC 1.1.1 ,"https://app.brazenconnect.com/cc/#!login
+
+https://app.brazenconnect.com/cc/#!mfa","Brazen (Radancy) Logo Missing Alternative Text, Remove ARIA",,"The Brazen logo is a link that is currently missing an alt attribute and value. To remedy this issue, please add ""Radancy (Home)"" if the link takes one back to the homepage and remove aria-label from link that surrounds it. Assuming this will be Radancy logo here in the near future. Marking this as moderate as there is an aria-label present on link, but would like to eliminate the issue from coming up in a future scan or being flagged by other clients.",Review mark-up and ensure that all is as it should be according to recommendation.,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS002.png,,Moderate,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41188 ,0
+A11YFORMS003,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,Understanding SC 4.1.2,https://app.brazenconnect.com/cc/#!login,"Update Label ""for"" Attribute on BCC Landing Page",,"The email address and password fields are missing an accessible name. People using assistive technology, such as screen readers, will be unable to understand the purpose of these fields. To remedy, please make sure that each label's ""for"" attribute contains the same value of its adjacent input elements ID attribute. For example, the for attribute for the email address currently says: 
+
+{code}<label class=""control-label"" for=""loginEmail"">Email Address</label>{code}
+
+What it should say is: 
+
+{code}<label class=""control-label"" for=""login-email"">Email Address</label>{code}","Review markup, clicking on label should also bring focus to associated input field. ",https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS003.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41186,0
+A11YFORMS004,1.4.4: Resize text,AA,Text can be resized to 200% without loss of content or function,Understanding SC 1.4.4,"https://app.brazenconnect.com/cc/#!login 
+
+https://app.brazenconnect.com/cc/#!mfa  
+
+https://app.brazenconnect.com/app/password-change#!setPassword 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false 
+
+https://app.brazenconnect.com/events/dbJPJ/login ",Text Size Can't Be Increased,,"The interface does not allow a user to increase text size by up to 200%. This is because absolute units, like px, are used in the CSS. This also appears to be a global issue within the entire application. Revising the UI and using relative units, such as rem or em or %, will go a long way in creating a more flexible environment that anybody can use. Please reach out if any guidance is needed. Auditor assumes this may need a great deal of time to get right, possibly Q3
+
+To duplicate, go into Chrome settings and increase text to 32px (200%) and return to the interface, here you will see that the UI's text size has not increased at all. ","Run steps above and ensure that text is enlarging properly. When increasing text size, the UI does not need to be perfect, but all text should be accessible, without the presence of overlapping content of horizontal scrolling. ","https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS004.mp4
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS004.png ",,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41187 ,0
+A11YFORMS005,2.4.2: Page Titled,A,Use helpful and clear page titles,Understanding SC 2.4.2,https://app.brazenconnect.com/cc/#!login,Update Title of the BCC Login Page,,"Please improve the title of the login page so that it is more informative and contextually relevant to assistive technology users. Naming it ""Brazen"" or eventually ""Radancy"" is not helpful here, but naming it ""Radancy - Hiring Events Login"" would be.","Review mark-up and ensure that all is as it should be according to recommendation. Review tab, etc. ",https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS005.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41189 ,0
+A11YFORMS006,2.4.7: Focus Visible,AA,Ensure keyboard focus is visible and clear,Understanding SC 2.4.7,"https://app.brazenconnect.com/cc/#!login 
+
+https://app.brazenconnect.com/cc/#!mfa  
+
+https://app.brazenconnect.com/app/password-change#!setPassword 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false 
+
+https://app.brazenconnect.com/events/dbJPJ/login ",Focus Outline Suppressed Globally,,"Native focus outlines appear to be largely suppressed on all login related pages, as well as a large portion of the application, if not all. Removing focus prevents keyboard and/or low-vision users from properly seeing where their current position is within the interface. It is strongly suggested that the team go through all relevant stylesheets across application and comment out outline: 0 or outline: none wherever it may be found. If outline proves to be an issue for mouse users who click on certain elements, we can revisit those on a case by case basis. Right now, it is better to be in conformance on this issue and many browsers today also employ heuristic to detect keyboard/pointing events, diminishing the need to inadvertently harm accessibility by removing outlines. ","Tab through interface and ensure that all elements now have a distinguishable outline. This outline will vary from browser to browser, but this is OK. ",https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS006.png,"This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41190 ,0
+A11YFORMS007,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,Understanding SC 1.1.1 ,"https://app.brazenconnect.com/cc/#!login 
+
+https://app.brazenconnect.com/cc/#!mfa  
+
+https://app.brazenconnect.com/app/password-change#!setPassword 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false 
+
+https://app.brazenconnect.com/events/dbJPJ/login ","Remove h4 from ""loading"" element",,"On the loading animation found on all application pages, please remove the surrounding h4 element. Headings should only be used to precede content, which this screen does not have. When the heading is removed, please also add alt text to the image, which should say  alt=""Loading...""
+
+","Review mark-up and ensure that all is as it should be according to recommendation. Review tab, etc. ",https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS007.png,,Serious,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41184 ,0
+A11YFORMS008,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,https://app.brazenconnect.com/cc/#!login,Primary Heading Missing,,All pages should contain a primary heading (h1). Please change the h4 over the form to an h1 and style as needed to retain same look and feel as exists currently. This appears to be a very common issue across the application. ,Review mark-up and ensure that all is as it should be according to recommendation.,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS008.png,"This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Serious,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41183 ,0
+A11YFORMS009,Best Practice,BP,"The issues does not fail WCAG, but is a well-established and recommended design or usability best practice on the web",Radancy Standards,"https://app.brazenconnect.com/cc/#!login 
+
+https://app.brazenconnect.com/cc/#!mfa  
+
+https://app.brazenconnect.com/app/password-change#!setPassword 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false 
+
+https://app.brazenconnect.com/events/dbJPJ/login ","Main Landmark Missing",,"Document should have one landmark. Consider wrapping all content displayed on the page, in a main element. This would also include the GDPR/Privacy notice, as well. Landmarks can be very important in helping users orient themselves on the page. Missing landmarks, especially the <main> element, appears to be a common, sitewide issue. ",Review mark-up and ensure that all is as it should be according to recommendation.,No screengrab available.,"This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Moderate,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41182 ,0
+A11YFORMS010,3.2.5: Change on Request,AAA,Don’t change elements on your website until users ask,Understanding SC 3.2.5,"https://app.brazenconnect.com/cc/#!login 
+
+https://app.brazenconnect.com/cc/#!mfa  
+
+https://app.brazenconnect.com/app/password-change#!setPassword 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false 
+
+https://app.brazenconnect.com/events/dbJPJ/login ","Creative Needed, New Window Icons",,"Please include new window signifiers on any links in the footer and GDPR/Privacy notice. Hidden text should also be available for screen reader users. Opening up windows unexpectedly can be disorienting for some users, so indicating a new window will be opened is considered a very good practice. See https://radancy.dev/guidance-on-new-windows/   for further guidance. ","Review design and make sure icons are present where link opens a new window. There should be hidden text for screen readers. This can come in the form of alternative, aria-label, or alternative text. ","https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS010-1.png 
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS010-2.png",,Serious,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41180,0
+A11YFORMS011,2.4.11 Focus Not Obscured (Minimum),AA,"Ensure when an item gets keyboard focus, it is at least partially visible.",Understanding SC 2.4.11,"https://app.brazenconnect.com/cc/#!login 
+
+https://app.brazenconnect.com/cc/#!mfa  
+
+https://app.brazenconnect.com/app/password-change#!setPassword 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false 
+
+https://app.brazenconnect.com/events/dbJPJ/login ",Privacy Banner Obscuring Content,,"When the privacy banner has not been accepted, it obscures other links on the page, specifically the links in the footer. This is a problem for keyboard/low-vision users, who will not be able to see where their focus has gone when it goes behind other elements. Considering placing this notice in another location on the page, possibly the top of the page as an alert banner, have it push all content downward or by using a dialog for the notice. Reach out for guidance on this one when time comes to address it. 
+
+The links being obscured are in the footer Terms of Use, Privacy Notice, California Privacy Notice, Help, Status and this appears to be an issue throughout the application, even for links that are in left navigation, etc. See screenshots for more details.  ",Ensure that focus is no longer obscured.,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS011-1.png
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS011-2.png","This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41181,0
+A11YFORMS012,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,Understanding SC 1.1.1 ,"https://app.brazenconnect.com/events/dbJPJ/login  
+
+https://app.brazenconnect.com/events/dbJPJ/login# ","Add missing ""alt"" attribute on img",,"All images should have an alt attribute, even decorative ones. If the image is decorative, include a ""null alt"" (alt=""""). The brazen logo on bottom of navigation next to ""powered by Brazen"" requires such an attribute. Screen reader users who access images without an alt attribute are likely to hear the entire image path, which is cumbersome and adds difficulty to understanding interface.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS012.png,"This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41173 ,0
+A11YFORMS013,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,"https://app.brazenconnect.com/events/dbJPJ/login 
+
+https://app.brazenconnect.com/events/dbJPJ/login#",Social media SSO button must receive keyboard focus,,"The Facebook, Google, and LinkedIn buttons do not receive keyboard focus. This is because they are hyperlinks that do not contain a href attribute. As these interactions trigger dialog boxes, it would be best to change these links to button elements (and adjust style as needed). ",Ensure these are buttons and can be tabbed to using keyboard.,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS013.png ,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41174,0
+A11YFORMS014,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,"https://app.brazenconnect.com/events/dbJPJ/login 
+
+https://app.brazenconnect.com/events/dbJPJ/login#","Remove tabindex=""0"" from Non-Interactive Elements",,"Non-interactive elements, like divs or span, should never be included in the tab order when tabbing through the UI. Please remove the tabindex from the div surrounding the form fields on Sign-Up page. Since this will no longer be focusable, you should also remove aria-describedby=""signUpDivDescription"" and the div it is tied to: <span class=""sr-only"" id=""signUpDivDescription"">Sign up with email address form</span>. Having tabindexs on non-interactive elements also appears to be global issue, so this is likely not the last time it will come up. 
+
+Focusable elements include a, button, input, etc. and in some cases, components built specifically with ARIA, may also require a tabindex=""0"" but in general, making an element like a div focusable is never a good idea. If a div does require temporary focus, then tabindex=""-1"" should be used.",Tab through UI and make sure surrounding div cannot be accessed via keyboard. Also make sure it no longer includes an accName. ,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS014.png ,"This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Serious,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41175,0
+A11YFORMS015,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,Understanding SC 4.1.2,"https://app.brazenconnect.com/events/dbJPJ/login 
+
+https://app.brazenconnect.com/events/dbJPJ/login#","Update heading on Login, Signup, MFA pages",,"Please make the sign-up heading, which is an h3 an h1 and style as needed. All pages should have a primary heading and this one is it. Also, remove the following ARIA attributes from this heading. 
+
+aria-live, role, aria-relevant",Review markup for requested changes.,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS015.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41176,0
+A11YFORMS016,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ",Understanding SC 1.3.1,"https://app.brazenconnect.com/events/dbJPJ/login 
+
+https://app.brazenconnect.com/events/dbJPJ/login#",Update headings on date and time for landing pages,,Headings should never be skipped and only increase by one. Please change the h4's in the events overview to h3's. ,"Review markup, run axe. ",https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS016.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41177,0
+A11YFORMS017,3.3.2: Labels or Instructions,A,Label elements and give instructions,Understanding SC 3.3.2,"https://app.brazenconnect.com/events/dbJPJ/login 
+
+https://app.brazenconnect.com/events/dbJPJ/login#",Input fields use visible persistent labels,,"Provide a visible, persistent label for each form field. Including or visually hiding the <label> element is not accessible, nor is placeholder text a satisfactory replacement. Fields that do not have visible, persistent labels after entering information may be problematic for users who may not remember what information the form field was requesting, etc. When labels are reinstated properly, the title attribute may also be removed. This is what auditor will expect to see: https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS017-2.png ",Ensure that visible labels are present and marked up properly. ,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS017-1.png 
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS017-2.png",,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41172,0
+A11YFORMS018,2.5.3: Label In Name,A,Let the visual label for controls be a trigger for speech activation.,Understanding SC 2.5.3,https://app.brazenconnect.com/cc/#!mfa,Verification Input Filed Missing Proper Label,,The enter verification code field appears to be missing an accessible name. While it does include placeholder this cannot be reliably used to give a component a proper name. Placeholders should only be used for advisory information. Please include a proper label and associate it with it's input field.,Ensure field has a proper label associated with it's input field. ,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS018.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41178,0
+A11YFORMS019,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,https://app.brazenconnect.com/cc/#!mfa,Change H3 to H1 (Global),,"Please change the h3 over the form that says ""Multi-Factor Authentication"" to an h1 and style as needed to retain same look and feel as exists currently. This appears to be a very common issue across the application. ", Review mark-up and ensure that all is as it should be according to recommendation.,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS019.png,"This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.",Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41179,0
+A11YFORMS020,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ",Understanding SC 1.3.1,https://app.brazenconnect.com/cc/#!mfa,Wrap Header elements in list,,"The support and login links in the header of most, if not all pages, is structurally unsound. UL elements are not allowed to have children elements that are not LI's. To address the issue, please make the support link a part of the list by wrapping it in a LI and restyle as needed. ",Ensure they support (help) links is now a part of the unordered list.,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS020.png ,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41171,0
+A11YFORMS0021,2.4.2: Page Titled,A,Use helpful and clear page titles,Understanding SC 2.4.2,https://app.brazenconnect.com/app/password-change#!setPassword,Update <title> on MFA and Reset password pages,,Please ensure that all pages include a proper page title in the HTML <title> element. If your application is a Single Page Application (SPA) then programming will need to alter the value of this element when the state of the page changes.,,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS021.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41171,0
+A11YFORMS022,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,https://app.brazenconnect.com/app/password-change#!setPassword,Change H3 to H1 (Global),,"Please update the ""Reset Password"" heading, which is currently an h3, to an h1. This appears to be a common issue across all pages on site and perhaps will only need to be a global change in one or two locations. Adjust CSS as needed to match current design, etc. ",Testing Criteria: Ensure that heading is changed to an h1.,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS022.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41165,0
+A11YFORMS023,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,Change H3 to H1 (Global),,"Please update the ""Event Registration"" heading, which is currently an h3, to an h1. This appears to be a common issue across all pages on site and perhaps will only need to be a global change in one or two locations. Adjust CSS as needed to match current design, etc. ",Ensure that heading is changed to an h1. ,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS023.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41170,0
+A11YFORMS024,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ",Understanding SC 1.3.1,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,"Remove aria-multiselectable=""false"" attribute from dropdowns",,"Elements should only use supported attributes. All <select> element dropdowns in form appear to include aria-multiselectable=""false"" (aria-multselectable=""true""). These attributes appear to be for custom built components, which these components do not appear to be (they are native). Adding ARIA where it is not allowed could have serious impact for assistive technology users and prevent proper access. Please remove this attribute.", Ensure attribues are no longer present. ,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS024.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41169,0
+A11YFORMS025,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ",Understanding SC 1.3.1,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,"Remove role=""option"" attributes from all elements in the event navigation",,"Certain ARIA roles must be contained by particular parents. All <option> elements (over 375 of them) in form appear to include role=""option"" (which is redundant) and aria-selected. These attributes appear to be for custom built components, which these components do not appear to be. Adding ARIA where it is not allowed could have serious impact for assistive technology users and prevent proper access. Please remove these attribute. ",Ensure attribues are no longer present. ,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS025.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41164,0
+A11YFORMS026,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,Replace multiselect component with the checkboxes list,,"Multiselect components (<select multiple> ... </select>) have a long history of usability and accessibility issues. For example, certain knowledge about particular keyboard combinations, such as Ctrl + Enter, are required to select multiple items, etc. 
+
+Rather than use a multiselect, consider the strong possibility of revisiting this component to include a list of checkboxes to allow user to make multiple selections. This is a far more understandable and friendly convention on the web that will be benefit all users, whether they are disabled or not.",Use Ctrl++ to zoom into the UI by up to 200%. Doing so should not cause the left navigation to expand. ,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS026.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41163 ,0
+A11YFORMS027,1.4.10: Reflow,AA,Ensure content can be enlarged without requiring horizontal scrolling,Understanding SC 1.4.10,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,Auto collapse nav bar when zoom in,,"As cited elsewhere in this application, zooming into the UI by up to 200% causes the left navigation to expand outward, obscuring the interface, with no obvious means to dismiss it. However, it should not be expanding at all when zoom occurs.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS027.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41166,0
+A11YFORMS028,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,Place the focus on CTA button for removed files,,"When the Profile Picture image is removed, focus should be placed on the ""Choose Image"" button. When focus is removed from elements that keyboard users currently have focus on, it can be very disorienting. Browsers try to manage this as best as possible, but in most cases it is best to set the right expectation and reposition focus on the most logical, nearby interactive element. The same issue also occurs for the ""Upload Resume"" and ""Upload Technical Specs"" sections. A similar solution should be employed here as well.","Using keyboard to navigate and forced focus turned on (because it is largely suppressed across the site), see where focus position lands when profile picture is removed. Do this for Resume and Technical Specs sections as well.  ",https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS028.mp4,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41162,0
+A11YFORMS029,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,"Remove keyboard traps from History, Profile, and Edit Password links",,"In the left navigation, the ""Profile"" and ""Edit Password"" fields appear to be non-navigable via keyboard. Both have aria-hidden=""true"" on parent list (li) and both include tabindex=""-1"" on the hyperlink. Please remove these attributes. Question: What is the purpose of them, specifically aria-hidden? ","Ensure that all attributes are removed. If aria-hidden cannot be removed, it should at least be set to ""false"" and test that both links can be tabbed to via keyboard.",https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS029.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41168 ,0
+A11YFORMS030,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false,Updates for dialog window,,"Many of the dialog windows used across the site are built decently, but include extraneous tabindexes where not needed and require a couple of other improvements. Please do the following: 
+
+1. Remove tabindex from any content elements that contain them. See https://app.screencast.com/IO3KobvzNdN46 
+2. Remove aria-describedby. There is no need to read out the contents of the dialog like this. The aria-labelledby connected to the header should suffice. 
+3. Change heading to h2 (for now) instead of h4. 
+4. Rather than bring focus to dialog itself, it would be best o bring focus to first interactive element, in this case, the ""No"" button or similar. Typically focus is brough to the button which will close the dialog. ",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS030.png,,Serious,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41159,0
+A11YFORMS031,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,"https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!editUserProfile;eventCode=dbJPJ 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!userSettingsPassword;eventCode=dbJPJ  ",Update heading on the event nav pages,,Headings need to be revise on User Profile page. See screen shot for more information. Please change and adjust styling as needed. ,Verify that headings are implemented as reccomended. ,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS031-1.png 
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS031-2.png",,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41160 ,0
+A11YFORMS032,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,"https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!editUserProfile;eventCode=dbJPJ 
+
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!userSettingsPassword;eventCode=dbJPJ  ",Validation error messages on the reg form and edit password,,"The form validation appears to be inconsistent. On the Event Registration, there is a nice list of links to each filed on the page that have an error, but the ""User Profile"" and ""Edit Password"" pages do not behave this way. Having erros behave the same way across the entirety of the application is critical and helps set proper expectations on use. May need for more information here and to discuss with the team in depth.",,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS032-1.png 
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS032-2.png",,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41161,0
+A11YFORMS033,2.4.2: Page Titled,A,Use helpful and clear page titles,Understanding SC 2.4.2,"https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!userSettingsPassword;eventCode=dbJPJ 
+
+https://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!editUserProfile;eventCode=dbJPJ  ",<title> correspond to an individual page,,"When the ""Profile"" and ""Edit Password"" links are pressed, the content is updated, but the title of the page is not. When the page title is not updated, no announcement is made to assistive technology users. In Single Page Applications (such as React and client-side-rendered Vue apps), the page title never changes unless it is specifically managed. This leaves your users with few clues to the page that they’re currently viewing without entering and reading your content. Please make sure that when content is changed, the <title> element value is also updated here and also across the entirety of the application where similar behavior exists. This also applies to back button functionality, as well.",Ensure page title is changed. when links refresh page content ot back button is used. ,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS033-1.png 
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS033-2.png ",,Critical,Fail,Product Support,Failed in Preview,JIRA: https://jira.radancy.com/browse/BRAZ-41158 ,0
+A11YLANDING001,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Issue: Basic Landing Page. Non-interactive elements are receiving focus and should not be. There are elements on the page that receive focus which should not be receiving them. Non-interactive elements must never be focusable, unless it is temporary and needs to occur via managed focus or is a specific ARIA component. Also, please note that when these incorrectly placed tabindexes are removed, there will no longer be a need for attributes like aria-hidden and aria-labelledby, so please remove those as well.
+
+Important Note: This appears to be an issue across many pages across the Hiring Events application, including Landing Pages.",,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING001-1.webm  
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING001-2.webm  
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING001-3.png ",,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING002,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Issue: Basic Landing Page. When pressing the ""Reserve My Spot"" button at the bottom of the page, I am brought to the top of the page. But when I continue to tab, I immediatly land on the link that appears after ""Reserve My Spot"", the links in the footer. When we bring a user back to the specific location through such means, it would be ideal to use a link anchor or apply focus to first interactive element at the top of the page or apply temporary focus via tabindex -1 and focus() to a specific non-interactive element. What we apper to be doing here only moving the position to top only, forgetting about keyboard only users.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING002.webm,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING003,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Basic Landing Page. Remove role=""heading"" and replace element with a proper h1. Adjust styling as needed to accomodate the change.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING003.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING004,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Basic Landing Page. Remove role=""heading"" from elements that should not me identified as headings.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING004.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING005,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,Understanding SC 1.1.1 ,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"All Landing Pages. Add a null alt (alt="""") to Brazen logo in footer. If the images is non-decorative, then add a value like ""Brazen"" (or ""Radancy"" if it swapped out).",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING005.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING006,1.2.1: Audio-only and Video-only (Prerecorded),A,Provide an alternative to video-only and audio-only content,Understanding SC 1.2.1 ,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Basic Landing Page. Regions are present that have no accName (accessible name). Please remove from following elements: 
+
+<div class=""area"" role=""region"" id=""how-it-works-area"">
+<div class=""area translucent-bg parallax-wrapper"" role=""region"" id=""illustrations-area"">
+<div class=""area white-bg"" role=""region"" id=""about-us"">
+<div class=""area hidden-xs"" role=""region"" id=""user-quotes"">
+<div class=""area translucent-bg parallax-wrapper"" role=""region"" id=""bottom-registration"">
+<div role=""region"" id=""footer"">",,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING007,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Basic Landing Page. See following screenshots. Making these actual headings will allow assisitve technology users to better understand and navigate the page. Adjust CSS as needed.
+",,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING007-1.png  
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING007-2.png ",,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING008,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Basic Landing Page.  Review all headings on page any remove any redundancies you may come across. For example, a hheading that is marked-up as h2, does not require role=""heading"" aria-level=""2""",,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING009,3.3.2: Labels or Instructions,A,Label elements and give instructions,Understanding SC 3.3.2,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Basic Landing Page, All Provide a visible, persistent label for each form field. Including or visually hiding the <label> element is not accessible, nor is placeholder text a satisfactory replacement. Fields that do not have visible, persistent labels after entering information may be problematic for users who may not remember what information the form field was requesting, etc. When labels are reinstated properly, the title attribute may also be removed. This is what auditor will expect to see: https://app.screencast.com/lcpGhADbQxmS5 
+
+Testing Criteria: Ensure that visible labels are present and marked up properly. """,,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING010,2.4.7: Focus Visible,AA,Ensure keyboard focus is visible and clear,Understanding SC 2.4.7,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Legacy Landing Page Focus style on ""Register Now"" button should match hover style.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING010.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING011,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,Legacy Landing Page empty heading found - please remove.,,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING011.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING012,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Legacy Landing Page This register button is not receiving focus when tabbed to. There is a tabindex=""-1"" on it. Why?",,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING013,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ",Understanding SC 1.3.1,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Legacy Landing PageHow it works need to be restructured to make more sense. 
+
+This section should be a list, with proper heading use. I'm seeing across application that headings are selected for size and not their semantic relevance and used inappropriately in general. Would like to have 1:1 with Kate and team to discuss this issue further as the problem is too numerous to keep citing cross-platform. However, in this example, we appear to have the following: 
+
+<div ...>
+
+	<h1>1</h1>
+
+	<h2>Register</h2>
+
+	<p>Create an account....</p>
+
+</div>
+
+Ideally, we would change to the following: 
+
+<ol>
+
+	<li>
+
+		<h3><span class=""step"">1</span> Register</h3>
+
+		<p>Create an account...</p>
+
+	</li>
+
+	...
+
+</ol>
+",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING013.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING014,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Legacy Registration Page - Element hidden that should not be.
+",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING014.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING015,,,,,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,find this page again. might be on bugherd,,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING015.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING016,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,Understanding SC 1.1.1 ,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Custom Landing Page Main logo image requires at least a ""null alt"" which is missing.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING016.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING017,1.4.10: Reflow,AA,Ensure content can be enlarged without requiring horizontal scrolling,Understanding SC 1.4.10,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Custom Landing Page Failing relflow. Multimedia assets, such as video and images are being cut off.",,"https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING017-1.png
+
+https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING017-2.png ",,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING018,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,Custom Landing Page Skipped heading,,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING018.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING019,,,,,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,Custom Landing Page Time Module improvements needed,,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING019.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING020,2.4.7: Focus Visible,AA,Ensure keyboard focus is visible and clear,Understanding SC 2.4.7,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"Verify this is landing page related. Focus outline missing on ""Add to Calendar"" button.",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING020.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YLANDING021,,,,,"https://app.brazenconnect.com/a/acme-accessibility/e/LrNMpp 
+
+https://app.brazenconnect.com/events/LrNMp?isPreview=true ",,,"verify this is landing page related. Ensures aria-hidden elements are not focusable nor contain focusable elements
+
+aria-hidden=""true"" is used on the parent element of a child that receives focus ",,https://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YLANDING021.png,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHOME001,2.4.6: Headings and Labels,AA,Use clear headings and labels,Understanding SC 2.4.6,https://app.brazenconnect.com/cc/#!home,,,Heading is incorret.,,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHOME002,2.4.7: Focus Visible,AA,Ensure keyboard focus is visible and clear,Understanding SC 2.4.7,https://app.brazenconnect.com/cc/#!home,,,No focus outline can be seen.,,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHOME003,2.1.1: Keyboard,A,Accessible by keyboard only,Understanding SC 2.1.1,https://app.brazenconnect.com/cc/#!home,,,The help icons which shows a tooltip is inaccessible to keybaord and screen reader users.,,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
+A11YHOME004,,,,,https://app.brazenconnect.com/cc/#!home,,,"The compontent used to select a month to review events:
+
+Using an input without an accessible name (why use an input to begin with?).
+
+No announcement made that there is new content on page and how may events are available for that month, etc.",,,,Critical,Fail,Product Support,Failed in Preview,JIRA: ,0
