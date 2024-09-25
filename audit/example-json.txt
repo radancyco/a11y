@@ -1,0 +1,122 @@
+{
+
+    "issueUpdates": [{
+
+            "fields": {
+            
+                "project": { 
+
+                    "key": "UDS"
+
+                },
+                "summary": "Accessibility Audit Test: A11YTEST001 - Enable pinch-to-zoom",
+                "description": "\n\n*Audit ID:* A11YTEST001\n\n*WCAG Success Criteria:* 1.4.4: Resize text\n\n*WCAG Level:* AA\n\n*WCAG Synopsis:* Text can be resized to 200% without loss of content or function\n\n*Impact/Severity:* Critical\n\n*Issue/Recommendation:*\n\nZooming and scaling appear to be programmatically disabled via the meta element. This issues also appears to be present on all pages of the applications, not just the login and registration form screens. Preventing a user the ability to pinch and zoom in on the application (no all of your users are on desktop), is a barrier for those with low vision. Here is the code in question: \n\n{code}<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/>{code}\n\nPlease remove  \"maximum-scale=1, user-scalable=0\"\n\n*Testing Criteria:* \n\nLook to see that meta element has been corrected and that pinch and zoom are now available on mobile devices. \n\n*Links:* \n\nhttps://app.brazenconnect.com/cc/#!login \n\nhttps://app.brazenconnect.com/cc/#!mfa  \n\nhttps://app.brazenconnect.com/app/password-change#!setPassword \n\nhttps://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false \n\nhttps://app.brazenconnect.com/events/dbJPJ/login \n\n*Screenshot/Video/URL:* \n\nhttps://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS001.png\n\n*Note:* This appears to be a global issue throughout the application. Instead of the auditor calling it out on every page that is tested, we will expect the Hiring Events team to take note of it here and then make sure it is addressed application-wide. Auditor will spot-check pages to ensure that issue is no longer present and will bring attention to again, if needed, during future audits.","issuetype": {
+
+                    "name": "Accessibility Request "
+
+                },
+                "assignee": {
+
+                    "name": "Mspellac"
+
+                },
+                "customfield_11112": [{
+                
+                    "id": "11813"
+                
+                }],
+                "customfield_11113": "136728",
+                "labels": ["Accessibility", "WCAG_Level_AA", "WCAG_Criteria_1.4.4:_Resize_text"]
+            }
+  
+        },{
+
+            "fields": {
+            
+                "project": { 
+
+                    "key": "UDS"
+
+                },
+                "summary": "Accessibility Audit Test: A11YTEST002 - Brazen (Radancy) Logo Missing Alternative Text, Remove ARIA",
+                "description": "\n\n*Audit ID:* A11YTEST002\n\n*WCAG Success Criteria:* 1.1.1: Non-text Content\n\n*WCAG Level:* A\n\n*WCAG Synopsis:* Provide text alternatives for non-text content\n\n*Impact/Severity:* Moderate\n\n*Issue/Recommendation:*\n\nThe Brazen logo is a link that is currently missing an alt attribute and value. To remedy this issue, please add \"Radancy (Home)\" if the link takes one back to the homepage and remove aria-label from link that surrounds it. Assuming this will be Radancy logo here in the near future. Marking this as moderate as there is an aria-label present on link, but would like to eliminate the issue from coming up in a future scan or being flagged by other clients.\n\n*Testing Criteria:* \n\nReview mark-up and ensure that all is as it should be according to recommendation.\n\n*Links:* \n\nhttps://app.brazenconnect.com/cc/#!login\n\nhttps://app.brazenconnect.com/cc/#!mfa\n\n*Screenshot/Video/URL:* \n\nhttps://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS002.png","issuetype": {
+
+                    "name": "Accessibility Request "
+
+                },
+                "assignee": {
+
+                    "name": "Mspellac"
+
+                },
+                "customfield_11112": [{
+                
+                    "id": "11813"
+                
+                }],
+                "customfield_11113": "136728",
+                "labels": ["Accessibility", "WCAG_Level_A", "WCAG_Criteria_1.1.1:_Non-text_Content"]
+            }
+  
+        },{
+
+            "fields": {
+            
+                "project": { 
+
+                    "key": "UDS"
+
+                },
+                "summary": "Accessibility Audit Test: A11YTEST003 - Update Label \"for\" Attribute on BCC Landing Page",
+                "description": "\n\n*Audit ID:* A11YTEST003\n\n*WCAG Success Criteria:* 4.1.2: Name, Role, Value\n\n*WCAG Level:* A\n\n*WCAG Synopsis:* Build all elements for accessibility\n\n*Impact/Severity:* Critical\n\n*Issue/Recommendation:*\n\nThe email address and password fields are missing an accessible name. People using assistive technology, such as screen readers, will be unable to understand the purpose of these fields. To remedy, please make sure that each label's \"for\" attribute contains the same value of its adjacent input elements ID attribute. For example, the for attribute for the email address currently says: \n\n{code}<label class=\"control-label\" for=\"loginEmail\">Email Address</label>{code}\n\nWhat it should say is: \n\n{code}<label class=\"control-label\" for=\"login-email\">Email Address</label>{code}\n\n*Testing Criteria:* \n\nReview markup, clicking on label should also bring focus to associated input field. \n\n*Links:* \n\nhttps://app.brazenconnect.com/cc/#!login\n\n*Screenshot/Video/URL:* \n\nhttps://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS003.png","issuetype": {
+
+                    "name": "Accessibility Request "
+
+                },
+                "assignee": {
+
+                    "name": "Mspellac"
+
+                },
+                "customfield_11112": [{
+                
+                    "id": "11813"
+                
+                }],
+                "customfield_11113": "136728",
+                "labels": ["Accessibility", "WCAG_Level_A", "WCAG_Criteria_4.1.2:_Name,_Role,_Value"]
+            }
+  
+        },{
+
+            "fields": {
+            
+                "project": { 
+
+                    "key": "UDS"
+
+                },
+                "summary": "Accessibility Audit Test: A11YTEST004 - Text Size Can't Be Increased",
+                "description": "\n\n*Audit ID:* A11YTEST004\n\n*WCAG Success Criteria:* 1.4.4: Resize text\n\n*WCAG Level:* AA\n\n*WCAG Synopsis:* Text can be resized to 200% without loss of content or function\n\n*Impact/Severity:* Critical\n\n*Issue/Recommendation:*\n\nThe interface does not allow a user to increase text size by up to 200%. This is because absolute units, like px, are used in the CSS. This also appears to be a global issue within the entire application. Revising the UI and using relative units, such as rem or em or %, will go a long way in creating a more flexible environment that anybody can use. Please reach out if any guidance is needed. Auditor assumes this may need a great deal of time to get right, possibly Q3\n\nTo duplicate, go into Chrome settings and increase text to 32px (200%) and return to the interface, here you will see that the UI's text size has not increased at all. \n\n*Testing Criteria:* \n\nRun steps above and ensure that text is enlarging properly. When increasing text size, the UI does not need to be perfect, but all text should be accessible, without the presence of overlapping content of horizontal scrolling. \n\n*Links:* \n\nhttps://app.brazenconnect.com/cc/#!login \n\nhttps://app.brazenconnect.com/cc/#!mfa  \n\nhttps://app.brazenconnect.com/app/password-change#!setPassword \n\nhttps://app.brazenconnect.com/app/events/dbJPJ/identify-peer-group#!eventRegistration;eventCode=dbJPJ;registrationEditMode=false \n\nhttps://app.brazenconnect.com/events/dbJPJ/login \n\n*Screenshot/Video/URL:* \n\nhttps://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS004.mp4\n\nhttps://radancy.dev/a11y/audit/client/hiring-events/screengrab/A11YFORMS004.png ","issuetype": {
+
+                    "name": "Accessibility Request "
+
+                },
+                "assignee": {
+
+                    "name": "Mspellac"
+
+                },
+                "customfield_11112": [{
+                
+                    "id": "11813"
+                
+                }],
+                "customfield_11113": "136728",
+                "labels": ["Accessibility", "WCAG_Level_AA", "WCAG_Criteria_1.4.4:_Resize_text"]
+            }
+  
+        }]
+
+}
+

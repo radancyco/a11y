@@ -71,7 +71,7 @@
                 }],
                 "customfield_11113": "{{ site.data.jira.workbook }}",
                 {% endif -%}
-                "labels": ["Accessibility", "WCAG_Level_{{a11y.Level}}", "WCAG_Criteria_{{a11y.SC | replace: " ", "_"}}"]
+                "labels": ["Spell_Test", "Accessibility", "WCAG_Level_{{a11y.Level}}", "WCAG_Criteria_{{a11y.SC | replace: " ", "_"}}"]
             }
   
         }{% unless forloop.last %},{% endunless %}
