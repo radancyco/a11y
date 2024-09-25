@@ -1,13 +1,38 @@
 {
+
     "issueUpdates": [
       
-        {%- for bug in site.data.hiring-events -%}{
+        {%- for a11y in site.data.hiring-events -%}{
 
-            {%- assign description = "\n\n*Audit ID:* " | append: bug.ID | append: "\n\n*WCAG Success Criteria:* " | append: bug.SC | append: "\n\n*WCAG Level:* " | append: bug.Level | append: "\n\n*WCAG Synopsis:* " | append: bug.Synopsis | append: "\n\n*Issue/Recommendation:*\n\n" | append: bug.Issue | append: "\n\n*Testing Criteria:* \n\n" | append: bug.Testing | append: "\n\n*Links:* \n\n" | append: bug.Links | append: "\n\n*Screenshot/Video/URL:* \n\n" | append: bug.Screengrab | append: "\n\n*Impact/Severity:* " | append: bug.Impact -%}
+            {%- assign description = "\n\n*Audit ID:* " | append: a11y.ID | append: "\n\n*WCAG Success Criteria:* " | append: a11y.SC | append: "\n\n*WCAG Level:* " | append: a11y.Level | append: "\n\n*WCAG Synopsis:* " | append: a11y.Synopsis | append: "\n\n*Impact/Severity:* " | append: a11y.Impact | append: "\n\n*Issue/Recommendation:*\n\n" | append: a11y.Issue -%}
+            
+            {%- if a11y.Testing -%}
 
-            {%- if bug.ProductNote -%}
+                {%- assign Testing = "\n\n*Testing Criteria:* \n\n" | append: a11y.Testing -%}
+          
+                {%- assign description = description | append: Testing -%}
+          
+            {%- endif %}
 
-              {%- assign productNote = "\n\n*Note:* " | append: bug.ProductNote -%}
+            {%- if a11y.Links -%}
+
+                {%- assign Links = "\n\n*Links:* \n\n" | append: a11y.Links -%}
+          
+                {%- assign description = description | append: Links -%}
+          
+            {%- endif %}
+            
+            {%- if a11y.Screengrab -%}
+
+                {%- assign Screengrab = "\n\n*Screenshot/Video/URL:* \n\n" | append: a11y.Screengrab -%}
+          
+                {%- assign description = description | append: Screengrab -%}
+          
+            {%- endif %}
+
+            {%- if a11y.ProductNote -%}
+
+              {%- assign productNote = "\n\n*Note:* " | append: a11y.ProductNote -%}
             
               {%- assign description = description | append: productNote -%}
             
@@ -16,17 +41,37 @@
             "fields": {
             
                 "project": { 
-                    "key": "BRAZ"
+
+                    "key": "{{ site.data.jira.project.key }}"
+
                 },
-                "summary": {{ bug.Summary | prepend: " - " | prepend: bug.ID | prepend: "Accessibility Audit Test: " | jsonify }},
+                "summary": {{ a11y.Summary | prepend: " - " | prepend: a11y.ID | prepend: "Accessibility Audit Test: " | jsonify }},
                 "description": {{ description | jsonify | replace: "\\n", "\n" }},
+                {%- if site.data.jira.project.key == "BRAZ" %}
+                {%- if a11y.Environment -%}
+                "environment": {{ a11y.Environment | jsonify }},
+                {%- endif -%}
+                {% endif -%}
                 "issuetype": {
-                    "name": "Test"
+
+                    "name": "{{ site.data.jira.issuetype.name }}"
+
                 },
                 "assignee": {
-                    "name": "Mspellac"
+
+                    "name": "{{ site.data.jira.assignee.name }}"
+
                 },
-                "labels": ["Accessibility", "WCAG_Level_{{bug.Level}}", "WCAG_Criteria_{{bug.SC | replace: " ", "_"}}"]
+
+                {%- if site.data.jira.project.key == "UDS" %}
+                "customfield_11112": [{
+                
+                    "id": "{{ site.data.jira.client.id }}"
+                
+                }],
+                "customfield_11113": "{{ site.data.jira.workbook }}",
+                {% endif -%}
+                "labels": ["Accessibility", "WCAG_Level_{{a11y.Level}}", "WCAG_Criteria_{{a11y.SC | replace: " ", "_"}}"]
             }
   
         }{% unless forloop.last %},{% endunless %}
