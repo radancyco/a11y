@@ -1789,7 +1789,7 @@
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .fs-m-1 {
         box-sizing: border-box;
         flex: 0 0 calc(8.33333% - var(--fs-spacing-col) + (var(--fs-spacing-col)/ (12 / 1)))
@@ -5396,7 +5396,7 @@
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .m-m-0 {
         margin: 0
     }
@@ -6431,7 +6431,7 @@ main:after {
     display: block
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     main {
         overflow-x: visible;
         position: relative
@@ -6469,7 +6469,7 @@ h1 {
     word-break: break-word
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     h1 {
         font-size: 3rem
     }
@@ -6480,7 +6480,7 @@ h2 {
     line-height: 1.4
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     h2 {
         font-size: 2rem
     }
@@ -6490,7 +6490,7 @@ h3 {
     font-size: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     h3 {
         font-size: 1.25rem
     }
@@ -6501,7 +6501,7 @@ h3 {
     line-height: 1.06
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .headline-1 {
         font-size: 3rem
     }
@@ -6513,7 +6513,7 @@ h3 {
     line-height: 1.4
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .headline-2,
     .hero-banner-half--left .cms-content h1 {
         font-size: 2rem
@@ -6524,7 +6524,7 @@ h3 {
     font-size: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .headline-3 {
         font-size: 1.25rem
     }
@@ -6535,7 +6535,7 @@ h3 {
     line-height: 1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .homepage-title {
         font-size: 4.375rem
     }
@@ -6545,7 +6545,7 @@ h3 {
     font-size: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .body-size-text {
         font-size: 1rem
     }
@@ -6560,7 +6560,7 @@ h3 {
     line-height: 1.4
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .medium-large-text {
         font-size: 1.5rem
     }
@@ -6709,7 +6709,7 @@ video {
     position: sticky
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .mobile-only {
         display: none !important
     }
@@ -8208,7 +8208,7 @@ body.section-guide [data-section-guide]:before {
     background-repeat: no-repeat
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .error--background {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/backgrounds/background--error.jpg)
     }
@@ -8333,7 +8333,7 @@ body.section-guide [data-section-guide]:before {
     position: relative
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--ajd2,
     .disclosure--technology--job-areas {
         grid-template-columns: repeat(6, 1fr)
@@ -8350,7 +8350,7 @@ body.section-guide [data-section-guide]:before {
     word-break: break-word
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--ajd2 .disclosure--btn,
     .disclosure--technology--job-areas .disclosure--btn {
         padding: 5.5rem 1rem;
@@ -8370,7 +8370,7 @@ body.section-guide [data-section-guide]:before {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--ajd2 .disclosure--btn .fs-row,
     .disclosure--technology--job-areas .disclosure--btn .fs-row {
         flex-direction: column;
@@ -8384,7 +8384,7 @@ body.section-guide [data-section-guide]:before {
     width: .875rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--ajd2 .disclosure--icon,
     .disclosure--technology--job-areas .disclosure--icon {
         display: none
@@ -8418,7 +8418,7 @@ body.section-guide [data-section-guide]:before {
     aspect-ratio: 1/1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--ajd2 .disclosure--technology--icon-wrapper,
     .disclosure--technology--job-areas .disclosure--technology--icon-wrapper {
         width: Min(100%, 5.9375rem)
@@ -8447,14 +8447,14 @@ body.section-guide [data-section-guide]:before {
     border-bottom-right-radius: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd2-benefits .disclosure--heading.open {
         border-bottom-left-radius: 2rem;
         border-bottom-right-radius: 2rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd2-benefits .disclosure--heading {
         transition: all .2s
     }
@@ -8476,7 +8476,7 @@ body.section-guide [data-section-guide]:before {
     border-radius: 0 0 2rem 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd2-benefits .disclosure--content__overlay {
         position: absolute;
         transform: translate(-50%, -50%);
@@ -8489,7 +8489,7 @@ body.section-guide [data-section-guide]:before {
     height: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd2-benefits .disclosure--btn {
         display: flex;
         flex-direction: column;
@@ -8510,7 +8510,7 @@ body.section-guide [data-section-guide]:before {
     transform: translateY(-50%)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd2-benefits .disclosure-benefits-icon {
         position: initial;
         transform: none
@@ -8586,7 +8586,7 @@ body.section-guide [data-section-guide]:before {
     min-height: 28.75rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--hamburg {
         -moz-column-gap: 1rem;
         column-gap: 1rem;
@@ -8598,7 +8598,7 @@ body.section-guide [data-section-guide]:before {
     width: 2.125rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--hamburg-icon {
         width: Min(85%, 5.625rem)
     }
@@ -8617,7 +8617,7 @@ body.section-guide [data-section-guide]:before {
     outline-color: #fff
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--hamburg .disclosure--btn {
         flex-direction: column;
         padding-block: 2.5rem;
@@ -8654,7 +8654,7 @@ body.section-guide [data-section-guide]:before {
     text-align: center
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--hamburg .disclosure--inner-content h2,
     .disclosure--hamburg .disclosure--inner-content h3 {
         margin-inline-start: 0;
@@ -8662,7 +8662,7 @@ body.section-guide [data-section-guide]:before {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--hamburg .disclosure--content--inner-img {
         position: absolute;
         top: 7ch;
@@ -8674,13 +8674,13 @@ body.section-guide [data-section-guide]:before {
     max-width: 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--hamburg .disclosure--content--inner-img img {
         max-width: none
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .disclosure--col-5 {
         grid-template-columns: repeat(5, 1fr)
     }
@@ -8805,7 +8805,7 @@ body.section-guide [data-section-guide]:before {
     height: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hero-banner--container {
         display: flex;
         flex-direction: column;
@@ -8834,7 +8834,7 @@ body.section-guide [data-section-guide]:before {
     z-index: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hero-banner .hero-banner--portrait .media-module {
         left: auto;
         right: 0;
@@ -8849,7 +8849,7 @@ body.section-guide [data-section-guide]:before {
     object-position: right bottom
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hero-banner .hero-banner--portrait img {
         transform-origin: 100% 100%;
         transform: scale(1.06)
@@ -8887,7 +8887,7 @@ body.section-guide [data-section-guide]:before {
     z-index: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hero-banner-half--left {
         border: 2.3rem solid #00aeef
     }
@@ -8902,7 +8902,7 @@ body.section-guide [data-section-guide]:before {
     flex-wrap: wrap
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hero-banner-half--left .cms-content {
         min-height: 24rem
     }
@@ -8915,7 +8915,7 @@ body.section-guide [data-section-guide]:before {
     z-index: 1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hero-banner-half__btn-row {
         display: flex
     }
@@ -8928,7 +8928,7 @@ body.section-guide [data-section-guide]:before {
     margin-bottom: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hero-banner-half__btn-row #filter-slideout-toggle,
     .hero-banner-half__btn-row .btn,
     .hero-banner-half__btn-row .pagination-page-jump {
@@ -8955,7 +8955,7 @@ body.section-guide [data-section-guide]:before {
     object-fit: cover
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .dark-layer-gradient:after {
         content: '';
         display: block;
@@ -9116,7 +9116,7 @@ iframe.featherlight-inner {
     overflow: hidden
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .media--circle .media-module {
         margin-inline: 0
     }
@@ -9144,7 +9144,7 @@ iframe.featherlight-inner {
     position: absolute
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .default--main .blue-border-image {
         display: none
     }
@@ -9166,7 +9166,7 @@ iframe.featherlight-inner {
     background-color: rgba(39, 39, 39, .47)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .media-bg-text--100.media-bg-text-left-mid .media-module:before {
         width: 55%;
         background: linear-gradient(90deg, rgba(39, 39, 39, .47) 82.5%, rgba(39, 39, 39, 0) 100%)
@@ -9299,7 +9299,7 @@ iframe.featherlight-inner {
     font-weight: 700
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .navigation--search-toggle--text {
         clip: unset;
         position: relative;
@@ -9391,7 +9391,7 @@ iframe.featherlight-inner {
     --fs-spacing-col: 1ch
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .helpdesk-button {
         padding-right: .9375rem
     }
@@ -9411,7 +9411,7 @@ iframe.featherlight-inner {
     border-radius: 50%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .helpdesk-button .tooltip {
         display: block
     }
@@ -9454,7 +9454,7 @@ iframe.featherlight-inner {
     font-weight: 700
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .helpdesk-button__front-text {
         clip: unset;
         position: relative;
@@ -9502,7 +9502,7 @@ iframe.featherlight-inner {
     overflow: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .navigation--save-jobs--list {
         right: 50%;
         transform: translateX(50%)
@@ -9611,7 +9611,7 @@ iframe.featherlight-inner {
     font-weight: 700
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .navigation-menu--link-text {
         clip: unset;
         position: relative;
@@ -9833,7 +9833,7 @@ footer .social-media-list a {
     height: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .homepage--slider--who-we-are .item {
         border-radius: 8px 8px 0 0
     }
@@ -9846,7 +9846,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .homepage--slider--who-we-are .who-we-are--slider--heading {
         max-width: 9ch
     }
@@ -10005,7 +10005,7 @@ footer .social-media-list a {
     transform: translate(-50%, -50%)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .where-youll-work--bubble.reveal {
         top: 50%;
         height: 28.75rem;
@@ -10028,7 +10028,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .where-youll-work--bubble.reveal .bubble--content {
         max-width: 30ch
     }
@@ -10420,7 +10420,7 @@ footer .social-media-list a {
     max-width: Min(67%, 32ch)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .homepage--slider--early-careers .item p {
         max-width: Min(80%, 22ch)
     }
@@ -10749,7 +10749,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .homepage--mobile--nav {
         display: none
     }
@@ -11057,7 +11057,7 @@ footer .social-media-list a {
     margin-bottom: 1.25rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .job-map--info-wrapper {
         margin-bottom: 1.5rem
     }
@@ -11169,7 +11169,7 @@ footer .social-media-list a {
     background-position: center
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .direction-mode {
         transition: .5s all cubic-bezier(.33, 1, .68, 1)
     }
@@ -11342,7 +11342,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--item--background img {
         right: calc(55% + 30px);
         height: 100%;
@@ -11363,7 +11363,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--item--first .purpose-value--item--background img {
         height: 100%
     }
@@ -11374,7 +11374,7 @@ footer .social-media-list a {
     opacity: 1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--active .purpose-value--item--background img {
         transform: translateX(0)
     }
@@ -11384,7 +11384,7 @@ footer .social-media-list a {
     height: 7.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--item--background .mini-img {
         height: 100%
     }
@@ -11396,7 +11396,7 @@ footer .social-media-list a {
     max-width: 71.5625rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full {
         display: flex;
         align-items: center
@@ -11407,7 +11407,7 @@ footer .social-media-list a {
     padding: 2.8rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--padding p {
         max-width: 22vw
     }
@@ -11435,7 +11435,7 @@ footer .social-media-list a {
     overflow: hidden
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item {
         margin-top: 0;
         margin-left: -3rem;
@@ -11450,7 +11450,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item.purpose-value--active:focus,
     .purpose-value--full .purpose-value--item.purpose-value--active:hover,
     .purpose-value--full .purpose-value--item.purpose-value--item--first:hover {
@@ -11458,7 +11458,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item:nth-of-type(3) .rotated-text {
         display: inline-block;
         transform: rotate(-90deg) translateY(-20px)
@@ -11471,7 +11471,7 @@ footer .social-media-list a {
     padding-bottom: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--first {
         margin-left: 0
     }
@@ -11481,7 +11481,7 @@ footer .social-media-list a {
     padding-bottom: 190px
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--first.purpose-value--active {
         padding-bottom: 0
     }
@@ -11493,7 +11493,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--first .purpose-value--item--content .purpose-value--padding {
         margin-left: 0;
         margin-right: auto;
@@ -11514,7 +11514,7 @@ footer .social-media-list a {
     order: 1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--close {
         position: absolute;
         height: 100%;
@@ -11536,7 +11536,7 @@ footer .social-media-list a {
     vertical-align: middle
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--close-icon {
         margin: auto
     }
@@ -11560,7 +11560,7 @@ footer .social-media-list a {
     background-color: transparent
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--toggle {
         position: absolute;
         right: 0;
@@ -11570,7 +11570,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--toggle.text--dark-claret {
         background: linear-gradient(-90deg, #ffc9c9 30%, rgba(255, 201, 201, 0) 100%)
     }
@@ -11580,7 +11580,7 @@ footer .social-media-list a {
     display: block
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--toggle .rotated-text {
         display: inline-block;
         transform: rotate(-90deg) translateY(-30px)
@@ -11594,7 +11594,7 @@ footer .social-media-list a {
     overflow: hidden
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--content {
         height: auto;
         width: 60rem;
@@ -11611,7 +11611,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item--content .purpose-value--padding {
         margin-left: auto;
         margin-right: 6.25rem;
@@ -11619,7 +11619,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item.purpose-value--active {
         height: 35.625rem;
         width: 70%;
@@ -11631,7 +11631,7 @@ footer .social-media-list a {
     height: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--item.purpose-value--active .purpose-value--item--content {
         padding-left: 2.8rem;
         height: 100%;
@@ -11655,7 +11655,7 @@ footer .social-media-list a {
     line-height: .9
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--heading--larger {
         font-size: 4rem
     }
@@ -11666,7 +11666,7 @@ footer .social-media-list a {
     display: inline-block
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--select-icon {
         animation: pvBounce 1s infinite
     }
@@ -11689,7 +11689,7 @@ footer .social-media-list a {
     padding: 0 2.8rem 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--full .purpose-value--carousel-navigation {
         text-align: right;
         padding-right: 6.25rem
@@ -12010,7 +12010,7 @@ footer .social-media-list a {
     background-repeat: no-repeat
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .purpose-value--mini .purpose-value--item--first {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/content-pages/horizontal-accordion/background--rutherford-mini.jpg)
     }
@@ -12349,7 +12349,7 @@ footer .social-media-list a {
     margin-inline: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider {
         padding: 7rem 2rem 8rem 2rem;
         margin-bottom: 9rem
@@ -12370,14 +12370,14 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider>.max-width-container {
         position: relative;
         display: block
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider>.max-width-container {
         overflow: inherit
     }
@@ -12424,7 +12424,7 @@ footer .social-media-list a {
     color: #4c3d6c
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider__quote {
         font-weight: 500;
         font-size: 1.2rem;
@@ -12462,7 +12462,7 @@ footer .social-media-list a {
     border-radius: 10px
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider__flex {
         display: flex;
         align-items: center;
@@ -12476,7 +12476,7 @@ footer .social-media-list a {
     justify-content: space-between
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider__right {
         flex-basis: 48%
     }
@@ -12492,7 +12492,7 @@ footer .social-media-list a {
     flex-basis: 80%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider__right-quote {
         flex-basis: 70%;
         margin-bottom: 3rem
@@ -12523,7 +12523,7 @@ footer .social-media-list a {
     flex-basis: 20%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider__right-image {
         flex-basis: 7.5rem;
         position: relative
@@ -12543,7 +12543,7 @@ footer .social-media-list a {
     max-width: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider__right-image img {
         width: 15rem;
         transform: none;
@@ -12566,13 +12566,13 @@ footer .social-media-list a {
     line-height: 1.5
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider__left {
         flex-basis: 48%
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider .tab-slider--nav-intro {
         position: absolute;
         left: 50%;
@@ -12587,7 +12587,7 @@ footer .social-media-list a {
     position: relative
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider .tab-slider--nav {
         margin: 0
     }
@@ -12625,7 +12625,7 @@ footer .social-media-list a {
     transform: translateX(100%)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider .tab-slider--tabs {
         width: auto;
         border: 6px solid #fff;
@@ -12646,7 +12646,7 @@ footer .social-media-list a {
     border-radius: 35px
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider .tab-slider--tabs .glider {
         width: 50%
     }
@@ -12702,7 +12702,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-programmes-slider .tab-slider--trigger {
         padding: 1rem 2rem
     }
@@ -12714,7 +12714,7 @@ footer .social-media-list a {
     background-size: cover
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programme-location {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/discovery/programme-map-bg.png)
     }
@@ -12724,7 +12724,7 @@ footer .social-media-list a {
     --grid-item-width: 12.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-module {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/discovery/discovery-module-v2.png);
         background-size: cover;
@@ -12737,7 +12737,7 @@ footer .social-media-list a {
     display: block
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-wrapper {
         display: flex
     }
@@ -12747,7 +12747,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .discovery-wrapper .discovery-module-text {
         padding: 0 0 0 5rem
     }
@@ -12906,7 +12906,7 @@ footer .social-media-list a {
     border-bottom: 1px solid #e2e2e2
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .faq-accordion .panel--sticky {
         position: sticky;
         top: 6.875rem;
@@ -12999,7 +12999,7 @@ footer .social-media-list a {
     border: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .faq-accordion .icon-image {
         min-height: 100px
     }
@@ -13077,7 +13077,7 @@ footer .social-media-list a {
     border-bottom: solid #e1c0e2 4px
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .story-cards {
         display: flex;
         justify-content: space-between
@@ -13097,7 +13097,7 @@ footer .social-media-list a {
     margin-bottom: 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .story-cards .story {
         flex-direction: row;
         width: 32%;
@@ -13113,7 +13113,7 @@ footer .social-media-list a {
     max-width: 9rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .story-cards .story--img {
         max-width: 5rem
     }
@@ -13161,7 +13161,7 @@ footer .social-media-list a {
     align-self: end
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .story-cards .story--right {
         height: 50%;
         align-self: flex-start;
@@ -13178,7 +13178,7 @@ footer .social-media-list a {
     border: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .story-cards .story--button {
         margin-top: 1rem;
         width: 100%
@@ -13213,7 +13213,7 @@ footer .social-media-list a {
     margin-block-end: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .media-reel-slider {
         justify-content: flex-end
     }
@@ -13230,7 +13230,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .media-reel-slider--container {
         margin-block-start: -3rem;
         width: 54%
@@ -13315,7 +13315,7 @@ footer .social-media-list a {
     position: relative
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .related-content--cards-list.vertical {
         --grid-item-width: 17.8125rem;
         max-width: 62.5rem;
@@ -13344,7 +13344,7 @@ footer .social-media-list a {
     z-index: 1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .spotlight--cards-list:after {
         content: "";
         background-color: #fff;
@@ -13599,13 +13599,13 @@ footer .social-media-list a {
     transition: all .5s ease-in-out
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .marketing-cards--section .team-card {
         transform: scale(.88)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .marketing-cards--section .team-card:focus-within,
     .marketing-cards--section .team-card:hover {
         transform: scale(1)
@@ -13807,7 +13807,7 @@ footer .social-media-list a {
     width: 49%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .privacy-policy .table-data {
         width: 33%
     }
@@ -13946,7 +13946,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-filters--section {
         border-bottom: 1px solid #e2e2e2;
         border-left: 1px solid #e2e2e2
@@ -13960,7 +13960,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-filters--wrapper {
         -moz-column-gap: 5%;
         column-gap: 5%
@@ -14005,7 +14005,7 @@ footer .social-media-list a {
     z-index: -1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-filters--button:before {
         content: ''
     }
@@ -14015,7 +14015,7 @@ footer .social-media-list a {
     background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/icon-arrow-up--black.svg)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-filters--button.expandable-child-open:before {
         background-color: #e1c0e2
     }
@@ -14027,7 +14027,7 @@ footer .social-media-list a {
     margin: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-filter-list {
         position: absolute;
         padding-block: .5rem;
@@ -14106,13 +14106,13 @@ footer .social-media-list a {
     gap: var(--fs-spacing-col)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-results-options {
         padding-block: 1rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-results--section {
         padding-inline: 1rem;
         border-left: 1px solid #e2e2e2
@@ -14127,7 +14127,7 @@ footer .social-media-list a {
     --grid-item-width: 12.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .search-results--card {
         padding-block: 1rem
     }
@@ -14142,7 +14142,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .pagination {
         justify-content: center;
         -moz-column-gap: 10%;
@@ -14327,7 +14327,7 @@ footer .social-media-list a {
     color: #272727
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .callout--jobdetails__image {
         transform: scale(1.1);
         width: 72%
@@ -14346,7 +14346,7 @@ footer .social-media-list a {
     font-size: 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .job-details--title {
         font-size: 2.5rem
     }
@@ -14465,7 +14465,7 @@ footer .social-media-list a {
     margin: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .default-jobdetails .callout--jobdetails__wrapping-link {
         max-width: 80%
     }
@@ -14501,7 +14501,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .advanced-job .ajd_header {
         padding-block: 1.5rem;
         padding-inline: 3rem 1.5rem
@@ -14573,7 +14573,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .advanced-job .ajd_section--quote {
         max-width: 42.5rem
     }
@@ -14710,7 +14710,7 @@ footer .social-media-list a {
     background-position: 10% 10%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .advanced-job .ajd_section--quote .quote-slider--item-background {
         min-height: 53.125rem
     }
@@ -14955,13 +14955,13 @@ footer .social-media-list a {
     height: 21.875rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-1 .ajd_section--why-barclays .ajd-why-barclays--background {
         height: auto
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-1 .ajd_section--why-barclays.wrapper-bg--customerservice-uk {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/cms//img/jobs/background--right-for-you.jpg);
         background-position: center;
@@ -15034,7 +15034,7 @@ footer .social-media-list a {
     border-radius: 1rem 1rem 0 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-2 .ajd-intro {
         border-radius: 1rem 0 0 0
     }
@@ -15117,7 +15117,7 @@ footer .social-media-list a {
     border-radius: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-2 .ajd-2-side {
         min-height: 1000px;
         max-height: 900px;
@@ -15155,7 +15155,7 @@ footer .social-media-list a {
     font-size: 1.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-2 .explore-location--title {
         text-align: center
     }
@@ -15253,7 +15253,7 @@ footer .social-media-list a {
     background-repeat: no-repeat
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .ajd-tec-title-details {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/tech/banner-ajd-tech-lg.jpg)
     }
@@ -15510,7 +15510,7 @@ footer .social-media-list a {
     display: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .img-overlap {
         display: block
     }
@@ -15525,7 +15525,7 @@ footer .social-media-list a {
     padding-bottom: 2.1875rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .media-reel-slider {
         padding-bottom: 0
     }
@@ -15540,7 +15540,7 @@ footer .social-media-list a {
     top: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .media-reel-slider--container .slick-autoplay-toggle-button,
     .ajd-design-3 .media-reel-slider--container .slick-next,
     .ajd-design-3 .media-reel-slider--container .slick-prev,
@@ -15553,7 +15553,7 @@ footer .social-media-list a {
     text-align: center
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .headline-3 {
         text-align: left
     }
@@ -15574,7 +15574,7 @@ footer .social-media-list a {
     margin: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .media-reel-slider--container .reel-label-wrapper,
     .ajd-design-3 .media-reel-slider--container .slick-autoplay-toggle-button,
     .ajd-design-3 .media-reel-slider--container .slick-next,
@@ -15596,7 +15596,7 @@ footer .social-media-list a {
     transform: translateX(-5.3125rem)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .media-reel-slider--container .slick-next {
         right: 0;
         transform: translateX(0)
@@ -15673,7 +15673,7 @@ footer .social-media-list a {
     min-height: 18.75rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .quote-slider-v2 .quote-img-wrap {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/jobs/tech-graph-AJDquote-lg.png)
     }
@@ -15686,7 +15686,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-3 .quote-slider-v2 .ajd-slick-dots--wrapper,
     .ajd-design-3 .quote-slider-v2 .wrapper {
         max-width: 30rem
@@ -15879,7 +15879,7 @@ footer .social-media-list a {
     border-color: #fff
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-5 .ajd_header {
         padding-left: 24px
     }
@@ -15924,7 +15924,7 @@ footer .social-media-list a {
     display: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-5 .ajd-tec-title-details {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/tech/banner-ajd-tech-lg.jpg)
     }
@@ -15971,7 +15971,7 @@ footer .social-media-list a {
     font-size: 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-5 .callout__excerpt h2 {
         font-size: 3rem
     }
@@ -16535,7 +16535,7 @@ footer .social-media-list a {
     max-width: 11.5625rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-5 .benefit-list-wrapper .ajd--heading {
         max-width: 100%;
         text-align: center;
@@ -16574,7 +16574,7 @@ footer .social-media-list a {
     max-height: 60%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-5 .benefit-list .benefit-item {
         height: 11.875rem;
         width: 11.875rem
@@ -16600,7 +16600,7 @@ footer .social-media-list a {
     display: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-5 .img-overlap {
         display: block
     }
@@ -16645,7 +16645,7 @@ footer .social-media-list a {
     border-color: #fff
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .ajd_header {
         padding-left: 24px
     }
@@ -16690,7 +16690,7 @@ footer .social-media-list a {
     display: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .hero-banner--portrait {
         display: block
     }
@@ -16724,7 +16724,7 @@ footer .social-media-list a {
     font-size: 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .callout__excerpt h2 {
         font-size: 3rem
     }
@@ -16928,7 +16928,7 @@ footer .social-media-list a {
     font-size: 1.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .locations--wrapper h2 {
         font-size: 2.875rem
     }
@@ -17143,7 +17143,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .media-text--50-50--mid .cms-content {
         padding-left: 13%
     }
@@ -17252,7 +17252,7 @@ footer .social-media-list a {
     font-size: 2.625rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .benefit-list-wrapper .ajd--heading {
         max-width: 100%;
         text-align: center
@@ -17290,7 +17290,7 @@ footer .social-media-list a {
     max-height: 60%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .benefit-list .benefit-item {
         height: 11.875rem;
         width: 11.875rem
@@ -17432,7 +17432,7 @@ footer .social-media-list a {
     right: 5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-design-6 .application-process {
         margin-bottom: 2.5rem
     }
@@ -17448,7 +17448,7 @@ footer .social-media-list a {
     z-index: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .job-areas--tabcordion:before {
         content: '';
         position: absolute;
@@ -17487,7 +17487,7 @@ footer .social-media-list a {
     transition: .3s all ease-in-out
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .job-areas--tabcordion .tab-accordion__button {
         margin-block: .625rem;
         background-color: transparent
@@ -17542,7 +17542,7 @@ footer .social-media-list a {
     position: relative
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards {
         display: flex;
         justify-content: space-between
@@ -17556,7 +17556,7 @@ footer .social-media-list a {
     margin: .625rem 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-wrap {
         height: 21.5625rem;
         width: 18%;
@@ -17581,7 +17581,7 @@ footer .social-media-list a {
     opacity: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-wrap:after {
         top: 29%;
         left: 80%;
@@ -17605,7 +17605,7 @@ footer .social-media-list a {
     background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-2-sm.png)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-wrap:nth-child(1):after {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-2-lg.png)
     }
@@ -17616,7 +17616,7 @@ footer .social-media-list a {
     background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-1-sm.png)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-wrap:nth-child(2):after {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-1-lg.png)
     }
@@ -17627,7 +17627,7 @@ footer .social-media-list a {
     background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-2-sm.png)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-wrap:nth-child(3):after {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-2-lg.png)
     }
@@ -17638,7 +17638,7 @@ footer .social-media-list a {
     background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-1-sm.png)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-wrap:nth-child(4):after {
         background-image: url(https://tbcdn.talentbrew.com/company/13015/v1_0/img/icons/arrow-1-lg.png)
     }
@@ -17663,7 +17663,7 @@ footer .social-media-list a {
     border-radius: 2.0625rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card {
         align-items: center;
         justify-content: space-evenly;
@@ -17677,7 +17677,7 @@ footer .social-media-list a {
     margin-right: .875rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-icon {
         margin: 0
     }
@@ -17707,7 +17707,7 @@ footer .social-media-list a {
     font-size: 1.4rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-application-process .process-cards--card-title {
         font-size: 1.2rem;
         width: 100%;
@@ -17725,7 +17725,7 @@ footer .social-media-list a {
     background: linear-gradient(to bottom, #fff 0, #fff 12%, #066 0, #066 100%, #fff 0, #fff 17%)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles {
         background: linear-gradient(to bottom, #fff 0, #fff 32%, #066 0, #066 76%, #fff 0, #fff 67%)
     }
@@ -17736,7 +17736,7 @@ footer .social-media-list a {
     flex-direction: column
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--wrap {
         flex-direction: row
     }
@@ -17757,7 +17757,7 @@ footer .social-media-list a {
     padding: 2.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--card {
         order: 2
     }
@@ -17769,7 +17769,7 @@ footer .social-media-list a {
     order: 2
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--left {
         height: auto;
         width: 32%;
@@ -17831,7 +17831,7 @@ footer .social-media-list a {
     order: 3
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--right {
         height: auto;
         width: 32%
@@ -17853,7 +17853,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--right .bubble:nth-child(1) {
         right: 0;
         top: 15%
@@ -17866,7 +17866,7 @@ footer .social-media-list a {
     top: 15%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--right .bubble:nth-child(2) {
         top: 31%;
         left: 0
@@ -17883,7 +17883,7 @@ footer .social-media-list a {
     top: 35%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--right .bubble:nth-child(3) {
         top: 12.125rem;
         right: 0
@@ -17895,7 +17895,7 @@ footer .social-media-list a {
     right: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .success-bubbles--right .bubble:nth-child(4) {
         left: 0;
         top: 15.875rem
@@ -17925,7 +17925,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-spotlight--images {
         height: auto
     }
@@ -17949,7 +17949,7 @@ footer .social-media-list a {
     width: 63%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-spotlight--images div {
         height: 12.375rem;
         max-width: 18.9375rem
@@ -17969,7 +17969,7 @@ footer .social-media-list a {
     transform: translateY(-50%)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-spotlight--images div:nth-child(2) {
         right: 3.75rem
     }
@@ -17984,7 +17984,7 @@ footer .social-media-list a {
     background: linear-gradient(to bottom, #fff 0, #fff 22%, #001276 0, #001276 90%)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials {
         background: linear-gradient(to bottom, #fff 0, #fff 7%, #001276 0, #001276 100%, #fff 0, #fff 17%)
     }
@@ -18000,20 +18000,20 @@ footer .social-media-list a {
     margin-bottom: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider .slick-list {
         overflow: hidden
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider .slick-slide {
         margin: 0 1.6875rem;
         padding-inline: 3rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider .slick-list {
         margin: 0 -1.6875rem
     }
@@ -18031,7 +18031,7 @@ footer .social-media-list a {
     content: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider .slick-prev {
         width: 1.35rem;
         height: 2.25rem;
@@ -18052,7 +18052,7 @@ footer .social-media-list a {
     content: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider .slick-next {
         width: 1.35rem;
         height: 2.25rem;
@@ -18072,7 +18072,7 @@ footer .social-media-list a {
     flex-direction: column
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--content {
         flex-direction: row
     }
@@ -18088,7 +18088,7 @@ footer .social-media-list a {
     font-weight: 700
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--quote blockquote {
         font-size: 1.2rem;
         padding-top: 2rem;
@@ -18115,7 +18115,7 @@ footer .social-media-list a {
     border-radius: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--img {
         border-radius: 3.5625rem
     }
@@ -18128,7 +18128,7 @@ footer .social-media-list a {
     padding-bottom: 2rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--controls {
         position: absolute;
         width: auto;
@@ -18163,7 +18163,7 @@ footer .social-media-list a {
     content: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--controls .slick-prev {
         width: 1.35rem;
         height: 2.25rem;
@@ -18187,7 +18187,7 @@ footer .social-media-list a {
     content: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--controls .slick-next {
         width: 1.35rem;
         height: 2.25rem
@@ -18211,7 +18211,7 @@ footer .social-media-list a {
     transition: .5s all cubic-bezier(.33, 1, .68, 1)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--controls .slick-dots li button {
         width: 2.43125rem
     }
@@ -18223,7 +18223,7 @@ footer .social-media-list a {
     border: solid 1px #fff
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .ajd-testimonials-slider--controls .slick-dots li.slick-active button {
         width: 4.5rem
     }
@@ -18233,13 +18233,13 @@ footer .social-media-list a {
     margin-block-end: 1.25rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .our-locations--section {
         margin-block-end: 1.25rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-wrapper {
         display: flex
     }
@@ -18257,7 +18257,7 @@ footer .social-media-list a {
     min-height: 31.25rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-map {
         display: block;
         margin-left: auto;
@@ -18280,7 +18280,7 @@ footer .social-media-list a {
     padding: 1.25rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-info {
         padding-inline: 0;
         width: 30%
@@ -18291,7 +18291,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-info--tall {
         padding-block: 0;
         width: 35%
@@ -18328,7 +18328,7 @@ footer .social-media-list a {
     font-size: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-list {
         width: 12.5rem
     }
@@ -18356,7 +18356,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-box {
         position: relative;
         display: block;
@@ -18374,7 +18374,7 @@ footer .social-media-list a {
     margin-right: .3125rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-box-uk {
         position: absolute;
         left: 28%;
@@ -18389,7 +18389,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-box-americas {
         position: absolute;
         left: 5%;
@@ -18403,7 +18403,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-box-india {
         position: absolute;
         right: 8%;
@@ -18424,7 +18424,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .location-box-eu {
         position: absolute;
         left: 43%;
@@ -18480,7 +18480,7 @@ footer .social-media-list a {
     line-height: 1.333
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programme-section--heading,
     .programmes-cards--popup-heading,
     .programmes-cards--title {
@@ -18920,7 +18920,7 @@ footer .social-media-list a {
     height: auto !important
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup {
         border-radius: .8125rem
     }
@@ -18937,7 +18937,7 @@ footer .social-media-list a {
     height: 3rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-close {
         right: 1%;
         top: 2%;
@@ -18958,20 +18958,20 @@ footer .social-media-list a {
     text-align: left
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-heading {
         display: block
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-content {
         margin-top: 4.125rem;
         width: 52vw
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-content--w-95 {
         width: 95%
     }
@@ -18985,7 +18985,7 @@ footer .social-media-list a {
     z-index: -1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-overlap-img {
         height: 90%;
         width: auto;
@@ -19007,7 +19007,7 @@ footer .social-media-list a {
     margin-bottom: 12.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-tiles-wrap {
         flex-direction: row
     }
@@ -19055,7 +19055,7 @@ footer .social-media-list a {
     padding: 1.4375rem 1.25rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-tile {
         align-items: flex-end;
         justify-content: space-between
@@ -19081,7 +19081,7 @@ footer .social-media-list a {
     margin: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .programmes-cards--popup-intro {
         width: 50%
     }
@@ -19111,7 +19111,7 @@ footer .social-media-list a {
     border-radius: 3rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .awards-slider--nav {
         margin-top: 3rem;
         width: 15rem
@@ -19204,7 +19204,7 @@ footer .social-media-list a {
     justify-content: space-between
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-americas .resume-grid__tile--benefits {
         grid-column: 4/9;
         grid-row: 2/1
@@ -19215,7 +19215,7 @@ footer .social-media-list a {
     background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/content-pages/moasic/tile-benefits-americas.png)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-americas .resume-grid__tile--diversity {
         grid-column: 9/11;
         grid-row: 1/3
@@ -19234,7 +19234,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-americas .resume-grid__tile--distance {
         grid-row: 2/2
     }
@@ -19244,7 +19244,7 @@ footer .social-media-list a {
     color: #004750
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-americas .resume-grid__tile--location {
         grid-column: 1/6;
         grid-row: 2/2
@@ -19334,7 +19334,7 @@ footer .social-media-list a {
     background-color: #bfff21
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-apac .resume-grid__tile--benefits {
         grid-column: 4/9;
         grid-row: 2/1
@@ -19348,7 +19348,7 @@ footer .social-media-list a {
     background-image: url(https://tbcdn.talentbrew.com/company/13015/cms/img/content-pages/moasic/tile-benefits-apac-v2.png)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-apac .resume-grid__tile--diversity {
         grid-column: 9/11;
         grid-row: 1/3
@@ -19368,7 +19368,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-apac .resume-grid__tile--distance {
         width: calc(59%);
         grid-row: 2/2
@@ -19383,7 +19383,7 @@ footer .social-media-list a {
     margin-left: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .regional-pg-apac .resume-grid__tile--location {
         grid-column: 1/6;
         grid-row: 2/2
@@ -20203,7 +20203,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .sitemap--list {
         -moz-column-count: 3;
         column-count: 3
@@ -20539,7 +20539,7 @@ footer .social-media-list a {
     font-size: .625rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__preview__content {
         font-size: .875rem
     }
@@ -20554,7 +20554,7 @@ footer .social-media-list a {
     text-align: center
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__preview__title {
         padding: 0 40px
     }
@@ -20673,7 +20673,7 @@ footer .social-media-list a {
     visibility: hidden
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item--expanded .business-areas__item__tile {
         transform: translateZ(0) scale(1);
         width: calc(100vw - 50px);
@@ -20707,7 +20707,7 @@ footer .social-media-list a {
     overflow-y: scroll
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content {
         top: auto
     }
@@ -20723,7 +20723,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content__flex {
         display: flex;
         justify-content: space-between;
@@ -20737,13 +20737,13 @@ footer .social-media-list a {
     margin-left: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content__right .employe-content {
         flex-wrap: nowrap
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content__right .employe-content__info {
         flex-grow: 0;
         flex-basis: auto;
@@ -20755,7 +20755,7 @@ footer .social-media-list a {
     display: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content__right .employe-content__image {
         display: block;
         max-width: 250px
@@ -20770,7 +20770,7 @@ footer .social-media-list a {
     z-index: 2
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content__right .employe-bubble {
         margin-inline-end: -15px;
         width: 50%
@@ -20787,7 +20787,7 @@ footer .social-media-list a {
     transform: rotate(91deg)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content__right .employe-bubble:before {
         border-right: 45px solid transparent;
         border-top: 45px solid var(--bg-colour);
@@ -20821,7 +20821,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .business-areas__item__pop-up-content__job-list .slick-track {
         width: 100% !important
     }
@@ -20869,7 +20869,7 @@ footer .social-media-list a {
     object-fit: cover
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .vd-inline--content {
         min-height: 8.875rem
     }
@@ -21589,7 +21589,7 @@ footer .social-media-list a {
     -webkit-appearance: none
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--section .locations-map--select {
         width: 90%
     }
@@ -21607,7 +21607,7 @@ footer .social-media-list a {
     opacity: .12
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--section .locations-map--img--americas {
         -o-object-fit: none;
         object-fit: none;
@@ -21617,7 +21617,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--section .locations-map--img--uk {
         -o-object-fit: none;
         object-fit: none;
@@ -21627,7 +21627,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--section .locations-map--img--emea {
         -o-object-fit: unset;
         object-fit: unset;
@@ -21640,7 +21640,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--section .locations-map--img--apac {
         -o-object-fit: unset;
         object-fit: unset;
@@ -21689,7 +21689,7 @@ footer .social-media-list a {
     opacity: 1
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin {
         position: absolute
     }
@@ -21723,7 +21723,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin--label {
         display: none;
         position: absolute;
@@ -21736,7 +21736,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Whippany] {
         top: 49%;
         left: 75.5%
@@ -21749,7 +21749,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Wilmington] {
         top: 46%;
         left: 79%
@@ -21762,7 +21762,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=New-York] {
         top: 44%;
         left: 80.5%
@@ -21775,7 +21775,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Henderson] {
         top: 50%;
         left: 62%
@@ -21788,35 +21788,35 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Hamilton] {
         top: 45%;
         left: 72%
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Glasgow] {
         top: 29%;
         left: 68%
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Manchester] {
         top: 57%;
         left: 75.5%
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Knutsford] {
         top: 59%;
         left: 74.5%
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Northampton] {
         top: 69%;
         left: 85%
@@ -21835,7 +21835,7 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=London] {
         top: 75%;
         left: 90%
@@ -21854,139 +21854,139 @@ footer .social-media-list a {
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Stockholm] {
         top: 0;
         right: calc(50% - 14.875rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Stockholm] .office-location--pin--label {
         top: auto;
         bottom: -1.5rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Dublin] {
         top: 25%;
         left: calc(50% - 71px)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Amsterdam] {
         top: 30.5%;
         left: calc(50% + 3.875rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Frankfurt] {
         top: 33%;
         left: calc(50% + 105px)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Hamburg] {
         top: 26%;
         left: calc(50% + 7.5625rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Luxembourg] {
         top: 36%
     }
 }
 
-@media screen and (min-width:48rem) and (min-width:48rem) {
+@media screen and (min-width:68.75rem) and (min-width:68.75rem) {
     .office-location--pin[data-id=Luxembourg] {
         top: 36%;
         left: calc(50% + 4.375rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Paris] {
         top: 36%;
         left: calc(50% + 2.25rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Prague] {
         top: 34%;
         left: calc(50% + 12.875rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Madrid] {
         top: 52.5%;
         left: calc(50% - 1.25rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Lisbon] {
         top: 54%;
         left: calc(50% - 4.6875rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Milan] {
         top: 44%;
         left: calc(50% + 8.25rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Dubai] {
         top: 89.5%;
         left: calc(50% + 27.1875rem)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Singapore] {
         top: 67%;
         right: 25.4375rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=India] {
         top: 50%;
         right: 35rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Australia] {
         top: 90%;
         right: 12.5rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Japan] {
         top: 32%;
         right: 9.375rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--pin[data-id=Hong-Kong] {
         top: 48.5%;
         right: 21.5625rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--introduction {
         height: 46.875rem
     }
@@ -22004,7 +22004,7 @@ footer .social-media-list a {
     transition: .2s all ease-in-out
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .office-location--details {
         width: 50%
     }
@@ -22080,7 +22080,7 @@ footer .social-media-list a {
     perspective: 31.25rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .technologies-grid__tile {
         height: 10rem;
         width: 10rem
@@ -22294,7 +22294,7 @@ footer .social-media-list a {
     z-index: 0
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .tech-in-action--tabcordion:before {
         content: '';
         position: absolute;
@@ -22333,7 +22333,7 @@ footer .social-media-list a {
     transition: .3s all ease-in-out
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .tech-in-action--tabcordion .tab-accordion__button {
         padding-block: .875rem;
         width: 18%;
@@ -22484,7 +22484,7 @@ footer .social-media-list a {
     flex-direction: column
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .tab-accordion--wellbeing .tab-accordion--wellbeing--container {
         flex-direction: row;
         height: 100%
@@ -22513,7 +22513,7 @@ footer .social-media-list a {
     height: 12.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .tab-accordion--wellbeing .tab-accordion--wellbeing--image img {
         -o-object-position: right bottom;
         object-position: right bottom;
@@ -22539,7 +22539,7 @@ footer .social-media-list a {
     transform: rotate(-90deg)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .tab-accordion--wellbeing .text-toggle .arrowSpan {
         display: none
     }
@@ -22554,7 +22554,7 @@ footer .social-media-list a {
     overflow: visible
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .banking-on-tech--image img {
         -o-object-fit: cover;
         object-fit: cover;
@@ -22583,7 +22583,7 @@ footer .social-media-list a {
     margin-inline: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .technology--div-and-com--image img {
         -o-object-fit: cover;
         object-fit: cover;
@@ -22608,7 +22608,7 @@ footer .social-media-list a {
     margin-inline: auto
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .technology--flexible-working--image img {
         -o-object-fit: cover;
         object-fit: cover;
@@ -22650,7 +22650,7 @@ footer .social-media-list a {
     margin-bottom: 12.5rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .callout__image-card.no-heading a {
         margin-bottom: 0
     }
@@ -22676,7 +22676,7 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .video-tile--contents {
         height: 100%
     }
@@ -22697,7 +22697,7 @@ footer .social-media-list a {
     box-shadow: .125rem .625rem .625rem -.625rem #9d9d9d
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .videos-tiles-load .video-tile--button {
         display: none
     }
@@ -22815,7 +22815,7 @@ footer .social-media-list a {
     transform: translateX(50%)
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .early-careers-tech--discovery-image {
         height: 100%;
         width: 40%;
@@ -22836,7 +22836,7 @@ footer .social-media-list a {
     height: 20.625rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .early-careers-tech--discovery-image img {
         height: 100%;
         transform: scale(1.08);
@@ -22853,7 +22853,7 @@ footer .social-media-list a {
     border-radius: 0 0 .9375rem .9375rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .early-careers-tech--discovery--bg {
         height: auto;
         border-radius: 0 .9375rem .9375rem 0
@@ -22921,13 +22921,13 @@ footer .social-media-list a {
     width: 100%
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hub-filter__select-wrapper {
         max-width: calc(100% / 4 - 10px)
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hub-filter__select-wrapper {
         margin: 0;
         max-width: calc(2.875rem * 14.5 - 7.5rem)
@@ -23046,13 +23046,13 @@ footer .social-media-list a {
     font-size: 1rem
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hub-content__list--3-columns {
         --grid-item-width: 20.8125rem
     }
 }
 
-@media screen and (min-width:48rem) {
+@media screen and (min-width:68.75rem) {
     .hub-content__list--4-columns {
         --grid-item-width: 17.5rem
     }
