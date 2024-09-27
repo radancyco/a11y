@@ -1,12 +1,36 @@
 ---
-title: "Hiring Events: JIRA Issues Import"
+title: "Hiring Events: JIRA Management"
 ---
 
+<h2>Create Issues</h2>
+
 <ul>
-    <li><a href="index.json">Raw JSON</a></li>
-    <li><a href="jira.json">Liquid Template</a></li>
+    <li><a href="create-issues-raw.json">JSON</a></li>
+    <li><a href="create-issues-template.json">Template</a></li>
 </ul>
 
-{% highlight json %}{% include_relative jira.json %}{% endhighlight %}
+<details>
+
+    <summary>Output</summary>
+
+    {% highlight json %}{% include_relative create-issues-template.json %}{% endhighlight %}
+
+</details>
+  
+<h2>Add Watchers</h2>
+
+<ul>
+    <li><a href="add-watchers-raw.json" download="add-watchers.json">JSON</a></li>
+    <li><a href="add-watchers-template.json">Template</a></li>
+</ul>
+
+<details>
+
+    <summary>Output</summary>
+
+    {% highlight json %}{% include_relative add-watchers-template.json %}{% endhighlight %}
+    
+</details>
+
 
 

@@ -1,0 +1,12 @@
+[
+
+    {%- for item in site.data.hiring-events-id %}
+
+    {
+        "issueIdOrKey": "{{ item.Key }}",
+        "watcherEmail": "{{ site.data.jira.watcher.name }}"
+    }{% unless forloop.last %},{% endunless %}
+
+    {%- endfor %}
+    
+]

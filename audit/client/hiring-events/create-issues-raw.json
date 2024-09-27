@@ -1,0 +1,7 @@
+---
+layout: null
+---
+
+{% include_relative create-issues-template.json %}
+
+

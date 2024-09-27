@@ -1,7 +1,0 @@
----
-layout: null
----
-
-{% include_relative jira.json %}
-
-
