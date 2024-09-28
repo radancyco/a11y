@@ -32,5 +32,35 @@ title: "Hiring Events: JIRA Management"
     
 </details>
 
+<h2>Update Issues</h2>
+
+<ul>
+    <li><a href="update-issues-raw.json" download="update-issues.json">JSON</a></li>
+    <li><a href="update-issues-template.json">Template</a></li>
+</ul>
+
+<details>
+
+    <summary>Output</summary>
+
+    <h3>Issue IDs for Collection Runner</h3>
+
+    {% highlight json %}{% include_relative update-issues-template.json %}{% endhighlight %}
+
+    <h3>Example Update (Raw)</h2>
+
+    {% highlight json %}{
+
+    "fields": {
+
+        "summary": "Accessibility is the Best",
+    
+    }
+
+}{% endhighlight %}
+    
+</details>
+
+
 
 
