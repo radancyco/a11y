@@ -1,11 +1,12 @@
 project:
-  key: UDS
+  key: BRAZ
 issuetype:
-  name: "Accessibility Request "
+  name: "Story"
 assignee:
-  name: Mspellac
+  name: kate.ergasheva
 client: 
   id: 11813
 workbook: 136728
+epic: BRAZ-43212
 watcher:
   name: DGreen

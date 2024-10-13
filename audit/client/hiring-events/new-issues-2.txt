@@ -1,0 +1,222 @@
+List items require improvement. No element, other than a li, may be a child of ul or ol. 
+
+actually, this is related to the tablist being done incorrectly, for example, the ul elelemnt has a role="tab" on the li, but no parent role="tablist". This will be remediared when we address the tablisy issues. 
+
+
+----
+
+
+might be duplicate. another heading issues. 
+
+https://app.brazenconnect.com/app/events/lxZvL#!booth;eventCode=lxZvL;boothCode=booth-1
+
+should be h1 but is an h2. also need to remove tabindex role and aria-level. 
+
+-----
+
+tabindex on non-interactive element, found. add tabindex-found-on-non-interactive-element.png to chat 002 or 001. 
+
+
+-----
+
+not waiting to chat 
+
+No keyboard support. Also, is this tooltip even necessary? If not, it may just be easier to remove or have it say, "Not waiting to chat, click chat button to begin."
+
+non-wiating-to-chat.png
+
+---- 
+
+
+remove tabindex and role="document" 
+
+remove-tabindex-and-role-document.png
+
+-----
+
+
+Include the word "settings" here. The icon is hidden from assisitve technology so this portion of sentence will be hidden from them
+
+include-word-settings.png
+
+----
+
+single-interactive-tab.png
+
+When there is only one tab on page, should an interactive tabbing system exist here at all? 
+
+-----
+
+How are screen reader users going to know how many chracters are left? We need to announce these, likely on a slight delay. 
+
+chr-countdown.png
+
+
+-----
+
+----- SEARCH BOOTH -----
+
+search-booth-add-label.png 
+
+add a proper label to field. 
+
+-----
+
+Search Booth no announcement. 
+
+only the first message appears to be read out to me when using NVDA, subsequent updates are only intermittently read back. when one find returned, etc. 
+
+search-booth-no-announce.png
+
+search-booth-1 item not being read.mp4
+
+
+----- 
+
+Search Booth and Search Registrants are not skipped over, keyboard, also need updated. 
+
+search booths button before: 
+
+<button type="button" class="btn btn-default side-nav-button GHUGN-BDAL" role="button" tabindex="-1" aria-hidden="true" accesskey="m"><i class="material-icons" aria-hidden="true" role="presentation" data-original-title="" title="">search</i><span>Search Booths</span></button>
+
+
+search registrants before: 
+
+<button type="button" class="btn btn-default side-nav-button" role="button" id="EVENT_SEARCH_REGISTRANTS_BUTTON" tabindex="-1" style="" aria-hidden="true"><i class="material-icons" aria-hidden="true" role="presentation" tabindex="-1" data-original-title="" title="">person_search</i><span>Search Registrants</span></button>
+
+
+search-booth-registrants-button.png
+
+----
+
+links in search booths mention pressing space bar. when clicking on this, the content behind the open modal changes. 
+
+
+<a href="javascript:;" aria-label="You are not waiting to chat in Accessibility: Text, Video &amp; Audio Chat. This is your booth. Not waiting to chat. Press space bar to navigate to this booth.">Accessibility: Text, Video &amp; Audio Chat</a>
+
+----
+
+when clicking on a toogle button, i am unexpecdedy taken to another page. 
+
+
+----
+
+search booth 
+
+search-booth-remove-tabindex.png
+
+tabindex 0 found. 
+
+----- 
+
+
+
+
+
+
+chat-simultaneous-chats-no-keyboard.png
+
+simulntaneouls chat select not keyboard accessible
+
+<div class="user-max-chats-select-wrapper"><span class="title" aria-hidden="true">Simultaneous Chats:</span><span class="value" aria-hidden="true"><select class="form-control" tabindex="-2" aria-hidden="true"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></span><i class="material-icons" aria-hidden="true" style="display: none;" data-original-title="" title="">help</i></div>
+
+-----
+
+
+chat-booth-info-not-keyboard-a11y.png
+
+booth info is not accessible to keyboard users. 
+
+<div class="chat-list" aria-hidden="true"><div class="topic-chat-list"><div class="booth-info"><div class="collapse-trigger" data-target="#gwt-uid-190" data-toggle="collapse"><h4>Accessibility: Group Video</h4><i class="fa fa-plus"></i></div><div class="chat-status-bar"><span class="total-chats">1/1 chat active</span><span class="last-activity">Last Activity</span><span class="total-unread"></span></div></div><div class="collapse in" aria-expanded="true" id="gwt-uid-190" style=""><div class="chat-info-tab selected"><div class="user-profile-img"><i class="material-icons" aria-hidden="true">groups</i></div><div class="user-info"><div class="user-name-time-wrapper"><p class="user-name text-ellipsis">Group Video</p><div class="time-left-wrapper"><span class="time">1 participant</span></div></div><div class="chat-info-status"><span class="unread" aria-hidden="true" style="display: none;">Unread</span><span class="last-activity">5:07 PM</span><span class="new" aria-hidden="true" style="display: none;">New</span><span style="">Locked</span><span class="ended" aria-hidden="true" style="display: none;">End</span></div></div></div></div></div></div>
+
+----
+
+
+The Locked/Unlocked button simply says "Space On, Space Off" when toggled. 
+
+<div class="toggle-wrapper lock-toggle-wrapper append-label has-icon" style="" data-original-title="" title=""><span style="">Locked</span><div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-on" style="width: 53.9974px;"><div class="bootstrap-switch-container" style="width: 87.9948px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 33.9974px;">ON</span><span class="bootstrap-switch-label" style="width: 20px;">&nbsp;</span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 33.9974px;">OFF</span><input type="checkbox" value="on" role="switch"></div></div><i class="material-icons" aria-hidden="true">lock</i></div>
+
+-----
+
+
+change-to-participants.png
+
+Change "People" to "Participants"
+
+-----
+
+
+vido controls bar - this is the code, review it and reccomend changes to improve: 
+
+<div class="video-controls-bar"><div class="toggle-wrapper lock-toggle-wrapper append-label has-icon" style="" data-original-title="" title=""><span style="">Locked</span><div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-on bootstrap-switch-animate" style="width: 53.9974px;"><div class="bootstrap-switch-container" style="width: 87.9948px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 33.9974px;">ON</span><span class="bootstrap-switch-label" style="width: 20px;">&nbsp;</span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 33.9974px;">OFF</span><input type="checkbox" value="on" role="switch"></div></div><i class="material-icons" aria-hidden="true">lock</i></div><div class="lock-status-wrapper" aria-hidden="true" style="display: none;"><i class="material-icons" aria-hidden="true">lock_open</i><span></span></div><div class="control-buttons-wrapper" aria-label="Ongoing Call Controls"><div class="round-button-wrapper off" tabindex="-1"><button type="button" class="btn btn-material btn-round btn-link" tabindex="0" aria-pressed="false" aria-label="Audio off" data-original-title="" title=""><i class="material-icons">mic_off</i><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><span aria-hidden="true" style="display: none;"></span></div><div class="round-button-wrapper off" tabindex="-1"><button type="button" class="btn btn-material btn-round btn-link" tabindex="0" aria-pressed="false" aria-label="Video off" data-original-title="" title=""><i class="material-icons">videocam_off</i><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><span aria-hidden="true" style="display: none;"></span></div><div class="round-button-wrapper off" tabindex="-1"><button type="button" class="btn btn-material btn-round btn-link" tabindex="0" data-original-title="" title=""><i class="material-icons">stop_screen_share</i><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><span aria-hidden="true" style="display: none;"></span></div><div class="round-button-wrapper with-count-badge" tabindex="-1" data-count-badge="1"><button type="button" class="btn btn-material btn-round btn-link" tabindex="0" data-original-title="" title=""><i class="material-icons">people</i><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><span aria-hidden="true" style="display: none;"></span></div><div class="round-button-wrapper" tabindex="-1"><button type="button" class="btn btn-material btn-round btn-link" tabindex="0" data-original-title="" title=""><i class="material-icons">fit_screen</i><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><span aria-hidden="true" style="display: none;"></span></div><div class="round-button-wrapper" tabindex="-1"><button type="button" class="btn btn-material btn-round btn-link" tabindex="0" data-original-title="" title=""><i class="material-icons">video_settings</i><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><span aria-hidden="true" style="display: none;"></span></div><div class="btn-group round-button-wrapper" style="display: none;" aria-hidden="true"><button type="button" class="btn btn-material btn-round btn-link dropdown-toggle" data-toggle="dropdown" data-b-test="VIDEO_CONTROL_BAR_MORE_BUTTON" data-original-title="" title=""><i class="material-icons" style="font-weight: bolder;">more_vert</i><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div> <span class="caret" aria-hidden="true" style="display: none;"></span></button><ul class="dropdown-menu" role="menu"></ul></div></div><div class="end-group-chat-buttons-wrapper"><button type="button" class="btn btn-material btn-danger" aria-hidden="true" style="display: none;"><span>Leave</span><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper white"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><button type="button" class="btn btn-material btn-danger" style=""><span>End</span><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper white"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><button type="button" class="btn btn-material btn-danger" aria-hidden="true" style="display: none;"><span>Leave</span><div aria-hidden="true" style="display: none;"><div class="spinner-wrapper white"><svg class="spinner" width="24px" height="24px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><span>Loading ...</span></div></div></button><div class="control-dialog-widget action-card top" aria-hidden="true" style="display: none;"><div class="footer"><button type="button" class="btn btn-link"></button><button type="button" class="btn btn-primary"></button></div><div class="body" aria-hidden="true" style="display: none;"><p>END this chat for <span class="text-strong">all</span>?</p></div><div class="body" aria-hidden="true" style="display: none;"><p>This session will continue with the remaining Host(s).</p></div></div></div></div>
+
+video-bar-screenshot.png 
+
+----
+
+
+Not sure of purpose of this button. It does no do anything useful. Wondering if it should exist at all. Regardless, please hide it from assistive technology and kyboard users by adding tabinxes="-1" and aria-hidden="true". It is a completly visual flourish at the moment. 
+
+
+chat-participants-button.png
+
+
+----- 
+
+
+end-this-chat-for-all.png
+
+this should really be a dialog window, not a disclosure. 
+
+
+
+-----
+
+
+get-in-line.png
+
+The radio buttons in "Get In Line" section, appear to be inaccessible to keyboard users. 
+
+<div><br style="display: none;" aria-hidden="true"><label tabindex="0" class="radio inline" id="gwt-uid-357" role="radio" aria-checked="false" aria-labelledby="gwt-uid-357-label"><input type="radio" name="jobsRadioGroup" value="on" id="gwt-uid-358" class="regular-radio" tabindex="-1"><label for="gwt-uid-358"></label><span id="gwt-uid-357-label"></span> <span></span> </label><div class="inline cursor-pointer"><span class="text-strong">Accessibility Jobs</span><span class="text-small">&nbsp;-&nbsp;</span><span class="text-small">Remote</span></div><span>&nbsp;</span><a href="https://a11yjobs.com" class="text-small" style="" target="_blank">Details</a></div>
+
+
+-----
+
+remove-tabindex-from-snippet-modal.png 
+
+your snippets. remove extraneous tabindexs.
+
+-----
+
+
+chat more tabindex found. please remove
+
+chat-personal-profile-remove-tabindex.png 
+
+------
+
+clock.png
+
+it just reads out clock. 
+
+code: 
+
+<div role="timer" tabindex="0"><p class="chat-time"><i class="material-icons time-left-icon" aria-hidden="true">timer</i> <span class="time" id="COUNT_DOWN_BOX_WIDGET_TIME_LEFT_HEADING">76:48</span></p></div>
+
+
+-----
+
+
+emoticions-selection-not-keyboard-friendly.png
+
+
+-----
+
+
+
+
+
+
+
+
+ 

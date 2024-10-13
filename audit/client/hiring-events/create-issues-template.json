@@ -45,7 +45,7 @@
                     "key": "{{ site.data.jira.project.key }}"
 
                 },
-                "summary": {{ a11y.Summary | prepend: " - " | prepend: a11y.ID | prepend: "Accessibility Audit Test: " | jsonify }},
+                "summary": {{ a11y.Summary | prepend: " - " | prepend: a11y.ID | prepend: "Accessibility Audit: " | jsonify }},
                 "description": {{ description | jsonify | replace: "\\n", "\n" }},
                 {%- if site.data.jira.project.key == "BRAZ" %}
                 {%- if a11y.Environment -%}
@@ -71,7 +71,10 @@
                 }],
                 "customfield_11113": "{{ site.data.jira.workbook }}",
                 {% endif -%}
-                "labels": ["Spell_Test", "Accessibility", "WCAG_Level_{{a11y.Level}}", "WCAG_Criteria_{{a11y.SC | replace: " ", "_"}}"]
+                {%- if site.data.jira.epic %}
+                "customfield_10900" : "{{ site.data.jira.epic }}",
+                {% endif -%}
+                "labels": ["Accessibility", "WCAG_Level_{{a11y.Level}}", "WCAG_Criteria_{{a11y.SC | replace: " ", "_" | replace: ",", "_" | replace: ":", "" | replace: "__", "_"}}", "A11Y_Severity_{{a11y.Impact}}"{% if a11y.Labels %}, {{a11y.Labels}}{% endif %}]
             }
   
         }{% unless forloop.last %},{% endunless %}
