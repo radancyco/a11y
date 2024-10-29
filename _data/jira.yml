@@ -3,10 +3,10 @@ project:
 issuetype:
   name: "Story"
 assignee:
-  name: kate.ergasheva
+  name: MSpellac
 client: 
   id: 11813
 workbook: 136728
-epic: BRAZ-43212
+epic: BRAZ-40866
 watcher:
   name: DGreen

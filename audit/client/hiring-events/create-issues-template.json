@@ -4,7 +4,7 @@
       
         {%- for a11y in site.data.hiring-events -%}{
 
-            {%- assign description = "\n\n*Audit ID:* " | append: a11y.ID | append: "\n\n*WCAG Success Criteria:* " | append: a11y.SC | append: "\n\n*WCAG Level:* " | append: a11y.Level | append: "\n\n*WCAG Synopsis:* " | append: a11y.Synopsis | append: "\n\n*Impact/Severity:* " | append: a11y.Impact | append: "\n\n*Issue/Recommendation:*\n\n" | append: a11y.Issue -%}
+            {%- assign description = "\n\n*Audit ID:* " | append: a11y.ID | append: "\n\n*WCAG Success Criteria:* " | append: a11y.SC | append: "\n\n*WCAG Level:* " | append: a11y.Level | append: "\n\n*WCAG Synopsis:* " | append: a11y.Synopsis | append: "\n\n*WCAG Understanding:* " | append: a11y.Understanding | append: "\n\n*Impact/Severity:* " | append: a11y.Impact | append: "\n\n*Issue/Recommendation:*\n\n" | append: a11y.Issue -%}
             
             {%- if a11y.Testing -%}
 
@@ -24,7 +24,7 @@
             
             {%- if a11y.Screengrab -%}
 
-                {%- assign Screengrab = "\n\n*Screenshot/Video/URL:* \n\n" | append: a11y.Screengrab -%}
+                {%- assign Screengrab = "\n\n*Screengrab:* \n\n" | append: a11y.Screengrab -%}
           
                 {%- assign description = description | append: Screengrab -%}
           
@@ -45,7 +45,7 @@
                     "key": "{{ site.data.jira.project.key }}"
 
                 },
-                "summary": {{ a11y.Summary | prepend: " - " | prepend: a11y.ID | prepend: "Accessibility Audit: " | jsonify }},
+                "summary": {{ a11y.Summary | prepend: " - " | prepend: a11y.ID | prepend: "Accessibility Audit (Test 1): " | jsonify }},
                 "description": {{ description | jsonify | replace: "\\n", "\n" }},
                 {%- if site.data.jira.project.key == "BRAZ" %}
                 {%- if a11y.Environment -%}
