@@ -3,10 +3,12 @@ project:
 issuetype:
   name: "Story"
 assignee:
-  name: MSpellac
+  name: tom.feehan
 client: 
   id: 11813
 workbook: 136728
-epic: BRAZ-40866
+epic: BRAZ-41089
+track: 21299
+capitalizable: 22542
 watcher:
-  name: DGreen
+  name: anhill

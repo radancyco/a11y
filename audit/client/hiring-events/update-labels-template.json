@@ -1,0 +1,2 @@
+{%- for item in site.data.hiring-events-label %}
+{{item.issueKey}}{%- endfor %}
