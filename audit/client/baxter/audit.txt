@@ -1,0 +1,21 @@
+A11Y001 
+
+Global 
+
+Navigation, when opened at these dimensions, cannot be used fully. At these dimensions, it would be best to not use position fixed, but allow the navigation to push all content below it, downward. 
+
+A11Y001.mp4
+
+----- 
+
+A11Y002
+
+Job DEscription Page
+
+https://baxter.runmytests.com/en/job/bengaluru/analyst-it/152/72791551952
+
+A11Y002.mp4
+
+
+-----
+
