@@ -1,0 +1,64 @@
+Home Page
+
+
+1.1.1: Non-text Content
+1.2.1: Audio-only and Video-only (Prerecorded)
+1.2.2: Captions (Prerecorded)
+1.2.3: Audio Description or Media Alternative (Prerecorded)
+1.3.1: Info and Relationships
+1.3.2: Meaningful Sequence
+1.4.1: Use of Color
+2.1.1: Keyboard
+
+A11Y001 - The primary navigation buttons are not working properly. When I open up a navigation item, I can see that the aria-expanded state changes to "true", but doe not change to "false" when: 
+
+1. I close it. 
+2. Access anoter navigational button. 
+
+The navigation also needs to be dismissed when the escape key is pressed. 
+
+In short, please ensure that the navigation is fully operable to assisitve technology and keyboard users. 
+
+A11Y002 - The primary <nav> element should have an accessible name to make the landmark more distinguishable. Please add aria-label="Main" or the Portuguese equivelent of "Main", which DPM or CSS should provide first. 
+
+A11Y003 - The mobile disclosure (hamburger) button requires an accessible name. Please add aria-label="Menu" or the Portuguese equivelent of "Main", which DPM or CSS should provide first. 
+
+A11Y004 - The primary logo does not have an accessible name. Screen reader users who access the link will not know what it does. Please add aria-label="Itaú Careers (Home)" or the Portuguese equivelent of "Itaú Careers (Home)" to the link (a[class="logo") itself, which DPM or CSS should provide first. Also, include the following on the <svg> element within the link: 
+
+<svg focusable="false" aria-hidden="true" width="139" height="80" viewBox="0 15 139 50" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+
+A11Y005 - Up arrows on navigation should be white when activated. See screengrab. 
+
+A11Y006 - The Job Search button (Buscar vagas) has several critial issues that will impact usability for people using assisitve technology. Please assign this to an accessibility engineer (Michael Spellacy) to provide further guidance and remediate. The biggest probem here is that we are treating this like a dialog instead of a disclosure, which it is. By trying to mimic dialog behaviors, we end up harming accessibility. To remediate, but retain the same look and feel, we either need to fix these issues or use use an actual dialog element here instead. 
+
+A11Y007 - The "Jobs for Us" component is not properly built and confusing to use for screen reader users. Visually, it is Tablist that does not represent itself as such to assistive technology and should be rebuilt using the Tablist component we do have available. Likely we could leverage this code and apply some restyling where needed. See https://radancy.dev/component-library/tablist/
+
+2.1.2: No Keyboard Trap
+2.2.2: Pause, Stop, Hide
+2.3.1: Three Flashes or Below Threshold
+2.4.1: Bypass Blocks
+2.4.2: Page Titled
+2.4.3: Focus Order
+2.4.4: Link Purpose (In Context)
+2.5.3: Label In Name
+3.1.1: Language of Page
+3.2.1: On Focus
+3.2.2: On Input
+4.1.2: Name, Role, Value
+1.4.10: Reflow
+1.4.11: Non-text Contrast
+1.4.12: Text Spacing
+1.4.13: Content on Hover or Focus
+1.4.3: Contrast (Minimum)
+1.4.4: Resize text
+1.4.5: Images of Text
+2.4.11 Focus Not Obscured (Minimum)
+2.4.6: Headings and Labels
+2.4.7: Focus Visible
+2.5.8 Target Size (Minimum)
+3.1.2: Language of Parts
+3.2.3: Consistent Navigation
+4.1.3: Status Messages
+Automated Scan (WAVE)
+Automated Scan (AXE)
+Automated Scan (W3C)
