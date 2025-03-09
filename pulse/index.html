@@ -1,0 +1,27 @@
+---
+changelog: 
+
+  - label: Important
+    content: Coming soon.
+
+roadmap: 
+
+  - label: Important
+    content: Coming soon.
+
+title: "Accessibility Pulse"
+desc: A bookmarklet that quickly scans web pages for common accessibility issues, providing a fast and easy way to identify potential barriers.
+accordion: true
+---
+
+{% capture contentblock %}
+
+<a class="btn" href="javascript: (function () { var bookMarklet = document.createElement('script'); bookMarklet.setAttribute('src', 'https://radancy.dev/a11y/pulse/init.js'); document.body.appendChild(bookMarklet);}());">A11y Pulse</a>
+
+<h2>Installation</h2>
+
+<p>To install the bookmarklet, simply drag it to your browser's bookmarks bar or folder. Then, click it while viewing any page to run the accessibility check.</p>
+
+{% endcapture %}
+
+{% include template.html %}
