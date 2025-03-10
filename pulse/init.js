@@ -26,14 +26,8 @@
 
     btnValidateWAVE.forEach(function(btn) {
 
-        btn.addEventListener("click", function(event) {
-
-            event.preventDefault();
-
-            var getLink = btn.getAttribute("href");
-            window.open(getLink + "report#/" + getLocation, "_blank");
-
-        });
+        var getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "report#/" + getLocation);
 
     });
 
@@ -43,14 +37,8 @@
 
     btnValidateW3C.forEach(function(btn) {
 
-        btn.addEventListener("click", function(event) {
-
-            event.preventDefault();
-
-            var getLink = btn.getAttribute("href");
-            window.open(getLink + "?showsource=yes&showoutline=yes&showimagereport=yes&doc=" + getLocation, "_blank");
-
-        });
+        var getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "?showsource=yes&showoutline=yes&showimagereport=yes&doc=" + getLocation);
 
     });
 
@@ -60,14 +48,8 @@
 
     btnValidateHeading.forEach(function(btn) {
 
-        btn.addEventListener("click", function(event) {
-
-            event.preventDefault();
-
-            var getLink = btn.getAttribute("href");
-            window.open(getLink + "?url=" + getLocation, "_blank");
-
-        });
+        var getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "?url=" + getLocation);
 
     });
 
@@ -77,14 +59,8 @@
 
     btnValidateImage.forEach(function(btn) {
 
-        btn.addEventListener("click", function(event) {
-
-            event.preventDefault();
-
-            var getLink = btn.getAttribute("href");
-            window.open(getLink + "?url=" + getLocation, "_blank");
-
-        });
+        var getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "?url=" + getLocation);
 
     });
 
