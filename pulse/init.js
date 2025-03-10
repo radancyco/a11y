@@ -64,4 +64,67 @@
 
     });
 
+    // Validate CSS
+
+    let btnValidateCSS = document.querySelectorAll(".validate-css");
+
+    btnValidateCSS.forEach(function(btn){
+
+        let getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "validator?profile=css3&warning=0&uri=" + getLocation);
+
+    });
+
+    // Validate Structured Data
+
+    let btnValidateStructuredData = document.querySelectorAll(".validate-structured-data");
+
+    btnValidateStructuredData.forEach(function(btn){
+
+        let getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "?url=" + getLocation);
+
+    });
+
+
+   /*  let HyperLink = document.querySelectorAll(".validate-links");
+
+
+
+      HyperLink.forEach(function(link, e){
+
+        let HyperHref = link.href;
+        link.setAttribute("href", HyperHref + "?uri=" + url + "&hide_type=all&depth=&check=Check");
+
+      });
+
+
+    let SpellingLink = document.querySelectorAll(".validate-spelling");
+
+
+
+      SpellingLink.forEach(function(link, e){
+
+        let SpellingHref = link.href;
+        link.setAttribute("href", SpellingHref + "?uri=" + url + "&lang=en_US");
+
+      });
+
+
+    let PDFLink = document.querySelectorAll(".validate-pdf");
+
+
+
+      PDFLink.forEach(function(link, e){
+
+        let PDFHref = link.href;
+        link.setAttribute("href", PDFHref + "?url=" + url);
+
+      });
+
+
+
+*/
+
+
 })();
