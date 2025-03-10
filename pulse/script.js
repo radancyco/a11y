@@ -20,7 +20,24 @@ function fetchAndAppendFragment(url, selector, target) {
 
         if (fragment) {
 
+            // Load CSS 
+
+            var a11yPulseCSS = document.createElement("link");
+            a11yPulseCSS.setAttribute("id", "a11y-pulse-css");
+            a11yPulseCSS.setAttribute("rel", "stylesheet");
+            a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/init.css");
+            document.head.append(a11yPulseCSS);
+
+            // Load Bookmarklet
+
             document.querySelector(target).prepend(fragment);
+
+            // Load JavaScript 
+
+            var a11yPulseJS = document.createElement("script");
+            a11yPulseJS.setAttribute("id", "a11y-pulse-js");
+            a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/init.js");
+            document.body.append(a11yPulseJS);
 
         } else {
 
@@ -36,4 +53,6 @@ function fetchAndAppendFragment(url, selector, target) {
 
 }
 
-fetchAndAppendFragment("{{ include.url }}/pulse/module", "#a11y-pulse", "body");
+// Load Module
+
+fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet", "#a11y-pulse", "body");
