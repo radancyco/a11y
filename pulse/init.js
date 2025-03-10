@@ -21,7 +21,7 @@ function fetchAndAppendFragment(url, selector, target) {
 
         if (fragment) {
 
-            document.querySelector(target).appendChild(fragment);
+            document.querySelector(target).prepend(fragment);
 
         } else {
 
