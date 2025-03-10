@@ -25,80 +25,54 @@ background-color: #fff;
 $highlight-color: #6F00EF;
 
 
-#headingoutline {
+#headingoutline, #results {
 margin-top: 2em;
   
-      .loading {
-      color: $highlight-color;
-      }
+    h2, ol, .failure, .details, .stats, .success, #permalink:empty {
+    display: none;
+    }
   
-      h2, ol, .failure, .details, .stats, .success, #permalink:empty {
-      display: none;
-      }
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #000;
+    font-weight: bold;
+    }
   
-      .h1, .h2, .h3, .h4, .h5, .h6 {
-      color: #000;
-      font-weight: bold;
-      }
+    .headinglevel, .missingheadinglevel {
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    line-height: normal;
+    margin-right: .5em;
+    padding: .5em;
+    }
   
-      table {
-      width: 50%;
-      }
+    .headinglevel {
+    background-color: darkgreen;
+    }
   
-      th {
-      background-color: #40e8d4;
-      color: #000;
-      text-align: center;
-      width: 25%;
-      }
+    .missingheadinglevel {
+    background-color: #d20000;
+    }
   
-      th, td {
-      border: 1px #00008b solid;
-      padding: 1em;
-      }
+    .h2 {
+    margin-left: 2em;
+    }
   
-      td {
-      background-color: #777;
-      color: #fff;
-      }
+    .h3 {
+    margin-left: 4em;
+    }
   
-      .headinglevel, .missingheadinglevel {
-      border-radius: 5px;
-      color: #fff;
-      display: inline-block;
-      line-height: normal;
-      margin-right: .5em;
-      padding: .5em;
-      }
+    .h4 {
+    margin-left: 6em;
+    }
   
-      .headinglevel {
-      background-color: darkgreen;
-      }
+    .h5 {
+    margin-left: 8em;
+    }
   
-      .missingheadinglevel {
-      background-color: #d20000;
-      }
-  
-      .h2 {
-      margin-left: 2em;
-      }
-  
-      .h3 {
-      margin-left: 4em;
-      }
-  
-      .h4 {
-      margin-left: 6em;
-      }
-  
-      .h5 {
-      margin-left: 8em;
-      }
-  
-      .h6 {
-      margin-left: 10em;
-      }
-  
+    .h6 {
+    margin-left: 10em;
+    }
   
   }
   
