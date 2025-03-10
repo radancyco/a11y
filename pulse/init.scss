@@ -2,8 +2,8 @@
 
 
 .a11y-pulse {
-all: initial;
-border-color: red;
+all: revert;
+border-color: red !important;
 max-width: 60em;
 margin: 0 auto;
 z-index: 2147483647;
@@ -12,7 +12,11 @@ overflow-y: auto;
 background-color: #fff;
 
     * {
-    all: initial;
+    all: unset;
+    }
+
+    button {
+    color: red;
     }
 
 
