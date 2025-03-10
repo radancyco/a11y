@@ -1,40 +1,7 @@
-function fetchAndAppendFragment(url, selector, target) {
+---
+layout: null
+---
 
-    fetch(url).then(response => {
+{% assign fullPath = site.url | append: site.baseurl %}
 
-        if (!response.ok) {
-
-            throw new Error(`HTTP error! Status: ${response.status}`);
-
-        }
-
-        return response.text();
-
-    }).then(html => {
-
-        const tempDiv = document.createElement("div");
-
-        tempDiv.setAttribute("id", "a11y-smoke-test"); 
-        tempDiv.innerHTML = html;
-
-        const fragment = tempDiv.querySelector(selector);
-
-        if (fragment) {
-
-            document.querySelector(target).prepend(fragment);
-
-        } else {
-
-            console.error(`Element "${selector}" not found in fetched content.`);
-
-        }
-
-    }).catch(error => {
-
-        console.error("Fetch error:", error);
-
-    });
-
-}
-
-fetchAndAppendFragment("https://radancy.dev/a11y/pulse/module", "#a11y-pulse", "body");
+{% include_relative script.js url=fullPath %}
