@@ -71,4 +71,21 @@
 
     });
 
+    // Image Validation
+
+    let btnValidateImage = document.querySelectorAll(".validate-image");
+
+    btnValidateImage.forEach(function(btn) {
+
+        btn.addEventListener("click", function(event) {
+
+            event.preventDefault();
+
+            var getLink = btn.getAttribute("href");
+            window.open(getLink + "?url=" + getLocation, "_blank");
+
+        });
+
+    });
+
 })();
