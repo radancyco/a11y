@@ -1,19 +1,35 @@
 
+var getLocation = location.href;
+var btnValidateWAVE = document.querySelectorAll(".validate-wave");
+var btnValidateW3C = document.querySelectorAll(".validate-w3c");
 
-var btnWAVEValidate = document.querySelectorAll(".validate-a11y");
-var getWindowLocation = location.href;
+// WAVE Validation
 
-btnWAVEValidate.forEach(function(btn) {
-
-    // https://wave.webaim.org/#/http://localhost:4000/pulse/
-
-    // https://wave.webaim.org/report#/https://disney-redesign.runmytests.com/en
+btnValidateWAVE.forEach(function(btn) {
 
     btn.addEventListener("click", function() {
 
-    var getWAVELink = btn.getAttribute("href");
+        var getLink = btn.getAttribute("href");
 
-    window.open(getWAVELink + "report#/" + getWindowLocation, '_blank');
+        window.open(getLink + "report#/" + getLocation, "_blank");
+
+        return false;
+
+    });
+
+});
+
+// W3C Validation
+
+btnValidateW3C.forEach(function(btn) {
+
+    btn.addEventListener("click", function() {
+
+        var getLink = btn.getAttribute("href");
+
+        window.open(getLink + "?showsource=yes&showoutline=yes&showimagereport=yes&doc=" + getLocation, "_blank");
+
+        return false;
 
     });
 
