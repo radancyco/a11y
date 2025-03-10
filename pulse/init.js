@@ -1,9 +1,9 @@
 
 var getLocation = location.href;
-var btnValidateWAVE = document.querySelectorAll(".validate-wave");
-var btnValidateW3C = document.querySelectorAll(".validate-w3c");
 
 // WAVE Validation
+
+var btnValidateW3C = document.querySelectorAll(".validate-w3c");
 
 btnValidateWAVE.forEach(function(btn) {
 
@@ -21,6 +21,8 @@ btnValidateWAVE.forEach(function(btn) {
 
 // W3C Validation
 
+var btnValidateWAVE = document.querySelectorAll(".validate-wave");
+
 btnValidateW3C.forEach(function(btn) {
 
     btn.addEventListener("click", function(event) {
@@ -35,6 +37,8 @@ btnValidateW3C.forEach(function(btn) {
 });
 
 // Heading Validation
+
+var btnValidateHeading = document.querySelectorAll(".validate-heading");
 
 btnValidateHeading.forEach(function(btn) {
 
