@@ -18,7 +18,7 @@ accordion: true
 
 {% capture contentblock %}
 
-<a class="btn" href="javascript: (function () { var bookMarklet = document.createElement('script'); bookMarklet.setAttribute('src', 'https://radancy.dev/a11y/pulse/init.js'); document.body.appendChild(bookMarklet);}());">{{ iconBookmark }} A11y Pulse</a>
+  <a class="btn" href="javascript: (function () { var bookMarklet = document.createElement('script'); bookMarklet.setAttribute('src', '{{ site.url }}/pulse/init.js'); document.body.appendChild(bookMarklet);}());">{{ iconBookmark }} A11y Pulse</a>
 
 {% endcapture %}
 
