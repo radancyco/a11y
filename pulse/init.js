@@ -86,17 +86,19 @@
 
     });
 
+    // Validate Structured Data
 
-   /*  let HyperLink = document.querySelectorAll(".validate-links");
+    let btnValidateLinks = document.querySelectorAll(".validate-link");
+
+    btnValidateLinks.forEach(function(btn){
+    
+        let getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "?uri=" + getLocation + "&hide_type=all&depth=&check=Check");
+    
+    });
 
 
-
-      HyperLink.forEach(function(link, e){
-
-        let HyperHref = link.href;
-        link.setAttribute("href", HyperHref + "?uri=" + url + "&hide_type=all&depth=&check=Check");
-
-      });
+   /*  
 
 
     let SpellingLink = document.querySelectorAll(".validate-spelling");
