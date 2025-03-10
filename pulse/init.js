@@ -86,7 +86,7 @@
 
     });
 
-    // Validate Structured Data
+    // Validate Spelling
 
     let btnValidateLinks = document.querySelectorAll(".validate-link");
 
@@ -96,37 +96,6 @@
         btn.setAttribute("href", getLink + "?uri=" + getLocation + "&hide_type=all&depth=&check=Check");
     
     });
-
-
-   /*  
-
-
-    let SpellingLink = document.querySelectorAll(".validate-spelling");
-
-
-
-      SpellingLink.forEach(function(link, e){
-
-        let SpellingHref = link.href;
-        link.setAttribute("href", SpellingHref + "?uri=" + url + "&lang=en_US");
-
-      });
-
-
-    let PDFLink = document.querySelectorAll(".validate-pdf");
-
-
-
-      PDFLink.forEach(function(link, e){
-
-        let PDFHref = link.href;
-        link.setAttribute("href", PDFHref + "?url=" + url);
-
-      });
-
-
-
-*/
 
 
 })();
