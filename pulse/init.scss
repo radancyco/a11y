@@ -12,7 +12,7 @@ overflow-y: auto;
 background-color: #fff;
 
     * {
-    all: unset;
+    all: revert;
     }
 
     button {
