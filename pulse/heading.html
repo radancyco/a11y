@@ -1,13 +1,104 @@
 ---
 title: Heading-Level Outline
+localcss: "../../pulse/init.css"
 ---
 
 <p id="permalink"></p>
 
 <p>A web page should only have a single <code>h1</code> element and avoid skipping headings. A logical heading structure is very important for <em>everybody</em> so that the page can be easily understood and navigated.</p>
 
+<div class="warning-info"><strong>Note:</strong> Understand the document structure before flagging an issue. Navigation systems often contain hidden headings that the validator will present and fail due to a missing h1. However, headings in the navigation can be ignored.</div>
+
+
 <div id="inner-content">
 
   <p class="loading" id="loading-content">Loading...</p>
 
 </div>
+
+
+
+<script>
+
+  // Get Heading Outline
+
+
+  let pageElement = document.getElementById("inner-content");
+  let pageLoader = document.getElementById("loading-content");
+
+
+    let urlParam = new URLSearchParams(window.location.search);
+    let pageTest = urlParam.get("url");
+
+    var pageElementHref = "https://validator.w3.org/nu/?showoutline=yes&doc=" + pageTest;
+    var permaDirectURL = "https://validator.w3.org/nu/?showoutline=yes&doc=" + pageTest + "#headingoutline";
+
+
+    let pageError = document.createElement("p");
+    pageError.classList.add("alert");
+    pageErrorText = document.createTextNode("We're sorry, the content you are looking for can't be displayed right now. Try refreshing your page.");
+    pageError.appendChild(pageErrorText);
+
+    let request = new XMLHttpRequest();
+
+    request.open("GET", pageElementHref, true);
+
+    request.onload = function() {
+
+      if (request.status >= 200 && request.status < 400) {
+
+        // Success!
+
+        let primaryHeading = document.querySelector(".primary-heading");
+        let primaryHeadingLink = document.createElement("a");
+        primaryHeadingLink.classList.add("new-tab");
+       primaryHeadingLink.setAttribute("href", pageTest);
+        var primaryHeadingLinkSpace = document.createTextNode(": ");
+     var primaryHeadingLinkText = document.createTextNode(pageTest);
+   primaryHeadingLink.appendChild(primaryHeadingLinkText);
+   primaryHeading.appendChild(primaryHeadingLinkSpace);
+    primaryHeading.appendChild(primaryHeadingLink);
+
+        // Permalink
+
+        let permaElement = document.getElementById("permalink");
+        let permaLink = document.createElement("a");
+        permaLink.classList.add("new-tab");
+        permaLink.setAttribute("href", permaDirectURL);
+        var permaLinkText = document.createTextNode("Permalink");
+        permaLink.appendChild(permaLinkText);
+        permaElement.appendChild(permaLink);
+
+        // openNewTab();
+
+        let parser = new DOMParser();
+        let response = parser.parseFromString(request.responseText, "text/html");
+
+        var fragment = response.getElementById("headingoutline");
+
+        pageLoader.remove();
+        pageElement.appendChild(fragment);
+
+      } else {
+
+        // We reached our target server, but it returned an error
+
+        pageLoader.remove();
+        pageElement.appendChild(pageError);
+
+      }
+
+    };
+
+    request.onerror = function() {
+
+      // There was a connection error of some sort
+
+      pageLoader.remove();
+      pageElement.appendChild(pageError);
+
+    };
+
+    request.send();
+
+</script>

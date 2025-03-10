@@ -21,3 +21,84 @@ background-color: #fff;
 
 
 }
+
+$highlight-color: #6F00EF;
+
+
+#headingoutline {
+margin-top: 2em;
+  
+      .loading {
+      color: $highlight-color;
+      }
+  
+      h2, ol, .failure, .details, .stats, .success, #permalink:empty {
+      display: none;
+      }
+  
+      .h1, .h2, .h3, .h4, .h5, .h6 {
+      color: #000;
+      font-weight: bold;
+      }
+  
+      table {
+      width: 50%;
+      }
+  
+      th {
+      background-color: #40e8d4;
+      color: #000;
+      text-align: center;
+      width: 25%;
+      }
+  
+      th, td {
+      border: 1px #00008b solid;
+      padding: 1em;
+      }
+  
+      td {
+      background-color: #777;
+      color: #fff;
+      }
+  
+      .headinglevel, .missingheadinglevel {
+      border-radius: 5px;
+      color: #fff;
+      display: inline-block;
+      line-height: normal;
+      margin-right: .5em;
+      padding: .5em;
+      }
+  
+      .headinglevel {
+      background-color: darkgreen;
+      }
+  
+      .missingheadinglevel {
+      background-color: #d20000;
+      }
+  
+      .h2 {
+      margin-left: 2em;
+      }
+  
+      .h3 {
+      margin-left: 4em;
+      }
+  
+      .h4 {
+      margin-left: 6em;
+      }
+  
+      .h5 {
+      margin-left: 8em;
+      }
+  
+      .h6 {
+      margin-left: 10em;
+      }
+  
+  
+  }
+  

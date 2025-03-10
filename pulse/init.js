@@ -33,3 +33,18 @@ btnValidateW3C.forEach(function(btn) {
     });
 
 });
+
+// Heading Validation
+
+btnValidateHeading.forEach(function(btn) {
+
+    btn.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        var getLink = btn.getAttribute("href");
+        window.open(getLink + "?url=" + getLocation, "_blank");
+
+    });
+
+});
