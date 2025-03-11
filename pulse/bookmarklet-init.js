@@ -1,64 +1,81 @@
-function fetchAndAppendFragment(url, selector, target) {
+/*!
 
-    fetch(url).then(response => {
+  Radancy: Accessibility Pulse - Bookmarklet
 
-        if (!response.ok) {
+  Contributor(s):
+  Michael "Spell" Spellacy
 
-            throw new Error(`HTTP error! Status: ${response.status}`);
+*/
 
-        }
+(function() {
 
-        return response.text();
+    function fetchAndAppendFragment(url, selector, target) {
 
-    }).then(html => {
+        fetch(url).then(response => {
 
-        const tempDiv = document.createElement("div");
+            if (!response.ok) {
 
-        tempDiv.innerHTML = html;
+                throw new Error(`HTTP error! Status: ${response.status}`);
 
-        const fragment = tempDiv.querySelector(selector);
+            }
 
-        if (fragment) {
+            return response.text();
 
-            // Load CSS 
+        }).then(html => {
 
-            var a11yPulseCSS = document.createElement("link");
-            a11yPulseCSS.setAttribute("id", "a11y-pulse-css");
-            a11yPulseCSS.setAttribute("rel", "stylesheet");
-            a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/init.css");
-            document.head.append(a11yPulseCSS);
+            const tempDiv = document.createElement("div");
 
-            // Load Bookmarklet
+            tempDiv.innerHTML = html;
 
-            document.querySelector(target).prepend(fragment);
+            const fragment = tempDiv.querySelector(selector);
 
-            // Load JavaScript 
+            if (fragment) {
 
-            var a11yPulseJS = document.createElement("script");
-            a11yPulseJS.setAttribute("id", "a11y-pulse-js");
-            a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/init.js");
-            document.body.append(a11yPulseJS);
+                // Load CSS 
 
-        } else {
+                var a11yPulseCSS = document.createElement("link");
+                a11yPulseCSS.setAttribute("id", "a11y-pulse-css");
+                a11yPulseCSS.setAttribute("rel", "stylesheet");
+                a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/init.css");
+                document.head.append(a11yPulseCSS);
 
-            console.error(`Element "${selector}" not found in fetched content.`);
+                // Load Bookmarklet
 
-        }
+                document.querySelector(target).prepend(fragment);
 
-    }).catch(error => {
+                // Load JavaScript 
 
-        console.error("Fetch error:", error);
+                var a11yPulseJS = document.createElement("script");
+                a11yPulseJS.setAttribute("id", "a11y-pulse-js");
+                a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/init.js");
+                document.body.append(a11yPulseJS);
 
-    });
+            } else {
 
-}
+                console.error(`Element "${selector}" not found in fetched content.`);
 
-// Load Module
+            }
 
-let a11yPulse = document.querySelector(".a11y-pulse");
+        }).catch(error => {
 
-if(!a11yPulse) {
+            console.error("Fetch error:", error);
 
-    fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet", ".a11y-pulse", "body");
+        });
 
-}
+    }
+
+    // Load Module
+
+    let a11yPulse = document.querySelector(".a11y-pulse");
+
+    if(!a11yPulse) {
+
+        fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet", ".a11y-pulse", "body");
+
+    }
+
+    // Bookmarklet Functionality 
+
+    
+
+})();

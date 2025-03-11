@@ -36,20 +36,20 @@
         primaryHeadingLink.setAttribute("href", pageTest);
         primaryHeadingLink.setAttribute("target", "_blank");
         primaryHeadingLink.innerHTML = pageTest + " <span class='visually-hidden'>(opens in new window)</span></a>";
-        primaryHeading.append(primaryHeadingLink);
+        primaryHeading.after(primaryHeadingLink);
 
         let parser = new DOMParser();
         let response = parser.parseFromString(request.responseText, "text/html");
 
         let fragment = response.getElementById("headingoutline");
 
-        pageElement.appendChild(fragment);
+        pageElement.append(fragment);
 
     } else {
 
         // We reached our target server, but it returned an error
 
-        pageElement.appendChild(pageError);
+        pageElement.append(pageError);
 
     }
 
@@ -59,7 +59,7 @@
 
     // There was a connection error of some sort
 
-    pageElement.appendChild(pageError);
+    pageElement.append(pageError);
 
     };
 
