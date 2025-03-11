@@ -93,7 +93,7 @@
     btnValidateSpelling.forEach(function(btn){
         
         let getLink = btn.getAttribute("href");
-        btn.setAttribute("href", getLink + "?uri=" + getLocation + "&lang=" + document.querySelector("html").getAttribute("lang"));
+        btn.setAttribute("href", getLink + "?uri=" + getLocation + "&lang=" + document.querySelector("html").getAttribute("lang") + "&suggest=on");
         
     });
 
