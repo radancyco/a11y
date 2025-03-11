@@ -20,7 +20,7 @@
 
     let getLocation = location.href;
 
-    // WAVE Validation
+    // Validate WAVE
 
     let btnValidateWAVE = document.querySelectorAll(".validate-wave");
 
@@ -31,7 +31,7 @@
 
     });
 
-    // W3C Validation
+    // Validate W3C
 
     let btnValidateW3C = document.querySelectorAll(".validate-w3c");
 
@@ -42,7 +42,7 @@
 
     });
 
-    // Heading Validation
+    // Validate Headings
 
     let btnValidateHeading = document.querySelectorAll(".validate-heading");
 
@@ -53,7 +53,7 @@
 
     });
 
-    // Image Validation
+    // Validate Images
 
     let btnValidateImage = document.querySelectorAll(".validate-image");
 
@@ -75,18 +75,7 @@
 
     });
 
-    // Validate Structured Data
-
-    let btnValidateStructuredData = document.querySelectorAll(".validate-structured-data");
-
-    btnValidateStructuredData.forEach(function(btn){
-
-        let getLink = btn.getAttribute("href");
-        btn.setAttribute("href", getLink + "?url=" + getLocation);
-
-    });
-
-    // Validate Spelling
+    // Validate Links
 
     let btnValidateLinks = document.querySelectorAll(".validate-link");
 
@@ -97,5 +86,26 @@
     
     });
 
+    // Validate Spelling
+
+    let btnValidateSpelling = document.querySelectorAll(".validate-spelling");
+
+    btnValidateSpelling.forEach(function(btn){
+        
+        let getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "?uri=" + getLocation + "&lang=" + document.querySelector("html").getAttribute("lang"));
+        
+    });
+
+    // Validate Structured Data
+
+    let btnValidateStructuredData = document.querySelectorAll(".validate-structured-data");
+
+    btnValidateStructuredData.forEach(function(btn){
+    
+        let getLink = btn.getAttribute("href");
+        btn.setAttribute("href", getLink + "?url=" + getLocation);
+    
+    });
 
 })();
