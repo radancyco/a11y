@@ -20,6 +20,23 @@
 
     let getLocation = location.href;
 
+    // Close Button 
+
+    const a11yPulse = document.querySelector(".a11y-pulse");
+    const a11yPulseClose = document.querySelector(".a11y-pulse__close");
+
+    a11yPulseClose.addEventListener("click", () => {
+
+        a11yPulse.setAttribute("closing", "");
+
+        a11yPulse.addEventListener("animationend", () => {
+
+            a11yPulse.remove();
+
+        });
+
+    });
+
     // Validate WAVE
 
     let btnValidateWAVE = document.querySelectorAll(".validate-wave");
@@ -149,5 +166,17 @@
         });    
     
     });
+
+
+// From page.js, possibly related to fragments. see if we can create new single scripts for this. 
+
+// Append Bookmarklet
+
+
+
+
+
+
+
 
 })();

@@ -48,6 +48,10 @@ animation: slide-up 1200ms forwards, fade-in 800ms forwards;
     all: revert;
     }
 
+    &[closing] {
+    animation: fade-out 500ms forwards;
+    }
+
 }
 
 $highlight-color: #6F00EF;
