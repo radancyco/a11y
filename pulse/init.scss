@@ -3,13 +3,14 @@
 
 .a11y-pulse {
 all: revert;
-border-color: red !important;
 max-width: 60em;
-margin: 0 auto;
+margin: 1em auto;
 z-index: 2147483647;
 height: 800px;
 overflow-y: auto;
 background-color: #fff;
+resize: both;
+border-radius: 10px;
 
     * {
     all: revert;
