@@ -55,4 +55,10 @@ function fetchAndAppendFragment(url, selector, target) {
 
 // Load Module
 
-fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet", "#a11y-pulse", "body");
+var a11yPulse = document.querySelector("#a11y-pulse");
+
+if(!a11yPulse) {
+
+    fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet", "#a11y-pulse", "body");
+
+}

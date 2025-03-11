@@ -1,6 +1,33 @@
 
 
 
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slide-up {
+    0% {
+      transform: translateY(20%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
 .a11y-pulse {
 all: revert;
 background-color: #fff;
@@ -15,10 +42,7 @@ padding: 1em;
 place-self: center;
 resize: both;
 z-index: 2147483647;
-
-&::backdrop {
-background: rgba(0, 0, 0, 0.5);
-}
+animation: slide-up 1200ms forwards, fade-in 800ms forwards;
 
     * {
     all: revert;
