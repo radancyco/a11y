@@ -33,6 +33,14 @@
 
             a11yPulse.remove();
 
+            let a11yPulseAssets = document.querySelectorAll(".a11y-pulse-asset");
+
+            a11yPulseAssets.forEach(function(asset) {
+
+                asset.remove();
+
+            });
+
         });
 
     });

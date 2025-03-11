@@ -34,9 +34,9 @@
                 // Load CSS 
 
                 var a11yPulseCSS = document.createElement("link");
-                a11yPulseCSS.setAttribute("id", "a11y-pulse-css");
+                a11yPulseCSS.classList.add("a11y-pulse-asset");
                 a11yPulseCSS.setAttribute("rel", "stylesheet");
-                a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/init.css");
+                a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/bookmarklet/init.css");
                 document.head.append(a11yPulseCSS);
 
                 // Load Bookmarklet
@@ -46,8 +46,8 @@
                 // Load JavaScript 
 
                 var a11yPulseJS = document.createElement("script");
-                a11yPulseJS.setAttribute("id", "a11y-pulse-js");
-                a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/init.js");
+                a11yPulseJS.classList.add("a11y-pulse-asset");
+                a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
                 document.body.append(a11yPulseJS);
 
             } else {
@@ -73,9 +73,5 @@
         fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet", ".a11y-pulse", "body");
 
     }
-
-    // Bookmarklet Functionality 
-
-    
 
 })();
