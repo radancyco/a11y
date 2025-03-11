@@ -35,14 +35,14 @@ localcss: ../../pulse/init.css
                         <ul>
                             <li>
                                 
-                                <button class="new-tab" data-script="../../local/dom-validate.js">W3C Validation (Serialized DOM) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></button>
+                                <button class="new-tab" data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></button>
 
                                 - <span>Runs validation on entire DOM (Document Object Model), including <strong>script generated content</strong>. Cannot be linked to.</span>
 
                             </li>
                             <li>
 
-                                <button data-script="./local/wcag-parsing.js">WCAG Parsing</button>
+                                <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
 
                                 - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
 
@@ -85,7 +85,7 @@ localcss: ../../pulse/init.css
 
                     <textarea cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
 
-                    <button class="btn" id="submitValidate" type="submit">Validate</button>
+                    <button id="submitValidate" type="submit">Validate</button>
 
                 </form>
 
@@ -94,8 +94,8 @@ localcss: ../../pulse/init.css
             <h3>Magnification</h3>
 
             <ul>
-                <li><button data-script="local/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
-                <li><button data-script="local/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
             </ul>
 
             <h3>Color</h3>
@@ -109,15 +109,15 @@ localcss: ../../pulse/init.css
 
             <ul>
                 <li><button data-script="typography" data-fragment="default-font">Change Default Font Size</button>
-                <li><button data-script="local/text-spacing.js">Text Spacing</button></li>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/text-spacing.js">Text Spacing</button></li>
             </ul>
 
             <h3>Internationalization</h3>
 
             <ul>
-                <li><button data-script="local/i18n-rtl.js">Show Right-to-left (RTL)</button>
-                <li><button data-script="local/i18n-ltr.js">Show Left-to-right (LTR)</button>
-                <li><button data-script="local/i18n-lang.js">Show Document Language</button>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-rtl.js">Show Right-to-left (RTL)</button>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-ltr.js">Show Left-to-right (LTR)</button>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-lang.js">Show Document Language</button>
             </ul>
 
             <h3>Animation</h3>
@@ -131,7 +131,7 @@ localcss: ../../pulse/init.css
             <h3>Visual</h3>
 
             <ul>
-                <li><button data-script="local/focus.js">Force Focus</button></li>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">Force Focus</button></li>
             </ul>
 
             <h3>PDF</h3>
@@ -145,7 +145,7 @@ localcss: ../../pulse/init.css
             <h2>Other</h2>
 
             <ul>
-                <li><button data-script="local/isolator.js">Isolate Code Blocks</button></li>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/isolator.js">Isolate Code Blocks</button></li>
             </ul>
 
         </div>
