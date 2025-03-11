@@ -11,7 +11,7 @@
 
     "use strict";
   
-    let pageElement = document.getElementById("page-content");
+    let pageElement = document.querySelector(".page-content");
     let urlParam = new URLSearchParams(window.location.search);
     let pageTest = urlParam.get("url");
     let pageElementHref = "https://validator.w3.org/nu/?showoutline=yes&doc=" + pageTest;
@@ -31,12 +31,11 @@
         // Success!
 
         let primaryHeading = document.querySelector(".primary-heading");
-        let primaryHeadingLink = document.createElement("a");
+        let urlPage = document.querySelector(".url-page");
+        let w3cPage = document.querySelector(".url-w3c");
 
-        primaryHeadingLink.setAttribute("href", pageTest);
-        primaryHeadingLink.setAttribute("target", "_blank");
-        primaryHeadingLink.innerHTML = pageTest + " <span class='visually-hidden'>(opens in new window)</span></a>";
-        primaryHeading.after(primaryHeadingLink);
+        urlPage.innerHTML = "<a href=" + pageTest + " target='_blank'>" + pageTest + " <span class='visually-hidden'>(opens in new window)</span></a>";
+        w3cPage.innerHTML = "<a href=" + pageElementHref + "#headingoutline target='_blank'>" + pageElementHref + " <span class='visually-hidden'>(opens in new window)</span></a>";
 
         let parser = new DOMParser();
         let response = parser.parseFromString(request.responseText, "text/html");
