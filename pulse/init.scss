@@ -60,7 +60,7 @@ $highlight-color: #6F00EF;
 #headingoutline, #results {
 margin-top: 2em;
   
-    h2, ol, .failure, .details, .stats, .success, #permalink:empty {
+    h2, ol, .failure, .details, .stats, .success, #permalink:empty, #imagereport + p {
     display: none;
     }
   

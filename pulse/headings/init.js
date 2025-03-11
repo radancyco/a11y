@@ -30,7 +30,6 @@
 
         // Success!
 
-        let primaryHeading = document.querySelector(".primary-heading");
         let urlPage = document.querySelector(".url-page");
         let w3cPage = document.querySelector(".url-w3c");
 

@@ -11,7 +11,7 @@
 
     "use strict";
   
-    let pageElement = document.getElementById("page-content");
+    let pageElement = document.querySelector(".page-content");
     let urlParam = new URLSearchParams(window.location.search);
     let pageTest = urlParam.get("url");
     var pageElementHref = "https://validator.w3.org/nu/?showimagereport=yes&doc=" + pageTest;
@@ -30,26 +30,24 @@
 
         // Success!
 
-        let primaryHeading = document.querySelector(".primary-heading");
-        let primaryHeadingLink = document.createElement("a");
+        let urlPage = document.querySelector(".url-page");
+        let w3cPage = document.querySelector(".url-w3c");
 
-        primaryHeadingLink.setAttribute("href", pageTest);
-        primaryHeadingLink.setAttribute("target", "_blank");
-        primaryHeadingLink.innerHTML = pageTest + " <span class='visually-hidden'>(opens in new window)</span></a>";
-        primaryHeading.append(primaryHeadingLink);
+        urlPage.innerHTML = "<a href=" + pageTest + " target='_blank'>" + pageTest + " <span class='visually-hidden'>(opens in new window)</span></a>";
+        w3cPage.innerHTML = "<a href=" + pageElementHref + "#results target='_blank'>" + pageElementHref + " <span class='visually-hidden'>(opens in new window)</span></a>";
 
         let parser = new DOMParser();
         let response = parser.parseFromString(request.responseText, "text/html");
 
         var fragment = response.getElementById("results");
 
-        pageElement.appendChild(fragment);
+        pageElement.append(fragment);
 
     } else {
 
         // We reached our target server, but it returned an error
 
-        pageElement.appendChild(pageError);
+        pageElement.append(pageError);
 
     }
 
@@ -59,7 +57,7 @@
 
     // There was a connection error of some sort
 
-    pageElement.appendChild(pageError);
+    pageElement.append(pageError);
 
     };
 
