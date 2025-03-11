@@ -142,7 +142,7 @@
         btn.addEventListener("click", function() {
 
             var bookMarklet = document.createElement("script");
-            bookMarklet.setAttribute("id", "a11y-pulse-bookmarklet");
+            // bookMarklet.setAttribute("id", "a11y-pulse-bookmarklet");
             bookMarklet.setAttribute("src", this.getAttribute("data-script"));
             document.body.append(bookMarklet);
 
