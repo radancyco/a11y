@@ -11,9 +11,12 @@ overflow-y: auto;
 background-color: #fff;
 resize: both;
 border-radius: 10px;
+padding: 1em;
+font: initial;
 
     * {
     all: revert;
+    
     }
 
     button {
