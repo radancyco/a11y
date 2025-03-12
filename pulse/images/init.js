@@ -10,57 +10,54 @@
 (function() {
 
     "use strict";
-  
-    let pageElement = document.querySelector(".page-content");
-    let urlParam = new URLSearchParams(window.location.search);
-    let pageTest = urlParam.get("url");
-    var pageElementHref = "https://validator.w3.org/nu/?showimagereport=yes&doc=" + pageTest;
 
-    let pageError = document.createElement("div");
+    const pageElement = document.querySelector(".page-content");
+    const urlParam = new URLSearchParams(window.location.search);
+    const pageTest = urlParam.get("url");
+    const pageElementHref = `https://validator.w3.org/nu/?showimagereport=yes&doc=${encodeURIComponent(pageTest)}`;
+
+    const pageError = document.createElement("div");
     pageError.classList.add("warning-info");
-    pageError.innerHTML = "We're sorry, the content you are looking for can't be displayed right now. Try refreshing your page. If the issue persists please contact the <a href='mailto:a11y@radancy.com?subject=Accessibility%20Pulse%20Issue'>Accessibility Team</a>.";
+    pageError.innerHTML = `We're sorry, the content you are looking for can't be displayed right now. Try refreshing your page. If the issue persists please contact the <a href='mailto:a11y@radancy.com?subject=Accessibility%20Pulse%20Issue'>Accessibility Team</a>.`;
 
-    let request = new XMLHttpRequest();
+    const fetchPage = async () => {
+        
+        try {
 
-    request.open("GET", pageElementHref, true);
+            const response = await fetch(pageElementHref);
 
-    request.onload = function() {
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
-    if (request.status >= 200 && request.status < 400) {
+            const urlPage = document.querySelector(".url-page");
+            const w3cPage = document.querySelector(".url-w3c");
 
-        // Success!
+            urlPage.innerHTML = `<a href="${pageTest}" target="_blank">${pageTest} <span class="visually-hidden">(opens in new window)</span></a>`;
+            w3cPage.innerHTML = `<a href="${pageElementHref}#results" target="_blank">${pageElementHref} <span class="visually-hidden">(opens in new window)</span></a>`;
 
-        let urlPage = document.querySelector(".url-page");
-        let w3cPage = document.querySelector(".url-w3c");
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, "text/html");
+            const fragment = doc.getElementById("results");
 
-        urlPage.innerHTML = "<a href=" + pageTest + " target='_blank'>" + pageTest + " <span class='visually-hidden'>(opens in new window)</span></a>";
-        w3cPage.innerHTML = "<a href=" + pageElementHref + "#results target='_blank'>" + pageElementHref + " <span class='visually-hidden'>(opens in new window)</span></a>";
+            if (fragment) {
 
-        let parser = new DOMParser();
-        let response = parser.parseFromString(request.responseText, "text/html");
+                pageElement.append(fragment);
 
-        var fragment = response.getElementById("results");
+            } else {
 
-        pageElement.append(fragment);
+                throw new Error("No results found in the response.");
 
-    } else {
+            }
 
-        // We reached our target server, but it returned an error
+        } catch (error) {
 
-        pageElement.append(pageError);
+            console.error("Error fetching or parsing the page:", error);
+            pageElement.append(pageError);
 
-    }
-
-    };
-
-    request.onerror = function() {
-
-    // There was a connection error of some sort
-
-    pageElement.append(pageError);
+        }
 
     };
 
-    request.send();
-
+    fetchPage();
+    
 })();
