@@ -29,7 +29,7 @@
   }
 
 .a11y-pulse {
-all: revert;
+// all: revert;
 background-color: #fff;
 border-radius: 10px;
 display: grid;
@@ -46,7 +46,7 @@ animation: slide-up 1200ms forwards, fade-in 800ms forwards;
 position: fixed;
 
     * {
-    // all: initial;
+    //all: revert;
     }
 
     &[closing] {
