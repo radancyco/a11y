@@ -46,7 +46,7 @@ animation: slide-up 1200ms forwards, fade-in 800ms forwards;
 position: fixed;
 
     * {
-    all: revert;
+    // all: initial;
     }
 
     &[closing] {
