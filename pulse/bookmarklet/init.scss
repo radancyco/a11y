@@ -52,4 +52,10 @@ animation: slide-up 1200ms forwards, fade-in 800ms forwards;
     animation: fade-out 500ms forwards;
     }
 
+    img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    }
+
 }
