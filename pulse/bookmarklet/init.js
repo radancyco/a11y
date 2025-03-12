@@ -22,8 +22,10 @@
 
     // Close Button 
 
-    const a11yPulse = document.querySelector(".a11y-pulse");
-    const a11yPulseClose = document.querySelector(".a11y-pulse__close");
+    const shadowHost = document.querySelector(".a11y-pulse-root");
+    const shadowContainer = shadowHost.shadowRoot;
+    const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
+    const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__close");
 
     a11yPulseClose.addEventListener("click", () => {
 
@@ -31,7 +33,7 @@
 
         a11yPulse.addEventListener("animationend", () => {
 
-            a11yPulse.remove();
+            shadowHost.remove();
 
             let a11yPulseAssets = document.querySelectorAll(".a11y-pulse-asset");
 
@@ -47,7 +49,7 @@
 
     // Validate WAVE
 
-    let btnValidateWAVE = document.querySelectorAll(".validate-wave");
+    let btnValidateWAVE = shadowContainer.querySelectorAll(".validate-wave");
 
     btnValidateWAVE.forEach(function(btn) {
 
@@ -58,7 +60,7 @@
 
     // Validate W3C
 
-    let btnValidateW3C = document.querySelectorAll(".validate-w3c");
+    let btnValidateW3C = shadowContainer.querySelectorAll(".validate-w3c");
 
     btnValidateW3C.forEach(function(btn) {
 
@@ -69,7 +71,7 @@
 
     // Validate Headings
 
-    let btnValidateHeading = document.querySelectorAll(".validate-heading");
+    let btnValidateHeading = shadowContainer.querySelectorAll(".validate-heading");
 
     btnValidateHeading.forEach(function(btn) {
 
@@ -80,7 +82,7 @@
 
     // Validate Images
 
-    let btnValidateImage = document.querySelectorAll(".validate-image");
+    let btnValidateImage = shadowContainer.querySelectorAll(".validate-image");
 
     btnValidateImage.forEach(function(btn) {
 
@@ -91,7 +93,7 @@
 
     // Validate CSS
 
-    let btnValidateCSS = document.querySelectorAll(".validate-css");
+    let btnValidateCSS = shadowContainer.querySelectorAll(".validate-css");
 
     btnValidateCSS.forEach(function(btn){
 
@@ -113,7 +115,7 @@
 
     // Validate Spelling
 
-    let btnValidateSpelling = document.querySelectorAll(".validate-spelling");
+    let btnValidateSpelling = shadowContainer.querySelectorAll(".validate-spelling");
 
     btnValidateSpelling.forEach(function(btn){
         
@@ -124,7 +126,7 @@
 
     // Validate Structured Data
 
-    let btnValidateStructuredData = document.querySelectorAll(".validate-structured-data");
+    let btnValidateStructuredData = shadowContainer.querySelectorAll(".validate-structured-data");
 
     btnValidateStructuredData.forEach(function(btn){
     
@@ -135,9 +137,9 @@
 
     // Validate HTML by Direct Input
 
-    var formValidation = document.getElementById("submitPartialPage");
-    var formValidationContent = document.getElementById("contentToValidate");
-    var formValidationSubmit = document.getElementById("submitValidate");
+    var formValidation = shadowContainer.getElementById("submitPartialPage");
+    var formValidationContent = shadowContainer.getElementById("contentToValidate");
+    var formValidationSubmit = shadowContainer.getElementById("submitValidate");
     var topHtml = '<!DOCTYPE html>' + "\n" + '<html lang="en">' + "\n" + '<head>' + "\n\t" + '<meta charset="utf-8">' + "\n\t" + '<title>Untitled Document</title>' + "\n" + '</head>' + "\n" + '<body>' + "\n" + "\n";
     var bottomHtml = "\n\n</body></html>";
     
@@ -160,7 +162,7 @@
 
     // Bookmarklet Loader
     
-    let btnValidateScript = document.querySelectorAll("button[data-script]");
+    let btnValidateScript = shadowContainer.querySelectorAll("button[data-script]");
 
     btnValidateScript.forEach(function(btn){
 

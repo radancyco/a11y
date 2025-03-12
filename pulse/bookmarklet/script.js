@@ -1,10 +1,10 @@
 /*!
-
+  
   Radancy: Accessibility Pulse - Bookmarklet
-
+  
   Contributor(s):
   Michael "Spell" Spellacy
-
+  
 */
 
 (function() {
@@ -23,32 +23,36 @@
 
         }).then(html => {
 
-            const tempDiv = document.createElement("div");
-
-            tempDiv.innerHTML = html;
-
-            const fragment = tempDiv.querySelector(selector);
+            // Parse the HTML string and extract the desired fragment
+            const fragment = new DOMParser().parseFromString(html, 'text/html').querySelector(selector);
 
             if (fragment) {
 
-                // Load CSS 
+                // Create a custom element to host the Shadow DOM
+                const shadowHost = document.createElement('div');
+                shadowHost.classList.add("a11y-pulse-root");
 
+                // Create and attach the Shadow DOM
+                const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+
+                // Append the shadowHost to the body
+                document.body.prepend(shadowHost);
+
+                // Load CSS into the Shadow DOM
                 var a11yPulseCSS = document.createElement("link");
                 a11yPulseCSS.classList.add("a11y-pulse-asset");
                 a11yPulseCSS.setAttribute("rel", "stylesheet");
                 a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/bookmarklet/init.css");
-                document.head.append(a11yPulseCSS);
+                shadowRoot.append(a11yPulseCSS); // Attach CSS to Shadow DOM
 
-                // Load Bookmarklet
+                // Prepend the fragment directly into the Shadow DOM
+                shadowRoot.append(fragment);
 
-                document.querySelector(target).prepend(fragment);
-
-                // Load JavaScript 
-
+                // Load JavaScript into the Shadow DOM
                 var a11yPulseJS = document.createElement("script");
                 a11yPulseJS.classList.add("a11y-pulse-asset");
                 a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
-                document.body.append(a11yPulseJS);
+                shadowRoot.append(a11yPulseJS);
 
             } else {
 
