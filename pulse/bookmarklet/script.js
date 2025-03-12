@@ -41,7 +41,7 @@
 
                 // Load Bookmarklet
 
-                document.querySelector(target).before(fragment);
+                document.querySelector(target).prepend(fragment);
 
                 // Load JavaScript 
 
