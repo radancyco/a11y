@@ -82,7 +82,7 @@
 
     if(!a11yPulse) {
 
-        fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet", ".a11y-pulse", "body");
+        fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet/", ".a11y-pulse", "body");
 
     }
 
