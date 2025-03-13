@@ -1,5 +1,5 @@
 /*!
-  
+
   Radancy: Accessibility Pulse - Bookmarklet
   
   Contributor(s):
@@ -24,21 +24,27 @@
         }).then(html => {
 
             // Parse the HTML string and extract the desired fragment
-            const fragment = new DOMParser().parseFromString(html, 'text/html').querySelector(selector);
+
+            const fragment = new DOMParser().parseFromString(html, "text/html").querySelector(selector);
 
             if (fragment) {
 
                 // Create a custom element to host the Shadow DOM
-                const shadowHost = document.createElement('div');
+
+                const shadowHost = document.createElement("div");
+
                 shadowHost.classList.add("a11y-pulse-root");
 
                 // Create and attach the Shadow DOM
+
                 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
 
                 // Append the shadowHost to the body
+
                 document.body.prepend(shadowHost);
 
                 // Load CSS into the Shadow DOM
+
                 var a11yPulseCSS = document.createElement("link");
                 a11yPulseCSS.classList.add("a11y-pulse-asset");
                 a11yPulseCSS.setAttribute("rel", "stylesheet");
@@ -46,9 +52,11 @@
                 shadowRoot.append(a11yPulseCSS); // Attach CSS to Shadow DOM
 
                 // Prepend the fragment directly into the Shadow DOM
+
                 shadowRoot.append(fragment);
 
                 // Load JavaScript into the Shadow DOM
+
                 var a11yPulseJS = document.createElement("script");
                 a11yPulseJS.classList.add("a11y-pulse-asset");
                 a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
