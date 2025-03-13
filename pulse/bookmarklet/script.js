@@ -46,18 +46,18 @@
                 // Load CSS into the Shadow DOM
 
 var hostStyle = document.createElement("style");
-hostStyle.textContent = `:host {all: initial;}`;
+hostStyle.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');";
 shadowRoot.append(hostStyle);
 
-                var a11yPulseCSS = document.createElement("link");
-                a11yPulseCSS.classList.add("a11y-pulse-asset");
-                a11yPulseCSS.setAttribute("rel", "stylesheet");
-                a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/bookmarklet/init.css");
-                shadowRoot.append(a11yPulseCSS); // Attach CSS to Shadow DOM
+                //var a11yPulseCSS = document.createElement("link");
+                //a11yPulseCSS.classList.add("a11y-pulse-asset");
+                //a11yPulseCSS.setAttribute("rel", "stylesheet");
+                //a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/bookmarklet/init.css");
+                //shadowRoot.append(a11yPulseCSS); // Attach CSS to Shadow DOM
 
                 // Prepend the fragment directly into the Shadow DOM
 
-                a11yPulseCSS.onload = () => {
+                hostStyle.onload = () => {
 
                     shadowRoot.append(fragment); // Append content only after CSS is ready
 
