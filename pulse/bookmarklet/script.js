@@ -52,7 +52,7 @@
                 shadowRoot.append(a11yPulseCSS); // Attach CSS to Shadow DOM
 
 var hostStyle = createElement("style");
-hostStyle.textContent = ":host {all: initial;}";
+hostStyle.textContent = `:host {all: initial;}`;
 shadowRoot.append(hostStyle);
 
                 // Prepend the fragment directly into the Shadow DOM
