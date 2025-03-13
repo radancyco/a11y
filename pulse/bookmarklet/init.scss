@@ -44,12 +44,10 @@ z-index: 2147483647;
 animation: slide-up 1200ms forwards, fade-in 800ms forwards;
 position: fixed;
 
-// Targeting the ::part pseudo-element
-&::part(a11y-pulse) {
-  line-height: normal;  // Override global styles inside the Shadow DOM
-  letter-spacing: normal;
-  word-spacing: normal;
+:host {
+  all: initial; /* subsequent properties are reset. */
 }
+
 
 button {
   background-color: #ffcc36;
