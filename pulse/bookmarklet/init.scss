@@ -1,6 +1,15 @@
 :host {
-all: initial;
+all:unset;
+
+  * {
+  line-height: normal !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  }
+
 }
+
+@import url("https://radancy.dev/css/init.css");
 
 
 @keyframes fade-in {
@@ -45,23 +54,6 @@ resize: both;
 z-index: 2147483647;
 animation: slide-up 1200ms forwards, fade-in 800ms forwards;
 position: fixed;
-
-:host {
-  all: initial; /* subsequent properties are reset. */
-}
-
-
-button {
-  background-color: #ffcc36;
-  border: .0625rem #000 solid;
-  color: #000;
-  display: inline-block;
-  line-height: normal;
-  padding: .9375em 1.5625em;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase
-}
 
     &[closing] {
     animation: fade-out 500ms forwards;
