@@ -1,5 +1,5 @@
 :host {
-all:unset;
+all: initial;
 
   * {
   line-height: normal !important;
@@ -9,35 +9,7 @@ all:unset;
 
 }
 
-@import url("https://radancy.dev/css/init.css");
 
-
-@keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fade-out {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  
-  @keyframes slide-up {
-    0% {
-      transform: translateY(20%);
-    }
-    100% {
-      transform: translateY(0%);
-    }
-  }
 
 .a11y-pulse {
 background-color: #fff;
@@ -54,6 +26,33 @@ resize: both;
 z-index: 2147483647;
 animation: slide-up 1200ms forwards, fade-in 800ms forwards;
 position: fixed;
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
 
     &[closing] {
     animation: fade-out 500ms forwards;
