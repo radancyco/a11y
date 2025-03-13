@@ -53,14 +53,20 @@
 
                 // Prepend the fragment directly into the Shadow DOM
 
-                shadowRoot.append(fragment);
+                a11yPulseCSS.onload = () => {
 
-                // Load JavaScript into the Shadow DOM
+                    shadowRoot.append(fragment); // Append content only after CSS is ready
+
+                     // Load JavaScript into the Shadow DOM
 
                 var a11yPulseJS = document.createElement("script");
                 a11yPulseJS.classList.add("a11y-pulse-asset");
                 a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
                 shadowRoot.append(a11yPulseJS);
+                    
+                };
+
+               
 
             } else {
 
