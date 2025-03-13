@@ -45,32 +45,24 @@
 
                 // Load CSS into the Shadow DOM
 
-var hostStyle = document.createElement("style");
-hostStyle.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');";
-shadowRoot.append(hostStyle);
-
-                //var a11yPulseCSS = document.createElement("link");
-                //a11yPulseCSS.classList.add("a11y-pulse-asset");
-                //a11yPulseCSS.setAttribute("rel", "stylesheet");
-                //a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/bookmarklet/init.css");
-                //shadowRoot.append(a11yPulseCSS); // Attach CSS to Shadow DOM
+                const a11yPulseCSS = document.createElement("style");
+                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');";
+                shadowRoot.append(a11yPulseCSS);
 
                 // Prepend the fragment directly into the Shadow DOM
 
-                hostStyle.onload = () => {
+                a11yPulseCSS.onload = () => {
 
                     shadowRoot.append(fragment); // Append content only after CSS is ready
 
                      // Load JavaScript into the Shadow DOM
 
-                var a11yPulseJS = document.createElement("script");
-                a11yPulseJS.classList.add("a11y-pulse-asset");
-                a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
-                shadowRoot.append(a11yPulseJS);
-                    
-                };
+                    const a11yPulseJS = document.createElement("script");
+                    a11yPulseJS.classList.add("a11y-pulse-asset");
+                    a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
+                    shadowRoot.append(a11yPulseJS);
 
-               
+                };
 
             } else {
 
@@ -88,9 +80,10 @@ shadowRoot.append(hostStyle);
 
     // Load Module
 
-    let a11yPulse = document.querySelector(".a11y-pulse");
+    const a11yPulse = document.querySelector(".a11y-pulse");
 
     if(!a11yPulse) {
+
         fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet/", ".a11y-pulse", "body");
 
     }

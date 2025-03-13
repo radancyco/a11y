@@ -18,7 +18,15 @@ accordion: true
 
 {% capture contentblock %}
 
-  <a class="btn" href="javascript: (function () { var bookMarklet = document.createElement('script'); bookMarklet.classList.add('a11y-pulse-asset'); bookMarklet.setAttribute('id', 'a11y-pulse-bookmarklet'); bookMarklet.setAttribute('src', '{{ site.url }}{{ site.baseurl }}/pulse/bookmarklet/load.js'); var a11yPulseBookmarklet = document.querySelector('#a11y-pulse-bookmarklet'); if(!a11yPulseBookmarklet) { document.body.append(bookMarklet);}}());">{{ iconBookmark }} A11y Pulse</a>
+<a class="btn" href="javascript:(function () {
+const bookMarklet = document.createElement('script');
+bookMarklet.classList.add('a11y-pulse-asset');
+bookMarklet.setAttribute('id', 'a11y-pulse-bookmarklet');
+bookMarklet.setAttribute('src', '{{ site.url }}{{ site.baseurl }}/pulse/bookmarklet/load.js');
+const a11yPulseBookmarklet = document.querySelector('#a11y-pulse-bookmarklet');
+if (!a11yPulseBookmarklet) {
+document.body.append(bookMarklet);
+}}());">{{ iconBookmark }} A11y Pulse</a>
 
 {% endcapture %}
 

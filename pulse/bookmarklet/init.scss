@@ -1,17 +1,67 @@
+/*!
+
+    Radancy: Accessibility Pulse
+
+    Contributor(s):
+    Michael "Spell" Spellacy
+
+*/
+
 :host {
 all: initial;
 
+  // Bookmarklet Overrides
+
   * {
-  line-height: normal !important;
   letter-spacing: normal !important;
+  line-height: normal !important;
   word-spacing: normal !important;
   }
 
 }
 
+// Animation States
 
+@keyframes fade-in {
+
+  0% {
+  opacity: 0;
+  }
+
+  100% {
+  opacity: 1;
+  }
+
+}
+
+@keyframes fade-out {
+
+  0% {
+  opacity: 1;
+  }
+
+  100% {
+  opacity: 0;
+  }
+
+}
+
+@keyframes slide-up {
+
+  0% {
+  transform: translateY(20%);
+  }
+
+  100% {
+  transform: translateY(0%);
+  }
+
+}
+
+// Bookmarklet Component
 
 .a11y-pulse {
+animation: slide-up 800ms forwards, fade-in 400ms forwards;
 background-color: #fff;
 border-radius: 10px;
 display: grid;
@@ -22,40 +72,12 @@ max-width: calc(800rem/16);
 overflow-y: auto;
 padding: 1em;
 place-self: center;
+position: fixed;
 resize: both;
 z-index: 2147483647;
-animation: slide-up 1200ms forwards, fade-in 800ms forwards;
-position: fixed;
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes slide-up {
-  0% {
-    transform: translateY(20%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
 
     &[closing] {
-    animation: fade-out 500ms forwards;
+    animation: fade-out 400ms forwards;
     }
 
     img {
