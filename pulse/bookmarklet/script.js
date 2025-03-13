@@ -51,8 +51,8 @@
                 a11yPulseCSS.setAttribute("href", "{{ include.url }}/pulse/bookmarklet/init.css");
                 shadowRoot.append(a11yPulseCSS); // Attach CSS to Shadow DOM
 
-var hostStyle = createElement("style");
-hostStyle.textContent = `:host {all: initial;}`;
+var hostStyle = document.createElement("style");
+hostStyle.textContent = ":host {all: initial;}";
 shadowRoot.append(hostStyle);
 
                 // Prepend the fragment directly into the Shadow DOM
@@ -91,7 +91,6 @@ shadowRoot.append(hostStyle);
     let a11yPulse = document.querySelector(".a11y-pulse");
 
     if(!a11yPulse) {
-
         fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet/", ".a11y-pulse", "body");
 
     }
