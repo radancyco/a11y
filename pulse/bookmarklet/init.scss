@@ -61,20 +61,24 @@ all: initial;
 // Bookmarklet Component
 
 .a11y-pulse {
-animation: slide-up 800ms forwards, fade-in 400ms forwards;
 background-color: #fff;
-border-radius: 10px;
-display: grid;
-font: 100% / 1.6 "Graphik", "Helvetica", "Arial", sans-serif;
-height: calc(600rem/16);
-margin: 1em;
-max-width: calc(800rem/16);
-overflow-y: auto;
+display: block;
+font: 100% / 1.6 "Graphik", "Helvetica", "Arial", sans-serif !important;
 padding: 1em;
-place-self: center;
-position: fixed;
-resize: both;
-z-index: 2147483647;
+position: static;
+
+    &[open] {
+    animation: slide-up 800ms forwards, fade-in 400ms forwards;
+    border-radius: 10px;
+    height: calc(600rem/16);
+    margin: 1em;
+    max-width: calc(800rem/16);
+    overflow-y: auto;
+    place-self: center;
+    position: fixed;
+    resize: both;
+    z-index: 2147483647;
+    }
 
     &[closing] {
     animation: fade-out 400ms forwards;

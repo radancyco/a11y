@@ -18,14 +18,17 @@
   
     // Commonly used Classes, Data Attributes, States, Strings, etc.
 
-    let getLocation = location.href;
-
-    // Close Button 
-
+    const getLocation = location.href;
     const shadowHost = document.querySelector(".a11y-pulse-root");
     const shadowContainer = shadowHost.shadowRoot;
     const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
     const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__close");
+
+    // Show Modal
+
+    a11yPulseClose.focus();
+
+    // Close Button 
 
     a11yPulseClose.addEventListener("click", () => {
 
