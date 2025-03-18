@@ -11,165 +11,169 @@ localcss: init.css
 
     <button class="a11y-pulse__close">Close</button>
 
-    <div>
+    <div class="accordion">
 
-        <div class="qa-info">
+        <h2 class="accordion__heading"><button id="validation-tools" class="accordion__toggle"><span>Validation Tools</span></button></h2>
+      
+        <div class="accordion__panel">
 
-            <h2 class="info-heading">Automated Testing</h2>
+            <div class="qa-info">
 
-            <p>Web pages must always be validated. Errors presented in WAVE and the W3C (World Wide Web Consortium) Validator are the most critical issues to address. Accessibility and QA (Quality Assurance) engineers should link directly to validation reports when logging issues.</p>
+                <h2 class="info-heading">Automated Testing</h2>
 
-            <p><b>Who is responsible?</b> Everybody</p>
+                <p>Web pages must always be validated. Errors presented in WAVE and the W3C (World Wide Web Consortium) Validator are the most critical issues to address. Accessibility and QA (Quality Assurance) engineers should link directly to validation reports when logging issues.</p>
 
-            <ul>
-                <li><a class="validate-wave" href="https://wave.webaim.org/" target="_blank">WAVE Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li>
+                <p><b>Who is responsible?</b> Everybody</p>
+
+                <ul>
+                    <li><a class="validate-wave" href="https://wave.webaim.org/" target="_blank">WAVE Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                    <li>
                 
-                    <a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation  <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
+                        <a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation  <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
 
-                    <details>
+                        <details>
 
-                        <summary>Advanced Validation</summary>
+                            <summary>Advanced Validation</summary>
 
-                        <ul>
-                            <li>
+                            <ul>
+                                <li>
                                 
-                                <button class="new-tab" data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></button>
+                                    <button class="new-tab" data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></button>
 
-                                - <span>Runs validation on entire DOM (Document Object Model), including <strong>script generated content</strong>. Cannot be linked to.</span>
+                                    - <span>Runs validation on entire DOM (Document Object Model), including <strong>script generated content</strong>. Cannot be linked to.</span>
 
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 
-                                <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
+                                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
 
-                                - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
+                                    - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
 
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
 
-                    </details>
+                        </details>
 
-                </li>
-                <li><a class="validate-heading" href="{{ site.url }}{{ site.baseurl }}/pulse/headings" target="_blank">Heading Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a class="validate-image" href="{{ site.url }}{{ site.baseurl }}/pulse/images" target="_blank">Review Page Images <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-            </ul>
+                    </li>
+                    <li><a class="validate-heading" href="{{ site.url }}{{ site.baseurl }}/pulse/headings" target="_blank">Heading Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                    <li><a class="validate-image" href="{{ site.url }}{{ site.baseurl }}/pulse/images" target="_blank">Review Page Images <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                </ul>
 
-            <h2>Other Validation Tests (Not Mandatory)</h2>
+                <h2>Other Validation Tests (Not Mandatory)</h2>
 
-            <ul>
-                <li><a class="validate-css" href="http://jigsaw.w3.org/css-validator/" target="_blank">Validate CSS <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a class="validate-link" href="https://validator.w3.org/checklink" target="_blank">Validate Links <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a class="validate-spelling" href="https://www.w3.org/2002/01/spellchecker" target="_blank">Validate Spelling <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a class="validate-structured-data" href="https://search.google.com/test/rich-results" target="_blank">Validate Structured Data <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-            </ul>
+                <ul>
+                    <li><a class="validate-css" href="http://jigsaw.w3.org/css-validator/" target="_blank">Validate CSS <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                    <li><a class="validate-link" href="https://validator.w3.org/checklink" target="_blank">Validate Links <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                    <li><a class="validate-spelling" href="https://www.w3.org/2002/01/spellchecker" target="_blank">Validate Spelling <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                    <li><a class="validate-structured-data" href="https://search.google.com/test/rich-results" target="_blank">Validate Structured Data <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                </ul>
 
-            <h2 class="info-heading">Manual Testing</h2>
+                <h2 class="info-heading">Manual Testing</h2>
 
-            <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed instead. The following are common and useful tools you may use for closer analysis.</p>
+                <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed instead. The following are common and useful tools you may use for closer analysis.</p>
 
-            <p><b>Who is responsible?</b> Engineers, Specialists</p>
+                <p><b>Who is responsible?</b> Engineers, Specialists</p>
 
-            <h3>Validate HTML by Direct Input</h3>
+                <h3>Validate HTML by Direct Input</h3>
 
-            <details>
+                <details>
 
-                <summary>Show Form</summary>
+                    <summary>Show Form</summary>
 
-                <form action="https://validator.w3.org/nu/?showsource=yes" enctype="multipart/form-data" id="submitPartialPage" method="post" target="_blank">
+                    <form action="https://validator.w3.org/nu/?showsource=yes" enctype="multipart/form-data" id="submitPartialPage" method="post" target="_blank">
 
-                    <input name="showsource" type="hidden" value="yes">
+                        <input name="showsource" type="hidden" value="yes">
 
-                    <label for="contentToValidate">Enter the Markup to validate:</label>
+                        <label for="contentToValidate">Enter the Markup to validate:</label>
 
-                    <textarea cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
+                        <textarea cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
 
-                    <button id="submitValidate" type="submit">Validate</button>
+                        <button id="submitValidate" type="submit">Validate</button>
 
-                </form>
+                    </form>
 
-            </details>
+                </details>
 
-            <h3>Magnification</h3>
+                <h3>Magnification</h3>
 
-            <ul>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
-            </ul>
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
+                </ul>
 
-            <h3>Color</h3>
+                <h3>Color</h3>
 
-            <ul>
-                <li><button data-script="contrast" data-fragment="color-contrast">Test Contrast</button>
-                <li><button data-script="contrast" data-fragment="link-contrast">Test Link & Text Contrast</button>
-            </ul>
+                <ul>
+                    <li><button data-script="contrast" data-fragment="color-contrast">Test Contrast</button>
+                    <li><button data-script="contrast" data-fragment="link-contrast">Test Link & Text Contrast</button>
+                </ul>
 
-            <h3>Typography</h3>
+                <h3>Typography</h3>
 
-            <ul>
-                <li><button data-script="typography" data-fragment="default-font">Change Default Font Size</button>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/text-spacing.js">Text Spacing</button></li>
-            </ul>
+                <ul>
+                    <li><button data-script="typography" data-fragment="default-font">Change Default Font Size</button>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/text-spacing.js">Text Spacing</button></li>
+                </ul>
 
-            <h3>Internationalization</h3>
+                <h3>Internationalization</h3>
 
-            <ul>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-rtl.js">Show Right-to-left (RTL)</button>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-ltr.js">Show Left-to-right (LTR)</button>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-lang.js">Show Document Language</button>
-            </ul>
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-rtl.js">Show Right-to-left (RTL)</button>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-ltr.js">Show Left-to-right (LTR)</button>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-lang.js">Show Document Language</button>
+                </ul>
 
-            <h3>Animation</h3>
+                <h3>Animation</h3>
 
-            <ul>
-                <li><a class="new-tab" href="https://trace.umd.edu/peat/">Download PEAT (Photosensitive Epilepsy Analysis Tool) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-            </ul>
+                <ul>
+                    <li><a class="new-tab" href="https://trace.umd.edu/peat/">Download PEAT (Photosensitive Epilepsy Analysis Tool) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                </ul>
 
-            <p><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
+                <p><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
 
-            <h3>Visual</h3>
+                <h3>Visual</h3>
 
-            <ul>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">Force Focus</button></li>
-            </ul>
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">Force Focus</button></li>
+                </ul>
 
-            <h3>PDF</h3>
+                <h3>PDF</h3>
 
-            <ul>
-                <li><a class="new-tab" href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/register">Download PAC (PDF Accessibility Checker) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-            </ul>
+                <ul>
+                    <li><a class="new-tab" href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/register">Download PAC (PDF Accessibility Checker) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                </ul>
 
-            <p><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
+                <p><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
 
-            <h2>Other</h2>
+                <h2>Other</h2>
 
-            <ul>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/isolator.js">Isolate Code Blocks</button></li>
-            </ul>
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/isolator.js">Isolate Code Blocks</button></li>
+                </ul>
+
+            </div>
+
+            <div class="reminder-info">
+
+                <h2>Reminder!</h2>
+
+                <p>Have you tested your page in Axe? All developers should have the Axe devTools extension installed and be using it regularly, during development, to address any critical and serious accessibility issues.</p>
+
+                <ul>
+                    <li><a class="new-tab" href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US">Chrome <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                    <li><a class="new-tab" href="https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/">FireFox <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                    <li><a class="new-tab" href="https://microsoftedge.microsoft.com/addons/detail/axe-devtools-web-access/kcenlimkmjjkdfcaleembgmldmnnlfkn">Edge <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+                </ul>
+
+            </div>
 
         </div>
 
-        <div class="reminder-info">
+        {% include baselines.html %}
 
-            <h2>Reminder!</h2>
-
-            <p>Have you tested your page in Axe? All developers should have the Axe devTools extension installed and be using it regularly, during development, to address any critical and serious accessibility issues.</p>
-
-            <ul>
-                <li><a class="new-tab" href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US">Chrome <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a class="new-tab" href="https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/">FireFox <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a class="new-tab" href="https://microsoftedge.microsoft.com/addons/detail/axe-devtools-web-access/kcenlimkmjjkdfcaleembgmldmnnlfkn">Edge <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-            </ul>
-
-        </div>
-
-    </div>
-
-    {% include baselines.html %}
-
-    <button class="disclosure--btn" data-disclosure-icon>Other Tools and Resources</button>
-
-    <div class="disclosure--content"> 
+        <h2 class="accordion__heading"><button id="other-tools" class="accordion__toggle"><span>Other Tools and Resources</span></button></h2>
+          
+        <div class="accordion__panel">
 
         <!-- details>
 
@@ -284,4 +288,6 @@ localcss: init.css
     <!-- TODO: include label in name 2.5.3 Label in Name -->
 
 </dialog>
+
+<script>document.querySelector(".a11y-pulse").removeAttribute("open");</script>
     
