@@ -72,7 +72,7 @@ position: static;
 
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
-    border-radius: 10px;
+    border-radius: 5px;
     height: calc(600rem/16);
     margin: 1em;
     max-width: calc(800rem/16);
@@ -87,12 +87,51 @@ position: static;
     animation: fade-out 400ms forwards;
     }
 
-    img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    }
-    
+    --scroll-color-track: #EEE; // Track Color
+--scroll-color-thumb: #6F00EF; // Thumb Color
+--scroll-color-active: #666; // Active State
 
+
+scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
+
+
+.reset {
+
+}
+.reset {
+    background-image: url(../img/btn-reset.png);
+    border-radius: 5px;
+    height: 40px;
+    min-width: 0;
+    padding: 0;
+    position: fixed;
+    width: 40px;
+    z-index: 2;
+    top: 13px;
+    right: 16px;
+}
+button:not(.accordion__toggle) {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    display: inline-block;
+    min-width: 265px;
+}
+button:not(.accordion__toggle), input[type="file"]::file-selector-button {
+    background-color: #ffcc36;
+    border: .0625rem #000 solid;
+    color: #000;
+    display: inline-block;
+    line-height: normal;
+    padding: .9375em 1.5625em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+
+
+    
 }
 
