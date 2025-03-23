@@ -74,6 +74,7 @@ max-width: calc(800rem/16);
 padding: 1em;
 position: static;
 scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
+width: calc(800rem/16);
 
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
