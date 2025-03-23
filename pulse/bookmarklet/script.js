@@ -46,14 +46,14 @@
                 // Load CSS into the Shadow DOM
 
                 const a11yPulseCSS = document.createElement("style");
-                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');:host{all: initial;}";
+                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');";
                 shadowRoot.append(a11yPulseCSS);
 
                 // Prepend the fragment directly into the Shadow DOM
 
                 a11yPulseCSS.onload = () => {
 
-                    shadowRoot.append(fragment); // Append content only after CSS is ready
+                    shadowRoot.prepend(fragment); // Append content only after CSS is ready
 
                      // Load JavaScript into the Shadow DOM
 
