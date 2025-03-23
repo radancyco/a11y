@@ -7,7 +7,7 @@
 
 */
 
-//@import url("https://radancy.dev/css/init.css");
+@import url("https://radancy.dev/css/init.css");
 @import url("https://radancy.dev/component-library/accordion/init.css");
 
 :host {
@@ -71,17 +71,17 @@ all: initial !important;
 background-color: #fff;
 display: block;
 font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif !important;
-max-width: calc(800rem/16);
-min-width: calc(360rem/16);
+max-width: 800px;
+min-width: 360px;
 padding: 1em;
 position: static;
 scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
-width: calc(800rem/16);
+width: 800px;
 
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
     border-radius: 5px;
-    height: calc(600rem/16);
+    height: 600px;
     margin: 1em;
     overflow-y: auto;
     place-self: center;
