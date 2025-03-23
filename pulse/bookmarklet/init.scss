@@ -11,13 +11,18 @@
 @import url("https://radancy.dev/component-library/accordion/init.css");
 
 :host {
+
+--scroll-color-track: #EEE; // Track Color
+--scroll-color-thumb: #6F00EF; // Thumb Color
+--scroll-color-active: #666; // Active State
+
 all: initial;
 
   // Bookmarklet Overrides
 
   * {
   letter-spacing: normal !important;
-  line-height: normal !important;
+  line-height: 2 !important;
   word-spacing: normal !important;
   }
 
@@ -61,21 +66,20 @@ all: initial;
 
 }
 
-// Bookmarklet Component
-
 .a11y-pulse {
 background-color: #fff;
 display: block;
-font: 100% / 1.6 "Graphik", "Helvetica", "Arial", sans-serif !important;
+font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif !important;
+max-width: calc(800rem/16);
 padding: 1em;
 position: static;
+scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
 
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
     border-radius: 5px;
     height: calc(600rem/16);
     margin: 1em;
-    max-width: calc(800rem/16);
     overflow-y: auto;
     place-self: center;
     position: fixed;
@@ -87,51 +91,36 @@ position: static;
     animation: fade-out 400ms forwards;
     }
 
-    --scroll-color-track: #EEE; // Track Color
---scroll-color-thumb: #6F00EF; // Thumb Color
---scroll-color-active: #666; // Active State
+    &__heading {
+    color: #6F00EF;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: normal !important;
+    margin: 0 0 1em;
+    }
 
-
-scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
-
-
-.reset {
-
-}
-.reset {
-    background-image: url(../img/btn-reset.png);
-    border-radius: 5px;
-    height: 40px;
-    min-width: 0;
-    padding: 0;
-    position: fixed;
-    width: 40px;
-    z-index: 2;
-    top: 13px;
-    right: 16px;
-}
-button:not(.accordion__toggle) {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 20px;
-    display: inline-block;
-    min-width: 265px;
-}
-button:not(.accordion__toggle), input[type="file"]::file-selector-button {
+    &__close {
     background-color: #ffcc36;
-    border: .0625rem #000 solid;
-    color: #000;
-    display: inline-block;
-    line-height: normal;
-    padding: .9375em 1.5625em;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
+    border-radius: 5px;
+    border: calc(1rem/16) #000 solid;
+    cursor: pointer;
+    float: inline-end;
+    height: calc(40rem/16);
+    width: calc(40rem/16);
+
+      img {
+      width: calc(20rem/16);
+      place-self: center;
+      }
+
+    }
+
+    button:not(.accordion__toggle):not(.a11y-pulse__close):not(.btn) {
+    background-color: transparent;
+    border: 0;
+    font: inherit;
+    padding: 0;
+    text-decoration: underline;
+    }
+  
 }
-
-
-
-
-    
-}
-
