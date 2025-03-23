@@ -46,7 +46,7 @@
                 // Load CSS into the Shadow DOM
 
                 const a11yPulseCSS = document.createElement("style");
-                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');:host{all: initial};";
+                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');:host{all: initial;}";
                 shadowRoot.append(a11yPulseCSS);
 
                 // Prepend the fragment directly into the Shadow DOM
