@@ -16,7 +16,7 @@
 --scroll-color-thumb: #6F00EF; // Thumb Color
 --scroll-color-active: #666; // Active State
 
-all: initial !important;
+all: initial;
 
   // Bookmarklet Overrides
 
@@ -24,7 +24,6 @@ all: initial !important;
   letter-spacing: normal !important;
   line-height: 2 !important;
   word-spacing: normal !important;
-  font-size: 100% !important;
   }
 
 }
@@ -70,7 +69,7 @@ all: initial !important;
 .a11y-pulse {
 background-color: #fff;
 display: block;
-font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif !important;
+font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif;
 max-width: 800px;
 min-width: 360px;
 padding: 1em;
