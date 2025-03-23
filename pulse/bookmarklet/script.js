@@ -42,11 +42,13 @@
                 // Append the fragment directly into the Shadow DOM
                 shadowRoot.append(fragment);
 
-                // Load JavaScript into the Shadow DOM
-                const a11yPulseJS = document.createElement("script");
-                a11yPulseJS.classList.add("a11y-pulse-asset");
-                a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
-                shadowRoot.append(a11yPulseJS);
+                // Fetch and execute JavaScript
+                const jsResponse = await fetch("{{ include.url }}/pulse/bookmarklet/init.js");
+                if (!jsResponse.ok) throw new Error(`JS fetch error! Status: ${jsResponse.status}`);
+
+                const scriptText = await jsResponse.text();
+                new Function(scriptText)(); // Executes the JavaScript
+
             } else {
                 console.error(`Element "${selector}" not found in fetched content.`);
             }
