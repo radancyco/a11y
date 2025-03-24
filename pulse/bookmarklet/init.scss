@@ -28,6 +28,10 @@ all: initial !important;
 
 }
 
+:host-context(html) {
+  font-size: 16px;
+}
+
 // Animation States
 
 @keyframes fade-in {
@@ -76,10 +80,6 @@ padding: 1em;
 position: static;
 scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
 width: 45%;
-
-    * {
-    font-size: inherit !important;
-    }
 
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
