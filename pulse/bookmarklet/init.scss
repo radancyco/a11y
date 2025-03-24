@@ -70,12 +70,12 @@ all: initial;
 background-color: #fff;
 display: block;
 font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif;
-max-width: 800px;
+max-width: 45%;
 min-width: 360px;
 padding: 1em;
 position: static;
 scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
-width: 800px;
+width: 45%;
 
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
