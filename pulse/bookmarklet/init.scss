@@ -77,6 +77,10 @@ position: static;
 scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
 width: 45%;
 
+    * {
+    font-size: inherit !important;
+    }
+
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
     border-radius: 5px;
