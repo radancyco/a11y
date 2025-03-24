@@ -16,21 +16,15 @@
 --scroll-color-thumb: #6F00EF; // Thumb Color
 --scroll-color-active: #666; // Active State
 
-all: initial !important;
-font-size: 16px; /* or any suitable base size */
-
   // Bookmarklet Overrides
 
   * {
   letter-spacing: normal !important;
   line-height: 2 !important;
   word-spacing: normal !important;
+  font-size: 100% !important;
   }
 
-}
-
-:host-context(html) {
-  font-size: 16px;
 }
 
 // Animation States
@@ -74,18 +68,18 @@ font-size: 16px; /* or any suitable base size */
 .a11y-pulse {
 background-color: #fff;
 display: block;
-font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif;
-max-width: 45%;
-min-width: 360px;
+font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif !important;
+max-width: calc(800em/16);
+min-width: calc(360em/16);
 padding: 1em;
 position: static;
 scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
-width: 45%;
+width: calc(800em/16);
 
     &[open] {
     animation: slide-up 800ms forwards, fade-in 400ms forwards;
     border-radius: 5px;
-    height: 600px;
+    height: calc(600em/16);
     margin: 1em;
     overflow-y: auto;
     place-self: center;
@@ -100,7 +94,7 @@ width: 45%;
 
     &__heading {
     color: #6F00EF;
-    font-size: calc(26rem/16);
+    font-size: calc(26em/16);
     font-weight: 600;
     line-height: normal !important;
     margin: 0 0 1em;
@@ -109,15 +103,15 @@ width: 45%;
     &__close {
     background-color: #ffcc36;
     border-radius: 5px;
-    border: calc(1rem/16) #000 solid;
+    border: calc(1em/16) #000 solid;
     cursor: pointer;
     float: inline-end;
-    height: calc(40rem/16);
+    height: calc(40em/16);
     margin-block-start: 0.5em;
-    width: calc(40rem/16);
+    width: calc(40em/16);
 
       img {
-      width: calc(20rem/16);
+      width: calc(20em/16);
       place-self: center;
       }
 
