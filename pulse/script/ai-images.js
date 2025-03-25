@@ -42,7 +42,7 @@ javascript: (function() {
           headers: {
 
             "Ocp-Apim-Subscription-Key": API_KEY,
-            "Content-Type': 'application/json"
+            "Content-Type": "application/json"
 
           },
 
