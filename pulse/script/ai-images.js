@@ -2,12 +2,12 @@ javascript: (function() {
 
     // Config: https://portal.azure.com/#@tmpww.microsoftonline.com/resource/subscriptions/e3b7e0f4-6c35-4a25-8256-3c2a4252240b/resourceGroups/Radancy/providers/Microsoft.CognitiveServices/accounts/a11y/overview 
 
-    const API_KEY = '1qCtiKYAPcG5xy2BijVzOHQEO8OmqVtup9y2Wk7ZVxsk4traAyHuJQQJ99BCACYeBjFXJ3w3AAAFACOGmDy7'; // Replace with your Azure API key 
-    const ENDPOINT = 'https://a11y.cognitiveservices.azure.com'; // Replace with your Azure endpoint
+    const API_KEY = "1qCtiKYAPcG5xy2BijVzOHQEO8OmqVtup9y2Wk7ZVxsk4traAyHuJQQJ99BCACYeBjFXJ3w3AAAFACOGmDy7";
+    const ENDPOINT = "https://a11y.cognitiveservices.azure.com";
 
     if (!API_KEY || !ENDPOINT) {
 
-      alert('Please update the script with your Azure API key and endpoint.');
+      alert("Please update the script with your Azure API key and endpoint.");
 
     } else {
 
@@ -41,8 +41,8 @@ javascript: (function() {
 
           headers: {
 
-            'Ocp-Apim-Subscription-Key': API_KEY,
-            'Content-Type': 'application/json'
+            "Ocp-Apim-Subscription-Key": API_KEY,
+            "Content-Type': 'application/json"
 
           },
 

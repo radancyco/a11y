@@ -149,7 +149,6 @@ id: a11y-smoke-test
 
                 <ul>
                     <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/isolator.js">Isolate Code Blocks</button></li>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/ai-images.js">Generate Alternative Text (AI)</button>
                 </ul>
 
             </div>
@@ -167,6 +166,16 @@ id: a11y-smoke-test
                 </ul>
 
             </div>
+
+        </div>
+
+        <h2 class="accordion__heading"><button id="ai-tools" class="accordion__toggle"><span>AI Tools</span></button></h2>
+      
+        <div class="accordion__panel">
+
+            <ul>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/ai-images.js">Generate Alternative Text</button>
+            </ul>
 
         </div>
 
