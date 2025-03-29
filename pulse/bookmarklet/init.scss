@@ -12,10 +12,6 @@
 
 :host {
 
---scroll-color-track: #EEE; // Track Color
---scroll-color-thumb: #6F00EF; // Thumb Color
---scroll-color-active: #666; // Active State
-
   // Bookmarklet Overrides
 
   * {
@@ -69,11 +65,11 @@
 background-color: #fff;
 display: block;
 font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif !important;
+inset-block-start: 1em;
 max-width: calc(800em/16);
 min-width: calc(360em/16);
-padding: 1em;
 position: static;
-scrollbar-color: var(--scroll-color-thumb) var(--scroll-color-track);
+scrollbar-color: #6F00EF #eee;
 width: calc(800em/16);
 
     &[open] {
@@ -82,6 +78,7 @@ width: calc(800em/16);
     height: calc(600em/16);
     margin: 1em;
     overflow-y: auto;
+    padding: 1em;
     place-self: center;
     position: fixed;
     resize: both;
