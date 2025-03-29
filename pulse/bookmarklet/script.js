@@ -31,7 +31,7 @@
 
                 // Create a custom element to host the Shadow DOM
 
-                const shadowHost = document.createElement("div");
+                const shadowHost = document.createElement("my-element");
 
                 shadowHost.classList.add("a11y-pulse-root");
 
