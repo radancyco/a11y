@@ -46,7 +46,7 @@
                 // Load CSS into the Shadow DOM
 
                 const a11yPulseCSS = document.createElement("style");
-                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');";
+                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');@import url('https://radancy.dev/css/init.css');@import url('https://radancy.dev/component-library/accordion/init.css');";
                 shadowRoot.append(a11yPulseCSS);
 
                 // Prepend the fragment directly into the Shadow DOM
