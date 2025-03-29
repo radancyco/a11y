@@ -7,12 +7,13 @@
 
 */
 
-@import url("https://radancy.dev/css/init.css");
-@import url("https://radancy.dev/component-library/accordion/init.css");
+
 
 :host {
 
   // Bookmarklet Overrides
+
+  all: unset;
 
   * {
   letter-spacing: normal !important;
@@ -22,6 +23,9 @@
   }
 
 }
+
+@import url("https://radancy.dev/css/init.css");
+@import url("https://radancy.dev/component-library/accordion/init.css"); 
 
 // Animation States
 
