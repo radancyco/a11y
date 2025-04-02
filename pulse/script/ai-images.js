@@ -2,8 +2,8 @@ javascript: (function() {
 
     // Config: https://portal.azure.com/#@tmpww.microsoftonline.com/resource/subscriptions/e3b7e0f4-6c35-4a25-8256-3c2a4252240b/resourceGroups/Radancy/providers/Microsoft.CognitiveServices/accounts/a11y/overview 
 
-    const API_KEY = "1qCtiKYAPcG5xy2BijVzOHQEO8OmqVtup9y2Wk7ZVxsk4traAyHuJQQJ99BCACYeBjFXJ3w3AAAFACOGmDy7";
-    const ENDPOINT = "https://a11y.cognitiveservices.azure.com";
+    const API_KEY = "key value here";
+    const ENDPOINT = "end point";
 
     if (!API_KEY || !ENDPOINT) {
 
