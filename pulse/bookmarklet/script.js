@@ -52,7 +52,7 @@
                 const sheets = await Promise.all([
 
                     fetchCSS("{{ include.url }}/pulse/bookmarklet/init.css"),
-                    fetchCSS("https://radancy.dev/css/init.css"),
+                   // fetchCSS("https://radancy.dev/css/init.css"),
                     fetchCSS("https://radancy.dev/component-library/accordion/init.css")
 
                 ]);
