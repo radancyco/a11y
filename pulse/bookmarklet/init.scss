@@ -38,9 +38,15 @@ $weight-black: 900 !default; // Black (Heavy)
   --highlight-color: #6F00EF;
   --highlight-color-active: #FFF;
   
-  font-size: initial;
-  font-family: "Helvetica", "Arial", sans-serif;
+  box-sizing: border-box;
+  font: 100%/2 "Helvetica", "Arial", sans-serif;
 
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 // Animation States
@@ -89,32 +95,31 @@ h1, h2, h3, h4, h5, h6 {
 
 .a11y-pulse {
 background-color: #fff;
+border-radius: 5px;
 display: block;
+inline-size: 98%;
 inset-block-start: 1em;
-max-width: 800px;
-min-width: 360px;
-position: static;
+margin: 1em 0;
+overflow-y: auto;
+padding: 16px;
+place-self: center;
+resize: both;
 scrollbar-color: var(--highlight-color) #eee;
 scrollbar-width: thin;
-block-size: 800px;
+z-index: 2147483647;
+position: static;
 
   * {
   line-height: 2 !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
+  box-sizing: border-box;
   }
 
   &[open] {
   animation: slide-up 800ms forwards, fade-in 400ms forwards;
-  border-radius: 5px;
-  inline-size: 600px;
-  margin: 16px;
-  overflow-y: auto;
-  padding: 16px;
-  place-self: center;
   position: fixed;
-  resize: both;
-  z-index: 2147483647;
+  block-size: calc(600em/16);
   }
 
   &[closing] {
