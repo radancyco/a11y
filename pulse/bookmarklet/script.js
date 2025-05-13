@@ -49,11 +49,11 @@
 
                 // Optional: reset styles via direct styles if needed (use with caution)
 
-              //  const resetStyle = document.createElement("style");
+                const resetStyle = document.createElement("style");
 
-             //   resetStyle.textContent = ":host { all: initial; }";
+                resetStyle.textContent = ":host { all: initial; }";
                 
-             //   shadowRoot.append(resetStyle);
+                shadowRoot.append(resetStyle);
 
                 // Load and apply styles via adoptedStyleSheets
 

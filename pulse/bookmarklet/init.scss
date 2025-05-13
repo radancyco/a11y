@@ -7,7 +7,7 @@
 
 */
 
-:host { all: initial; }
+:host { all: initial; font-size: 100%;}
 
 
 // Animation States
@@ -51,7 +51,7 @@
 .a11y-pulse {
 background-color: #fff;
 display: block;
-font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif !important;
+font: 100% / 2 "Graphik", "Helvetica", "Arial", sans-serif;
 inset-block-start: 1em;
 max-width: calc(800em/16);
 min-width: calc(360em/16);
