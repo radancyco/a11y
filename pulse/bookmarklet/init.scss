@@ -92,6 +92,9 @@ width: calc(800em/16);
     height: calc(40em/16);
     margin-block-start: 0.5em;
     width: calc(40em/16);
+    position: sticky;
+    top: 1em;
+    right: 1em;
 
       img {
       width: calc(20em/16);
