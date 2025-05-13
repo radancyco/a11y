@@ -7,62 +7,78 @@
   
 */
 
-(function() {
+(async function() {
 
-    function fetchAndAppendFragment(url, selector, target) {
+    async function fetchCSS(url) {
 
-        fetch(url).then(response => {
+        const response = await fetch(url);
 
-            if (!response.ok) {
+        if (!response.ok) {
 
-                throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
 
-            }
+        }
 
-            return response.text();
+        const text = await response.text();
+        const sheet = new CSSStyleSheet();
+        
+        await sheet.replace(text);
+        return sheet;
+    }
 
-        }).then(html => {
+    async function fetchAndAppendFragment(url, selector, target) {
 
-            // Parse the HTML string and extract the desired fragment
+        try {
 
+            const response = await fetch(url);
+
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+            const html = await response.text();
             const fragment = new DOMParser().parseFromString(html, "text/html").querySelector(selector);
 
             if (fragment) {
-
-                // Create a custom element to host the Shadow DOM
 
                 const shadowHost = document.createElement("my-element");
 
                 shadowHost.classList.add("a11y-pulse-root");
 
-                // Create and attach the Shadow DOM
-
                 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
-
-                // Append the shadowHost to the body
 
                 document.body.prepend(shadowHost);
 
-                // Load CSS into the Shadow DOM
+                // Load and apply styles via adoptedStyleSheets
 
-                const a11yPulseCSS = document.createElement("style");
-                a11yPulseCSS.textContent = "@import url('{{ include.url }}/pulse/bookmarklet/init.css');@import url('https://radancy.dev/css/init.css');@import url('https://radancy.dev/component-library/accordion/init.css');";
-                shadowRoot.append(a11yPulseCSS);
+                const sheets = await Promise.all([
 
-                // Prepend the fragment directly into the Shadow DOM
+                    fetchCSS("{{ include.url }}/pulse/bookmarklet/init.css"),
+                    fetchCSS("https://radancy.dev/css/init.css"),
+                    fetchCSS("https://radancy.dev/component-library/accordion/init.css")
 
-                a11yPulseCSS.onload = () => {
+                ]);
 
-                    shadowRoot.prepend(fragment); // Append content only after CSS is ready
+                shadowRoot.adoptedStyleSheets = sheets;
 
-                     // Load JavaScript into the Shadow DOM
+                // Optional: reset styles via direct styles if needed (use with caution)
 
-                    const a11yPulseJS = document.createElement("script");
-                    a11yPulseJS.classList.add("a11y-pulse-asset");
-                    a11yPulseJS.setAttribute("src", "{{ include.url }}/pulse/bookmarklet/init.js");
-                    shadowRoot.append(a11yPulseJS);
+                const resetStyle = document.createElement("style");
 
-                };
+                resetStyle.textContent = ":host { all: initial; }";
+
+                shadowRoot.append(resetStyle);
+
+                // Append content after styles
+
+                shadowRoot.append(fragment);
+
+                // Append script
+
+                const a11yPulseJS = document.createElement("script");
+                
+                a11yPulseJS.classList.add("a11y-pulse-asset");
+                a11yPulseJS.src = "{{ include.url }}/pulse/bookmarklet/init.js";
+
+                shadowRoot.append(a11yPulseJS);
 
             } else {
 
@@ -70,19 +86,15 @@
 
             }
 
-        }).catch(error => {
+        } catch (error) {
 
             console.error("Fetch error:", error);
 
-        });
+        }
 
     }
 
-    // Load Module
-
-    const a11yPulse = document.querySelector(".a11y-pulse");
-
-    if(!a11yPulse) {
+    if (!document.querySelector(".a11y-pulse")) {
 
         fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet/", ".a11y-pulse", "body");
 
