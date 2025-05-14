@@ -13,6 +13,7 @@
   --secondary-color: #FFCC36;
   --tertiary-color: #FFF;
   
+  box-sizing: initial;
   font-size: initial;
 
 }
@@ -62,10 +63,12 @@ font-size: inherit;
 
 .a11y-pulse {
 background-color: #fff;
+box-shadow: 0 0 calc(10em/16) 0 rgba(0,0,0,0.75);
+border: 0;
 border-radius: 5px;
 display: block;
 font-family: Arial, Helvetica, sans-serif;
-font-size: calc(15em/16);
+font-size: calc(13.5em/16);
 inline-size: 90vw;
 inset-block-start: 1em;
 margin: 1em 0;
@@ -93,6 +96,10 @@ z-index: 2147483647;
   line-height: 2 !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
+  }
+
+  .accordion__toggle {
+  padding-block: calc(8em/16);
   }
 
   // Open State
@@ -130,7 +137,7 @@ z-index: 2147483647;
   gap: calc(5em/16);
   grid-auto-flow: column;
   inset-block-start: calc(8em/16);
-  inset-inline-end: calc(16em/16);
+  inset-inline-end: calc(10em/16);
   position: sticky;
   z-index: 2;
   }
