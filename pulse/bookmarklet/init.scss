@@ -65,8 +65,8 @@ background-color: #fff;
 border-radius: 5px;
 display: block;
 font-family: Arial, Helvetica, sans-serif;
-font-size: 1em;
-inline-size: 98%;
+font-size: calc(15em/16);
+inline-size: 90vw;
 inset-block-start: 1em;
 margin: 1em 0;
 overflow-y: auto;
@@ -82,9 +82,12 @@ z-index: 2147483647;
 
   @media (min-width: $primary-breakpoint) {
 
+    font-size: 1em;
     inline-size: $primary-breakpoint;
   
   }
+
+  // Overrides
 
   * {
   line-height: 2 !important;
@@ -92,15 +95,21 @@ z-index: 2147483647;
   word-spacing: normal !important;
   }
 
+  // Open State
+
   &[open] {
   animation: slide-up 800ms forwards, fade-in 400ms forwards;
-  block-size: calc(600em/16);
+  block-size: 90vh;
   position: fixed;
   }
+
+  // Close State
 
   &[closing] {
   animation: fade-out 400ms forwards;
   }
+
+  // Main Heading
 
   &__heading {
   align-items: center;
@@ -113,6 +122,8 @@ z-index: 2147483647;
   margin: 0 0 calc(16em/16);
   }
 
+  // Controls
+
   &__controls {
   display: grid;
   float: inline-end;
@@ -123,6 +134,8 @@ z-index: 2147483647;
   position: sticky;
   z-index: 2;
   }
+
+  // Control Button(s)
 
   &__close {
   align-items: center;
