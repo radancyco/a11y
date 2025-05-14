@@ -62,8 +62,7 @@
                 // Append script
 
                 const a11yPulseJS = document.createElement("script");
-                
-                a11yPulseJS.classList.add("a11y-pulse-asset");
+        
                 a11yPulseJS.type = "module";
                 a11yPulseJS.src = "{{ include.url }}/pulse/bookmarklet/init.js";
 

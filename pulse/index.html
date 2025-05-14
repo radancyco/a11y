@@ -24,6 +24,7 @@ const bookMarklet = document.createElement('script');
 bookMarklet.classList.add('a11y-pulse-asset');
 bookMarklet.setAttribute('id', 'a11y-pulse-bookmarklet');
 bookMarklet.setAttribute('src', '{{ site.url }}{{ site.baseurl }}/pulse/bookmarklet/load.js');
+bookMarklet.setAttribute('type', 'module');
 const a11yPulseBookmarklet = document.querySelector('#a11y-pulse-bookmarklet');
 if (!a11yPulseBookmarklet) {
 document.body.append(bookMarklet);
