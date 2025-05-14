@@ -86,7 +86,6 @@ font-size: inherit;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
   line-height: normal;
   outline: 1px red solid;
   }
@@ -133,17 +132,15 @@ font-family: Arial, Helvetica, sans-serif;
   }
 
   &__heading {
+  align-items: center;
   color: var(--highlight-color);
-  font-size: 26px;
-  font-weight: 600;
+  display: grid;
+  font-size: calc(26em/16);
+  gap: calc(8em/16);
+  grid-auto-flow: column;
+  inline-size: fit-content;
   line-height: normal !important;
   margin: 0 0 16px;
-  align-items: center;
-  display: grid;
-  gap: 8px;
-  grid-auto-flow: column;
-  text-wrap: balance;
-  inline-size: fit-content;
   }
 
   &__close {
