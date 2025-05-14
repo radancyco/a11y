@@ -66,9 +66,8 @@
                 const a11yPulseJS = document.createElement("script");
 
                 a11yPulseJS.src = "{{ include.url }}/pulse/bookmarklet/init.js";
-                a11yPulseJS.type = "module";
 
-                shadowRoot.prepend(a11yPulseJS);
+                shadowRoot.append(a11yPulseJS);
 
             } else {
 
