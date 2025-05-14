@@ -7,9 +7,9 @@
   
 */
 
-(async function() {
+(async () => {
 
-    async function fetchCSS(url) {
+    const fetchCSS = async (url) => {
 
         const response = await fetch(url);
 
@@ -24,9 +24,10 @@
         
         await sheet.replace(text);
         return sheet;
-    }
 
-    async function fetchAndAppendFragment(url, selector, target) {
+    };
+
+    const fetchAndAppendFragment = async (url, selector, target) => {
 
         try {
 
@@ -39,7 +40,8 @@
 
             if (fragment) {
 
-                const shadowHost = document.createElement("a11y-pulse");
+                const shadowHost = document.createElement("a11y-pulse-component");
+
                 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
 
                 document.body.prepend(shadowHost);
@@ -62,11 +64,11 @@
                 // Append script
 
                 const a11yPulseJS = document.createElement("script");
-        
-                a11yPulseJS.type = "module";
-                a11yPulseJS.src = "{{ include.url }}/pulse/bookmarklet/init.js";
 
-                shadowRoot.append(a11yPulseJS);
+                a11yPulseJS.src = "{{ include.url }}/pulse/bookmarklet/init.js";
+                a11yPulseJS.type = "module";
+
+                shadowRoot.prepend(a11yPulseJS);
 
             } else {
 
@@ -80,7 +82,7 @@
 
         }
 
-    }
+    };
 
     if (!document.querySelector(".a11y-pulse")) {
 

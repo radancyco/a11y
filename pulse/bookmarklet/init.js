@@ -8,13 +8,6 @@
 
 */
 
-
-import { initAccordion } from "https://radancy.dev/component-library/accordion/module.js";
-
-// Example: if it exports `initAccordion`
-
-initAccordion();
-
 (function() {
 
     "use strict";
@@ -26,7 +19,7 @@ initAccordion();
     // Commonly used Classes, Data Attributes, States, Strings, etc.
 
     const getLocation = location.href;
-    const shadowHost = document.querySelector("a11y-pulse");
+    const shadowHost = document.querySelector("a11y-pulse-component");
     const shadowContainer = shadowHost.shadowRoot;
     const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
     const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__close");
@@ -45,13 +38,9 @@ initAccordion();
 
             shadowHost.remove();
 
-            let a11yPulseAssets = document.querySelectorAll(".a11y-pulse-asset");
+            let a11yPulseScript = document.querySelector("#a11y-pulse-component");
 
-           a11yPulseAssets.forEach(function(asset) {
-
-               asset.remove();
-
-           });
+            a11yPulseScript.remove();
 
         });
 
@@ -187,7 +176,6 @@ initAccordion();
     });
 
 
-
-  
+// my external script
 
 })();
