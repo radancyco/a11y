@@ -38,6 +38,7 @@ $weight-black: 900 !default; // Black (Heavy)
   --highlight-color: #6F00EF;
   --highlight-color-active: #FFF;
   
+  all: initial;
   box-sizing: border-box;
   font: 100%/2 "Helvetica", "Arial", sans-serif;
 
@@ -108,8 +109,6 @@ scrollbar-color: var(--highlight-color) #eee;
 scrollbar-width: thin;
 z-index: 2147483647;
 position: static;
-font-size: 1em;
-
 
 
 @media (min-width: 800px) {
