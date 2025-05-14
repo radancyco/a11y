@@ -8,7 +8,7 @@
 
 */
 
-(function() {
+(async function() {
 
     "use strict";
   
@@ -19,7 +19,7 @@
     // Commonly used Classes, Data Attributes, States, Strings, etc.
 
     const getLocation = location.href;
-    const shadowHost = document.querySelector(".a11y-pulse-root");
+    const shadowHost = document.querySelector("a11y-pulse");
     const shadowContainer = shadowHost.shadowRoot;
     const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
     const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__close");
@@ -49,6 +49,16 @@
         });
 
     });
+
+    // Load Accordion 
+
+    const utils = await import("https://radancy.dev/component-library/accordion/init.js");
+
+    console.log(utils);
+
+    // Example: if it exports `initAccordion`
+    
+    utils.initAccordion();
 
     // Validate WAVE
 

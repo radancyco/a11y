@@ -39,10 +39,7 @@
 
             if (fragment) {
 
-                const shadowHost = document.createElement("my-element");
-
-                shadowHost.classList.add("a11y-pulse-root");
-
+                const shadowHost = document.createElement("a11y-pulse");
                 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
 
                 document.body.prepend(shadowHost);
@@ -52,7 +49,6 @@
                 const sheets = await Promise.all([
 
                     fetchCSS("{{ include.url }}/pulse/bookmarklet/init.css"),
-                   // fetchCSS("https://radancy.dev/css/init.css"),
                     fetchCSS("https://radancy.dev/component-library/accordion/init.css")
 
                 ]);
@@ -68,6 +64,7 @@
                 const a11yPulseJS = document.createElement("script");
                 
                 a11yPulseJS.classList.add("a11y-pulse-asset");
+                a11yPulseJS.type = "module";
                 a11yPulseJS.src = "{{ include.url }}/pulse/bookmarklet/init.js";
 
                 shadowRoot.append(a11yPulseJS);
