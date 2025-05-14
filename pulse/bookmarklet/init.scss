@@ -109,6 +109,14 @@ scrollbar-width: thin;
 z-index: 2147483647;
 position: static;
 
+
+
+@media (min-width: 800px) {
+
+  inline-size: 800px;
+
+}
+
   * {
   line-height: 2 !important;
   letter-spacing: normal !important;

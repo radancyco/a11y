@@ -92,4 +92,28 @@
 
     }
 
+    const el = document.querySelector('.a11y-pulse');
+
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+  
+    el.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - el.offsetLeft;
+      offsetY = e.clientY - el.offsetTop;
+      el.style.userSelect = 'none';
+    });
+  
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      el.style.left = `${e.clientX - offsetX}px`;
+      el.style.top = `${e.clientY - offsetY}px`;
+    });
+  
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      el.style.userSelect = '';
+    });
+
 })();
