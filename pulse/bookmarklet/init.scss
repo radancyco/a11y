@@ -39,15 +39,14 @@ $weight-black: 900 !default; // Black (Heavy)
   --highlight-color-active: #FFF;
   
   all: initial;
-  box-sizing: border-box;
-  font: 100%/2 "Helvetica", "Arial", sans-serif;
+  font-size: 100%; /* Respect user/browser root font size */
+  display: block;
 
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+*, *::before, *::after {
+box-sizing: border-box;
+font: inherit;
 }
 
 // Animation States
@@ -109,6 +108,7 @@ scrollbar-color: var(--highlight-color) #eee;
 scrollbar-width: thin;
 z-index: 2147483647;
 position: static;
+font: 1em/2 "Helvetica", "Arial", sans-serif;
 
 
 @media (min-width: 800px) {
