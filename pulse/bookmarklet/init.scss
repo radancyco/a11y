@@ -38,15 +38,13 @@ $weight-black: 900 !default; // Black (Heavy)
   --highlight-color: #6F00EF;
   --highlight-color-active: #FFF;
   
-  all: initial;
-  font-size: 100%; /* Respect user/browser root font size */
-  display: block;
+  font-size: initial;
 
 }
 
 *, *::before, *::after {
 box-sizing: border-box;
-font: inherit;
+font-size: inherit;
 }
 
 // Animation States
@@ -108,7 +106,9 @@ scrollbar-color: var(--highlight-color) #eee;
 scrollbar-width: thin;
 z-index: 2147483647;
 position: static;
-font: 1em/2 "Helvetica", "Arial", sans-serif;
+line-height: 2;
+font-size: 1em;
+font-family: Arial, Helvetica, sans-serif;
 
 
 @media (min-width: 800px) {
@@ -121,7 +121,6 @@ font: 1em/2 "Helvetica", "Arial", sans-serif;
   line-height: 2 !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
-  box-sizing: border-box;
   }
 
   &[open] {
