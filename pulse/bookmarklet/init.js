@@ -22,7 +22,8 @@
   const shadowHost = document.querySelector("a11y-pulse-component");
   const shadowContainer = shadowHost.shadowRoot;
   const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
-  const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__close");
+  const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__btn--close");
+  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__btn--move");
 
   // Show Modal
 
@@ -45,6 +46,52 @@
       });
 
   });
+
+  // Move Dialog
+
+  let offsetX = 0;
+  let offsetY = 0;
+  let isDragging = false;
+
+  a11yPulseMove.addEventListener("mousedown", (e) => {
+
+    isDragging = true;
+
+    const rect = a11yPulse.getBoundingClientRect();
+
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+
+    e.preventDefault();
+
+  });
+
+  const onMouseMove = (e) => {
+
+    if (!isDragging) return;
+
+    a11yPulse.classList.add("draggable");
+
+    a11yPulse.style.left = `${e.clientX - offsetX}px`;
+    a11yPulse.style.top = `${e.clientY - offsetY}px`;
+
+  };
+
+  const onMouseUp = () => {
+
+    isDragging = false;
+
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+
+    a11yPulse.classList.remove("draggable");
+
+  };
+
+  // ** Pulse Functions **
 
   // Validate WAVE
 
