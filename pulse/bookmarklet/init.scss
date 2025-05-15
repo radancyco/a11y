@@ -63,9 +63,10 @@ font-size: inherit;
 
 .a11y-pulse {
 background-color: #fff;
-box-shadow: 0 0 calc(10em/16) 0 rgba(0,0,0,0.75);
-border: 0;
+block-size: 60vh;
 border-radius: 5px;
+border: 0;
+box-shadow: 0 0 calc(10em/16) 0 rgba(0,0,0,0.75);
 display: block;
 font-family: Arial, Helvetica, sans-serif;
 font-size: calc(13.5em/16);
@@ -85,6 +86,7 @@ z-index: 2147483647;
 
   @media (min-width: $primary-breakpoint) {
 
+    block-size: 85vh;
     font-size: 1em;
     inline-size: $primary-breakpoint;
   
@@ -106,7 +108,6 @@ z-index: 2147483647;
 
   &[open] {
   animation: slide-up 800ms forwards, fade-in 400ms forwards;
-  block-size: 85vh;
   position: fixed;
   }
 
