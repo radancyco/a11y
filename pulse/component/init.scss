@@ -83,7 +83,7 @@ z-index: 2147483647;
 
   $primary-breakpoint: 50em;
 
-  @media (min-width: $primary-breakpoint) {
+  @media(min-width: $primary-breakpoint) {
 
     block-size: 85vh;
     font-size: 1em;
@@ -160,7 +160,7 @@ z-index: 2147483647;
 
     .a11y-info, .reminder-info, .resource-info, .warning-info, .qa-info {
       border-left: calc(4em / 16) #000 solid;
-      border-radius: 5px;
+      border-radius: 0 5px 5px 0;
       color: #000;
       margin: calc(16em / 16) 0;
       padding: 1px calc(16em / 16);
@@ -328,6 +328,13 @@ z-index: 2147483647;
 
     &--move {
     cursor: grab;
+
+      @media(max-width: $primary-breakpoint) {
+
+        display: none;
+
+      }
+
     }
 
     img {

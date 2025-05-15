@@ -1,17 +1,15 @@
 ---
-accordion: true
 localcss: init.css
-title: "Accessibility Pulse Bookmarklet"
-id: a11y-smoke-test
+title: "Accessibility Pulse Component"
 ---
 
 <dialog class="a11y-pulse" dir="ltr" lang="en-US" open>
 
     <div class="a11y-pulse__controls">
 
-        <button class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="Close Dialog" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-close.png"></button>
-
         <button class="a11y-pulse__btn a11y-pulse__btn--move"><img alt="Move Dialog" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-move.png"></button>
+
+        <button class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="Close Dialog" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-close.png"></button>
 
     </div>
 
@@ -23,9 +21,9 @@ id: a11y-smoke-test
       
         <div class="accordion__panel">
 
-            <div class="qa-info">
+            <div class="a11y-pulse__info a11y-pulse__info--qa qa-info">
 
-                <h3 class="info-heading">Automated Testing</h3>
+                <h3 class="a11y-pulse__info__heading">Automated Testing</h3>
 
                 <p>Web pages must always be validated. Errors presented in WAVE and the W3C (World Wide Web Consortium) Validator are the most critical issues to address. Accessibility and QA (Quality Assurance) engineers should link directly to validation reports when logging issues.</p>
 
@@ -74,7 +72,7 @@ id: a11y-smoke-test
                     <li><a class="validate-structured-data" href="https://search.google.com/test/rich-results" target="_blank">Validate Structured Data <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
                 </ul>
 
-                <h3 class="info-heading">Manual Testing</h3>
+                <h3 class="a11y-pulse__info__heading">Manual Testing</h3>
 
                 <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed instead. The following are common and useful tools you may use for closer analysis.</p>
 
@@ -159,9 +157,9 @@ id: a11y-smoke-test
 
             </div>
 
-            <div class="reminder-info">
+            <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
 
-                <h3>Reminder!</h3>
+                <h3 class="a11y-pulse__info__heading">Reminder!</h3>
 
                 <p>Have you tested your page in Axe? All developers should have the Axe devTools extension installed and be using it regularly, during development, to address any critical and serious accessibility issues.</p>
 
@@ -190,20 +188,6 @@ id: a11y-smoke-test
         <h2 class="accordion__heading"><button id="other-tools" class="accordion__toggle"><span>Other Tools and Resources</span></button></h2>
           
         <div class="accordion__panel">
-
-        <!-- details>
-
-            <summary>Additional Browser Extensions</summary>
-
-            <p>More advanced automated testing can be performed with the following tools:</p>
-
-            <ul>
-                <li><button data-script="https://www.ssa.gov/accessibility/andi/andi.js">ANDI</button></li>
-                <li><button data-script="https://rawgit.com/pauljadam/bookmarklets/master/axe.js">aXe Results</button> (Experimental, open console to see results)</li>
-                <li><button data-script="https://khan.github.io/tota11y/dist/tota11y.min.js">Tota11y</button></li>
-            </ul>
-
-        </details -->
 
         <details>
 

@@ -1,6 +1,6 @@
 /*!
 
-  Radancy: Accessibility Pulse - Bookmarklet
+  Radancy: Accessibility Pulse
   
   Contributor(s):
   Michael "Spell" Spellacy
@@ -50,7 +50,7 @@
 
                 const sheets = await Promise.all([
 
-                    fetchCSS("{{ include.url }}/pulse/bookmarklet/init.css"),
+                    fetchCSS("{{ include.url }}/pulse/component/init.css"),
 
                 ]);
 
@@ -64,7 +64,7 @@
 
                 const a11yPulseJS = document.createElement("script");
 
-                a11yPulseJS.src = "{{ include.url }}/pulse/bookmarklet/init.js";
+                a11yPulseJS.src = "{{ include.url }}/pulse/component/init.js";
 
                 shadowRoot.append(a11yPulseJS);
 
@@ -84,7 +84,7 @@
 
     if (!document.querySelector(".a11y-pulse")) {
 
-        fetchAndAppendFragment("{{ include.url }}/pulse/bookmarklet/", ".a11y-pulse", "body");
+        fetchAndAppendFragment("{{ include.url }}/pulse/component/", ".a11y-pulse", "body");
 
     }
 
