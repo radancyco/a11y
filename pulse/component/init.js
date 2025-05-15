@@ -14,7 +14,7 @@
 
   // Display which Disclosure is in use via console:
 
-  console.log("%c Accessibility Pulse v1.05 in use. ", "background: #6e00ee; color: #fff");
+  console.log("%c Accessibility Pulse v1.06 in use. ", "background: #6e00ee; color: #fff");
 
   // Commonly used Classes, Data Attributes, States, Strings, etc.
 
@@ -49,6 +49,8 @@
 
   // Move Dialog
 
+  /* 
+
   let offsetX = 0;
   let offsetY = 0;
   let isDragging = false;
@@ -73,7 +75,7 @@
 
     if (!isDragging) return;
 
-    a11yPulse.classList.add("draggable");
+    a11yPulse.setAttribute("data-move", "");
 
     a11yPulse.style.left = `${e.clientX - offsetX}px`;
     a11yPulse.style.top = `${e.clientY - offsetY}px`;
@@ -87,9 +89,11 @@
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("mouseup", onMouseUp);
 
-    a11yPulse.classList.remove("draggable");
+    a11yPulse.removeAttribute("data-move");
 
   };
+
+  */
 
   // ** Pulse Functions **
 

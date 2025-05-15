@@ -60,12 +60,20 @@
 --secondary-color: #FFCC36;
 --tertiary-color: #FFF;
 
+$primary-breakpoint: 50em;
+
+// Reset
+
+*, *::before, *::after {
+box-sizing: border-box;
+font-size: inherit;
+}
+
 background-color: #fff;
 block-size: 60vh;
 border-radius: 5px;
 border: 0;
 box-shadow: 0 0 calc(10em / 16) 0 rgba(0,0,0,0.75);
-box-sizing: border-box;
 display: block;
 font-family: Arial, Helvetica, sans-serif;
 font-size: calc(13.5em / 16);
@@ -77,33 +85,23 @@ padding: 16px;
 place-self: center;
 position: static;
 resize: both;
-scrollbar-color: var(--primary-color) #eee;
-scrollbar-width: thin;
 z-index: 2147483647;
-
-  $primary-breakpoint: 50em;
 
   @media(min-width: $primary-breakpoint) {
 
     block-size: 85vh;
     font-size: 1em;
     inline-size: $primary-breakpoint;
-    min-width: calc(380rem / 16);
+    min-width: calc(400em / 16);
   
   }
 
-  // Overrides
+  // Overrides: This is to overide the Text Spacing test.
 
   * {
   line-height: 2 !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
-  }
-
-  // Draggable 
-
-  &.draggable {
-  opacity: 0.6 !important;
   }
 
   // Open State
@@ -119,17 +117,64 @@ z-index: 2147483647;
   animation: fade-out 400ms forwards;
   }
 
-  // Reset
+  // Move 
 
-  *, *::before, *::after {
-  box-sizing: border-box;
-  font-size: inherit;
+  &[data-move] {
+  opacity: 0.6 !important; // Override animation
+  }
+
+  // Minimize
+
+  &[data-minimize] {
+  block-size: calc(50em / 16);
+  inline-size: calc(38em / 16);
+  inset-block-start: 0;
+  inset-inline: auto 1em;
+  }
+
+  // Main Scrollbar
+
+  scrollbar-color: var(--primary-color) #eee;
+  scrollbar-width: thin;
+
+  @supports selector(::-webkit-scrollbar) {
+ 
+    scrollbar-color: initial;
+    scrollbar-width: auto;
+    padding-inline-end: 0.5em;
+
+    &::-webkit-scrollbar {
+    width: calc(18rem / 16);
+    }
+
+    &::-webkit-scrollbar-track {
+    background-color: #fff;
+    margin-block: 0.5em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border: calc(6rem / 16) #fff solid;
+    border-radius: 100vw;
+    min-height: calc(100rem / 16);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+    }
+  
   }
 
   // Global
+
+  img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  }
   
-  a[target="_blank"], button:has(img[src*="new-tab"]) {
-  
+  a:has(img[src*="new-tab"]), button:has(img[src*="new-tab"]) {
+
     img {
     block-size: calc(14em / 16);
     display: inline-block;
@@ -137,25 +182,19 @@ z-index: 2147483647;
     margin-inline-start: calc(8em /16);
     vertical-align: middle;
     }
-  
-  }
 
-  img {
-  display: block;
-  max-width: 100%;
-  height: auto;
   }
 
   figure {
-    margin: 0;
-    
-      figcaption {
-      font-size: calc(14.4em / 16);
-      font-style: italic;
-      margin: calc(8em / 16) 0;
-      }
-    
+  margin: 0;
+
+    figcaption {
+    font-size: calc(14.4em / 16);
+    font-style: italic;
+    margin: calc(8em / 16) 0;
     }
+
+  }
 
 
     .a11y-info, .reminder-info, .resource-info, .warning-info, .qa-info {
@@ -351,6 +390,24 @@ z-index: 2147483647;
   padding: 0;
   text-decoration: underline;
   }
+
+  footer {
+
+    ul {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+    list-style: none;
+    padding-inline-start: 0;
+    }
+
+    p {
+    text-align: center;
+    }
+
+  }
   
 }
 
@@ -371,23 +428,13 @@ z-index: 2147483647;
   
   --accordion-arrow-size: 0.8em; // Toggle Arrow Size
   --accordion-arrow-border: calc(2em / 16); // Toggle Arrow Border
-  --accordion-close-size: calc(30em / 16); // Close Button Size
   --accordion-color-active: #a9a9a9; // Active State
   --accordion-color-default: #d3d3d3; // Default States
   --accordion-color-interactive: #666; // Interactive State 
   --accordion-color-selected: #6F00EF; // Selected States
-  --accordion-column-large: 4; // Horizontal Layout (Large Vieport)
-  --accordion-column-medium: 2; // Horizontal Layout (Medium Vieport)
   --accordion-gap: calc(5em / 16); // Accordion Gap
-  --accordion-panel-border: calc(2em / 16) transparent solid; // Sets border on pointer and panel. Not for use with default animation
   --accordion-panel-default: #ffffff; // Panel State (Default)
-  --accordion-pointer-size: calc(25em / 16); // Content Pointer Size
   --accordion-toggle-border-radius: 5px; // Button Border Radius
-  
-  // Breakpoints (CSS variables are not allowed in media queries - boo!)
-  
-  $accordion-large: 55em; // Large Viewport
-  $accordion-medium: 37.5em; // Medium Viewport
   
   display: grid;
   gap: var(--accordion-gap);
@@ -461,7 +508,7 @@ z-index: 2147483647;
   
       // Accordion Toggle Button: Behavior
   
-      &[aria-expanded="true"], &[aria-pressed="true"] {
+      &[aria-expanded="true"] {
       background-color: var(--accordion-color-selected);
       color: #fff;
   
@@ -509,9 +556,9 @@ z-index: 2147483647;
   
         scrollbar-color: var(--accordion-color-active) #ffffff;
         scrollbar-width: thin;
-  
-        @supports #{"\selector(::-webkit-scrollbar)"} {
-  
+
+        @supports selector(::-webkit-scrollbar) {
+ 
           scrollbar-color: initial;
           scrollbar-width: auto;
           padding-inline-end: 0.5em;
