@@ -9,18 +9,9 @@
 
 :host { 
 
-  --primary-color: #6F00EF;
-  --secondary-color: #FFCC36;
-  --tertiary-color: #FFF;
-  
   box-sizing: initial;
   font-size: initial;
 
-}
-
-*, *::before, *::after {
-box-sizing: border-box;
-font-size: inherit;
 }
 
 // Animation States
@@ -62,14 +53,26 @@ font-size: inherit;
 }
 
 .a11y-pulse {
+
+// Component Variables
+
+--primary-color: #6F00EF;
+--secondary-color: #FFCC36;
+--tertiary-color: #FFF;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-size: inherit;
+  }
+
 background-color: #fff;
 block-size: 60vh;
 border-radius: 5px;
 border: 0;
-box-shadow: 0 0 calc(10em/16) 0 rgba(0,0,0,0.75);
+box-shadow: 0 0 calc(10em / 16) 0 rgba(0,0,0,0.75);
 display: block;
 font-family: Arial, Helvetica, sans-serif;
-font-size: calc(13.5em/16);
+font-size: calc(13.5em / 16);
 inline-size: 90vw;
 inset-block-start: 1em;
 margin: 1em 0;
@@ -100,10 +103,6 @@ z-index: 2147483647;
   word-spacing: normal !important;
   }
 
-  .accordion__toggle {
-  padding-block: calc(8em/16);
-  }
-
   // Open State
 
   &[open] {
@@ -123,11 +122,18 @@ z-index: 2147483647;
   align-items: center;
   color: var(--primary-color);
   display: grid;
-  font-size: calc(26em/16);
-  gap: calc(8em/16);
+  font-size: calc(26em / 16);
+  gap: calc(8em / 16);
   grid-auto-flow: column;
   inline-size: fit-content;
-  margin: 0 0 calc(16em/16);
+  margin: 0 0 calc(16em / 16);
+
+    small {
+    font-size: 0.6em;
+    font-weight: normal;
+    margin-block-start: 0.5em;
+    }
+
   }
 
   // Controls
@@ -135,10 +141,10 @@ z-index: 2147483647;
   &__controls {
   display: grid;
   float: inline-end;
-  gap: calc(5em/16);
+  gap: calc(5em / 16);
   grid-auto-flow: column;
-  inset-block-start: calc(8em/16);
-  inset-inline-end: calc(10em/16);
+  inset-block-start: calc(8em / 16);
+  inset-inline-end: calc(10em / 16);
   position: sticky;
   z-index: 2;
   }
@@ -148,13 +154,13 @@ z-index: 2147483647;
   &__close {
   align-items: center;
   background-color: var(--secondary-color);
-  block-size: calc(36em/16);
-  border-radius: calc(5em/16);
+  block-size: calc(36em / 16);
+  border-radius: calc(5em / 16);
   border: 1px #000 solid;
   cursor: pointer;
   display: grid;
-  inline-size: calc(36em/16);
-  padding: calc(5em/16);
+  inline-size: calc(36em / 16);
+  padding: calc(5em / 16);
 
     img {
     display: block;
@@ -172,3 +178,447 @@ z-index: 2147483647;
   }
   
 }
+
+/*!
+
+  Radancy Component Library: Accordion
+
+  Contributor(s):
+  Michael "Spell" Spellacy
+
+  Dependencies: Sass
+
+*/
+
+.accordion {
+
+  // Component Variables
+  
+  --accordion-arrow-size: 0.8em; // Toggle Arrow Size
+  --accordion-arrow-border: calc(2em / 16); // Toggle Arrow Border
+  --accordion-close-size: calc(30em / 16); // Close Button Size
+  --accordion-color-active: #a9a9a9; // Active State
+  --accordion-color-default: #d3d3d3; // Default States
+  --accordion-color-interactive: #666; // Interactive State 
+  --accordion-color-selected: #6F00EF; // Selected States
+  --accordion-column-large: 4; // Horizontal Layout (Large Vieport)
+  --accordion-column-medium: 2; // Horizontal Layout (Medium Vieport)
+  --accordion-gap: calc(5em / 16); // Accordion Gap
+  --accordion-panel-border: calc(2em / 16) transparent solid; // Sets border on pointer and panel. Not for use with default animation
+  --accordion-panel-default: #d3d3d3; // Panel State (Default)
+  --accordion-pointer-size: calc(25em / 16); // Content Pointer Size
+  --accordion-toggle-border-radius: 0; // Button Border Radius
+  
+  // Breakpoints (CSS variables are not allowed in media queries - boo!)
+  
+  $accordion-large: 55em; // Large Viewport
+  $accordion-medium: 37.5em; // Medium Viewport
+  
+  display: grid;
+  gap: var(--accordion-gap);
+  
+    // Accordion Defaults & Resets: Do not remove!
+  
+    > ol, > ul, > dl, > ul > li, &__heading {
+    all: unset;
+    } 
+  
+    > ol, > ul, > dl, > ul > li{
+    display: contents;
+    } 
+  
+    // Horizontal Layout
+  
+    &[data-horizontal] {
+  
+      @media (min-width: $accordion-medium) {
+  
+        grid-auto-flow: dense;
+        grid-template-columns: repeat(var(--accordion-column-medium), 1fr);
+  
+      }
+  
+      @media (min-width: $accordion-large) {
+  
+        grid-template-columns: repeat(var(--accordion-column-large), 1fr); 
+  
+      }
+        
+    }
+  
+    // Accordion Toggle Arrow
+  
+    &__arrow {
+    block-size: var(--accordion-arrow-size);
+    border-width: var(--accordion-arrow-border);
+    border-block-color: transparent var(--accordion-color-selected);
+    border-block-start-width: 0;
+    border-inline-color: var(--accordion-color-selected) transparent;
+    border-inline-end-width: 0;
+    border-style: solid;
+    content: "";
+    direction: ltr;
+    display: block;
+    inline-size: var(--accordion-arrow-size);
+    justify-self: end;
+    margin-block: 0 calc(4em / 16);
+    transform: rotate(-45deg);
+    
+      [data-context] & {
+    
+        @media (min-width: $accordion-medium) {
+    
+          display: none;
+    
+        }
+    
+      }
+    
+    }
+  
+    // Accordion Close Button
+  
+    &__close {
+    background-color: transparent;
+    block-size: var(--accordion-close-size);
+    border: 0;
+    cursor: pointer;
+    display: grid;
+    float: inline-end;
+    inline-size: var(--accordion-close-size);
+    justify-items: center;
+    margin: 0;
+    margin-block-end: 1em;
+    margin-inline-start: 1em;
+    padding: 0;
+  
+      &:after, &::before {
+      background-color: #000;
+      block-size: 100%;
+      content: "";
+      display: block;
+      grid-area: 1 / 1;
+      inline-size: calc(2em / 16);
+      }
+  
+      &::after {
+      transform: rotate(-45deg);
+      }
+  
+      &::before {
+      transform: rotate(45deg);
+      }
+  
+    }
+  
+    // Accordion Toggle & Toggle All Button
+  
+    &__toggle, &__toggle-all {
+    align-items: center;
+    background-color: var(--accordion-color-default);
+    border: 0;
+    border-radius: var(--accordion-toggle-border-radius);
+    color: inherit;
+    cursor: pointer;
+    display: grid;
+    font-size: inherit;
+    gap: 1em;
+    grid-auto-flow: column;
+    line-height: normal;
+    padding: 0.5em 1em;
+    position: relative;
+    text-align: start;
+    text-wrap-style: balance;
+    width: 100%;
+  
+      // Multi-purpose Span
+  
+      span:not(.accordion__arrow) {
+      line-height: 1.5;
+      }
+  
+      // Accordion Animation
+  
+      [data-animation] & {
+  
+        @media (prefers-reduced-motion: no-preference) {
+    
+          transition: 300ms;
+  
+        }
+  
+      }
+  
+      // Viewport Context
+  
+      [data-context] & {
+  
+        @media (min-width: $accordion-medium) {
+  
+          pointer-events: none;
+          visibility: hidden;
+  
+            span {
+            color: var(--accordion-color-selected);
+            visibility: visible;
+            }
+  
+        }
+  
+      }
+  
+      // Horizontal Layout
+  
+      [data-horizontal] & {
+  
+        @media (min-width: $accordion-medium) {
+        
+          padding: 1.5em;
+  
+        }
+  
+      }
+  
+      // Horizontal Layout (Overlay): Hides buttons when overlay is "active"
+  
+      [data-overlay][data-active] & {
+        
+        display: none;
+      
+      }
+  
+      // Content Pointer
+  
+      [data-pointer] & {
+  
+        &::after {
+        background-color: var(--accordion-panel-default);
+        block-size: var(--accordion-pointer-size);
+        border-inline-start: var(--accordion-panel-border);
+        border-block-start: var(--accordion-panel-border);
+        content: "";
+        display: none;
+        inline-size: var(--accordion-pointer-size);
+        inset-block-end: calc(var(--accordion-pointer-size) * -1);
+        inset-inline-end: 0;
+        inset-inline-start: 50%;
+        pointer-events: none;
+        position: absolute;
+        transform: rotate(45deg) translateX(-50%);
+        z-index: 1;
+  
+          // Accordion Animation
+  
+          [data-animation] & {
+  
+            translate: 0 var(--accordion-pointer-size);
+  
+          }
+  
+        }   
+  
+      }
+  
+      // Accessibility: Focus and hover states must meet a 3:1 color ratio between background color and foreground text.
+      // The project designer should be providing this state. Also, never remove focus outlines! Either redesign them or 
+      // design an alternative focus state. Learn: https://webaim.org/articles/contrast/
+  
+      &:focus-visible, &:hover {
+      background-color: var(--accordion-color-active);
+      }
+  
+      &:focus-visible {
+      outline-offset: -5px;
+      }
+  
+      // Accordion Toggle Button: Behavior
+  
+      &[aria-expanded="true"], &[aria-pressed="true"] {
+      background-color: var(--accordion-color-selected);
+      color: #fff;
+  
+        [data-animation][data-pointer] & { 
+  
+          // Content Pointer: Animated
+            
+          &::after {
+          translate: 0 .1rem;
+  
+            @media (prefers-reduced-motion: no-preference) {
+  
+              transition: translate 800ms, display 0s allow-discrete;
+  
+            }
+  
+            @starting-style {
+  
+              translate: 0 var(--accordion-pointer-size);
+  
+            }
+  
+          }
+  
+        }
+  
+        // Conent Pointer
+  
+        [data-pointer] & { 
+  
+          &::after {
+          display: block;
+          }
+  
+        }
+  
+        // Accordion Toggle Arrow
+  
+        .accordion__arrow {
+        border-block-end-color: #fff;
+        border-inline-start-color: #fff;
+        transform: rotate(135deg);
+        translate: 0 calc(8rem / 16);
+  
+          [data-pointer] & {
+  
+            display: none;
+  
+          }
+  
+        }
+  
+      }
+  
+    }
+  
+    // Accordion Toggle All Button 
+  
+    &__toggle-all {
+    justify-self: end;
+    margin-block: 0 1em;
+    width: fit-content;
+    }
+  
+    // Accordion Panel
+  
+    &__panel {
+    background-color: var(--accordion-panel-default);
+    display: none;
+    margin-top: calc(var(--accordion-gap) * -1);
+    overflow: hidden;
+    padding: 1em;
+    position: relative;
+  
+      // Accordion Animation
+  
+      [data-animation] & {
+  
+        max-height: 0;
+  
+        @media (prefers-reduced-motion: no-preference) {
+  
+          transition: display 0s, max-height 2s ease-in-out allow-discrete;
+  
+        }
+  
+      }
+  
+      // Horizontal Layout
+  
+      [data-horizontal] & {
+  
+        border: var(--accordion-panel-border);
+        margin-top: auto;
+  
+        @media (min-width: $accordion-medium) {
+  
+          grid-column: 1 / span var(--accordion-column-medium);
+  
+        }
+  
+        @media (min-width: $accordion-large) {
+  
+          grid-column: 1 / span var(--accordion-column-large);
+  
+        }
+  
+      }
+  
+      // Fixed Height
+  
+      [data-fixed-height] & {
+  
+        max-height: 18.75em;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        scrollbar-gutter: stable;
+  
+        // Fallback Scrollbar
+  
+        scrollbar-color: var(--accordion-color-active) var(--accordion-color-default);
+        scrollbar-width: thin;
+  
+        @supports #{"\selector(::-webkit-scrollbar)"} {
+  
+          scrollbar-color: initial;
+          scrollbar-width: auto;
+          padding-inline-end: 0.5em;
+    
+          &::-webkit-scrollbar {
+          width: calc(18rem / 16);
+          }
+      
+          &::-webkit-scrollbar-track {
+          background-color: var(--accordion-color-default);
+          margin-block: 0.5em;
+          }
+      
+          &::-webkit-scrollbar-thumb {
+          background-color: var(--accordion-color-active);
+          border: calc(6rem / 16) var(--accordion-color-default) solid;
+          border-radius: 100vw;
+          min-height: calc(100rem / 16);
+          }
+      
+          &::-webkit-scrollbar-thumb:hover {
+          background-color: var(--accordion-color-interactive);
+          }
+        
+        }
+  
+      }
+  
+      // Viewport Context
+  
+      [data-context] & {
+  
+        @media (min-width: $accordion-medium) {
+  
+          background-color: transparent;
+          display: block;
+  
+        }
+  
+      }
+  
+    }
+  
+    // Accordion Panel Reveal
+  
+    &__toggle[aria-expanded="true"] + &__panel, &__heading:has(&__toggle[aria-expanded="true"]) + &__panel {
+    display: block;
+    
+      [data-animation] & {
+  
+        max-height: 5000px;
+  
+        @starting-style {
+        
+          max-height: 1px;
+        
+        }
+    
+      }
+  
+    }
+  
+  }
