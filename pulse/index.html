@@ -15,15 +15,11 @@ accordion: true
 
 <a class="btn" href="javascript:(() => {
 
-  const scriptID = 'a11y-pulse-component';
-
-  if (!document.getElementById(`#${scriptID}`)) {
+  if (!document.getElementById('a11y-pulse-component')) {
 
     const bookMarklet = document.createElement('script');
-
-    bookMarklet.id = scriptID;
+    bookMarklet.id = 'a11y-pulse-component';
     bookMarklet.src = '{{ site.url }}{{ site.baseurl }}/pulse/component/load.js';
-
     document.body.append(bookMarklet);
 
   }
