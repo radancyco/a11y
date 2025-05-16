@@ -3,12 +3,12 @@
     const shadowHost = document.querySelector("a11y-pulse-component");
     const shadowContainer = shadowHost.shadowRoot;
     const ul = document.createElement("ul");
-    const statusContainer = shadowContainer.querySelector(".status-container--review-alt");
-    const statusMessage = shadowContainer.querySelector(".status-message--review-alt");
+    const statusContainer = shadowContainer.querySelector(".status-container--career-site-images");
+    const statusMessage = shadowContainer.querySelector(".status-message--career-site-images");
 
     statusContainer.appendChild(ul);
 
-    const statusList = shadowContainer.querySelector(".status-container--review-alt ul");
+    const statusList = shadowContainer.querySelector(".status-container--career-site-images ul");
 
     // Function to load the sitemap from URL
 
@@ -316,14 +316,16 @@
 
     };
 
-    const triggerDownload = (csv) => {
+    // Function to trigger CSV download
 
-        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const triggerDownload = (csv, file) => {
+
+        const blob = new Blob([csv], { type: "text/csv;;charset=utf-8;" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
 
         link.href = url;
-        link.setAttribute("download", "image_report.csv");
+        link.setAttribute("download", file);
 
         document.body.appendChild(link);
 
@@ -334,7 +336,6 @@
         URL.revokeObjectURL(url);
 
     };
-
 
     // Call the functions to convert sitemap to array, convert to CSV, and trigger download
 

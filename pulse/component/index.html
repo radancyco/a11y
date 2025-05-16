@@ -16,7 +16,7 @@ id: a11y-smoke-test
     
     <h2>Tests</h2>
     
-    <div class="accordion" data-disable-anchor data-fixed-height>
+    <div class="accordion" data-disable-anchor>
 
         <h2 class="accordion__heading"><button id="automated-tests" class="accordion__toggle"><span>Automated Tests</span></button></h2>
       
@@ -194,24 +194,24 @@ id: a11y-smoke-test
             <ul>
                 <li>
                     
-                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/get-career-site.js">Get Career Site Pages</button>
+                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-pages.js">Get Career Site Pages</button>
                 
-                    - Generates a spreadsheet of key career site pages for accessibility testing. Please allow up to several minutes to scan.
+                    - Generates a spreadsheet of key career site pages to be used in accessibility testing. Please allow up to several minutes to scan.
 
-                    <div class="status-container status-container--get-careers"></div>
+                    <div class="status-container status-container--career-site-pages"></div>
                     
-                    <p class="status-message status-message--get-careers"></p>
+                    <p class="status-message status-message--career-site-pages"></p>
 
                 </li>
                 <li>
                     
-                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/review-alt.js">Review Alternative Text</button>
+                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-images.js">Get Career Site Images</button>
                 
-                    - Generates a spreadsheet of all alternative text used across a career site. Please allow up to several minutes to scan. Process can be monitored via Console. 
+                    - Generates a spreadsheet of all images and alternative text used across a career site. Please allow up to several minutes to scan. 
                 
-                    <div class="status-container status-container--review-alt"></div>
+                    <div class="status-container status-container--career-site-images"></div>
                     
-                    <p class="status-message status-message--review-alt"></p>
+                    <p class="status-message status-message--career-site-images"></p>
                 
                 </li>
             </ul>
