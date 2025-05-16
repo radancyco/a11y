@@ -6,7 +6,7 @@ const statusContainer = shadowContainer.querySelector(".status-container--get-ca
 statusContainer.appendChild(ul);
 
 const statusList = shadowContainer.querySelector(".status-container--get-careers ul");
-const statusMessage = shadowContainer.querySelector(".status-message");
+const statusMessage = shadowContainer.querySelector(".status-message--get-careers");
 
 // Function to load the sitemap from URL
 
@@ -181,7 +181,6 @@ const triggerDownload = (csv, file) => {
 
     const blob = new Blob([csv], { type: "text/csv;;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
-
     const link = document.createElement("a");
 
     link.href = url;
