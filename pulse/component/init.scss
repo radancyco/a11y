@@ -458,8 +458,18 @@ z-index: 2147483647;
 
   }
 
+  .status-error {
+  color: tomato;
+
+    a {
+    color: inherit;
+    }
+
+  }
+
   .status-message {
   color: green;
+  text-wrap: balance;
 
     &::before {
     content: "\2713";
