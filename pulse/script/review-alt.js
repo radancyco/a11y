@@ -1,3 +1,13 @@
+const shadowHost = document.querySelector("a11y-pulse-component");
+const shadowContainer = shadowHost.shadowRoot;
+const ul = document.createElement("ul");
+const statusContainer = shadowContainer.querySelector(".status-container--review-alt");
+const statusMessage = shadowContainer.querySelector(".status-message--review-alt");
+
+statusContainer.appendChild(ul);
+
+const statusList = shadowContainer.querySelector(".status-container--review-alt ul");
+
 // Function to load the sitemap from URL
 
 const loadSitemap = async (url) => {
@@ -84,7 +94,7 @@ const processSitemap = (sitemap) => {
 
 };
 
-// Function to retrieve the title of a webpage and image details given its URL
+// Function to retrieve the title of a webpage and image details given its URL, appending to the list
 
 const getPageTitleAndImages = async (url) => {
 
@@ -95,6 +105,23 @@ const getPageTitleAndImages = async (url) => {
         const dom = new DOMParser().parseFromString(html, "text/html");
         const titleElement = dom.querySelector("title");
         const title = titleElement ? titleElement.textContent.trim() : "Title not found";
+
+        // Append to list like in original getPageTitle
+
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        const img = document.createElement("img");
+
+        a.href = url;
+        a.textContent = url;
+        a.target = "_blank";
+
+        img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
+        img.alt = "(Opens in new window)";
+
+        a.appendChild(img);
+        li.appendChild(a);
+        statusList.prepend(li);
 
         let imageDetails = [];
 
@@ -187,6 +214,25 @@ const getPageTitleAndImages = async (url) => {
     } catch (error) {
 
         console.error("Error retrieving page title and images for URL:", url, error);
+
+        // Append error li like in getPageTitle error block
+
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        const img = document.createElement("img");
+
+        a.href = url;
+        a.textContent = "Error retrieving: " + url;
+        a.target = "_blank";
+
+        img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
+        img.alt = "(Opens in new window)";
+
+        a.appendChild(img);
+        li.appendChild(a);
+        li.classList.add("status-error");
+        statusList.prepend(li);
+
         return { title: "Title not found", images: [] };
 
     }
@@ -287,10 +333,17 @@ const triggerDownload = (csv) => {
 
 };
 
-(async () => {
 
-    const data = await convertSitemapToArray("/sitemap.xml");
+// Call the functions to convert sitemap to array, convert to CSV, and trigger download
+
+convertSitemapToArray("/sitemap.xml").then((data) => {
+
     const csv = makeCsv(data);
-    triggerDownload(csv);
+    const domain = location.hostname.replace(/\./g, '-');
+    const file = `${domain}-images.csv`;
 
-})();
+    triggerDownload(csv, file);
+
+    statusMessage.textContent = `Your process is now complete. Please check your download folder (${file}).`;
+
+});
