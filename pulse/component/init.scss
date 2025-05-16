@@ -92,7 +92,7 @@ z-index: 2147483647;
     block-size: 85vh;
     font-size: 1em;
     inline-size: $primary-breakpoint;
-    min-width: calc(400em / 16);
+    min-inline-size: calc(400em / 16);
   
   }
 
@@ -156,7 +156,7 @@ z-index: 2147483647;
     background-color: var(--primary-color);
     border: calc(6rem / 16) #fff solid;
     border-radius: 100vw;
-    min-height: calc(100rem / 16);
+    min-block-size: calc(100rem / 16);
     }
 
     &::-webkit-scrollbar-thumb:hover {
@@ -169,7 +169,7 @@ z-index: 2147483647;
 
   img {
   display: block;
-  max-width: 100%;
+  max-inline-size: 100%;
   height: auto;
   }
   
@@ -214,7 +214,7 @@ z-index: 2147483647;
   color: #000;
   display: inline-block;
   line-height: normal !important;
-  margin-block: 0 1em;
+  margin-block: 0;
   padding: 1em;
   text-align: center;
   text-decoration: none;
@@ -239,7 +239,7 @@ z-index: 2147483647;
         }
       
         video {
-        max-width: calc(800em / 16);
+        max-inline-size: calc(800em / 16);
         }
       
         h2:first-child, .info-heading {
@@ -394,7 +394,7 @@ z-index: 2147483647;
     &--move {
     cursor: grab;
 
-      @media(max-width: $primary-breakpoint) {
+      @media(max-inline-size: $primary-breakpoint) {
 
         display: none;
 
@@ -573,7 +573,7 @@ z-index: 2147483647;
   
       [data-fixed-height] & {
   
-        max-height: 18.75em;
+        max-block-size: 18.75em;
         overflow-y: auto;
         overscroll-behavior-y: contain;
         scrollbar-gutter: stable;
@@ -602,7 +602,7 @@ z-index: 2147483647;
           background-color: var(--accordion-color-active);
           border: calc(6rem / 16) #fff solid;
           border-radius: 100vw;
-          min-height: calc(100rem / 16);
+          min-block-size: calc(100rem / 16);
           }
       
           &::-webkit-scrollbar-thumb:hover {

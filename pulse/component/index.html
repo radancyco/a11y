@@ -146,7 +146,7 @@ id: a11y-smoke-test
             <p>Please note that as of WCAG 2.2, 4.1.1 Parsing (Level A) has been removed and is no longer required. Issues previously identified by this criterion are typically caught through other testing methods. However, it remains a best practice for developers to continue validating their work.</p>
 
             <ul>
-                <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation  <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
+                <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
                 
                     <h4>Advanced (Dev Only)</h4>
 
@@ -184,6 +184,17 @@ id: a11y-smoke-test
                 <button class="btn" id="submitValidate" type="submit">Validate</button>
 
             </form>
+
+        </div>
+
+        <h2 class="accordion__heading"><button id="audits" class="accordion__toggle"><span>Audits (Specialists Only)</span></button></h2>
+      
+        <div class="accordion__panel">
+
+            <ul>
+                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/get-career-site.js">WCAG Parsing</button></li>
+            </ul>
+
 
         </div>
 

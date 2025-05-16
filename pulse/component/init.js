@@ -228,7 +228,7 @@
 
   /*!
 
-    Radancy Component Library: Accordion
+    Radancy Component Library: Accordion (ShadowDOM Variant)
 
     Contributor(s):
     Michael "Spell" Spellacy
@@ -236,10 +236,6 @@
  */
 
   const initAccordion = () => {
-
-    // Display which version is in use via console:
-
-    console.log("%c Accordion v2.8 (A11y Pulse Variant) in use. ", "background: #6e00ee; color: #fff");
 
     // Classes, data attributes, states, and strings.
 
