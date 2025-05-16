@@ -199,12 +199,23 @@ function makeCsv(data) {
 
 // Function to trigger CSV download
 
-function triggerDownload(csv) {
+function triggerDownload(csv, file) {
 
-    let blob = new Blob([csv], { type: "text/csv" });
+    let blob = new Blob([csv], { type: "text/csv;;charset=utf-8;" });
     let url = URL.createObjectURL(blob);
 
-    window.location.href = url;
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.setAttribute("download", file);
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
 
 }
 
@@ -213,9 +224,11 @@ function triggerDownload(csv) {
 convertSitemapToArray("/sitemap.xml").then(function(data) {
 
     const csv = makeCsv(data);
+    const domain = location.hostname.replace(/\./g, '-');
+    const file = domain + "-pages.csv";
 
-    triggerDownload(csv);
+    triggerDownload(csv, file);
 
-    statusMessage.textContent = "Your process is now complete. Please check your download folder.";
+    statusMessage.textContent = "Your process is now complete. Please check your download folder (" + file + ").";
 
 });
