@@ -273,7 +273,7 @@
     const makeCsv = (data) => {
 
         const headers = ["ID", "Title", "URL", "Image Path", "Alt Text", "Alt Attribute Missing?", "Image Type"];
-        
+
         let csv = headers.join(",") + "\n"; // CSV header
         let ID = 1; // Initialize the counter
 

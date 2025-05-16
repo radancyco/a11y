@@ -15,7 +15,7 @@
     // Function to load the sitemap from URL
 
     const loadSitemap = async (url) => {
-        
+
         try {
 
             const response = await fetch(url);
@@ -49,7 +49,7 @@
                     if (subfolderCounts[subfolder] <= 5) {
 
                         urls.push({ loc });
-            
+
                     }
 
                     break;
@@ -61,7 +61,7 @@
             if (!found) {
 
                 urls.push({ loc });
-        
+
             }
 
         }
