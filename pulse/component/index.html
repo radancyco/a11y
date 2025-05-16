@@ -197,6 +197,14 @@ id: a11y-smoke-test
                     <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/get-career-site.js">Get Career Site Pages</button>
                 
                     - Generates a spreadsheet of key career site pages for accessibility testing. Please allow up to several minutes to scan. Process can be monitored via Console. 
+
+                    <div class="status-container">
+
+                        <ul></ul>
+
+                        <p class="status-message" hidden>Your process is not complete. Please check your download folder.</p>
+        
+                    </div>
                 
                 </li>
                 <li>
@@ -204,6 +212,8 @@ id: a11y-smoke-test
                     <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/review-alt.js">Review Alternative Text</button>
                 
                     - Generates a spreadsheet of all alternative text used across a career site. Please allow up to several minutes to scan. Process can be monitored via Console. 
+                
+                    <div id="get-review-alt-complete"></div>
                 
                 </li>
             </ul>
