@@ -146,20 +146,28 @@ id: a11y-smoke-test
             <p>Please note that as of WCAG 2.2, 4.1.1 Parsing (Level A) has been removed and is no longer required. Issues previously identified by this criterion are typically caught through other testing methods. However, it remains a best practice for developers to continue validating their work.</p>
 
             <ul>
-                <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation  <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li>
+                <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation  <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
+                
+                    <h4>Advanced (Dev Only)</h4>
+
+                    <ul>
+                        <li>
                         
-                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></button>
-
-                    - <span>Runs validation on entire DOM (Document Object Model), including <strong>script generated content</strong>. Cannot be linked to.</span>
-
-                </li>
-                <li>
-
-                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
-
-                    - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
-
+                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></button>
+        
+                            - <span>Runs validation on entire DOM (Document Object Model), including <strong>script generated content</strong>. Cannot be linked to.</span>
+        
+                        </li>
+                        <li>
+        
+                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
+        
+                            - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
+        
+                        </li>
+                    </ul>
+            
+                
                 </li>
             </ul>
 
@@ -188,6 +196,8 @@ id: a11y-smoke-test
             </ul>
 
         </div -->
+
+        <h2>Baseline Guidance</h2>
 
         {% include baselines.html %}
 

@@ -196,6 +196,31 @@ z-index: 2147483647;
 
   }
 
+  label {
+  display: inline-block;
+  margin-block-end: 1em;
+  }
+
+  textarea {
+  display: block;
+  inline-size: 100%;
+  margin-block-end: 1em;
+  padding: 1em;
+  }
+
+  .btn, input[type="file"]::file-selector-button {
+  background-color: #ffcc36;
+  border: 1px #000 solid;
+  color: #000;
+  display: inline-block;
+  line-height: normal !important;
+  margin-block: 0 1em;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  }
+
 
     .a11y-info, .reminder-info, .resource-info, .warning-info, .qa-info {
       border-left: calc(4em / 16) #000 solid;
