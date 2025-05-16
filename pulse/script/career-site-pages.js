@@ -210,7 +210,7 @@
 
         triggerDownload(csv, file);
 
-        statusMessage.textContent = `Your process is now complete. Please check your download folder (${file}).`;
+        statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
 
     });
 
