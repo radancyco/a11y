@@ -192,7 +192,20 @@ id: a11y-smoke-test
         <div class="accordion__panel">
 
             <ul>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/get-career-site.js">WCAG Parsing</button></li>
+                <li>
+                    
+                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/get-career-site.js">Get Career Site Pages</button>
+                
+                    - Generates a spreadsheet of key career site pages for accessibility testing. Please allow up to several minutes to scan. Process can be monitored via Console. 
+                
+                </li>
+                <li>
+                    
+                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/review-alt.js">Review Alternative Text</button>
+                
+                    - Generates a spreadsheet of all alternative text used across a career site. Please allow up to several minutes to scan. Process can be monitored via Console. 
+                
+                </li>
             </ul>
 
 
