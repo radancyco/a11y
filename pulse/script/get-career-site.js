@@ -1,211 +1,217 @@
-const shadowHost = document.querySelector("a11y-pulse-component");
-const shadowContainer = shadowHost.shadowRoot;
-const ul = document.createElement("ul");
-const statusContainer = shadowContainer.querySelector(".status-container--get-careers");
+(() => {
 
-statusContainer.appendChild(ul);
+    "use strict";
 
-const statusList = shadowContainer.querySelector(".status-container--get-careers ul");
-const statusMessage = shadowContainer.querySelector(".status-message--get-careers");
+    const shadowHost = document.querySelector("a11y-pulse-component");
+    const shadowContainer = shadowHost.shadowRoot;
+    const ul = document.createElement("ul");
+    const statusContainer = shadowContainer.querySelector(".status-container--get-careers");
 
-// Function to load the sitemap from URL
+    statusContainer.appendChild(ul);
 
-const loadSitemap = async (url) => {
-    
-    try {
+    const statusList = shadowContainer.querySelector(".status-container--get-careers ul");
+    const statusMessage = shadowContainer.querySelector(".status-message--get-careers");
 
-        const response = await fetch(url);
-        const text = await response.text();
-        return (new DOMParser()).parseFromString(text, "text/xml");
+    // Function to load the sitemap from URL
 
-    } catch (error) {}
-
-};
-
-// Function to expand the URL set
-
-const expandUrlSet = (urlset) => {
-
-    const urls = [];
-    const allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
-    const subfolderCounts = {};
-
-    for (const url of urlset.children) {
-
-        const loc = url.querySelector("loc").textContent;
-        let found = false;
-
-        for (const subfolder of allowedSubfolders) {
-
-            if (loc.includes(subfolder)) {
-
-                found = true;
-                subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
-
-                if (subfolderCounts[subfolder] <= 5) {
-
-                    urls.push({ loc });
+    const loadSitemap = async (url) => {
         
+        try {
+
+            const response = await fetch(url);
+            const text = await response.text();
+            return (new DOMParser()).parseFromString(text, "text/xml");
+
+        } catch (error) {}
+
+    };
+
+    // Function to expand the URL set
+
+    const expandUrlSet = (urlset) => {
+
+        const urls = [];
+        const allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+        const subfolderCounts = {};
+
+        for (const url of urlset.children) {
+
+            const loc = url.querySelector("loc").textContent;
+            let found = false;
+
+            for (const subfolder of allowedSubfolders) {
+
+                if (loc.includes(subfolder)) {
+
+                    found = true;
+                    subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
+
+                    if (subfolderCounts[subfolder] <= 5) {
+
+                        urls.push({ loc });
+            
+                    }
+
+                    break;
+
                 }
 
-                break;
+            }
 
+            if (!found) {
+
+                urls.push({ loc });
+        
             }
 
         }
 
-        if (!found) {
+        return Promise.resolve(urls);
 
-            urls.push({ loc });
-    
+    };
+
+    // Function to process the sitemap
+
+    const processSitemap = (sitemap) => {
+
+        sitemap = sitemap.documentElement;
+
+        switch (sitemap.tagName) {
+
+            case "urlset":
+
+                return expandUrlSet(sitemap);
+
+            default:
+
+                return Promise.resolve([]);
+
         }
 
-    }
+    };
 
-    return Promise.resolve(urls);
+    // Function to retrieve the title of a webpage given its URL
 
-};
+    const getPageTitle = async (url) => {
 
-// Function to process the sitemap
+        try {
 
-const processSitemap = (sitemap) => {
+            const response = await fetch(url);
+            const html = await response.text();
+            const dom = new DOMParser().parseFromString(html, "text/html");
+            const title = dom.querySelector("title").textContent;
 
-    sitemap = sitemap.documentElement;
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            const img = document.createElement("img");
 
-    switch (sitemap.tagName) {
+            a.href = url;
+            a.textContent = url;
+            a.target = "_blank";
 
-        case "urlset":
+            img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
+            img.alt = "(Opens in new window)";
 
-            return expandUrlSet(sitemap);
+            a.appendChild(img);
+            li.appendChild(a);
+            statusList.prepend(li);
 
-        default:
+            return title;
 
-            return Promise.resolve([]);
+        } catch (error) {
 
-    }
+            console.error("Error retrieving page title:", error);
 
-};
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            const img = document.createElement("img");
 
-// Function to retrieve the title of a webpage given its URL
+            a.href = url;
+            a.textContent = "Error retrieving: " + url;
+            a.target = "_blank";
 
-const getPageTitle = async (url) => {
+            img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
+            img.alt = "(Opens in new window)";
 
-    try {
+            a.appendChild(img);
+            li.appendChild(a);
+            li.classList.add = "status-error";
+            statusList.prepend(li);
 
-        const response = await fetch(url);
-        const html = await response.text();
-        const dom = new DOMParser().parseFromString(html, "text/html");
-        const title = dom.querySelector("title").textContent;
+            return "Title not found";
 
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        const img = document.createElement("img");
+        }
 
-        a.href = url;
-        a.textContent = url;
-        a.target = "_blank";
+    };
 
-        img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
-        img.alt = "(Opens in new window)";
+    // Function to convert sitemap to array of objects
 
-        a.appendChild(img);
-        li.appendChild(a);
-        statusList.prepend(li);
+    const convertSitemapToArray = async (url) => {
 
-        return title;
+        const sitemap = await loadSitemap(url);
+        const urls = await processSitemap(sitemap);
 
-    } catch (error) {
+        for (const url of urls) {
 
-        console.error("Error retrieving page title:", error);
+            url.title = await getPageTitle(url.loc);
 
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        const img = document.createElement("img");
+        }
 
-        a.href = url;
-        a.textContent = "Error retrieving: " + url;
-        a.target = "_blank";
+        return urls;
+    };
 
-        img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
-        img.alt = "(Opens in new window)";
+    const makeCsv = (data) => {
 
-        a.appendChild(img);
-        li.appendChild(a);
-        li.classList.add = "status-error";
-        statusList.prepend(li);
+        let csv = "Title, URL, W3C Validation, Error, Heading Validation, Error, Screenshot, WAVE Validation, Errors, Contrast Errors, Screenshot, Radancy Notes, ID\n";
+        let ID = 1;
 
-        return "Title not found";
+        data.forEach((row) => {
 
-    }
+            const paddedID = String(ID).padStart(3, "0");
 
-};
+            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}#headingoutline"," "," ","https://wave.webaim.org/report#/${row.loc}"," "," "," "," ","A11Y${paddedID}"\n`;
 
-// Function to convert sitemap to array of objects
+            ID++;
 
-const convertSitemapToArray = async (url) => {
+        });
 
-    const sitemap = await loadSitemap(url);
-    const urls = await processSitemap(sitemap);
+        return csv;
 
-    for (const url of urls) {
+    };
 
-        url.title = await getPageTitle(url.loc);
+    // Function to trigger CSV download
 
-    }
+    const triggerDownload = (csv, file) => {
 
-    return urls;
-};
+        const blob = new Blob([csv], { type: "text/csv;;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
 
-const makeCsv = (data) => {
+        link.href = url;
+        link.setAttribute("download", file);
 
-    let csv = "Title, URL, W3C Validation, Error, Heading Validation, Error, Screenshot, WAVE Validation, Errors, Contrast Errors, Screenshot, Radancy Notes, ID\n";
-    let ID = 1;
+        document.body.appendChild(link);
 
-    data.forEach((row) => {
+        link.click();
 
-        const paddedID = String(ID).padStart(3, "0");
+        document.body.removeChild(link);
 
-        csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}#headingoutline"," "," ","https://wave.webaim.org/report#/${row.loc}"," "," "," "," ","A11Y${paddedID}"\n`;
+        URL.revokeObjectURL(url);
 
-        ID++;
+    };
+
+    // Call the functions to convert sitemap to array, convert to CSV, and trigger download
+
+    convertSitemapToArray("/sitemap.xml").then((data) => {
+
+        const csv = makeCsv(data);
+        const domain = location.hostname.replace(/\./g, '-');
+        const file = `${domain}-pages.csv`;
+
+        triggerDownload(csv, file);
+
+        statusMessage.textContent = `Your process is now complete. Please check your download folder (${file}).`;
 
     });
 
-    return csv;
-
-};
-
-// Function to trigger CSV download
-
-const triggerDownload = (csv, file) => {
-
-    const blob = new Blob([csv], { type: "text/csv;;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.setAttribute("download", file);
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-
-    URL.revokeObjectURL(url);
-
-};
-
-// Call the functions to convert sitemap to array, convert to CSV, and trigger download
-
-convertSitemapToArray("/sitemap.xml").then((data) => {
-
-    const csv = makeCsv(data);
-    const domain = location.hostname.replace(/\./g, '-');
-    const file = `${domain}-pages.csv`;
-
-    triggerDownload(csv, file);
-
-    statusMessage.textContent = `Your process is now complete. Please check your download folder (${file}).`;
-
-});
+})();
