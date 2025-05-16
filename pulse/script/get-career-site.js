@@ -2,12 +2,13 @@
 
 const shadowHost = document.querySelector("a11y-pulse-component");
 const shadowContainer = shadowHost.shadowRoot;
+const ul = document.createElement("ul");
+const statusContainer = shadowContainer.querySelector(".status-container--get-careers");
 
-const statusList = shadowContainer.createElement("ul");
-const statusListContainer = shadowContainer.querySelector(".status-container--get-careers");
-statusListContainer.appendChild(statusList);
+statusContainer.appendChild(ul);
 
-const statusMessage = shadowContainer.querySelector(".status-container .status-message");
+const statusList = shadowContainer.querySelector(".status-container--get-careers ul");
+const statusMessage = shadowContainer.querySelector(".status-message");
 
 // Function to load the sitemap from URL
 
@@ -122,12 +123,12 @@ async function getPageTitle(url) {
         a.target = "_blank";
 
         const img = document.createElement("img");
-        img.src = "http://radancy.dev/pulse/img/new-tab.png";
+        img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
         img.alt = "(Opens in new window)";
 
         a.appendChild(img);
         li.appendChild(a);
-        statusList.appendChild(li);
+        statusList.prepend(li);
 
         return title;
 
@@ -143,13 +144,13 @@ async function getPageTitle(url) {
         a.target = "_blank";
 
         const img = document.createElement("img");
-        img.src = "http://radancy.dev/pulse/img/new-tab.png";
+        img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
         img.alt = "(Opens in new window)";
 
         a.appendChild(img);
         li.appendChild(a);
         li.style.color = "red";
-        statusList.appendChild(li);
+        statusList.prepend(li);
 
         return "Title not found";
 
