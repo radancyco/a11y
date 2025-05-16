@@ -1,6 +1,17 @@
+
+
+const shadowHost = document.querySelector("a11y-pulse-component");
+const shadowContainer = shadowHost.shadowRoot;
+
+const statusList = shadowContainer.createElement("ul");
+const statusListContainer = shadowContainer.querySelector(".status-container--get-careers");
+statusListContainer.appendChild(statusList);
+
+const statusMessage = shadowContainer.querySelector(".status-container .status-message");
+
 // Function to load the sitemap from URL
 
-function loadSitemap(url) {
+async function loadSitemap(url) {
 
     return fetch(url).then(function(response) {
 
@@ -67,7 +78,6 @@ function expandUrlSet(urlset) {
 
     }
 
-
     return Promise.resolve(urls);
 
 }
@@ -104,13 +114,44 @@ async function getPageTitle(url) {
         const dom = new DOMParser().parseFromString(html, "text/html");
         const title = dom.querySelector("title").textContent;
 
+        const li = document.createElement("li");
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.textContent = url;
+        a.target = "_blank";
+
+        const img = document.createElement("img");
+        img.src = "http://radancy.dev/pulse/img/new-tab.png";
+        img.alt = "(Opens in new window)";
+
+        a.appendChild(img);
+        li.appendChild(a);
+        statusList.appendChild(li);
+
         return title;
 
     } catch (error) {
 
         console.error("Error retrieving page title:", error);
 
-        return "Title not found"; // Default title if an error occurs
+        const li = document.createElement("li");
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.textContent = "Error retrieving: " + url;
+        a.target = "_blank";
+
+        const img = document.createElement("img");
+        img.src = "http://radancy.dev/pulse/img/new-tab.png";
+        img.alt = "(Opens in new window)";
+
+        a.appendChild(img);
+        li.appendChild(a);
+        li.style.color = "red";
+        statusList.appendChild(li);
+
+        return "Title not found";
 
     }
 
@@ -118,7 +159,7 @@ async function getPageTitle(url) {
 
 // Function to convert sitemap to array of objects
 
-function convertSitemapToArray(url) {
+async function convertSitemapToArray(url) {
 
     return loadSitemap(url).then(processSitemap).then(async function(urls) {
 
@@ -168,4 +209,12 @@ function triggerDownload(csv) {
 
 // Call the functions to convert sitemap to array, convert to CSV, and trigger download
 
-convertSitemapToArray("/sitemap.xml").then(makeCsv).then(triggerDownload);
+convertSitemapToArray("/sitemap.xml").then(function(data) {
+
+    const csv = makeCsv(data);
+
+    triggerDownload(csv);
+
+    statusMessage.textContent = "Your process is now complete. Please check your download folder.";
+
+});

@@ -409,6 +409,69 @@ z-index: 2147483647;
 
   }
 
+  // Status Containers
+
+  .status-container {
+  block-size: calc(140em / 16);
+  border-radius: 5px;
+  border: 1px #ccc solid;
+  margin-block-start: 1em;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding-block: 1em;
+  padding-inline: 1em;
+  scrollbar-color: var(--primary-color) #eee;
+  scrollbar-width: thin;
+
+    &:empty {
+    display: none;
+    }
+
+    @supports selector(::-webkit-scrollbar) {
+  
+      scrollbar-color: initial;
+      scrollbar-width: auto;
+      padding-inline-end: 0.5em;
+
+      &::-webkit-scrollbar {
+      width: calc(18rem / 16);
+      }
+
+      &::-webkit-scrollbar-track {
+      background-color: #fff;
+      margin-block: 0.5em;
+      }
+
+      &::-webkit-scrollbar-thumb {
+      background-color: var(--primary-color);
+      border: calc(6rem / 16) #fff solid;
+      border-radius: 100vw;
+      min-block-size: calc(100rem / 16);
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+      background-color: #666;
+      }
+    
+    }
+
+  }
+
+  .status-message {
+  color: green;
+
+    &::before {
+    content: "\2713";
+    margin-inline-end: 0.5em;
+    }
+
+    &:empty {
+    display: none;
+    }
+
+  }
+
   button:not(.accordion__toggle):not(.a11y-pulse__btn):not(.btn) {
   background-color: transparent;
   border: 0;
