@@ -4,7 +4,7 @@ localcss: "init.css"
 localjs: "init.js"
 ---
 
-<p>A web page should have a single <code>h1</code> and maintain a logical heading order for clarity and navigation. However, gefore flagging issues, make an effort to understand the document structure, as hidden headings, especially in navigation systems, may trigger validator warnings that can be safely ignored.</p>
+<p>See <a href="#heading-reminders">Heading Reminders</a> below before flagging an issue. Also note that hidden headings, especially those found in navigation systems, may trigger false positives that can be safely ignored.</p>
 
 <dl>
     <div>
@@ -18,3 +18,39 @@ localjs: "init.js"
 </dl>
 
 <div class="page-content"></div>
+
+<section id="heading-reminders" class="reminder-info">
+
+    <h2>Heading Reminders</h2>
+
+<ol>
+    <li>Headings reflect the hierarchical structure of a page's content.</li>
+    <li>Assistive technology (AT) users rely on headings to understand and navigate pages. They're also beneficial for SEO.</li>
+    <li>Don't choose headings based on size. Use the correct heading level for structure, and style it with CSS. Structure takes priority over aesthetics.</li>
+    <li>The <code>h1</code> hould describe the page’s overall purpose. Content like branding statements that don't serve this purpose should not use a heading.</li>
+    <li>Use only one <code>h1</code> per page.</li>
+    <li>The <code>h1</code> should match the page's <code>title</code>—verbatim is ideal, but a close match is acceptable.</li>
+    <li>Nest headings logically (e.g., <code>h1</code> > <code>h2</code> > <code>h3</code> > <code>h3</code> > <code>h2</code>).</li>
+    <li>Avoid skipping or misordering heading levels (e.g., <code>h2</code> > <code>h1</code> > <code>h4</code> > <code>h2</code> > <code>h6</code>).</li>
+    <li>Headings should introduce <em>meaningful content</em>. Use them purposefully to avoid confusion or unnecessary noise for AT users.</li>
+    <li>Heading that are present on the page but empty, should be removed. Hiding them via CSS is also acceptable (e.g., <code>h2:empty { display: none; }</code>)</li>
+    <li>Don't stack headings to imply a subheading. Use the <code>hgroup</code> element to group a heading and subheading properly. 
+        
+        <h3>Example</h3>
+    
+{% highlight html %}<hgroup class="content__group">
+
+    <h2 class="content__primary-hdr">Our Services</h2>
+
+    <p class="content__sub-hdr">What We Offer to Help You Succeed</p>
+
+</hgroup>
+
+<p> .... </p>{% endhighlight %}
+
+<p>See: <a href="https://www.tpgi.com/subheadings-subtitles-alternative-titles-and-taglines-in-html/">Subheadings, subtitles, alternative titles and taglines in HTML</a> by Steve Faulkner</p>
+    
+    </li>
+</ol>
+
+</section>
