@@ -100,14 +100,15 @@
 
   // MagicBullet
 
-  let magicBullet = document.querySelector("#radancy-magicbullet[data-a11y]") || document.querySelector("#tmp-magic-bullet[data-a11y='true']");
-  let magicMessage = shadowContainer.querySelector("#magicbullet-message");
+  const isCareerSite = document.querySelector('script[src*="plumrnizr-a"]');
+  const hasMagicBullet = document.querySelector("#radancy-magicbullet[data-a11y]") || document.querySelector("#tmp-magic-bullet[data-a11y='true']");
+  const magicMessage = shadowContainer.querySelector("#magicbullet-message");
+  
+  if (isCareerSite && !hasMagicBullet) {
 
-  if(!magicBullet) {
+    magicMessage.hidden = false;
 
-    magicMessage.hidden=false;
-
-  } 
+  }
 
   // Validate WAVE
 

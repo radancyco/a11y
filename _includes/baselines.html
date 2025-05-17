@@ -653,45 +653,6 @@
 
 </div>
 
-<h2 class="accordion__heading"><button id="parsing" class="accordion__toggle"><span>4.1.1: Parsing (Level A)</span></button></h2>
-
-<div class="accordion__panel">
-
-  <p>No major code errors. <a href="https://www.w3.org/WAI/WCAG22/Understanding/parsing" target="_blank">Understanding 4.1.1 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
-
-  <p><b>Who is responsible?</b> Developer</p>
-
-  <div class="qa-info">
-
-    <h3>Testing</h3>
-
-    <p>Validate the page and address or report any major code errors you may discover. Warnings may be omitted, but should be addressed as time permits.</p>
-
-    {% if page.id == "a11y-smoke-test" %}
-
-    <ul>
-      <li><a class="validate-html" href="https://validator.w3.org/" target="_blank">W3C Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
-
-        <details>
-
-          <summary>Advanced (Dev Only)</summary>
-
-          <ul>
-            <li><button class="new-window" data-script="{{ site.git-url }}/a11y-smoke-test/local/dom-validate.js">W3C Validation (Serialized DOM) ~~~</button></li>
-            <li><button data-script="{{ site.git-url }}/a11y-smoke-test/local/wcag-parsing.js">WCAG Parsing</button></li>
-          </ul>
-
-        </details>
-
-      </li>
-    </ul>
-
-    {% endif %}
-
-  </div>
-
-</div>
-
 <h2 class="accordion__heading"><button id="name-role-value" class="accordion__toggle"><span>4.1.2: Name, Role, Value (Level A)</span></button></h2>
 
 <div class="accordion__panel">

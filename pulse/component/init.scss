@@ -172,6 +172,40 @@ z-index: 2147483647;
   max-inline-size: 100%;
   height: auto;
   }
+
+  code:not(.language-html):not(.language-css):not(.language-javascript):not(.language-json) {
+    border-radius: calc(4em / 16);
+    display: inline-block;
+    padding: 0 calc(14em / 16);
+    font: inherit;
+    white-space: nowrap;
+    background-color: #333;
+    color: #fff;
+    margin: 2px;
+    font-weight: normal;
+    
+      b {
+      color: #b4dcf6;
+      }
+    
+    }
+
+    kbd {
+      background-color: #ccc;
+      border-radius: 0.25em;
+      border: 1px dotted black;
+      color: #000;
+      display: inline-block;
+      font-weight: normal;
+      font: inherit;
+      margin: 2px;
+      padding: 0 0.875em;
+      white-space: nowrap;
+      }
+
+  ul, ol {
+  padding-inline-start: 1em;
+  }
   
   a:has(img[src*="new-tab"]), button:has(img[src*="new-tab"]) {
 
@@ -412,7 +446,7 @@ z-index: 2147483647;
   // Status Containers
 
   .status-container {
-  block-size: calc(140em / 16);
+  block-size: calc(280em / 16);
   border-radius: 5px;
   border: 1px #ccc solid;
   margin-block: 1em;
@@ -470,6 +504,7 @@ z-index: 2147483647;
   .status-message {
   color: green;
   text-wrap: balance;
+  margin-block-end: 0;
 
     &::before {
     content: "\2713";
@@ -497,7 +532,7 @@ z-index: 2147483647;
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    gap: 0.5em;
+    gap: 1em;
     justify-content: center;
     list-style: none;
     padding-inline-start: 0;
@@ -640,8 +675,16 @@ z-index: 2147483647;
     background-color: var(--accordion-panel-default);
     display: none;
     overflow: hidden;
-    padding: 0 1em 1em;
+    padding: 1em;
     position: relative;
+
+      > *:first-child {
+      margin-block-start: 0;
+      }
+
+      > *:last-child {
+      margin-block-end: 0;
+      }
   
       // Fixed Height
   
@@ -686,7 +729,7 @@ z-index: 2147483647;
         }
   
       }
-  
+
     }
   
     // Accordion Panel Reveal
