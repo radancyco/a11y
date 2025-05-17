@@ -505,7 +505,6 @@ z-index: 2147483647;
   .status-message {
   color: green;
   text-wrap: balance;
-  margin-block-end: 0;
 
     &::before {
     content: "\2713";
@@ -678,6 +677,7 @@ z-index: 2147483647;
     overflow: hidden;
     padding: 1em;
     position: relative;
+    text-wrap: balance;
 
       > *:first-child {
       margin-block-start: 0;
