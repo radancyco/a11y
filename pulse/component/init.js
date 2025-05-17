@@ -23,7 +23,6 @@
   const shadowContainer = shadowHost.shadowRoot;
   const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
   const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__btn--close");
-  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__btn--move");
 
   // Show Modal
 
@@ -50,6 +49,8 @@
   // Move Dialog
 
   /* 
+
+  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__btn--move");
 
   let offsetX = 0;
   let offsetY = 0;
@@ -96,6 +97,17 @@
   */
 
   // ** Pulse Functions **
+
+  // MagicBullet
+
+  let magicBullet = document.querySelector("#radancy-magicbullet[data-a11y]") || document.querySelector("#tmp-magic-bullet[data-a11y='true']");
+  let magicMessage = shadowContainer.querySelector("#magicbullet-message");
+
+  if(!magicBullet) {
+
+    magicMessage.hidden=false;
+
+  } 
 
   // Validate WAVE
 
