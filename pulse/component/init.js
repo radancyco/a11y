@@ -23,6 +23,7 @@
   const shadowContainer = shadowHost.shadowRoot;
   const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
   const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__btn--close");
+  const isCareerSite = document.querySelector('script[src*="plumrnizr-a"]');
 
   // Show Modal
 
@@ -46,24 +47,25 @@
 
   });
 
-  // Links withing shadowDOM. clean up later
-// Handle in-component anchor links with hashes (e.g., href="#target")
-shadowContainer.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    const href = link.getAttribute('href');
-    const id = href.slice(1); // Strip the '#'
+  // Anchor Links
+  // Anchors do not work in the Shadow DOM, so we gotta fake it. 
 
-    if (id) {
+  const anchorLink = shadowContainer.querySelectorAll("a[href^='#']");
+
+  anchorLink.forEach((link) => {
+
+    link.addEventListener("click", (e) => {
+
+      const href = link.getAttribute("href");
+      const id = href.slice(1);
       const target = shadowContainer.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        target.click();
-        target.scrollIntoView({ behavior: 'smooth' });
-       
-      }
-    }
+
+      target.click();
+      target.scrollIntoView();
+
+    });
+
   });
-});
 
   // Move Dialog
 
@@ -119,7 +121,6 @@ shadowContainer.querySelectorAll('a[href^="#"]').forEach((link) => {
 
   // MagicBullet
 
-  const isCareerSite = document.querySelector('script[src*="plumrnizr-a"]');
   const hasMagicBullet = document.querySelector("#radancy-magicbullet[data-a11y]") || document.querySelector("#tmp-magic-bullet[data-a11y='true']");
   const magicMessage = shadowContainer.querySelector("#magicbullet-message");
   
