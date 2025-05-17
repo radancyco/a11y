@@ -447,7 +447,7 @@ z-index: 2147483647;
   // Status Containers
 
   .status-container {
-  block-size: calc(280em / 16);
+  max-block-size: calc(280em / 16);
   border-radius: 5px;
   border: 1px #ccc solid;
   margin-block: 1em;
