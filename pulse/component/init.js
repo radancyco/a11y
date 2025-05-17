@@ -46,6 +46,25 @@
 
   });
 
+  // Links withing shadowDOM. clean up later
+// Handle in-component anchor links with hashes (e.g., href="#target")
+shadowContainer.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    const id = href.slice(1); // Strip the '#'
+
+    if (id) {
+      const target = shadowContainer.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.click();
+        target.scrollIntoView({ behavior: 'smooth' });
+       
+      }
+    }
+  });
+});
+
   // Move Dialog
 
   /* 
