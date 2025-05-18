@@ -202,7 +202,7 @@
 
     // Call the functions to convert sitemap to array, convert to CSV, and trigger download
 
-    convertSitemapToArray("/sitemap.xml").then((data) => {
+    convertSitemapToArray("sitemap.xml").then((data) => {
 
         const csv = makeCsv(data);
         const domain = location.hostname.replace(/\./g, '-');
