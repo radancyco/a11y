@@ -18,6 +18,28 @@ id: a11y-smoke-test
     
     <div class="accordion" data-disable-anchor>
 
+        <h2 class="accordion__heading"><button id="alerts" class="accordion__toggle"><span>Alerts</span></button></h2>
+      
+        <div class="accordion__panel">
+
+            <h3>Issue(s) Found</h3>
+
+            <p>Page issues have been automatically detected. Please review and log them as soon as possible to ensure they're tracked and resolved promptly.</p>
+
+            <div id="magicbullet-message" class="warning-info" hidden>
+
+                <p><strong>Issue:</strong> MagicBullet is not currently installed on this site. Adding it will help address many product-related accessibility issues. See the <a href="https://radancy.dev/magicbullet/a11y/" target="_blank">support page <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> for installation details.</p>
+
+            </div>
+
+            <div id="language-message" class="warning-info" hidden>
+
+                <p><strong>Issue:</strong> The document does not specify the current language in use. The <code>html</code> element must contain a <code>lang</code> attribute and proper language code. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html" target="_blank">Understanding SC 3.1.1: Language of Page (Level A) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> for more details.</p>
+
+            </div>
+
+        </div>
+
         <h2 class="accordion__heading"><button id="automated-tests" class="accordion__toggle"><span>Automated Tests</span></button></h2>
       
         <div class="accordion__panel">
@@ -32,12 +54,6 @@ id: a11y-smoke-test
                     <li><a class="validate-wave" href="https://wave.webaim.org/" target="_blank">WAVE Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
                     <li><a class="validate-heading" href="{{ site.url }}{{ site.baseurl }}/pulse/headings" target="_blank">Heading Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
                 </ul>
-
-                <div id="magicbullet-message" class="warning-info" hidden>
-
-                    <p><strong>Issue:</strong> MagicBullet is not currently installed on this site. Please log an issue requesting its installation. Adding it will help address many product-related accessibility issues. See the <a href="https://radancy.dev/magicbullet/a11y/" target="_blank">support page <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> for installation details.</p>
-
-                </div>
 
                 <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
 
@@ -63,8 +79,6 @@ id: a11y-smoke-test
                     <li><a class="validate-spelling" href="https://www.w3.org/2002/01/spellchecker" target="_blank">Validate Spelling <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
                     <li><a class="validate-structured-data" href="https://search.google.com/test/rich-results" target="_blank">Validate Structured Data (SEO) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
                 </ul>
-
-                <p><a href="#resize-text">Go to Resize Text</a></p>
 
         </div>
 
@@ -151,8 +165,10 @@ id: a11y-smoke-test
 
             <h3>W3C Validation Services</h3>
 
-            <p>Please note that as of WCAG 2.2, 4.1.1 Parsing (Level A) has been removed and is no longer required. Issues previously identified by this criterion are typically caught through other testing methods. However, it remains a best practice for developers to continue validating their work.</p>
+            <p>While it's best practice for developers to continue to validate their markup, please note that as of WCAG 2.2, <strong>4.1.1 Parsing (Level A)</strong> has been removed. As a result, this is no longer a required QA test. Issues previously flagged under this criterion are generally caught through other testing methods.</p>
 
+            <p><b>Who is responsible?</b> Development & Specialists</p>
+            
             <ul>
                 <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
                 
@@ -195,7 +211,7 @@ id: a11y-smoke-test
 
         </div>
 
-        <h2 class="accordion__heading"><button id="audits" class="accordion__toggle"><span>Audits (Specialists Only)</span></button></h2>
+        <h2 class="accordion__heading"><button id="audits" class="accordion__toggle"><span>Auditing Tools & Resources</span></button></h2>
       
         <div class="accordion__panel">
 

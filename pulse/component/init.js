@@ -119,17 +119,6 @@
 
   // ** Pulse Functions **
 
-  // MagicBullet
-
-  const hasMagicBullet = document.querySelector("#radancy-magicbullet[data-a11y]") || document.querySelector("#tmp-magic-bullet[data-a11y='true']");
-  const magicMessage = shadowContainer.querySelector("#magicbullet-message");
-  
-  if (isCareerSite && !hasMagicBullet) {
-
-    magicMessage.hidden = false;
-
-  }
-
   // Validate WAVE
 
   const btnValidateWAVE = shadowContainer.querySelectorAll(".validate-wave");
@@ -539,5 +528,45 @@
   };
 
   initAccordion();
+
+  // ** Alert Center
+
+  // MagicBullet
+
+  const hasMagicBullet = document.querySelector("#radancy-magicbullet[data-a11y]") || document.querySelector("#tmp-magic-bullet[data-a11y='true']");
+  const magicMessage = shadowContainer.querySelector("#magicbullet-message");
+      
+  if (isCareerSite && !hasMagicBullet) {
+    
+    magicMessage.hidden = false;
+    
+  }
+
+  // Language 
+
+  const hasLang = document.documentElement.getAttribute("lang");
+  const langMessage = shadowContainer.querySelector("#language-message");  
+
+  if (!hasLang) {
+    
+    langMessage.hidden = false;
+    
+  }
+
+  // Check for any errors
+
+  const alertToggle = shadowContainer.querySelector("#alerts");
+  const alertPanel = shadowContainer.querySelector("#accordion-alerts");
+  const alertWarning = alertPanel.querySelector(".warning-info:not([hidden])") !== null;
+  
+  if (alertWarning) {
+
+    alertToggle.classList.add("accordion__toggle--alert");
+  
+  } else {
+
+    alertPanel.innerHTML = "<p>There are no alerts at this time. Groovy!</p>"
+
+  }
 
 })();
