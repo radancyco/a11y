@@ -27,7 +27,7 @@
 
   // Show Modal
 
-  a11yPulseClose.focus();
+  a11yPulse.showModal();
 
   // Close Button 
 
