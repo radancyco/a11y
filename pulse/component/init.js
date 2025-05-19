@@ -31,22 +31,33 @@
 
   // Close Button 
 
-  a11yPulseClose.addEventListener("click", () => {
+  const closePulse = () => {
+    
+    a11yPulse.setAttribute("closing", "");
 
-      a11yPulse.setAttribute("closing", "");
+    a11yPulse.addEventListener("animationend", () => {
 
-      a11yPulse.addEventListener("animationend", () => {
+        shadowHost.remove();
 
-          shadowHost.remove();
+        const a11yPulseScript = document.querySelector("#a11y-pulse-component");
 
-          const a11yPulseScript = document.querySelector("#a11y-pulse-component");
+        a11yPulseScript.remove();
 
-          a11yPulseScript.remove();
+    });
 
-      });
+  };
+  
+  a11yPulseClose.addEventListener("click", closePulse);
+  
+  document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+      closePulse();
+    }
 
   });
-
+  
   // Anchor Links
   // Anchors do not work in the Shadow DOM, so we gotta fake it. 
 

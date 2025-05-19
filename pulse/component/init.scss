@@ -16,6 +16,10 @@
 
 }
 
+::backdrop {
+display: none;
+}
+
 // Animation States
 
 @keyframes fade-in {
@@ -54,6 +58,18 @@
 
 }
 
+@keyframes slide-down {
+
+  0% {
+  transform: translateY(0%);
+  }
+
+  100% {
+  transform: translateY(20%);
+  }
+
+}
+
 @keyframes blink {
   
   50% {
@@ -80,7 +96,7 @@ font-size: inherit;
 }
 
 background-color: #fff;
-block-size: 60vh;
+block-size: 85vh;
 border-radius: 5px;
 border: 0;
 box-shadow: 0 0 calc(10em / 16) 0 rgba(0, 0, 0, 0.75);
@@ -102,7 +118,6 @@ position: fixed;
 
   @media(min-width: $primary-breakpoint) {
 
-    block-size: 85vh;
     font-size: calc(16em / 16);
     inline-size: $primary-breakpoint;
     min-inline-size: calc(400em / 16);
@@ -117,11 +132,10 @@ position: fixed;
   word-spacing: normal !important;
   }
 
-
   // Close State
 
   &[closing] {
-  animation: fade-out 400ms forwards;
+  animation: slide-down 800ms forwards, fade-out 400ms forwards;
   }
 
   // Move 
