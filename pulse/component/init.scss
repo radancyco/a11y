@@ -16,10 +16,6 @@
 
 }
 
-::backdrop {
-display: none;
-}
-
 // Animation States
 
 @keyframes fade-in {
@@ -96,7 +92,7 @@ font-size: inherit;
 }
 
 background-color: #fff;
-block-size: 85vh;
+block-size: 60vh;
 border-radius: 5px;
 border: 0;
 box-shadow: 0 0 calc(10em / 16) 0 rgba(0, 0, 0, 0.75);
@@ -105,6 +101,7 @@ font-family: Arial, Helvetica, sans-serif;
 font-size: calc(13.5em / 16);
 inline-size: 90vw;
 inset-block-start: calc(16em / 16);
+inset-block-end: 100%;
 margin: calc(16em / 16) 0;
 overflow-y: auto;
 padding: calc(16em / 16);
@@ -118,10 +115,17 @@ position: fixed;
 
   @media(min-width: $primary-breakpoint) {
 
+    block-size: 85vh;
     font-size: calc(16em / 16);
     inline-size: $primary-breakpoint;
     min-inline-size: calc(400em / 16);
   
+  }
+
+  // Backdrop 
+  
+  &::backdrop {
+  animation: fade-in 200ms forwards;
   }
 
   // Overrides: This is to overide the Text Spacing test.
@@ -136,6 +140,11 @@ position: fixed;
 
   &[closing] {
   animation: slide-down 800ms forwards, fade-out 400ms forwards;
+
+    &::backdrop {
+    animation: fade-out 200ms forwards;
+    }
+
   }
 
   // Move 
