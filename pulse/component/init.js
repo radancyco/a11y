@@ -555,17 +555,25 @@
 
   // Check for any errors
 
-  const alertToggle = shadowContainer.querySelector("#alerts");
   const alertPanel = shadowContainer.querySelector("#accordion-alerts");
-  const alertWarning = alertPanel.querySelector(".warning-info:not([hidden])") !== null;
-  
-  if (alertWarning) {
 
-    alertToggle.classList.add("accordion__toggle--alert");
-  
+  // Get all visible .warning-info elements (i.e., not [hidden])
+
+  const visibleWarnings = alertPanel.querySelectorAll(".warning-info:not([hidden])");
+
+  if (visibleWarnings.length > 0) {
+
+    const alertToggle = shadowContainer.querySelector("#alerts");
+    const alertSpan = alertToggle.querySelector("span:not(.accordion__arrow)");
+    const alertCount = document.createElement("span");
+    
+    alertCount.classList.add("accordion__count");
+    alertCount.textContent =  visibleWarnings.length;
+    alertSpan.append(alertCount);
+
   } else {
 
-    alertPanel.innerHTML = "<p>There are no alerts at this time. Groovy!</p>"
+    alertPanel.innerHTML = "<p>There are no alerts at this time. Groovy!</p>";
 
   }
 

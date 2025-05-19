@@ -10,7 +10,9 @@
 :host { 
 
   box-sizing: initial;
+  color: initial;
   font-size: initial;
+  text-align: initial;
 
 }
 
@@ -635,27 +637,6 @@ z-index: 2147483647;
       line-height: 1.5 ;
       }
 
-      &--alert {
-
-        span:not(.accordion__arrow) {
-
-          &::before {
-          animation: blink 2s steps(1) 6;
-          background-color: red;
-          block-size: calc(20em / 16);
-          border-radius: 100vw;
-          content: "";
-          display: block;
-          inline-size: calc(20em / 16);
-          inset-block-start: calc(-10em / 16);
-          inset-inline-end: calc(10em / 16);
-          position: absolute;
-          }
-
-        }
-
-      }
-  
       // Accessibility: Focus and hover states must meet a 3:1 color ratio between background color and foreground text.
       // The project designer should be providing this state. Also, never remove focus outlines! Either redesign them or 
       // design an alternative focus state. Learn: https://webaim.org/articles/contrast/
@@ -685,6 +666,23 @@ z-index: 2147483647;
   
       }
   
+    }
+
+    // Alert Count
+
+    &__count {
+    animation: blink 2s steps(1) 6;
+    background-color: red;
+    block-size: calc(30em / 16);
+    border-radius: 100vw;
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    inline-size: calc(30em / 16);
+    inset-block-start: calc(-20em / 16);
+    inset-inline-end: calc(10em / 16);
+    position: absolute;
+    text-align: center;
     }
 
     // Accordion Panel
