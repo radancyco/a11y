@@ -99,8 +99,8 @@
 
     // Starting dialog position (strip 'px' and convert to number)
 
-    startLeft = parseInt(window.getComputedStyle(a11yPulse).left, 10) || 0;
-    startTop = parseInt(window.getComputedStyle(a11yPulse).top, 10) || 0;
+    startLeft = parseInt(window.getComputedStyle(a11yPulse).insetInlineStart, 10) || 0;
+    startTop = parseInt(window.getComputedStyle(a11yPulse).insetBlockStart, 10) || 0;
 
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
@@ -118,8 +118,8 @@
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
 
-    a11yPulse.style.left = `${startLeft + dx}px`;
-    a11yPulse.style.top = `${startTop + dy}px`;
+    a11yPulse.style.insetInlineStart = `${startLeft + dx}px`;
+    a11yPulse.style.insetBlockStart = `${startTop + dy}px`;
 
   }
 
@@ -590,7 +590,7 @@
 
   } else {
 
-    alertPanel.innerHTML = "<p>There are no alerts at this time. Groovy!</p>";
+    alertPanel.innerHTML = "<p>Groovy! There are no alerts at this time.</p>";
 
   }
 

@@ -101,7 +101,7 @@ display: block;
 font-family: Arial, Helvetica, sans-serif;
 font-size: calc(13.5em / 16);
 inline-size: 90vw;
-left: 50%;
+inset-inline-start: 50%;
 margin: calc(16em / 16) 0;
 padding: calc(55em / 16) calc(0.5em / 16) calc(16em / 16) calc(16em / 16);
 position: fixed;
@@ -121,7 +121,7 @@ z-index: 2147483647;
   // Backdrop 
   
   &::backdrop {
-  animation: fade-in 200ms forwards;
+  background-color: transparent;
   }
 
   // Overrides: This is to overide the Text Spacing test.
@@ -130,6 +130,12 @@ z-index: 2147483647;
   line-height: 2 !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
+  }
+
+  // Move 
+
+  &[data-move] {
+  opacity: 0.8 !important;
   }
 
   // Close State
