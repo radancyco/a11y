@@ -2,29 +2,22 @@
 title: "About Accessibility Pulse"
 ---
 
-<p><b>Latest Version:</b> 1.0.6 (Official Build)</p>
+{% assign imagePath = site.url | append: site.baseurl | append: '/pulse/img/new-tab.png' %}
+{% assign newWindow = '<img alt="(Opens in new window)" src="' | append: imagePath | append: '">' %}
 
-<p>Check out the <a class="new-tab" href="https://github.com/radancyco/a11y-smoke-test#current-features">current features</a>.</p>
+<h2>Crafted For Testing</h2>
 
-<h2>Contributors</h2>
+<p>This tool is created and managed by you favorite Director of Accessibility, Michael "Spell" Spellacy. If you run into any issues, please feel free to <a href="mailto:michael.spellacy@radancy.com">reach out</a>.</p>
 
-<p>A shout out to the contributors of this project!</p>
-
-<ul>
-  <li>Diane Crawford</li>
-  <li>Rebecca Hammer</li>
-  <li>Daniel Green</li>
-  <li>Daniel O'Brien</li>
-  <li><a class="new-tab" href="https://github.com/radancyco/a11y/graphs/contributors">And the rest...</a></li>
-</ul>
+<img src="https://www.gravatar.com/avatar/89e429d4a3effa9601cd19a851c0003e.jpg?s=200" alt="Michael Spellacy">
 
 <h2>Special Thanks</h2>
 
-<p>This extension would not be possible without the hard work of individuals who created some of the bookmarklets and provided much wisdom. Thank you.</p>
+<p>This extension would not be possible without the hard work of individuals who created some of the bookmarklets, APIs, and much wisdom. Thank you.</p>
 
 <ul>
-  <li><a class="new-tab" href="https://pauljadam.com/bookmarklets.html">Paul J. Adams' Bookmarkets</a></li>
-  <li><a class="new-tab" href="https://github.com/mraccess77/mraccess77.github.io/tree/master/favlets">Jonathan Avila's Favlets</a></li>
-  <li><a class="new-tab" href="https://www.twitter.com/stevefaulkner/">Steve Faulkner</a></li>
-  <li><a class="new-tab" href="https://webaim.org">WebAIM</a></li>
+  <li><a href="https://pauljadam.com/bookmarklets.html" target="_blank">Paul J. Adams' Bookmarkets {{ newWindow }}</a></li>
+  <li><a href="https://github.com/mraccess77/mraccess77.github.io/tree/master/favlets" target="_blank">Jonathan Avila's Favlets {{ newWindow }}</a></li>
+  <li><a href="https://www.twitter.com/stevefaulkner/" target="_blank">Steve Faulkner {{ newWindow }}</a></li>
+  <li><a href="https://webaim.org" target="_blank">WebAIM {{ newWindow }}</a></li>
 </ul>
