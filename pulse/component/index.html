@@ -4,6 +4,9 @@ title: "Accessibility Pulse Component"
 id: a11y-smoke-test
 ---
 
+{% assign imagePath = site.url | append: site.baseurl | append: '/pulse/img/new-tab.png' %}
+{% assign newWindow = '<img alt="(Opens in new window)" src="' | append: imagePath | append: '">' %}
+
 <dialog class="a11y-pulse" dir="ltr" lang="en-US">
 
     <div class="a11y-pulse__controls">
@@ -12,447 +15,425 @@ id: a11y-smoke-test
 
     </div>
 
-    <h1 class="a11y-pulse__heading"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/icon-48.png"> <span>A11y Pulse</span> <small>v1.06</small></h1>
-    
-    <h2>Tests</h2>
-    
-    <div class="accordion" data-disable-anchor>
+    <div class="a11y-pulse__container">
 
-        <h2 class="accordion__heading"><button id="alerts" class="accordion__toggle"><span>Alerts</span></button></h2>
-      
-        <div class="accordion__panel">
+        <h1 class="a11y-pulse__heading"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/icon-48.png"> <span>A11y Pulse</span> <small>v1.06</small></h1>
+        
+        <h2>Tests</h2>
+        
+        <div class="accordion" data-disable-anchor>
 
-            <h3>Issue(s) Found</h3>
+            <h2 class="accordion__heading"><button id="alerts" class="accordion__toggle"><span>Alerts</span></button></h2>
+        
+            <div class="accordion__panel">
 
-            <p>Page issues have been automatically detected. Please review and log them as soon as possible to ensure they're tracked and resolved promptly.</p>
+                <h3>Issue(s) Found</h3>
 
-            <div id="magicbullet-message" class="warning-info" hidden>
+                <p>Page issues have been automatically detected. Please review and log them as soon as possible to ensure they're tracked and resolved promptly.</p>
 
-                <p><strong>Issue:</strong> MagicBullet is not currently installed on this site. Adding it will help address many product-related accessibility issues. See the <a href="https://radancy.dev/magicbullet/a11y/" target="_blank">support page <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> for installation details.</p>
+                <div id="magicbullet-message" class="warning-info" hidden>
 
-            </div>
+                    <p><strong>Issue:</strong> MagicBullet is not currently installed on this site. Adding it will help address many product-related accessibility issues. See the <a href="https://radancy.dev/magicbullet/a11y/" target="_blank">support page {{ newWindow }}</a> for installation details.</p>
 
-            <div id="language-message" class="warning-info" hidden>
-
-                <p><strong>Issue:</strong> The document does not specify the current language in use. The <code>html</code> element must contain a <code>lang</code> attribute and proper language code. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html" target="_blank">Understanding SC 3.1.1: Language of Page (Level A) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> for more details.</p>
-
-            </div>
-
-        </div>
-
-        <h2 class="accordion__heading"><button id="automated-tests" class="accordion__toggle"><span>Automated Tests</span></button></h2>
-      
-        <div class="accordion__panel">
-
-                <h3 class="a11y-pulse__info__heading">Automated Testing: Mandatory</h3>
-
-                <p>Web pages must always be validated. Errors flagged by WAVE or heading validation tools must be addressed. Accessibility and QA engineers should link directly to validation reports in BugHerd or JIRA when filing issues.</p>
-
-                <p><b>Who is responsible?</b> Development & QA</p>
-
-                <ul>
-                    <li><a class="validate-wave" href="https://wave.webaim.org/" target="_blank">WAVE Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    <li><a class="validate-heading" href="{{ site.url }}{{ site.baseurl }}/pulse/headings" target="_blank">Heading Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                </ul>
-
-                <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
-
-                    <h3 class="a11y-pulse__info__heading">Development Reminder!</h3>
-    
-                    <p>Have you tested your work with Axe? Radancy developers are responsible for identifying and resolving all critical and serious accessibility issues. QA testing is optional at this time.</p>
-    
-                    <ul>
-                        <li><a href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US" target="_blank">Chrome <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/" target="_blank">FireFox <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                        <li><a href="https://microsoftedge.microsoft.com/addons/detail/axe-devtools-web-access/kcenlimkmjjkdfcaleembgmldmnnlfkn" target="_blank">Edge <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    </ul>
-    
                 </div>
 
-                <h3>Automated Testing: Optional</h3>
+                <div id="language-message" class="warning-info" hidden>
 
-                <p>The following tests are available but optional.</p>
+                    <p><strong>Issue:</strong> The document does not specify the current language in use. The <code>html</code> element must contain a <code>lang</code> attribute and proper language code. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html" target="_blank">Understanding SC 3.1.1: Language of Page (Level A) {{ newWindow }}</a> for more details.</p>
 
-                <ul>
-                    <li><a class="validate-css" href="http://jigsaw.w3.org/css-validator/" target="_blank">Validate CSS <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    <li><a class="validate-link" href="https://validator.w3.org/checklink" target="_blank">Validate Links <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    <li><a class="validate-spelling" href="https://www.w3.org/2002/01/spellchecker" target="_blank">Validate Spelling <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    <li><a class="validate-structured-data" href="https://search.google.com/test/rich-results" target="_blank">Validate Structured Data (SEO) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                </ul>
+                </div>
 
-        </div>
+            </div>
 
-        <h2 class="accordion__heading"><button id="manual-test" class="accordion__toggle"><span>Manual Tests</span></button></h2>
-      
-        <div class="accordion__panel">
+            <h2 class="accordion__heading"><button id="automated-tests" class="accordion__toggle"><span>Automated Tests</span></button></h2>
+        
+            <div class="accordion__panel">
 
+                <a href="#contrast-minimum">sdsdsdsds</a>
 
-            <h3 class="a11y-pulse__info__heading">Manual Testing</h3>
+                    <h3 class="a11y-pulse__info__heading">Automated Testing: Mandatory</h3>
 
-                <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed instead. The following are common and useful tools you may use for closer analysis.</p>
+                    <p>Web pages must always be validated. Errors flagged by WAVE or heading validation tools must be addressed. Accessibility and QA engineers should link directly to validation reports in BugHerd or JIRA when filing issues.</p>
 
-                <p><b>Who is responsible?</b> Development, QA, Specialists</p>
-
-                <h3>Images</h3>
-
-                <ul>
-                    <li><a class="validate-image" href="{{ site.url }}{{ site.baseurl }}/pulse/images" target="_blank">Review Images <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                </ul>
-
-                <h3>Magnification</h3>
-
-                <ul>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
-                </ul>
-
-                <h3>Color</h3>
-
-                <ul>
-                    <li><button data-script="contrast" data-fragment="color-contrast">Test Contrast</button>
-                    <li><button data-script="contrast" data-fragment="link-contrast">Test Link & Text Contrast</button>
-                </ul>
-
-                <form action="https://webaim.org/resources/contrastchecker/" id="color-contrast" target="_blank">
-
-                    <fieldset>
-                  
-                      <legend>Check Color Contrast</legend>
-                  
-                      <p>Use this form to validate the contrast of two specific colors combinations.</p>
-                  
-                      <div class="form-fields">
-                  
-                        <div>
-                  
-                          <label for="fcolor-2">Foreground:</label>
-                  
-                          <input id="fcolor-2" name="fcolor" type="color" value="#0000FF">
-                  
-                        </div>
-                  
-                        <div>
-                  
-                          <label for="bcolor-2">Background:</label>
-                  
-                          <input id="bcolor-2" name="bcolor" type="color" value="#FFFFFF">
-                  
-                        </div>
-                  
-                        <div>
-                  
-                          <button class="btn">Check</button>
-                  
-                        </div>
-                  
-                      </div>
-                  
-                    </fieldset>
-                  
-                  </form>
-                  
-                  <form action="https://webaim.org/resources/linkcontrastchecker/" id="link-contrast" target="_blank">
-                  
-                    <fieldset>
-                  
-                      <legend>Check Link & Text Contrast</legend>
-                  
-                      <p>Use this form to validate specific color combinations.</p>
-                  
-                      <div class="form-fields">
-                  
-                        <div>
-                  
-                          <label for="lcolor-1">Link:</label>
-                  
-                          <input id="lcolor-1" name="lcolor" type="color" value="#3333FF">
-                  
-                        </div>
-                  
-                        <div>
-                  
-                          <label for="fcolor-1">Body Text:</label>
-                  
-                          <input id="fcolor-1" name="fcolor" type="color" value="#000000">
-                  
-                        </div>
-                  
-                        <div>
-                  
-                          <label for="bcolor-1">Background:</label>
-                  
-                          <input id="bcolor-1" name="bcolor" type="color" value="#FFFFFF">
-                  
-                        </div>
-                  
-                        <div>
-                  
-                          <button class="btn">Check</button>
-                  
-                        </div>
-                  
-                      </div>
-                  
-                    </fieldset>
-                  
-                  </form>
-
-                <h3>Typography</h3>
-
-                <ul>
-                    <li><button data-script="typography" data-fragment="default-font">Change Default Font Size</button>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/text-spacing.js">Text Spacing</button></li>
-                </ul>
-
-                <h3>Internationalization</h3>
-
-                <ul>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-rtl.js">Show Right-to-left (RTL)</button>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-ltr.js">Show Left-to-right (LTR)</button>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-lang.js">Show Document Language</button>
-                </ul>
-
-                <h3>Animation</h3>
-
-                <ul>
-                    <li><a href="https://trace.umd.edu/peat/" target="_blank">Download PEAT (Photosensitive Epilepsy Analysis Tool) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                </ul>
-
-                <p><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
-
-                <h3>Visual</h3>
-
-                <ul>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">Force Focus</button></li>
-                </ul>
-
-                <h3>PDF</h3>
-
-                <ul>
-                    <li><a href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/register" target="_blank">Download PAC (PDF Accessibility Checker) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                </ul>
-
-                <p><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
-
-                <h3>Other</h3>
-
-                <ul>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/isolator.js">Isolate Code Blocks</button></li>
-                </ul>
-
-
-        </div>
-
-        <h2 class="accordion__heading"><button id="w3c-validation-services" class="accordion__toggle"><span>W3C Validation</span></button></h2>
-      
-        <div class="accordion__panel">
-
-            <h3>W3C Validation Services</h3>
-
-            <p>While it's best practice for developers to continue to validate their markup, please note that as of WCAG 2.2, <strong>4.1.1 Parsing (Level A)</strong> has been removed. As a result, this is no longer a required QA test. Issues previously flagged under this criterion are generally caught through other testing methods.</p>
-
-            <p><b>Who is responsible?</b> Development & Specialists</p>
-            
-            <ul>
-                <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
-                
-                    <h4>Advanced (Dev Only)</h4>
+                    <p><b>Who is responsible?</b> Development & QA</p>
 
                     <ul>
-                        <li>
+                        <li><a class="validate-wave" href="https://wave.webaim.org/" target="_blank">WAVE Validation {{ newWindow }}</a></li>
+                        <li><a class="validate-heading" href="{{ site.url }}{{ site.baseurl }}/pulse/headings" target="_blank">Heading Validation {{ newWindow }}</a></li>
+                    </ul>
+
+                    <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
+
+                        <h3 class="a11y-pulse__info__heading">Development Reminder!</h3>
+        
+                        <p>Have you tested your work with Axe? Radancy developers are responsible for identifying and resolving all critical and serious accessibility issues. QA testing is optional at this time.</p>
+        
+                        <ul>
+                            <li><a href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US" target="_blank">Chrome {{ newWindow }}</a></li>
+                            <li><a href="https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/" target="_blank">FireFox {{ newWindow }}</a></li>
+                            <li><a href="https://microsoftedge.microsoft.com/addons/detail/axe-devtools-web-access/kcenlimkmjjkdfcaleembgmldmnnlfkn" target="_blank">Edge {{ newWindow }}</a></li>
+                        </ul>
+        
+                    </div>
+
+                    <h3>Automated Testing: Optional</h3>
+
+                    <p>The following tests are available but optional.</p>
+
+                    <ul>
+                        <li><a class="validate-css" href="http://jigsaw.w3.org/css-validator/" target="_blank">Validate CSS {{ newWindow }}</a></li>
+                        <li><a class="validate-link" href="https://validator.w3.org/checklink" target="_blank">Validate Links {{ newWindow }}</a></li>
+                        <li><a class="validate-spelling" href="https://www.w3.org/2002/01/spellchecker" target="_blank">Validate Spelling {{ newWindow }}</a></li>
+                        <li><a class="validate-structured-data" href="https://search.google.com/test/rich-results" target="_blank">Validate Structured Data (SEO) {{ newWindow }}</a></li>
+                    </ul>
+
+            </div>
+
+            <h2 class="accordion__heading"><button id="manual-test" class="accordion__toggle"><span>Manual Tests</span></button></h2>
+        
+            <div class="accordion__panel">
+
+
+                <h3 class="a11y-pulse__info__heading">Manual Testing</h3>
+
+                    <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed instead. The following are common and useful tools you may use for closer analysis.</p>
+
+                    <p><b>Who is responsible?</b> Development, QA, Specialists</p>
+
+                    <h3>Images</h3>
+
+                    <ul>
+                        <li><a class="validate-image" href="{{ site.url }}{{ site.baseurl }}/pulse/images" target="_blank">Review Images {{ newWindow }}</a></li>
+                    </ul>
+
+                    <h3>Magnification</h3>
+
+                    <ul>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
+                    </ul>
+
+                    <h3>Color</h3>
+
+                    <ul>
+                        <li><button data-script="contrast" data-fragment="color-contrast">Test Color Contrast</button>
+                        <li><button data-script="contrast" data-fragment="link-contrast">Test Link & Text Contrast</button>
+                    </ul>
+
+                    <form action="https://webaim.org/resources/contrastchecker/" class="a11y-pulse__form" target="_blank">
+
+                        <fieldset>
+                    
+                            <legend>Check Color Contrast</legend>
+                    
+                            <p>Use this form to validate the contrast of two specific colors combinations.</p>
+
+                            <div class="a11y-pulse__form--column-3">
+                    
+                                <label class="a11y-pulse__form--label-1" for="fcolor-2">Foreground:</label>
+                    
+                                <input class="a11y-pulse__form--input-1" id="fcolor-2" name="fcolor" type="color" value="#0000FF">
+
+                                <label class="a11y-pulse__form--label-2" for="bcolor-2">Background:</label>
+
+                                <input class="a11y-pulse__form--input-2" id="bcolor-2" name="bcolor" type="color" value="#FFFFFF">
+
+                                <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
+
+                            </div>
+
+                        </fieldset>
+                    
+                    </form>
+                    
+                    <form action="https://webaim.org/resources/linkcontrastchecker/" class="a11y-pulse__form" target="_blank">
+                    
+                        <fieldset>
+                    
+                            <legend>Check Link & Text Contrast</legend>
+                    
+                            <p>Use this form to validate specific color combinations.</p>
+                    
+                            <div class="a11y-pulse__form--column-4">
+
+                                <label class="a11y-pulse__form--label-1" for="lcolor-1">Link:</label>
+
+                                <input class="a11y-pulse__form--input-1" id="lcolor-1" name="lcolor" type="color" value="#3333FF">
+
+                                <label class="a11y-pulse__form--label-2"for="fcolor-1">Body Text:</label>
+
+                                <input class="a11y-pulse__form--input-2" id="fcolor-1" name="fcolor" type="color" value="#000000">
+
+                                <label class="a11y-pulse__form--label-3" for="bcolor-1">Background:</label>
+
+                                <input class="a11y-pulse__form--input-3" id="bcolor-1" name="bcolor" type="color" value="#FFFFFF">
+
+                                <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
+
+                            </div>
+                    
+                        </fieldset>
+                    
+                    </form>
+
+                    <h3>Typography</h3>
+
+                    <ul>
+                        <li><button data-script="typography" data-fragment="default-font">Change Default Font Size</button>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/text-spacing.js">Text Spacing</button></li>
+                    </ul>
+
+                    <h3>Internationalization</h3>
+
+                    <ul>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-rtl.js">Show Right-to-left (RTL)</button>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-ltr.js">Show Left-to-right (LTR)</button>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-lang.js">Show Document Language</button>
+                    </ul>
+
+                    <h3>Animation</h3>
+
+                    <ul>
+                        <li><a href="https://trace.umd.edu/peat/" target="_blank">Download PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a></li>
+                    </ul>
+
+                    <p><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
+
+                    <h3>Visual</h3>
+
+                    <ul>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">Force Focus</button></li>
+                    </ul>
+
+                    <h3>PDF</h3>
+
+                    <ul>
+                        <li><a href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/register" target="_blank">Download PAC (PDF Accessibility Checker) {{ newWindow }}</a></li>
+                    </ul>
+
+                    <p><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
+
+                    <h3>Other</h3>
+
+                    <ul>
+                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/isolator.js">Isolate Code Blocks</button></li>
+                    </ul>
+
+
+            </div>
+
+            <h2 class="accordion__heading"><button id="w3c-validation-services" class="accordion__toggle"><span>W3C Validation</span></button></h2>
+        
+            <div class="accordion__panel">
+
+                <h3>W3C Validation Services</h3>
+
+                <p>While it's best practice for developers to continue to validate their markup, please note that as of WCAG 2.2, <strong>4.1.1 Parsing (Level A)</strong> has been removed. As a result, this is no longer a required QA test. Issues previously flagged under this criterion are generally caught through other testing methods.</p>
+
+                <p><b>Who is responsible?</b> Development & Specialists</p>
+                
+                <ul>
+                    <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation {{ newWindow }}</a>
+                    
+                        <h4>Advanced (Dev Only)</h4>
+
+                        <ul>
+                            <li>
+                            
+                                <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) {{ newWindow }}</button>
+            
+                                - <span>Runs validation on entire DOM (Document Object Model), including <strong>script generated content</strong>. Cannot be linked to.</span>
+            
+                            </li>
+                            <li>
+            
+                                <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
+            
+                                - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
+            
+                            </li>
+                        </ul>
+                
+                    
+                    </li>
+                </ul>
+
+                <h3>Validate HTML by Direct Input</h3>
+
+                <form action="https://validator.w3.org/nu/?showsource=yes" class="a11y-pulse__form" enctype="multipart/form-data" id="submitPartialPage" method="post" target="_blank">
+
+                    <input name="showsource" type="hidden" value="yes">
+
+                    <label for="contentToValidate">Enter the Markup to validate:</label>
+
+                    <textarea cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
+
+                    <button class="a11y-pulse__cta" id="submitValidate" type="submit">Validate {{ newWindow }}</button>
+
+                </form>
+
+            </div>
+
+            <h2 class="accordion__heading"><button id="audits" class="accordion__toggle"><span>Auditing Tools & Resources</span></button></h2>
+        
+            <div class="accordion__panel">
+
+                <ul>
+                    <li>
                         
-                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></button>
+                        <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-pages.js">Get Career Site Pages</button>
+                    
+                        - Generates a spreadsheet of key career site pages to be used in accessibility testing. Please allow up to several minutes to scan.
+
+                        <div class="status-container status-container--career-site-pages"></div>
+                        
+                        <p class="status-message status-message--career-site-pages"></p>
+
+                    </li>
+                    <li>
+                        
+                        <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-images.js">Get Career Site Images</button>
+                    
+                        - Generates a spreadsheet of all images and alternative text used across a career site. Please allow up to several minutes to scan. 
+                    
+                        <div class="status-container status-container--career-site-images"></div>
+                        
+                        <p class="status-message status-message--career-site-images"></p>
+                    
+                    </li>
+                </ul>
+
+
+            </div>
+
+            <!-- h2 class="accordion__heading"><button id="ai-tools" class="accordion__toggle"><span>AI Tools (Experimental) <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-ai.png"></span></button></h2>
         
-                            - <span>Runs validation on entire DOM (Document Object Model), including <strong>script generated content</strong>. Cannot be linked to.</span>
-        
-                        </li>
-                        <li>
-        
-                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
-        
-                            - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
-        
-                        </li>
-                    </ul>
+            <div class="accordion__panel">
+
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/ai-images.js">Generate Alternative Text <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-ai.png"></button>
+                </ul>
+
+            </div -->
+
+            <h2>Baseline Guidance</h2>
+
+            {% include baselines.html %}
+
+            <h2 class="accordion__heading"><button id="other-tools" class="accordion__toggle"><span>Other Tools and Resources</span></button></h2>
             
-                
-                </li>
-            </ul>
+            <div class="accordion__panel">
 
-            <h3>Validate HTML by Direct Input</h3>
+            <details>
 
-            <form action="https://validator.w3.org/nu/?showsource=yes" enctype="multipart/form-data" id="submitPartialPage" method="post" target="_blank">
+                <summary>Advanced Testing</summary>
 
-                <input name="showsource" type="hidden" value="yes">
+                <p>More advanced tools and resources for specialized accessibility testers.</p>
 
-                <label for="contentToValidate">Enter the Markup to validate:</label>
+                <ul>
+                    <li><a href="https://amp.levelaccess.net/login.php" target="_blank">Level Access AMP {{ newWindow }}</a>
 
-                <textarea cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
+                        <h3>Access Assistant</h3>
 
-                <button class="btn" id="submitValidate" type="submit">Validate</button>
+                        <ul>
+                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=chrome" target="_blank">Chrome Extension {{ newWindow }}</a></li>
+                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=firefox" target="_blank">Firefox Plugin {{ newWindow }}</a></li>
+                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=edge" target="_blank">Edge Extension (Beta) {{ newWindow }}</a></li>
+                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=ie" target="_blank">Internet Explorer 11 Plugin {{ newWindow }}</a></li>
+                        </ul>
 
-            </form>
+                        <h3>Continuum Explorer Pro</h3>
+
+                        <ul>
+                            <li><a href="https://chrome.google.com/webstore/detail/continuum-explorer-pro/pgkgokkkoamjdmbnegbedepbhbgecplj?hl=en-US" target="_blank">Chrome Extension {{ newWindow }}</a></li>
+                        </ul>
+
+                        <h3>Accessible Color Tools</h3>
+
+                        <ul>
+                            <li><a href="https://chrome.google.com/webstore/detail/accessible-color-picker/bgfhbflmeekopanooidljpnmnljdihld" target="_blank">Accessible Color Picker for Chrome {{ newWindow }}</a></li>
+                            <li><a href="https://www.levelaccess.com/reference/index.php/Color-Contrast-Checker" target="_blank">Color Contrast Checker {{ newWindow }}</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+            </details>
+
+            <details>
+
+                <summary>Third-party Testing</summary>
+
+                <p>While automated and manual testing techniques can take us far, they will never equal the lived experience of individuals who are disabled, so having people with disabilites test your websites and products is a must.</p>
+
+                <ul>
+                    <li><a href="https://access-works.com/" target="_blank">Access Works {{ newWindow }} </a></li>
+                    <li><a href="https://theweco.com/" target="_blank">WeCo Digital Accessibility {{ newWindow }}</a></li>
+                </ul>
+
+            </details>
+
+            <details>
+
+                <summary>Screen Readers</summary>
+
+                <p>Accessibility testing is not complete until the work has been engaged with via a screen reader. Listening to your work is just as important as visual inspection.</p>
+
+                <ul>
+                    <li>
+                    
+                        <a href="https://support.freedomscientific.com/Downloads/JAWS" target="_blank">JAWS (Paid, 30 Minute Mode) {{ newWindow }}</a>
+
+                        <ul>
+                            <li><a href="https://webaim.org/resources/shortcuts/jaws" target="_blank">Keyboard Shortcuts for JAWS {{ newWindow }}</a></li>
+                        </ul>
+
+                    </li>
+                    <li>
+                    
+                        <a href="https://www.nvaccess.org/download/" target="_blank">NVDA (Free) {{ newWindow }}</a>
+
+                        <ul>
+                            <li><a href="https://webaim.org/resources/shortcuts/nvda" target="_blank">Keyboard Shortcuts for NVDA {{ newWindow }}</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a href="https://support.apple.com/guide/mac-help/change-voiceover-preferences-accessibility-mh40578/mac" target="_blank">VoiceOver for Mac {{ newWindow }}</a></li>
+                    <li><a href="https://support.microsoft.com/en-us/windows/hear-text-read-aloud-with-narrator-040f16c1-4632-b64e-110a-da4a0ac56917" target="_blank">Windows Narrator {{ newWindow }}</a></li>
+                </ul>
+
+            </details>
+
+            <details>
+
+                <summary>Testing Resources</summary>
+
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/people-use-web/" target="_blank">How People with Disabilities Use the Web (User Stories) {{ newWindow }}</a></li>
+                    <li><a href="https://thepaciellogroup.github.io/AT-browser-tests/" target="_blank">HTML Element Test File Index {{ newWindow }}</a></li>
+                    <li><a href="https://www.powermapper.com/tests/screen-readers/" target="_blank">PowerMapper - Screen Reader Reliability {{ newWindow }}</a></li>
+                </ul>
+
+            </details>
 
         </div>
 
-        <h2 class="accordion__heading"><button id="audits" class="accordion__toggle"><span>Auditing Tools & Resources</span></button></h2>
-      
-        <div class="accordion__panel">
+        <!-- TODO: include 2.5.3 Label in Name -->
+
+        <footer>
 
             <ul>
-                <li>
-                    
-                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-pages.js">Get Career Site Pages</button>
-                
-                    - Generates a spreadsheet of key career site pages to be used in accessibility testing. Please allow up to several minutes to scan.
-
-                    <div class="status-container status-container--career-site-pages"></div>
-                    
-                    <p class="status-message status-message--career-site-pages"></p>
-
-                </li>
-                <li>
-                    
-                    <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-images.js">Get Career Site Images</button>
-                
-                    - Generates a spreadsheet of all images and alternative text used across a career site. Please allow up to several minutes to scan. 
-                
-                    <div class="status-container status-container--career-site-images"></div>
-                    
-                    <p class="status-message status-message--career-site-images"></p>
-                
-                </li>
+            <li><a href="{{ site.url }}{{ site.baseurl }}" target="_blank">Accessibility at Radancy {{ newWindow }}</a></li>
+            <li><a href="{{ site.url }}{{ site.baseurl }}/pulse/about/" target="_blank">About A11y Pulse {{ newWindow }}</a></li>
+            <li><a href="mailto:a11y@radancy.com">Contact Accessibility Team {{ newWindow }}</a></li>
+            <li><a href="https://jira.tmp.com/browse/TCDQ-60657" target="_blank">Report Issue {{ newWindow }}</a></li>
             </ul>
-
-
-        </div>
-
-        <!-- h2 class="accordion__heading"><button id="ai-tools" class="accordion__toggle"><span>AI Tools (Experimental) <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-ai.png"></span></button></h2>
-      
-        <div class="accordion__panel">
-
-            <ul>
-                <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/ai-images.js">Generate Alternative Text <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-ai.png"></button>
-            </ul>
-
-        </div -->
-
-        <h2>Baseline Guidance</h2>
-
-        {% include baselines.html %}
-
-        <h2 class="accordion__heading"><button id="other-tools" class="accordion__toggle"><span>Other Tools and Resources</span></button></h2>
-          
-        <div class="accordion__panel">
-
-        <details>
-
-            <summary>Advanced Testing</summary>
-
-            <p>More advanced tools and resources for specialized accessibility testers.</p>
-
-            <ul>
-                <li><a href="https://amp.levelaccess.net/login.php" target="_blank">Level Access AMP <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
-
-                    <h3>Access Assistant</h3>
-
-                    <ul>
-                        <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=chrome" target="_blank">Chrome Extension <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                        <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=firefox" target="_blank">Firefox Plugin <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                        <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=edge" target="_blank">Edge Extension (Beta) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                        <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=ie" target="_blank">Internet Explorer 11 Plugin <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    </ul>
-
-                    <h3>Continuum Explorer Pro</h3>
-
-                    <ul>
-                        <li><a href="https://chrome.google.com/webstore/detail/continuum-explorer-pro/pgkgokkkoamjdmbnegbedepbhbgecplj?hl=en-US" target="_blank">Chrome Extension <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    </ul>
-
-                    <h3>Accessible Color Tools</h3>
-
-                    <ul>
-                        <li><a href="https://chrome.google.com/webstore/detail/accessible-color-picker/bgfhbflmeekopanooidljpnmnljdihld" target="_blank">Accessible Color Picker for Chrome <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                        <li><a href="https://www.levelaccess.com/reference/index.php/Color-Contrast-Checker" target="_blank">Color Contrast Checker <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    </ul>
-
-                </li>
-            </ul>
-
-        </details>
-
-        <details>
-
-            <summary>Third-party Testing</summary>
-
-            <p>While automated and manual testing techniques can take us far, they will never equal the lived experience of individuals who are disabled, so having people with disabilites test your websites and products is a must.</p>
-
-            <ul>
-                <li><a href="https://access-works.com/" target="_blank">Access Works <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png" target="_blank"></a></li>
-                <li><a href="https://theweco.com/" target="_blank">WeCo Digital Accessibility <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png" target="_blank"></a></li>
-            </ul>
-
-        </details>
-
-        <details>
-
-            <summary>Screen Readers</summary>
-
-            <p>Accessibility testing is not complete until the work has been engaged with via a screen reader. Listening to your work is just as important as visual inspection.</p>
-
-            <ul>
-                <li>
-                
-                    <a href="https://support.freedomscientific.com/Downloads/JAWS" target="_blank">JAWS (Paid, 30 Minute Mode) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
-
-                    <ul>
-                        <li><a href="https://webaim.org/resources/shortcuts/jaws" target="_blank">Keyboard Shortcuts for JAWS <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    </ul>
-
-                </li>
-                <li>
-                
-                    <a href="https://www.nvaccess.org/download/" target="_blank">NVDA (Free) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
-
-                    <ul>
-                        <li><a href="https://webaim.org/resources/shortcuts/nvda" target="_blank">Keyboard Shortcuts for NVDA <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                    </ul>
-
-                </li>
-                <li><a href="https://support.apple.com/guide/mac-help/change-voiceover-preferences-accessibility-mh40578/mac" target="_blank">VoiceOver for Mac <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a href="https://support.microsoft.com/en-us/windows/hear-text-read-aloud-with-narrator-040f16c1-4632-b64e-110a-da4a0ac56917" target="_blank">Windows Narrator <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-            </ul>
-
-        </details>
-
-        <details>
-
-            <summary>Testing Resources</summary>
-
-            <ul>
-                <li><a href="https://www.w3.org/WAI/people-use-web/" target="_blank">How People with Disabilities Use the Web (User Stories) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a href="https://thepaciellogroup.github.io/AT-browser-tests/" target="_blank">HTML Element Test File Index <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-                <li><a href="https://www.powermapper.com/tests/screen-readers/" target="_blank">PowerMapper - Screen Reader Reliability <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-            </ul>
-
-        </details>
+        
+            <p><small>&copy; {{ "now" | date: "%Y" }} Radancy. An equal opportunity employer.</small></p>
+        
+        </footer>
 
     </div>
-
-    <!-- TODO: include 2.5.3 Label in Name -->
-
-    <footer>
-
-        <ul>
-          <li><a href="{{ site.url }}{{ site.baseurl }}" target="_blank">Accessibility at Radancy <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-          <li><a href="{{ site.url }}{{ site.baseurl }}/pulse/about/" target="_blank">About A11y Pulse <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-          <li><a href="mailto:a11y@radancy.com">Contact Accessibility Team <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-          <li><a href="https://jira.tmp.com/browse/TCDQ-60657" target="_blank">Report Issue <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-        </ul>
-    
-        <p><small>&copy; {{ "now" | date: "%Y" }} Radancy. An equal opportunity employer.</small></p>
-    
-    </footer>
 
 </dialog>
 
