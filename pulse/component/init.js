@@ -23,11 +23,34 @@
   const shadowContainer = shadowHost.shadowRoot;
   const a11yPulse = shadowContainer.querySelector(".a11y-pulse");
   const a11yPulseClose = shadowContainer.querySelector(".a11y-pulse__btn--close");
+  const a11yPulseMin = shadowContainer.querySelector(".a11y-pulse__btn--minimize");
   const isCareerSite = document.querySelector('script[src*="plumrnizr-a"]');
 
   // Show Modal
 
   a11yPulse.showModal();
+
+  // Minimize Button 
+
+  a11yPulseMin.setAttribute("aria-pressed", "false");
+
+  const minPulse = () => {
+
+    if (a11yPulseMin.getAttribute("aria-pressed") === "true") {
+
+      a11yPulseMin.setAttribute("aria-pressed", "false");
+      a11yPulse.removeAttribute("data-minimize");
+    
+    } else {
+    
+      a11yPulseMin.setAttribute("aria-pressed", "true");
+      a11yPulse.setAttribute("data-minimize", "");
+    
+    }
+
+  };
+
+  a11yPulseMin.addEventListener("click", minPulse);
 
   // Close Button 
 

@@ -106,7 +106,7 @@ margin: calc(16em / 16) 0;
 padding: calc(55em / 16) calc(0.5em / 16) calc(16em / 16) calc(16em / 16);
 position: fixed;
 resize: both;
-top: calc(16em / 16);
+inset-block-start: calc(16em / 16);
 z-index: 2147483647;
 
   @media(min-width: $primary-breakpoint) {
@@ -136,6 +136,13 @@ z-index: 2147483647;
 
   &[data-move] {
   opacity: 0.8 !important;
+  }
+
+  // Minimize
+
+  &[data-minimize] {
+  inline-size: 30em;
+  block-size: 30vh;
   }
 
   // Close State
@@ -219,6 +226,7 @@ z-index: 2147483647;
   grid-auto-flow: column;
   inset-block-start: 0;
   inset-inline-end: 0;
+  justify-content: end;
   padding: calc(8em / 16);
   position: absolute;
   width: 100%;
@@ -236,23 +244,29 @@ z-index: 2147483647;
   cursor: pointer;
   display: grid;
   inline-size: calc(24em / 16);
-  justify-self: end;
   padding: calc(6em / 16);
-  
-    &--move {
-    cursor: grab;
-  
-      @media(max-inline-size: $primary-breakpoint) {
-  
-        display: none;
-  
-      }
-  
-    }
   
     img {
     display: block;
     inline-size: 100%;
+
+      &[src*="maximize"] {
+      display: none;
+      }
+
+    }
+
+    &[aria-pressed="true"] {
+
+      img {
+      display: block;
+        
+        &[src*="minimize"] {
+        display: none;
+        }
+
+      }
+
     }
   
   }
@@ -325,6 +339,7 @@ z-index: 2147483647;
   border: calc(1em / 16) #000 solid;
   cursor: pointer;
   padding: 0 1em;
+  white-space: nowrap;
   }
 
   // General Forms
