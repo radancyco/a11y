@@ -101,15 +101,13 @@ display: block;
 font-family: Arial, Helvetica, sans-serif;
 font-size: calc(13.5em / 16);
 inline-size: 90vw;
-// inset-block-end: auto;
-top: calc(16em / 16);
+left: 50%;
 margin: calc(16em / 16) 0;
 padding: calc(55em / 16) calc(0.5em / 16) calc(16em / 16) calc(16em / 16);
-// place-self: center;
 position: fixed;
 resize: both;
+top: calc(16em / 16);
 z-index: 2147483647;
-left: 50%;
 
   @media(min-width: $primary-breakpoint) {
 
@@ -150,16 +148,16 @@ left: 50%;
   &__container {
   block-size: 100%;
   overflow-y: auto;
+  padding-inline-end: calc(16em / 16);
   scroll-behavior: smooth;
   scrollbar-color: var(--primary-color) #eee;
   scrollbar-width: thin;
-  padding-inline-end: calc(16em / 16);
 
     @supports selector(::-webkit-scrollbar) {
  
+      padding-inline-end: calc(5em / 16);
       scrollbar-color: initial;
       scrollbar-width: auto;
-      padding-inline-end: calc(5em / 16);
 
       &::-webkit-scrollbar {
       inline-size: calc(18em / 16);
@@ -185,73 +183,73 @@ left: 50%;
 
   }
 
-    // Main Heading
+  // Main Heading
 
-    &__heading {
-    align-items: center;
-    color: var(--primary-color);
-    display: grid;
-    font-size: calc(23em / 16);
-    gap: calc(8em / 16);
-    grid-auto-flow: column;
-    inline-size: fit-content;
-    margin: 0;
+  &__heading {
+  align-items: center;
+  color: var(--primary-color);
+  display: grid;
+  font-size: calc(23em / 16);
+  gap: calc(8em / 16);
+  grid-auto-flow: column;
+  inline-size: fit-content;
+  margin: 0;
   
-      small {
-      font-size: 0.6em;
-      font-weight: normal;
-      margin-block-start: 0.4em;
+    small {
+    font-size: 0.6em;
+    font-weight: normal;
+    margin-block-start: 0.4em;
+    }
+  
+  }
+  
+  // Controls
+  
+  &__controls {
+  background-color: var(--primary-color);
+  cursor: move; 
+  display: grid;
+  gap: calc(8em / 16);
+  grid-auto-flow: column;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  padding: calc(8em / 16);
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  }
+  
+  // Control Button(s)
+  
+  &__btn {
+  align-items: center;
+  background-color: var(--secondary-color);
+  block-size: calc(24em / 16);
+  border-radius: calc(5em / 16);
+  border: 0;
+  cursor: pointer;
+  display: grid;
+  inline-size: calc(24em / 16);
+  justify-self: end;
+  padding: calc(6em / 16);
+  
+    &--move {
+    cursor: grab;
+  
+      @media(max-inline-size: $primary-breakpoint) {
+  
+        display: none;
+  
       }
   
     }
   
-    // Controls
-  
-    &__controls {
-    background-color: var(--primary-color);
-    cursor: move; 
-    display: grid;
-    gap: calc(8em / 16);
-    grid-auto-flow: column;
-    inset-block-start: 0;
-    inset-inline-end: 0;
-    padding: calc(8em / 16);
-    position: absolute;
-    width: 100%;
-    z-index: 2;
+    img {
+    display: block;
+    inline-size: 100%;
     }
   
-    // Control Button(s)
-  
-    &__btn {
-    align-items: center;
-    background-color: var(--secondary-color);
-    block-size: calc(24em / 16);
-    border: 0;
-    border-radius: calc(5em / 16);
-    cursor: pointer;
-    display: grid;
-    inline-size: calc(24em / 16);
-    padding: calc(6em / 16);
-    justify-self: end;
-  
-      &--move {
-      cursor: grab;
-  
-        @media(max-inline-size: $primary-breakpoint) {
-  
-          display: none;
-  
-        }
-  
-      }
-  
-      img {
-      display: block;
-      inline-size: 100%;
-      }
-  
-    }
+  }
 
   // Global
 
