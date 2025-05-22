@@ -80,53 +80,59 @@
 
   // Move Dialog
 
-  /* 
+  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__controls");
 
-  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__btn--move");
-
-  let offsetX = 0;
-  let offsetY = 0;
   let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let startLeft = 0;
+  let startTop = 0;
 
   a11yPulseMove.addEventListener("mousedown", (e) => {
 
     isDragging = true;
 
-    const rect = a11yPulse.getBoundingClientRect();
+    // Starting mouse position
 
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
+    startX = e.clientX;
+    startY = e.clientY;
 
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
+    // Starting dialog position (strip 'px' and convert to number)
 
-    e.preventDefault();
+    startLeft = parseInt(window.getComputedStyle(a11yPulse).left, 10) || 0;
+    startTop = parseInt(window.getComputedStyle(a11yPulse).top, 10) || 0;
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    e.preventDefault(); // Prevent text selection
 
   });
 
-  const onMouseMove = (e) => {
-
+  function handleMouseMove(e) {
+  
     if (!isDragging) return;
 
     a11yPulse.setAttribute("data-move", "");
 
-    a11yPulse.style.left = `${e.clientX - offsetX}px`;
-    a11yPulse.style.top = `${e.clientY - offsetY}px`;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
 
-  };
+    a11yPulse.style.left = `${startLeft + dx}px`;
+    a11yPulse.style.top = `${startTop + dy}px`;
 
-  const onMouseUp = () => {
+  }
 
+  function handleMouseUp() {
+  
     isDragging = false;
-
-    document.removeEventListener("mousemove", onMouseMove);
-    document.removeEventListener("mouseup", onMouseUp);
+  
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
 
     a11yPulse.removeAttribute("data-move");
 
-  };
-
-  */
+  }
 
   // ** Pulse Functions **
 
