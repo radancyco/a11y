@@ -93,7 +93,7 @@ font-size: inherit;
 
 animation: slide-up 800ms forwards, fade-in 400ms forwards;
 background-color: #fff;
-block-size: 60vh;
+block-size: calc(480em / 16);
 border-radius: 5px;
 border: 0;
 box-shadow: 0 0 calc(10em / 16) 0 rgba(0, 0, 0, 0.75);
@@ -118,12 +118,6 @@ z-index: 2147483647;
   
   }
 
-  // Backdrop 
-  
-  &::backdrop {
-  background-color: transparent;
-  }
-
   // Overrides: This is to overide the Text Spacing test.
 
   * {
@@ -132,17 +126,30 @@ z-index: 2147483647;
   word-spacing: normal !important;
   }
 
+  // Dialog Backdrop 
+  
+  &::backdrop {
+  background-color: transparent;
+  }
+
   // Move 
 
   &[data-move] {
-  opacity: 0.8 !important;
+  opacity: 0.8 !important; // Override animation
   }
 
   // Minimize
 
   &[data-minimize] {
-  inline-size: 35em;
+  inline-size: calc(360em / 16);
   block-size: 30vh;
+
+    @media(min-width: $primary-breakpoint) {
+
+      inline-size: calc(380em / 16);
+
+    }
+
   }
 
   // Close State
@@ -196,26 +203,6 @@ z-index: 2147483647;
 
   }
 
-  // Main Heading
-
- /*  &__heading {
-  align-items: center;
-  color: var(--primary-color);
-  display: grid;
-  font-size: calc(23em / 16);
-  gap: calc(8em / 16);
-  grid-auto-flow: column;
-  inline-size: fit-content;
-  margin: 0;
-  
-    small {
-    font-size: 0.6em;
-    font-weight: normal;
-    margin-block-start: 0.4em;
-    }
-  
-  } */
-  
   // Banner
   
   &__banner {
@@ -232,6 +219,8 @@ z-index: 2147483647;
   z-index: 2;
   }
 
+  // Label
+
   &__label {
   align-items: center;
   display: grid;
@@ -246,6 +235,8 @@ z-index: 2147483647;
     }
 
   }
+
+  // Control
 
   &__controls {
   align-items: center;
@@ -367,13 +358,27 @@ z-index: 2147483647;
   // General Forms
 
   &__form {
+  border-radius: 5px;
+  border: calc(1em / 16) #ccc solid;
+  margin-block-end: calc(16em / 16);
+  padding: 1em;
   
     fieldset {
     border: 0;
+    margin: 0;
+    padding: 0;
+    }
+
+    legend {
+    color: var(--primary-color);
     }
 
     legend, label {
     font-weight: bold;
+    }
+
+    p {
+    line-height: normal !important;
     }
 
     input{

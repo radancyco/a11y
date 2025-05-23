@@ -17,12 +17,12 @@ id: a11y-smoke-test
         
         </div>
 
-        <nav class="a11y-pulse__controls">
+        <div class="a11y-pulse__controls">
 
             <button aria-label="Minimize" class="a11y-pulse__btn a11y-pulse__btn--minimize"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-minimize.png"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-maximize.png"></button>
             <button aria-label="Close Dialog" class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-close.png"></button>
 
-        </nav>
+        </div>
 
     </header>
 
@@ -58,7 +58,7 @@ id: a11y-smoke-test
         
             <div class="accordion__panel">
 
-                <h3 class="a11y-pulse__info__heading">Automated Testing: Mandatory</h3>
+                <h3 class="a11y-pulse__info__heading">Mandatory Testing</h3>
 
                 <p>Web pages must always be validated. Errors flagged by WAVE or heading validation tools must be addressed. Accessibility and QA engineers should link directly to validation reports in BugHerd or JIRA when filing issues.</p>
 
@@ -83,7 +83,7 @@ id: a11y-smoke-test
     
                 </div>
 
-                <h3>Automated Testing: Optional</h3>
+                <h3>Optional Testing</h3>
 
                 <p>The following tests are available but optional.</p>
 
@@ -229,7 +229,7 @@ id: a11y-smoke-test
 
                 <h3>W3C Validation Services</h3>
 
-                <p>While it's best practice for developers to continue to validate their markup, please note that as of WCAG 2.2, <strong>4.1.1 Parsing (Level A)</strong> has been removed. As a result, this is no longer a required QA test. Issues previously flagged under this criterion are generally caught through other testing methods.</p>
+                <p>While it is still best practice for developers to continue to validate their markup, please note that as of WCAG 2.2, <strong>4.1.1 Parsing (Level A)</strong> has been removed. As a result, this is no longer a required QA test. Issues previously flagged under this guideline are generally caught through other testing methods.</p>
 
                 <p><b>Who is responsible?</b> Development & Specialists</p>
                 
@@ -259,17 +259,23 @@ id: a11y-smoke-test
                     </li>
                 </ul>
 
-                <h3>Validate HTML by Direct Input</h3>
-
                 <form action="https://validator.w3.org/nu/?showsource=yes" class="a11y-pulse__form" enctype="multipart/form-data" id="submitPartialPage" method="post" target="_blank">
 
-                    <input name="showsource" type="hidden" value="yes">
+                    <fieldset>
 
-                    <label for="contentToValidate">Enter the Markup to validate:</label>
+                        <legend>Validate HTML by Direct Input</legend>
+                    
+                        <input name="showsource" type="hidden" value="yes">
 
-                    <textarea cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
+                        <p id="markup-char-limit">Please note that only a few hundred lines of markup are allowed.<p>
 
-                    <button class="a11y-pulse__cta" id="submitValidate" type="submit">Validate {{ newWindow }}</button>
+                        <label for="contentToValidate">Markup:</label>
+
+                        <textarea aria-describedby="markup-char-limit" cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
+
+                        <button class="a11y-pulse__cta" id="submitValidate" type="submit">Validate {{ newWindow }}</button>
+
+                    </fieldset>
 
                 </form>
 
