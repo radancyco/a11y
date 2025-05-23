@@ -9,16 +9,24 @@ id: a11y-smoke-test
 
 <dialog class="a11y-pulse" dir="ltr" lang="en-US">
 
-    <div class="a11y-pulse__controls">
+    <header class="a11y-pulse__banner">
+        
+        <div class="a11y-pulse__label">
+            
+            <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/icon-48.png"> A11y Pulse v1.06
+        
+        </div>
 
-        <button autofocus class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="Close Dialog" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-close.png"></button>
-        <button aria-label="Minimize" class="a11y-pulse__btn a11y-pulse__btn--minimize"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-minimize.png"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-maximize.png"></button>
+        <nav class="a11y-pulse__controls">
 
-    </div>
+            <button aria-label="Minimize" class="a11y-pulse__btn a11y-pulse__btn--minimize"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-minimize.png"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-maximize.png"></button>
+            <button aria-label="Close Dialog" class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-close.png"></button>
+
+        </nav>
+
+    </header>
 
     <div class="a11y-pulse__container">
-
-        <h1 class="a11y-pulse__heading"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/icon-48.png"> <span>A11y Pulse</span> <small>v1.06</small></h1>
         
         <h2>Tests</h2>
         

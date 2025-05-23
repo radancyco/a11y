@@ -30,11 +30,17 @@
 
   a11yPulse.showModal();
 
+  // Focus on button (autofocus does odd things)
+
+  a11yPulseClose.focus();
+
   // Minimize Button 
 
   a11yPulseMin.setAttribute("aria-pressed", "false");
 
   const minPulse = () => {
+
+    a11yPulse.removeAttribute("style");
 
     if (a11yPulseMin.getAttribute("aria-pressed") === "true") {
 
@@ -103,7 +109,7 @@
 
   // Move Dialog
 
-  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__controls");
+  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__banner");
 
   let isDragging = false;
   let startX = 0;
