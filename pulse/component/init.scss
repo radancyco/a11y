@@ -16,6 +16,41 @@
 
 }
 
+%scrollbar {
+
+scrollbar-color: var(--primary-color) #eee;
+scrollbar-width: thin;
+
+  @supports selector(::-webkit-scrollbar) {
+ 
+    padding-inline-end: calc(5em / 16);
+    scrollbar-color: initial;
+    scrollbar-width: auto;
+
+    &::-webkit-scrollbar {
+    inline-size: calc(18em / 16);
+    }
+
+    &::-webkit-scrollbar-track {
+    background-color: #fff;
+    margin-block: calc(5em / 16);
+    }
+
+    &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border: calc(6em / 16) #fff solid;
+    border-radius: 100vw;
+    min-block-size: calc(80em / 16);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+    }
+
+  }
+
+}
+
 // Animation States
 
 @keyframes fade-in {
@@ -171,37 +206,7 @@ z-index: 2147483647;
   overflow-y: auto;
   padding-inline-end: calc(16em / 16);
   scroll-behavior: smooth;
-  scrollbar-color: var(--primary-color) #eee;
-  scrollbar-width: thin;
-
-    @supports selector(::-webkit-scrollbar) {
- 
-      padding-inline-end: calc(5em / 16);
-      scrollbar-color: initial;
-      scrollbar-width: auto;
-
-      &::-webkit-scrollbar {
-      inline-size: calc(18em / 16);
-      }
-
-      &::-webkit-scrollbar-track {
-      background-color: #fff;
-      margin-block: calc(5em / 16);
-      }
-
-      &::-webkit-scrollbar-thumb {
-      background-color: var(--primary-color);
-      border: calc(6em / 16) #fff solid;
-      border-radius: 100vw;
-      min-block-size: calc(80em / 16);
-      }
-
-      &::-webkit-scrollbar-thumb:hover {
-      background-color: #666;
-      }
-  
-    }
-
+  @extend %scrollbar;
   }
 
   // Banner
@@ -418,6 +423,7 @@ z-index: 2147483647;
     inline-size: 100%;
     margin-block-end: 1em;
     padding: 1em;
+    @extend %scrollbar;
     }
 
     &--fields {
@@ -602,40 +608,12 @@ z-index: 2147483647;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   padding: 1em;
-  scrollbar-color: var(--primary-color) #eee;
-  scrollbar-width: thin;
-
+  @extend %scrollbar;
+  
     &:empty {
     display: none;
     }
 
-    @supports selector(::-webkit-scrollbar) {
-  
-      scrollbar-color: initial;
-      scrollbar-width: auto;
-      padding-inline-end: 0.5em;
-
-      &::-webkit-scrollbar {
-      width: calc(18rem / 16);
-      }
-
-      &::-webkit-scrollbar-track {
-      background-color: #fff;
-      margin-block: 0.5em;
-      }
-
-      &::-webkit-scrollbar-thumb {
-      background-color: var(--primary-color);
-      border: calc(6rem / 16) #fff solid;
-      border-radius: 100vw;
-      min-block-size: calc(50rem / 16);
-      }
-
-      &::-webkit-scrollbar-thumb:hover {
-      background-color: #666;
-      }
-    
-    }
 
   }
 
