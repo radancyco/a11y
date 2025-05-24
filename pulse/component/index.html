@@ -19,7 +19,6 @@ id: a11y-smoke-test
 
         <div class="a11y-pulse__controls">
 
-            <button aria-label="Move" class="a11y-pulse__btn a11y-pulse__btn--move"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-move.png"></button>
             <button aria-label="Minimize" class="a11y-pulse__btn a11y-pulse__btn--minimize"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-minimize.png"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-maximize.png"></button>
             <button aria-label="Close Dialog" class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-close.png"></button>
 
@@ -29,9 +28,9 @@ id: a11y-smoke-test
 
     <div class="a11y-pulse__container">
         
-        <h2>Tests</h2>
-        
         <div class="accordion" data-disable-anchor>
+
+            <h2>Tests</h2>
 
             <h2 class="accordion__heading"><button id="alerts" class="accordion__toggle"><span>Alerts</span></button></h2>
         
@@ -130,17 +129,21 @@ id: a11y-smoke-test
                     
                             <p>Use this form to validate the contrast of two specific colors combinations.</p>
 
-                            <div class="a11y-pulse__form--column-3">
+                            <div class="a11y-pulse__form--fields a11y-pulse__form--fields--column-3">
                     
-                                <label class="a11y-pulse__form--label-1" for="fcolor-2">Foreground:</label>
+                                <label class="a11y-pulse__form--fields--label-1" for="fcolor-2">Foreground:</label>
                     
-                                <input class="a11y-pulse__form--input-1" id="fcolor-2" name="fcolor" type="color" value="#0000FF">
+                                <input class="a11y-pulse__form--fields--input-1" id="fcolor-2" name="fcolor" type="color" value="#0000FF">
 
-                                <label class="a11y-pulse__form--label-2" for="bcolor-2">Background:</label>
+                                <label class="a11y-pulse__form--fields--label-2" for="bcolor-2">Background:</label>
 
-                                <input class="a11y-pulse__form--input-2" id="bcolor-2" name="bcolor" type="color" value="#FFFFFF">
+                                <input class="a11y-pulse__form--fields--input-2" id="bcolor-2" name="bcolor" type="color" value="#FFFFFF">
 
-                                <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
+                                <div>
+
+                                    <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
+
+                                </div>
 
                             </div>
 
@@ -156,21 +159,25 @@ id: a11y-smoke-test
                     
                             <p>Use this form to validate specific color combinations.</p>
                     
-                            <div class="a11y-pulse__form--column-4">
+                            <div class="a11y-pulse__form--fields a11y-pulse__form--fields--column-4">
 
-                                <label class="a11y-pulse__form--label-1" for="lcolor-1">Link:</label>
+                                <label class="a11y-pulse__form--fields--label-1" for="lcolor-1">Link:</label>
 
-                                <input class="a11y-pulse__form--input-1" id="lcolor-1" name="lcolor" type="color" value="#3333FF">
+                                <input class="a11y-pulse__form--fields--input-1" id="lcolor-1" name="lcolor" type="color" value="#3333FF">
 
-                                <label class="a11y-pulse__form--label-2"for="fcolor-1">Body Text:</label>
+                                <label class="a11y-pulse__form--fields--label-2"for="fcolor-1">Body Text:</label>
 
-                                <input class="a11y-pulse__form--input-2" id="fcolor-1" name="fcolor" type="color" value="#000000">
+                                <input class="a11y-pulse__form--fields--input-2" id="fcolor-1" name="fcolor" type="color" value="#000000">
 
-                                <label class="a11y-pulse__form--label-3" for="bcolor-1">Background:</label>
+                                <label class="a11y-pulse__form--fields--label-3" for="bcolor-1">Background:</label>
 
-                                <input class="a11y-pulse__form--input-3" id="bcolor-1" name="bcolor" type="color" value="#FFFFFF">
+                                <input class="a11y-pulse__form--fields--input-3" id="bcolor-1" name="bcolor" type="color" value="#FFFFFF">
 
-                                <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
+                                <div>
+
+                                    <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
+
+                                </div>
 
                             </div>
                     

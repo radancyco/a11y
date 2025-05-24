@@ -97,6 +97,7 @@ block-size: calc(620em / 16);
 border-radius: 5px;
 border: 0;
 box-shadow: 0 0 calc(10em / 16) 0 rgba(0, 0, 0, 0.75);
+color: #000;
 display: block;
 font-family: Arial, Helvetica, sans-serif;
 font-size: calc(13.5em / 16);
@@ -419,34 +420,48 @@ z-index: 2147483647;
     padding: 1em;
     }
 
-    div {
+    &--fields {
     display: grid;
     gap: 0.5em;
-    }
 
-    &--column-3 {
-    grid-template-columns: repeat(3, 1fr);
-    }
+      &--column-3 {
 
-    &--column-4 {
-    grid-template-columns: repeat(4, 1fr);
+        @media(min-width: $primary-breakpoint) {
+    
+          grid-template-columns: repeat(3, 1fr);
+    
+        }
+    
+      }
+
+      &--column-4 {
+    
+        @media(min-width: $primary-breakpoint) {
+    
+          grid-template-columns: repeat(4, 1fr);
+    
+        }
+
+      }
+
+      &--input-1 {
+      grid-row: 2;
+      }
+      
+      &--label-2, &--input-2 {
+      grid-column: 2;
+      }
+    
+      &--label-3 {
+      grid-row: 1;
+      }
+    
+      &--label-3, &--input-3 {
+      grid-column: 3;
+      }
+
     }
   
-    &--input-1 {
-    grid-row: 2;
-    }
-  
-    &--label-2, &--input-2 {
-    grid-column: 2;
-    }
-
-    &--label-3 {
-    grid-row: 1;
-    }
-
-    &--label-3, &--input-3 {
-    grid-column: 3;
-    }
   
   }
 

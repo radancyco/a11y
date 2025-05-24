@@ -109,7 +109,7 @@
 
   // Move Dialog
 
-  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__banner, .a11y-pulse__btn--move");
+  const a11yPulseMove = shadowContainer.querySelector(".a11y-pulse__banner");
 
   let isDragging = false;
   let startX = 0;
