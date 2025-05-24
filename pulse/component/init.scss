@@ -7,46 +7,119 @@
 
 */
 
-:host { 
-
-  box-sizing: initial;
-  color: initial;
-  font-size: initial;
-  text-align: initial;
-
-}
+$primary-breakpoint: 50em;
 
 %scrollbar {
 
 scrollbar-color: var(--primary-color) #eee;
 scrollbar-width: thin;
-
+  
   @supports selector(::-webkit-scrollbar) {
- 
+   
     padding-inline-end: calc(5em / 16);
     scrollbar-color: initial;
     scrollbar-width: auto;
-
+  
     &::-webkit-scrollbar {
     inline-size: calc(18em / 16);
     }
-
+  
     &::-webkit-scrollbar-track {
     background-color: #fff;
     margin-block: calc(5em / 16);
     }
-
+  
     &::-webkit-scrollbar-thumb {
     background-color: var(--primary-color);
     border: calc(6em / 16) #fff solid;
     border-radius: 100vw;
     min-block-size: calc(80em / 16);
     }
-
+  
     &::-webkit-scrollbar-thumb:hover {
     background-color: #666;
     }
+  
+  }
+  
+}
 
+:host { 
+
+  all: initial;
+
+  // Component Variables
+
+  --primary-color: #6F00EF;
+  --secondary-color: #FFCC36;
+  --tertiary-color: #FFF;
+
+  // Reset
+
+  *, *::before, *::after {
+  box-sizing: border-box;
+  font-size: inherit;
+  }
+
+  // Global
+
+  img {
+  block-size: auto;
+  display: block;
+  max-inline-size: 100%;
+  }
+    
+  a:has(img[src*="new-tab"]), button:has(img[src*="new-tab"]) {
+    
+    img {
+    block-size: calc(14em / 16);
+    display: inline-block;
+    inline-size: calc(14em / 16);
+    margin-inline-start: calc(4.5em /16);
+    vertical-align: middle;
+    }
+    
+  }
+    
+  code {
+  background-color: #333;
+  color: #fff;
+    
+    b {
+    color: #b4dcf6;
+    }
+    
+  }
+    
+  kbd {
+  background-color: #ccc;
+  border: calc(1em / 16) dotted black;
+  color: #000;
+  }
+    
+  code, kbd {
+  border-radius: calc(4em / 16);
+  display: inline-block;
+  font-weight: normal;
+  font: inherit;
+  margin: 2px;
+  padding: 0 calc(14em / 16);
+  white-space: nowrap;
+  }
+    
+  figure {
+  margin: 0;
+      
+    figcaption {
+    font-size: calc(14.4em / 16);
+    font-style: italic;
+    margin: calc(8em / 16) 0;
+    }
+      
+  }
+    
+  ul, ol {
+  padding-inline-start: 1em;
   }
 
 }
@@ -110,29 +183,12 @@ scrollbar-width: thin;
 }
 
 .a11y-pulse {
-
-// Component Variables
-
---primary-color: #6F00EF;
---secondary-color: #FFCC36;
---tertiary-color: #FFF;
-
-$primary-breakpoint: 50em;
-
-// Reset
-
-*, *::before, *::after {
-box-sizing: border-box;
-font-size: inherit;
-}
-
 animation: slide-up 800ms forwards, fade-in 400ms forwards;
 background-color: #fff;
 block-size: calc(620em / 16);
 border-radius: 5px;
 border: 0;
 box-shadow: 0 0 calc(10em / 16) 0 rgba(0, 0, 0, 0.75);
-color: #000;
 display: block;
 font-family: Arial, Helvetica, sans-serif;
 font-size: calc(13.5em / 16);
@@ -290,67 +346,6 @@ z-index: 2147483647;
   
   }
 
-  // Global
-
-  img {
-  block-size: auto;
-  display: block;
-  max-inline-size: 100%;
-  }
-
-  a:has(img[src*="new-tab"]), button:has(img[src*="new-tab"]) {
-
-    img {
-    block-size: calc(14em / 16);
-    display: inline-block;
-    inline-size: calc(14em / 16);
-    margin-inline-start: calc(4.5em /16);
-    vertical-align: middle;
-    }
-
-  }
-
-  code {
-  background-color: #333;
-  color: #fff;
-
-    b {
-    color: #b4dcf6;
-    }
-
-  }
-
-  kbd {
-  background-color: #ccc;
-  border: calc(1em / 16) dotted black;
-  color: #000;
-  }
-
-  code, kbd {
-  border-radius: calc(4em / 16);
-  display: inline-block;
-  font-weight: normal;
-  font: inherit;
-  margin: 2px;
-  padding: 0 calc(14em / 16);
-  white-space: nowrap;
-  }
-
-  figure {
-  margin: 0;
-  
-    figcaption {
-    font-size: calc(14.4em / 16);
-    font-style: italic;
-    margin: calc(8em / 16) 0;
-    }
-  
-  }
-
-  ul, ol {
-  padding-inline-start: 1em;
-  }
-  
   // Utility Classes
 
   &__cta {
