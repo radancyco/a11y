@@ -2,7 +2,7 @@
 layout: null
 ---
 
-{% include pulse-variables.html %}
+{% include pulse/variables.html %}
 
 /*!
 
@@ -226,7 +226,7 @@ layout: null
 
   // Validate WAVE
 
-  const btnValidateWAVE = shadowContainer.querySelectorAll(".validate-wave");
+  const btnValidateWAVE = shadowContainer.querySelectorAll(".validation-wave");
 
   btnValidateWAVE.forEach((btn) => {
 
@@ -237,7 +237,7 @@ layout: null
 
   // Validate W3C
 
-  const btnValidateW3C = shadowContainer.querySelectorAll(".validate-w3c");
+  const btnValidateW3C = shadowContainer.querySelectorAll(".validation-w3c");
 
   btnValidateW3C.forEach((btn) => {
 
@@ -248,7 +248,7 @@ layout: null
 
   // Validate Headings
 
-  const btnValidateHeading = shadowContainer.querySelectorAll(".validate-heading");
+  const btnValidateHeading = shadowContainer.querySelectorAll(".validation-heading");
 
   btnValidateHeading.forEach((btn) => {
 
@@ -259,7 +259,7 @@ layout: null
 
   // Validate Images
 
-  const btnValidateImage = shadowContainer.querySelectorAll(".validate-image");
+  const btnValidateImage = shadowContainer.querySelectorAll(".validation-image-external");
 
   btnValidateImage.forEach((btn) => {
 
@@ -270,7 +270,7 @@ layout: null
 
   // Validate CSS
 
-  const btnValidateCSS = shadowContainer.querySelectorAll(".validate-css");
+  const btnValidateCSS = shadowContainer.querySelectorAll(".validation-css");
 
   btnValidateCSS.forEach((btn) => {
 
@@ -281,7 +281,7 @@ layout: null
 
   // Validate Links
 
-  const btnValidateLinks = document.querySelectorAll(".validate-link");
+  const btnValidateLinks = document.querySelectorAll(".validation-link");
 
   btnValidateLinks.forEach((btn) => {
   
@@ -292,7 +292,7 @@ layout: null
 
   // Validate Spelling
 
-  const btnValidateSpelling = shadowContainer.querySelectorAll(".validate-spelling");
+  const btnValidateSpelling = shadowContainer.querySelectorAll(".validation-spelling");
 
   btnValidateSpelling.forEach((btn) => {
       
@@ -303,7 +303,7 @@ layout: null
 
   // Validate Structured Data
 
-  const btnValidateStructuredData = shadowContainer.querySelectorAll(".validate-structured-data");
+  const btnValidateStructuredData = shadowContainer.querySelectorAll(".validation-seo");
 
   btnValidateStructuredData.forEach((btn) => {
   
@@ -314,9 +314,9 @@ layout: null
 
   // Validate HTML by Direct Input
 
-  const formValidation = shadowContainer.getElementById("submitPartialPage");
-  const formValidationContent = shadowContainer.getElementById("contentToValidate");
-  const formValidationSubmit = shadowContainer.getElementById("submitValidate");
+  const formValidation = shadowContainer.querySelector("#submitPartialPage");
+  const formValidationContent = shadowContainer.querySelector("#contentToValidate");
+  const formValidationSubmit = shadowContainer.querySelector("#submitValidate");
   const topHtml = '<!DOCTYPE html>' + "\n" + '<html lang="en">' + "\n" + '<head>' + "\n\t" + '<meta charset="utf-8">' + "\n\t" + '<title>Untitled Document</title>' + "\n" + '</head>' + "\n" + '<body>' + "\n" + "\n";
   const bottomHtml = "\n\n</body></html>";
   

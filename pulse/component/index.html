@@ -4,7 +4,7 @@ title: "Accessibility Pulse Component"
 id: a11y-smoke-test
 ---
 
-{% include pulse-variables.html %}
+{% include pulse/variables.html %}
 
 <dialog class="a11y-pulse" dir="ltr" lang="en-US">
 
@@ -57,15 +57,15 @@ id: a11y-smoke-test
         
             <div class="accordion__panel">
 
-                <h3 class="a11y-pulse__info__heading">Mandatory</h3>
+                <h3>Mandatory: Development & QA</h3>
 
                 <p>Web pages must always be validated. Errors flagged by WAVE or heading validation tools must be addressed. Accessibility and QA engineers should link directly to validation reports in BugHerd or JIRA when filing issues.</p>
 
                 <p><b>Who is responsible?</b> Development & QA</p>
 
                 <ul>
-                    <li>{% include test/wave-validation.html %}</li>
-                    <li>{% include test/heading-validation.html %}</li>
+                    <li>{% include pulse/test/validation-wave.html %}</li>
+                    <li>{% include pulse/test/validation-heading.html %}</li>
                 </ul>
 
                 <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
@@ -87,10 +87,10 @@ id: a11y-smoke-test
                 <p>The following tests are available but optional.</p>
 
                 <ul>
-                    <li>{% include test/css-validation.html %}</li>
-                    <li>{% include test/link-validation.html %}</li>
-                    <li>{% include test/spelling-validation.html %}</li>
-                    <li>{% include test/seo-validation.html %}</li>
+                    <li>{% include pulse/test/validation-css.html %}</li>
+                    <li>{% include pulse/test/validation-link.html %}</li>
+                    <li>{% include pulse/test/validation-spelling.html %}</li>
+                    <li>{% include pulse/test/validation-seo.html %}</li>
                 </ul>
 
             </div>
@@ -99,7 +99,7 @@ id: a11y-smoke-test
         
             <div class="accordion__panel">
 
-                <h3 class="a11y-pulse__info__heading">Mandatory</h3>
+                <h3 class="a11y-pulse__info__heading">Mandatory: Development & QA</h3>
 
                 <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed.</p>
 
@@ -371,10 +371,16 @@ id: a11y-smoke-test
                     <p>Browse a curated collection of tools, references, and educational materials to deepen your understanding of accessibility testing and best practices.</p>
     
                     <ul>
-                        <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank">Web Content Accessibility Guidelines (WCAG) 2.2</a></li>
-                        <li><a href="https://www.w3.org/WAI/people-use-web/" target="_blank">How People with Disabilities Use the Web (User Stories) {{ newWindow }}</a></li>
+                        <li><a href="https://a11ysupport.io/" target="_blank">ARIA Support Check {{ newWindow }}</a></li>
                         <li><a href="https://thepaciellogroup.github.io/AT-browser-tests/" target="_blank">HTML Element Test File Index {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/people-use-web/" target="_blank">How People with Disabilities Use the Web (User Stories) {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank">How to Meet WCAG (Quick Reference) {{ newWindow }}</a></li>
                         <li><a href="https://www.powermapper.com/tests/screen-readers/" target="_blank">PowerMapper - Screen Reader Reliability {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/TR/using-aria/" target="_blank">Using ARIA {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria-practices/" target="_blank">WAI-ARIA Authoring Practices {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/" target="_blank">Web Accessibility Initiative (WAI) {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/policies/" target="_blank">Web Accessibility Laws & Policies {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank">Web Content Accessibility Guidelines (WCAG) 2.2 {{ newWindow }}</a></li>
                     </ul>
     
                 </details>
