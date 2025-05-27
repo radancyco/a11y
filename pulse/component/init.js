@@ -1,3 +1,8 @@
+---
+layout: null
+---
+
+{% include pulse-variables.html %}
 
 /*!
 
@@ -14,7 +19,7 @@
 
   // Display which Disclosure is in use via console:
 
-  console.log("%c Accessibility Pulse v1.06 in use. ", "background: #6e00ee; color: #fff");
+  console.log("%c Accessibility Pulse v{{ appVersion }} in use. ", "background: #6e00ee; color: #fff");
 
   // Commonly used Classes, Data Attributes, States, Strings, etc.
 

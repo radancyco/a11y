@@ -4,8 +4,7 @@ title: "Accessibility Pulse Component"
 id: a11y-smoke-test
 ---
 
-{% assign imagePath = site.url | append: site.baseurl | append: '/pulse/img/new-tab.png' %}
-{% assign newWindow = '<img alt="(Opens in new window)" src="' | append: imagePath | append: '">' %}
+{% include pulse-variables.html %}
 
 <dialog class="a11y-pulse" dir="ltr" lang="en-US">
 
@@ -13,7 +12,7 @@ id: a11y-smoke-test
         
         <h1 class="a11y-pulse__label">
             
-            <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/icon-48.png"> A11y Pulse v1.06
+            <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/icon-48.png"> A11y Pulse v{{ appVersion }}
         
         </h1>
 
@@ -88,7 +87,7 @@ id: a11y-smoke-test
                 <p>The following tests are available but optional.</p>
 
                 <ul>
-                    <li>{% include test/css-validate.html %}</li>
+                    <li>{% include test/css-validation.html %}</li>
                     <li>{% include test/link-validation.html %}</li>
                     <li>{% include test/spelling-validation.html %}</li>
                     <li>{% include test/seo-validation.html %}</li>
