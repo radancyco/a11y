@@ -163,6 +163,60 @@
 
   }
 
+  // HTML Validation Form 
+
+  const limitField = shadowContainer.querySelector("#contentToValidate")
+  const limitCount = shadowContainer.querySelector("#charlimit");
+  const limitNum = Number(limitCount.innerHTML); // Convert to number
+
+  const limitText = () => {
+
+    if (limitField.value.length > limitNum - ((limitNum * 0.10) + 1)) {
+
+      limitCount.classList.add("alert");
+
+    } else {
+
+      limitCount.classList.remove("alert");
+
+    }
+
+    if (limitField.value.length > limitNum) {
+
+      limitField.value = limitField.value.substring(0, limitNum);
+
+    } else {
+
+      limitCount.innerHTML = limitNum - limitField.value.length;
+    
+    }
+
+  }
+
+  // Count characters on load
+
+  if (limitField.value.length <= limitNum) {
+
+    limitCount.innerHTML = limitNum - limitField.value.length;
+
+    limitText();
+
+  }
+
+  // Key Functions
+
+  limitField.addEventListener("keydown", () => {
+
+    limitText();
+
+  });
+
+  limitField.addEventListener("keyup", () => {
+
+    limitText();
+
+  });
+
   // ** Pulse Functions **
 
   // Validate WAVE
@@ -579,7 +633,7 @@
 
   // MagicBullet
 
-  const hasMagicBullet = document.querySelector("#radancy-magicbullet[data-a11y]") || document.querySelector("#tmp-magic-bullet[data-a11y='true']");
+  const hasMagicBullet = document.querySelector("body.magicbullet-a11y");
   const magicMessage = shadowContainer.querySelector("#magicbullet-message");
       
   if (isCareerSite && !hasMagicBullet) {

@@ -102,132 +102,125 @@ id: a11y-smoke-test
 
                 <h3 class="a11y-pulse__info__heading">Manual Testing</h3>
 
-                    <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed instead. The following are common and useful tools you may use for closer analysis.</p>
+                <p>Web pages may have deeper problems that automated tools cannot find, so manual testing methods will need to be performed instead. The following are common and useful tools you may use for closer analysis.</p>
 
-                    <p><b>Who is responsible?</b> Development, QA, Specialists</p>
+                <p><b>Who is responsible?</b> Development, QA, Specialists</p>
 
-                    <h3>Images</h3>
+                <h3>Images</h3>
 
-                    <ul>
-                        <li><a class="validate-image" href="{{ site.url }}{{ site.baseurl }}/pulse/images" target="_blank">Review Images {{ newWindow }}</a></li>
-                    </ul>
+                <ul>
+                    <li><a class="validate-image" href="{{ site.url }}{{ site.baseurl }}/pulse/images" target="_blank">Review Images {{ newWindow }}</a></li>
+                </ul>
 
-                    <h3>Magnification</h3>
+                <h3>Magnification</h3>
 
-                    <ul>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
-                    </ul>
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-320x256.js">Test Page Reflow (320x256)</button></li>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/reflow-1280x1024.js">Test Page Reflow (1280x1024)</button></li>
+                </ul>
 
-                    <h3>Color</h3>
+                <h3>Color</h3>
 
-                    <form action="https://webaim.org/resources/contrastchecker/" class="a11y-pulse__form" target="_blank">
+                <form action="https://webaim.org/resources/contrastchecker/" class="a11y-pulse__form" target="_blank">
 
-                        <fieldset>
+                    <fieldset>
                     
-                            <legend>Check Color Contrast</legend>
+                        <legend>Check Color Contrast</legend>
                     
-                            <p>Use this form to validate the contrast of two specific colors combinations.</p>
+                        <p>Use this form to validate the contrast of two specific colors combinations.</p>
 
-                            <div class="a11y-pulse__form--fields a11y-pulse__form--fields--column-3">
+                        <div class="a11y-pulse__form--fields a11y-pulse__form--fields--column-3">
                     
-                                <label class="a11y-pulse__form--fields--label-1" for="fcolor-2">Foreground:</label>
+                            <label class="a11y-pulse__form--fields--label-1" for="fcolor-2">Foreground:</label>
                     
-                                <input class="a11y-pulse__form--fields--input-1" id="fcolor-2" name="fcolor" type="color" value="#0000FF">
+                            <input class="a11y-pulse__form--fields--input-1" id="fcolor-2" name="fcolor" type="color" value="#0000FF">
 
-                                <label class="a11y-pulse__form--fields--label-2" for="bcolor-2">Background:</label>
+                            <label class="a11y-pulse__form--fields--label-2" for="bcolor-2">Background:</label>
 
-                                <input class="a11y-pulse__form--fields--input-2" id="bcolor-2" name="bcolor" type="color" value="#FFFFFF">
+                            <input class="a11y-pulse__form--fields--input-2" id="bcolor-2" name="bcolor" type="color" value="#FFFFFF">
 
-                                <div>
+                            <div>
 
-                                    <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
-
-                                </div>
+                                <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
 
                             </div>
 
-                        </fieldset>
+                        </div>
+
+                    </fieldset>
                     
-                    </form>
+                </form>
                     
-                    <form action="https://webaim.org/resources/linkcontrastchecker/" class="a11y-pulse__form" target="_blank">
+                <form action="https://webaim.org/resources/linkcontrastchecker/" class="a11y-pulse__form" target="_blank">
                     
-                        <fieldset>
+                    <fieldset>
                     
-                            <legend>Check Link & Text Contrast</legend>
+                        <legend>Check Link & Text Contrast</legend>
                     
-                            <p>Use this form to validate specific color combinations.</p>
+                        <p>Use this form to validate specific color combinations.</p>
                     
-                            <div class="a11y-pulse__form--fields a11y-pulse__form--fields--column-4">
+                        <div class="a11y-pulse__form--fields a11y-pulse__form--fields--column-4">
 
-                                <label class="a11y-pulse__form--fields--label-1" for="lcolor-1">Link:</label>
+                            <label class="a11y-pulse__form--fields--label-1" for="lcolor-1">Link:</label>
 
-                                <input class="a11y-pulse__form--fields--input-1" id="lcolor-1" name="lcolor" type="color" value="#3333FF">
+                            <input class="a11y-pulse__form--fields--input-1" id="lcolor-1" name="lcolor" type="color" value="#3333FF">
 
-                                <label class="a11y-pulse__form--fields--label-2"for="fcolor-1">Body Text:</label>
+                            <label class="a11y-pulse__form--fields--label-2"for="fcolor-1">Body Text:</label>
 
-                                <input class="a11y-pulse__form--fields--input-2" id="fcolor-1" name="fcolor" type="color" value="#000000">
+                            <input class="a11y-pulse__form--fields--input-2" id="fcolor-1" name="fcolor" type="color" value="#000000">
 
-                                <label class="a11y-pulse__form--fields--label-3" for="bcolor-1">Background:</label>
+                            <label class="a11y-pulse__form--fields--label-3" for="bcolor-1">Background:</label>
 
-                                <input class="a11y-pulse__form--fields--input-3" id="bcolor-1" name="bcolor" type="color" value="#FFFFFF">
+                            <input class="a11y-pulse__form--fields--input-3" id="bcolor-1" name="bcolor" type="color" value="#FFFFFF">
 
-                                <div>
+                            <div>
 
-                                    <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
-
-                                </div>
+                                <button class="a11y-pulse__cta">Check {{ newWindow }}</button>
 
                             </div>
+
+                        </div>
                     
-                        </fieldset>
+                    </fieldset>
                     
-                    </form>
+                </form>
 
-                    <h3>Typography</h3>
+                <h3>Typography</h3>
 
-                    <ul>
-                        <li><button data-script="typography" data-fragment="default-font">Change Default Font Size</button>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/text-spacing.js">Text Spacing</button></li>
-                    </ul>
+                <ul>
+                    <li><button data-script="typography" data-fragment="default-font">Change Default Font Size</button>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/text-spacing.js">Text Spacing</button></li>
+                </ul>
 
-                    <h3>Internationalization</h3>
+                <h3>Internationalization</h3>
 
-                    <ul>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-rtl.js">Show Right-to-left (RTL)</button>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-ltr.js">Show Left-to-right (LTR)</button>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-lang.js">Show Document Language</button>
-                    </ul>
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-rtl.js">Show Right-to-left (RTL)</button>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-ltr.js">Show Left-to-right (LTR)</button>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/i18n-lang.js">Show Document Language</button>
+                </ul>
 
-                    <h3>Animation</h3>
+                <h3>Animation</h3>
 
-                    <ul>
-                        <li><a href="https://trace.umd.edu/peat/" target="_blank">Download PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a></li>
-                    </ul>
+                <ul>
+                    <li><a href="https://trace.umd.edu/peat/" target="_blank">Download PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a></li>
+                </ul>
 
-                    <p><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
+                <p><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
 
-                    <h3>Visual</h3>
+                <h3>Visual</h3>
 
-                    <ul>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">Force Focus</button></li>
-                    </ul>
+                <ul>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">Force Focus</button></li>
+                </ul>
 
-                    <h3>PDF</h3>
+                <h3>PDF</h3>
 
-                    <ul>
-                        <li><a href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/register" target="_blank">Download PAC (PDF Accessibility Checker) {{ newWindow }}</a></li>
-                    </ul>
+                <ul>
+                    <li><a href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/register" target="_blank">Download PAC (PDF Accessibility Checker) {{ newWindow }}</a></li>
+                </ul>
 
-                    <p><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
-
-                    <h3>Other</h3>
-
-                    <ul>
-                        <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/isolator.js">Isolate Code Blocks</button></li>
-                    </ul>
-
+                <p><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
 
             </div>
 
@@ -262,8 +255,7 @@ id: a11y-smoke-test
             
                             </li>
                         </ul>
-                
-                    
+                                    
                     </li>
                 </ul>
 
@@ -275,12 +267,12 @@ id: a11y-smoke-test
                     
                         <input name="showsource" type="hidden" value="yes">
 
-                        <p id="markup-char-limit">Please note that only a few hundred lines of markup are allowed.</p>
+                        <p id="note-char"><em>Maximum of <strong id="charlimit">2050</strong> characters.</em></p>
 
                         <label for="contentToValidate">Markup:</label>
 
-                        <textarea aria-describedby="markup-char-limit" cols="60" name="contentToValidate" id="contentToValidate" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
-
+                        <textarea aria-describedby="note-char" cols="60" name="contentToValidate" id="contentToValidate" maxlength="2050" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
+                        
                         <button class="a11y-pulse__cta" id="submitValidate" type="submit">Validate {{ newWindow }}</button>
 
                     </fieldset>
@@ -293,30 +285,127 @@ id: a11y-smoke-test
         
             <div class="accordion__panel">
 
-                <ul>
-                    <li>
-                        
-                        <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-pages.js">Get Career Site Pages</button>
-                    
-                        - Generates a spreadsheet of key career site pages to be used in accessibility testing. Please allow up to several minutes to scan.
+                <h2>Tools for Specialists</h2>
 
-                        <div class="status-container status-container--career-site-pages"></div>
-                        
-                        <p class="status-message status-message--career-site-pages"></p>
+                <p>More advanced tools and resources for specialized accessibility engineers.</p>
 
-                    </li>
-                    <li>
+                <details>
+
+                    <summary>Audit Setup</summary>
+    
+                    <ul>
+                        <li><a href="{{ site.url }}{{ site.baseurl }}/audit/boilerplate">Testing Sheet {{ newWindow }}</a> - Bolierplate sheet used to set up a new audit.</li>
+                        <li>
+                            
+                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-pages.js">Get Career Site Pages</button>
                         
-                        <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-images.js">Get Career Site Images</button>
-                    
-                        - Generates a spreadsheet of all images and alternative text used across a career site. Please allow up to several minutes to scan. 
-                    
-                        <div class="status-container status-container--career-site-images"></div>
+                            - Generates key career site pages to be used in accessibility testing. Please allow up to several minutes to scan.
+    
+                            <div class="status-container status-container--career-site-pages"></div>
+                            
+                            <p class="status-message status-message--career-site-pages"></p>
+    
+                        </li>
+                        <li>
+                            
+                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-images.js">Get Career Site Images</button>
                         
-                        <p class="status-message status-message--career-site-images"></p>
-                    
-                    </li>
-                </ul>
+                            - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan. 
+                        
+                            <div class="status-container status-container--career-site-images"></div>
+                            
+                            <p class="status-message status-message--career-site-images"></p>
+                        
+                        </li>
+                        <li><a href="https://login.pope.tech/login?redirect=/" target="_blank">PopeTech {{ newWindow }}</a> - Automated web accessibility testing tool that scans websites for WCAG compliance issues using the WAVE engine, helping organizations identify and fix accessibility barriers.</li>
+                    </ul>
+    
+                </details>
+
+                <details>
+
+                    <summary>Plugins and Desktop Tools</summary>
+
+                    <ul>
+                        <li>
+    
+                            <h3>IBM Equal Access Accessibility Plugin</h3>
+    
+                            <ul>
+                                <li><a href="https://chromewebstore.google.com/detail/ibm-equal-access-accessib/lkcagbfjnkomcinoddgooolagloogehp?hl=en-US" target="_blank">Chrome Extension {{ newWindow }}</a></li>
+                                <li><a href="https://addons.mozilla.org/en-US/firefox/addon/accessibility-checker/" target="_blank">Firefox Plugin {{ newWindow }}</a></li>
+                                <li><a href="https://microsoftedge.microsoft.com/addons/detail/ibm-equal-access-accessib/ompccpejakabkmfepbijnagedbdfldka" target="_blank">Edge Extension {{ newWindow }}</a></li>
+                            </ul>
+    
+                            <h3>Desktop</h3>
+
+                            <ul>
+                                <li><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank">Colour Contrast Analyser (CCA) {{ newWindow }}</a></li>
+                            </ul>
+    
+                           
+    
+                        </li>
+                    </ul>
+
+                </details>
+
+                <details>
+    
+                    <summary>Screen Readers</summary>
+    
+                    <p>Accessibility testing is not complete until the work has been engaged with via a screen reader. Listening to your work is just as important as visual inspection.</p>
+    
+                    <ul>
+                        <li>
+                        
+                            <a href="https://support.freedomscientific.com/Downloads/JAWS" target="_blank">JAWS (Paid, 30 Minute Mode) {{ newWindow }}</a>
+    
+                            <ul>
+                                <li><a href="https://webaim.org/resources/shortcuts/jaws" target="_blank">Keyboard Shortcuts for JAWS {{ newWindow }}</a></li>
+                            </ul>
+    
+                        </li>
+                        <li>
+                        
+                            <a href="https://www.nvaccess.org/download/" target="_blank">NVDA (Free) {{ newWindow }}</a>
+    
+                            <ul>
+                                <li><a href="https://webaim.org/resources/shortcuts/nvda" target="_blank">Keyboard Shortcuts for NVDA {{ newWindow }}</a></li>
+                            </ul>
+    
+                        </li>
+                        <li><a href="https://support.apple.com/guide/mac-help/change-voiceover-preferences-accessibility-mh40578/mac" target="_blank">VoiceOver for Mac {{ newWindow }}</a></li>
+                        <li><a href="https://support.microsoft.com/en-us/windows/hear-text-read-aloud-with-narrator-040f16c1-4632-b64e-110a-da4a0ac56917" target="_blank">Windows Narrator {{ newWindow }}</a></li>
+                    </ul>
+    
+                </details>
+    
+                <details>
+    
+                    <summary>Third-party Testing</summary>
+    
+                    <p>Automated and manual testing are valuable, but nothing replaces the lived experience of people with disabilities—include them in testing your websites and products. When needed, consider reaching out to one of the following:</p>
+    
+                    <ul>
+                        <li><a href="https://access-works.com/" target="_blank">Access Works {{ newWindow }} </a></li>
+                        <li><a href="https://theweco.com/" target="_blank">WeCo Digital Accessibility {{ newWindow }}</a></li>
+                    </ul>
+    
+                </details>
+    
+                <details>
+    
+                    <summary>Testing Knowledge Base & Resources</summary>
+    
+                    <ul>
+                        <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank">Web Content Accessibility Guidelines (WCAG) 2.2</a></li>
+                        <li><a href="https://www.w3.org/WAI/people-use-web/" target="_blank">How People with Disabilities Use the Web (User Stories) {{ newWindow }}</a></li>
+                        <li><a href="https://thepaciellogroup.github.io/AT-browser-tests/" target="_blank">HTML Element Test File Index {{ newWindow }}</a></li>
+                        <li><a href="https://www.powermapper.com/tests/screen-readers/" target="_blank">PowerMapper - Screen Reader Reliability {{ newWindow }}</a></li>
+                    </ul>
+    
+                </details>
 
 
             </div>
@@ -334,102 +423,6 @@ id: a11y-smoke-test
             <h2>Baseline Guidance</h2>
 
             {% include baselines.html %}
-
-            <h2 class="accordion__heading"><button id="other-tools" class="accordion__toggle"><span>Other Tools and Resources</span></button></h2>
-            
-            <div class="accordion__panel">
-
-            <details>
-
-                <summary>Advanced Testing</summary>
-
-                <p>More advanced tools and resources for specialized accessibility testers.</p>
-
-                <ul>
-                    <li><a href="https://amp.levelaccess.net/login.php" target="_blank">Level Access AMP {{ newWindow }}</a>
-
-                        <h3>Access Assistant</h3>
-
-                        <ul>
-                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=chrome" target="_blank">Chrome Extension {{ newWindow }}</a></li>
-                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=firefox" target="_blank">Firefox Plugin {{ newWindow }}</a></li>
-                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=edge" target="_blank">Edge Extension (Beta) {{ newWindow }}</a></li>
-                            <li><a href="https://amp.levelaccess.net/download/assistant.php?version=2&amp;browser=ie" target="_blank">Internet Explorer 11 Plugin {{ newWindow }}</a></li>
-                        </ul>
-
-                        <h3>Continuum Explorer Pro</h3>
-
-                        <ul>
-                            <li><a href="https://chrome.google.com/webstore/detail/continuum-explorer-pro/pgkgokkkoamjdmbnegbedepbhbgecplj?hl=en-US" target="_blank">Chrome Extension {{ newWindow }}</a></li>
-                        </ul>
-
-                        <h3>Accessible Color Tools</h3>
-
-                        <ul>
-                            <li><a href="https://chrome.google.com/webstore/detail/accessible-color-picker/bgfhbflmeekopanooidljpnmnljdihld" target="_blank">Accessible Color Picker for Chrome {{ newWindow }}</a></li>
-                            <li><a href="https://www.levelaccess.com/reference/index.php/Color-Contrast-Checker" target="_blank">Color Contrast Checker {{ newWindow }}</a></li>
-                        </ul>
-
-                    </li>
-                </ul>
-
-            </details>
-
-            <details>
-
-                <summary>Third-party Testing</summary>
-
-                <p>While automated and manual testing techniques can take us far, they will never equal the lived experience of individuals who are disabled, so having people with disabilites test your websites and products is a must.</p>
-
-                <ul>
-                    <li><a href="https://access-works.com/" target="_blank">Access Works {{ newWindow }} </a></li>
-                    <li><a href="https://theweco.com/" target="_blank">WeCo Digital Accessibility {{ newWindow }}</a></li>
-                </ul>
-
-            </details>
-
-            <details>
-
-                <summary>Screen Readers</summary>
-
-                <p>Accessibility testing is not complete until the work has been engaged with via a screen reader. Listening to your work is just as important as visual inspection.</p>
-
-                <ul>
-                    <li>
-                    
-                        <a href="https://support.freedomscientific.com/Downloads/JAWS" target="_blank">JAWS (Paid, 30 Minute Mode) {{ newWindow }}</a>
-
-                        <ul>
-                            <li><a href="https://webaim.org/resources/shortcuts/jaws" target="_blank">Keyboard Shortcuts for JAWS {{ newWindow }}</a></li>
-                        </ul>
-
-                    </li>
-                    <li>
-                    
-                        <a href="https://www.nvaccess.org/download/" target="_blank">NVDA (Free) {{ newWindow }}</a>
-
-                        <ul>
-                            <li><a href="https://webaim.org/resources/shortcuts/nvda" target="_blank">Keyboard Shortcuts for NVDA {{ newWindow }}</a></li>
-                        </ul>
-
-                    </li>
-                    <li><a href="https://support.apple.com/guide/mac-help/change-voiceover-preferences-accessibility-mh40578/mac" target="_blank">VoiceOver for Mac {{ newWindow }}</a></li>
-                    <li><a href="https://support.microsoft.com/en-us/windows/hear-text-read-aloud-with-narrator-040f16c1-4632-b64e-110a-da4a0ac56917" target="_blank">Windows Narrator {{ newWindow }}</a></li>
-                </ul>
-
-            </details>
-
-            <details>
-
-                <summary>Testing Resources</summary>
-
-                <ul>
-                    <li><a href="https://www.w3.org/WAI/people-use-web/" target="_blank">How People with Disabilities Use the Web (User Stories) {{ newWindow }}</a></li>
-                    <li><a href="https://thepaciellogroup.github.io/AT-browser-tests/" target="_blank">HTML Element Test File Index {{ newWindow }}</a></li>
-                    <li><a href="https://www.powermapper.com/tests/screen-readers/" target="_blank">PowerMapper - Screen Reader Reliability {{ newWindow }}</a></li>
-                </ul>
-
-            </details>
 
         </div>
 
