@@ -44,7 +44,7 @@
 
                 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
 
-                document.body.prepend(shadowHost);
+                document.body.before(shadowHost);
 
                 // Load and apply styles via adoptedStyleSheets
 

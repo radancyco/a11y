@@ -1,4 +1,5 @@
-
+{% assign imagePath = site.url | append: site.baseurl | append: '/pulse/img/new-tab.png' %}
+{% assign newWindow = '<img alt="(Opens in new window)" src="' | append: imagePath | append: '">' %}
 
 <h2 class="accordion__heading"><button id="non-text-content-images" class="accordion__toggle"><span>1.1.1: Non-text Content (Alternative Text, Level A)</span></button></h2>
 
@@ -84,7 +85,7 @@
 
     <ul>
       <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/images.js">Check Alternative Text</button></li>
-      <li><a class="validate-images" href="images.html" target="_blank">Review All Page Images <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a class="validate-images" href="images.html" target="_blank">Review All Page Images {{ newWindow }}</a></li>
     </ul>
 
     {% endif %}
@@ -96,14 +97,14 @@
     <h3>Resources</h3>
 
     <ul>
-      <li><a href="https://www.w3.org/WAI/tutorials/images/decision-tree/" target="_blank">An Alt Decision Tree <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://webaim.org/techniques/alttext/" target="_blank">WebAim: Alternative Text Guide <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://www.levelaccess.com/resources/quick-tips-writing-meaningful-alt-text-webinar-qa-resources/" target="_blank">Quick Tips for Writing Meaningful Alt Text Webinar <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://jakearchibald.com/2021/great-alt-text/" target="_blank">Writing great alt text: Emotion matters <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://ux.shopify.com/the-case-for-describing-race-in-alternative-text-attributes-a093380634f2" target="_blank">The Case for Describing Race in Alternative Text Attributes <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://www.smashingmagazine.com/2021/06/img-alt-attribute-alternate-description-decorative/" target="_blank">Your Image Is Probably Not Decorative <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://www.w3.org/WAI/tutorials/images/" target="_blank">Image Concepts <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://www.scottohara.me/blog/2019/05/22/contextual-images-svgs-and-a11y.html" target="_blank">Contextually Marking Up Accessible Images and SVGs <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a href="https://www.w3.org/WAI/tutorials/images/decision-tree/" target="_blank">An Alt Decision Tree {{ newWindow }}</a></li>
+      <li><a href="https://webaim.org/techniques/alttext/" target="_blank">WebAim: Alternative Text Guide {{ newWindow }}</a></li>
+      <li><a href="https://www.levelaccess.com/resources/quick-tips-writing-meaningful-alt-text-webinar-qa-resources/" target="_blank">Quick Tips for Writing Meaningful Alt Text Webinar {{ newWindow }}</a></li>
+      <li><a href="https://jakearchibald.com/2021/great-alt-text/" target="_blank">Writing great alt text: Emotion matters {{ newWindow }}</a></li>
+      <li><a href="https://ux.shopify.com/the-case-for-describing-race-in-alternative-text-attributes-a093380634f2" target="_blank">The Case for Describing Race in Alternative Text Attributes {{ newWindow }}</a></li>
+      <li><a href="https://www.smashingmagazine.com/2021/06/img-alt-attribute-alternate-description-decorative/" target="_blank">Your Image Is Probably Not Decorative {{ newWindow }}</a></li>
+      <li><a href="https://www.w3.org/WAI/tutorials/images/" target="_blank">Image Concepts {{ newWindow }}</a></li>
+      <li><a href="https://www.scottohara.me/blog/2019/05/22/contextual-images-svgs-and-a11y.html" target="_blank">Contextually Marking Up Accessible Images and SVGs {{ newWindow }}</a></li>
     </ul>
 
   </div>
@@ -114,7 +115,7 @@
 
 <div class="accordion__panel">
 
-  <p>Provide text alternatives for non-text content, such as multimedia (audio, images, video) and interactive components (buttons, controls, inputs). <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content" target="_blank">Understanding 1.1.1 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Provide text alternatives for non-text content, such as multimedia (audio, images, video) and interactive components (buttons, controls, inputs). <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content" target="_blank">Understanding 1.1.1 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer, Designer</p>
 
@@ -141,7 +142,7 @@
 
     <ul>
       <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/forms.js">View Forms</button>{% endif %}</li>
-      <li>Are placeholder attributes being used to stand-in for labels? Inappropriate use of placeholders <a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/" target="_blank">can have a negative impact <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> on the user experience.</li>
+      <li>Are placeholder attributes being used to stand-in for labels? Inappropriate use of placeholders <a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/" target="_blank">can have a negative impact {{ newWindow }}</a> on the user experience.</li>
       <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/title.js">View Title Attributes</button>{% endif %}</li>
       <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/aria.js">View ARIA</button>{% endif %}</li>
     </ul>
@@ -153,8 +154,8 @@
     <h3>Resources</h3>
 
     <ul>
-      <li><a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/" target="_blank">The Anatomy of Accessible Forms: The Problem with Placeholders <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://www.nngroup.com/articles/form-design-placeholders/" target="_blank">Placeholders in Form Fields Are Harmful <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/" target="_blank">The Anatomy of Accessible Forms: The Problem with Placeholders {{ newWindow }}</a></li>
+      <li><a href="https://www.nngroup.com/articles/form-design-placeholders/" target="_blank">Placeholders in Form Fields Are Harmful {{ newWindow }}</a></li>
     </ul>
 
   </div>
@@ -165,7 +166,7 @@
 
 <div class="accordion__panel">
 
-  <p>Provide captions for videos with audio	<a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded" target="_blank">Understanding 1.2.2 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Provide captions for videos with audio	<a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded" target="_blank">Understanding 1.2.2 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer, Content Producers, Digital Project Manager</p>
 
@@ -175,7 +176,7 @@
 
     <ul>
       <li>Video on a page should be manually reviewed. If the video includes spoken dialogue or important information, then it must contain captions <!-- and/or an audio description -->.</li>
-      <li>Caption accuracy is also critical. If a video is found to have inaccurate captions, new captions must be produced. See <a href="{{ site.git-url }}/a11y/caption/" target="_blank">Creating Accessible Multimedia <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>.</li>
+      <li>Caption accuracy is also critical. If a video is found to have inaccurate captions, new captions must be produced. See <a href="{{ site.git-url }}/a11y/caption/" target="_blank">Creating Accessible Multimedia {{ newWindow }}</a>.</li>
       <li>Some advanced issues to be on the lookout for include:
 
         <ul>
@@ -201,9 +202,9 @@
     <h3>Resources</h3>
 
     <ul>
-      <li><a href="https://meryl.net/captioned-videos-complete-guide/" target="_blank">The Complete Guide to Captioned Videos by Meryl Evans <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://www.w3.org/WAI/media/av/" target="_blank">Making Audio and Video Media Accessible <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
-      <li><a href="https://www.3playmedia.com/blog/add-audio-description-videos/" target="_blank">How to Add Audio Description by Jaclyn Leduc <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a href="https://meryl.net/captioned-videos-complete-guide/" target="_blank">The Complete Guide to Captioned Videos by Meryl Evans {{ newWindow }}</a></li>
+      <li><a href="https://www.w3.org/WAI/media/av/" target="_blank">Making Audio and Video Media Accessible {{ newWindow }}</a></li>
+      <li><a href="https://www.3playmedia.com/blog/add-audio-description-videos/" target="_blank">How to Add Audio Description by Jaclyn Leduc {{ newWindow }}</a></li>
     </ul>
 
   </div>
@@ -214,7 +215,7 @@
 
 <div class="accordion__panel">
 
-  <p>Semantic markup is used appropriately. Logical structure, etc.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships" target="_blank">Understanding 1.3.1 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Semantic markup is used appropriately. Logical structure, etc.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships" target="_blank">Understanding 1.3.1 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer</p>
 
@@ -225,8 +226,8 @@
     <p>HTML should be structured and labeled accordingly, so that the page makes visual <em>and structural</em> sense to everybody. Here are some important things to be on the lookout for during review:</p>
 
     <ul>
-      <li>Is semantic markup being used to convey proper structure and meaning to assistive technology users? {% if page.id == "a11y-smoke-test" %}<a class="validate-html" href=https://validator.w3.org/ target="_blank">Validate Markup <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>{% endif %}</li>
-      <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? Are any empty headings present? {% if page.id == "a11y-smoke-test" %}<a class="validate-heading" href="heading.html" target="_blank">Validate Headings <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>{% endif %}</li>
+      <li>Is semantic markup being used to convey proper structure and meaning to assistive technology users? {% if page.id == "a11y-smoke-test" %}<a class="validate-html" href=https://validator.w3.org/ target="_blank">Validate Markup {{ newWindow }}</a>{% endif %}</li>
+      <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? Are any empty headings present? {% if page.id == "a11y-smoke-test" %}<a class="validate-heading" href="heading.html" target="_blank">Validate Headings {{ newWindow }}</a>{% endif %}</li>
       <li>Are lists being marked up and implemented correctly? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/lists.js">View Lists</button>{% endif %}</li>
       <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/forms.js">View Forms</button>{% endif %}</li>
       <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/title.js">View Title Attributes</button>{% endif %}</li>
@@ -243,7 +244,7 @@
     <h3>Resources</h3>
 
     <ul>
-      <li><a href="https://www.a11yproject.com/posts/how-to-accessible-heading-structure/" target="_blank">Accessible heading structure <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a href="https://www.a11yproject.com/posts/how-to-accessible-heading-structure/" target="_blank">Accessible heading structure {{ newWindow }}</a></li>
     </ul>
 
   </div>
@@ -254,7 +255,7 @@
 
 <div class="accordion__panel">
 
-  <p>Don't use presentation that relies solely on color. <a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color" target="_blank">Understanding 1.4.1 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Don't use presentation that relies solely on color. <a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color" target="_blank">Understanding 1.4.1 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Designer, Developer</p>
 
@@ -296,7 +297,7 @@
     <h3>Resources</h3>
 
     <ul>
-      <li><a href="https://www.tpgi.com/well-color-us-surprised-this-sc-can-be-a-tricky-customer/" target="_blank">Well Color Us Surprised—This SC Can Be a Tricky Customer <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a href="https://www.tpgi.com/well-color-us-surprised-this-sc-can-be-a-tricky-customer/" target="_blank">Well Color Us Surprised—This SC Can Be a Tricky Customer {{ newWindow }}</a></li>
     </ul>
 
   </div>
@@ -307,7 +308,7 @@
 
 <div class="accordion__panel">
 
-  <p>Contrast ratio between text and background is at least <strong>4.5:1</strong>. <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum" target="_blank">Understanding 1.4.3 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Contrast ratio between text and background is at least <strong>4.5:1</strong>. <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum" target="_blank">Understanding 1.4.3 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Designer</p>
 
@@ -321,7 +322,7 @@
 
     <ul>
       <li><button data-script="contrast" data-fragment="color-contrast">Validate Color Contrast</button></li>
-      <li><a class="validate-a11y" href="https://wave.webaim.org/" target="_blank">WAVE Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a class="validate-a11y" href="https://wave.webaim.org/" target="_blank">WAVE Validation {{ newWindow }}</a></li>
     </ul>
 
     {% endif %}
@@ -350,7 +351,7 @@
 
 <div class="accordion__panel">
 
-  <p>Text can be resized to 200% without loss of content or functionality.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text" target="_blank">Understanding 1.4.4 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Text can be resized to 200% without loss of content or functionality.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text" target="_blank">Understanding 1.4.4 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer</p>
 
@@ -371,7 +372,7 @@
 
 <div class="accordion__panel">
 
-  <p>Content can be resized without loss of functionality and no horizontal scrollbar (See exceptions).	<a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html" target="_blank">Understanding 1.4.10 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Content can be resized without loss of functionality and no horizontal scrollbar (See exceptions).	<a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html" target="_blank">Understanding 1.4.10 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer</p>
 
@@ -393,7 +394,7 @@
 
 <div class="accordion__panel">
 
-  <p>Ensure <em>important</em> visual components, such as images, icons, and buttons, have a contrast ratio of at least <strong>3:1</strong>. <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast" target="_blank">Understanding 1.4.11 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Ensure <em>important</em> visual components, such as images, icons, and buttons, have a contrast ratio of at least <strong>3:1</strong>. <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast" target="_blank">Understanding 1.4.11 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Designer</p>
 
@@ -414,7 +415,7 @@
 
     <ul>
       <li><button data-script="contrast" data-fragment="color-contrast">Validate Color Contrast</button></li>
-      <li><a class="validate-a11y" href="https://wave.webaim.org/" target="_blank">WAVE Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></li>
+      <li><a class="validate-a11y" href="https://wave.webaim.org/" target="_blank">WAVE Validation {{ newWindow }}</a></li>
     </ul>
 
     <p>In addition to testing specific color contrast ratios, pages should always be reviewed under various color-blindness or low vision simulations. Any concerns should be flagged with DPM and added to your report.</p>
@@ -431,7 +432,7 @@
 
 <div class="accordion__panel">
 
-  <p>Accessible by keyboard only.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard" target="_blank">Understanding 2.1.1 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Accessible by keyboard only.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard" target="_blank">Understanding 2.1.1 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer</p>
 
@@ -462,7 +463,7 @@
 
     <p><em>Buttons do things; hyperlinks take us places.</em></p>
 
-    <p>The difference between using a hyperlink and a button can have a very big impact on accessibility. By using the correct element for the job, we can set the right expectation for AT users and make our code much easier to write. Be sure to read <a href="https://michaelspellacy.com/pushing-buttons/" target="_blank">Pushing Buttons <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> for more details on why this distinction is important.</p>
+    <p>The difference between using a hyperlink and a button can have a very big impact on accessibility. By using the correct element for the job, we can set the right expectation for AT users and make our code much easier to write. Be sure to read <a href="https://michaelspellacy.com/pushing-buttons/" target="_blank">Pushing Buttons {{ newWindow }}</a> for more details on why this distinction is important.</p>
 
   </div>
 
@@ -472,7 +473,7 @@
 
 <div class="accordion__panel">
 
-  <p>Provide user controls for moving content. <a href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide" target="_blank">Understanding 2.2.2 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Provide user controls for moving content. <a href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide" target="_blank">Understanding 2.2.2 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Designer, Developer</p>
 
@@ -490,7 +491,7 @@
 
     <h3>Accessibility Tip</h3>
 
-    <p>Unless there is continuous movement, subtle web (a.k.a micro) animations are typically exempt from this rule, but it is strongly recommended that development leverage <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">prefers-reduced-motion <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> in their work to avoid creating an unpleasant experience for those who may find animation problematic.</p>
+    <p>Unless there is continuous movement, subtle web (a.k.a micro) animations are typically exempt from this rule, but it is strongly recommended that development leverage <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">prefers-reduced-motion {{ newWindow }}</a> in their work to avoid creating an unpleasant experience for those who may find animation problematic.</p>
 
   </div>
 
@@ -500,7 +501,7 @@
 
 <div class="accordion__panel">
 
-  <p>No content flashes more than three times per second.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold" target="_blank">Understanding 2.3.1 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>No content flashes more than three times per second.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold" target="_blank">Understanding 2.3.1 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Everybody</p>
 
@@ -509,7 +510,7 @@
     <h3>Testing</h3>
 
     <ul>
-      <li>A high rate of flashing can cause potential harm, or even death, in individuals with epilepsy. If you suspect that any feature on a page is harmful, you can download and install <a href="https://trace.umd.edu/peat/" target="_blank">PEAT (Photosensitive Epilepsy Analysis Tool) <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a> to see if there is any risk or reach out to the <a href="mailto:a11y@radancy.com">Accessibility Team</a> to perform this test for you.</li>
+      <li>A high rate of flashing can cause potential harm, or even death, in individuals with epilepsy. If you suspect that any feature on a page is harmful, you can download and install <a href="https://trace.umd.edu/peat/" target="_blank">PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a> to see if there is any risk or reach out to the <a href="mailto:a11y@radancy.com">Accessibility Team</a> to perform this test for you.</li>
     </ul>
 
     <p><strong>Important:</strong> Any suspect animation or failures should be immediately brought to the attention of <a href="mailto:{{ site.owner-email }}">{{ site.owner-name }}</a>.</p>
@@ -522,7 +523,7 @@
 
 <div class="accordion__panel">
 
-  <p>Provide a "Skip to Content" link. <a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks" target="_blank">Understanding 2.4.1 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Provide a "Skip to Content" link. <a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks" target="_blank">Understanding 2.4.1 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer</p>
 
@@ -550,7 +551,7 @@
 
 <div class="accordion__panel">
 
-  <p>Use helpful and clear page titles.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/page-titled" target="_blank">Understanding 2.4.2 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Use helpful and clear page titles.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/page-titled" target="_blank">Understanding 2.4.2 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> SEO, Copywriter, Content Creators</p>
 
@@ -576,7 +577,7 @@
 
 <div class="accordion__panel">
 
-  <p>The navigation order of links, form elements, etc. is logical and intuitive.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order" target="_blank">Understanding 2.4.3 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>The navigation order of links, form elements, etc. is logical and intuitive.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order" target="_blank">Understanding 2.4.3 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer, Designer</p>
 
@@ -627,7 +628,7 @@
 
 <div class="accordion__panel">
 
-  <p>Ensure keyboard focus is visible and clear. Default focus outlines are a browser <em>feature</em> meant to aid those with low vision, and should <em>never</em> be removed without an adequate replacement. If default focus outlines are undesirable, they may be redesigned or an alternative focus state can be used. However, any redesigned outline or alternative focus state must then meet a <strong>3:1</strong> contrast ratio. <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible" target="_blank">Understanding 2.4.7 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Ensure keyboard focus is visible and clear. Default focus outlines are a browser <em>feature</em> meant to aid those with low vision, and should <em>never</em> be removed without an adequate replacement. If default focus outlines are undesirable, they may be redesigned or an alternative focus state can be used. However, any redesigned outline or alternative focus state must then meet a <strong>3:1</strong> contrast ratio. <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible" target="_blank">Understanding 2.4.7 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer, Designer</p>
 
@@ -657,7 +658,7 @@
 
 <div class="accordion__panel">
 
-  <p>Build all elements for accessibility. <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value" target="_blank">Understanding 4.1.2 <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a></p>
+  <p>Build all elements for accessibility. <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value" target="_blank">Understanding 4.1.2 {{ newWindow }}</a></p>
 
   <p>Ensure that each element has an accessible name, role, value, state and property which can be properly conveyed to AT users. How an interface is conveyed to AT users is as equally important to how they are conveyed to users who do not rely on assistive technology to access the web. For example, if a screen reader user accesses a disclosure component, how might the fact that it is opened be conveyed to them? Is the correct state of the component, or any state at all, being presented in this scenario? Using semantic HTML along with properly implemented ARIA can assist us in creating an equal and accessible experience for everybody.</p>
 
@@ -688,7 +689,7 @@
     {% if page.id == "a11y-smoke-test" %}
 
     <ul>
-      <li><a class="validate-html" href="https://validator.w3.org/" target="_blank">W3C Validation <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>
+      <li><a class="validate-html" href="https://validator.w3.org/" target="_blank">W3C Validation {{ newWindow }}</a>
 
         <details>
 
@@ -728,7 +729,7 @@
 
     <p>{{ site.company-name }} UI/UX discourages use of carousels whenever possible and instead recommends alternative forms of page layout. While carousels may be useful in certain situations, they can bury important content you may wish for users to access and engage with and are often inaccessible. Approach usage with caution. Check out <a href="https://shouldiuseacarousel.com/">Should I Use A Carousel?</a> for more information.</p>
 
-    <p><strong>Important:</strong> Slick is a popular plugin that many developers use to easily implement a carousel. If a carousel is required, please only use the approved version, <a href="https://accessible360.github.io/accessible-slick/" target="_blank">Accessible Slick <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>, in new implementations.</p>
+    <p><strong>Important:</strong> Slick is a popular plugin that many developers use to easily implement a carousel. If a carousel is required, please only use the approved version, <a href="https://accessible360.github.io/accessible-slick/" target="_blank">Accessible Slick {{ newWindow }}</a>, in new implementations.</p>
 
   </details>
 
@@ -756,7 +757,7 @@
       <li><b>Security & Performance</b> - If a new tab is a necessity, make use of <code>rel="noopener"</code>. This will prevent "tabnabbing" and improve page load between parent and child tabs.</li>
     </ul>
 
-    <p>You can learn more about this best practice by reading <a href="https://michaelspellacy.com/the-last-word-on-opening-new-windows/" target="_blank">The Last Word (Maybe) on Opening New Windows <img alt="(Opens in new window)" src="{{ site.url }}{{ site.baseurl }}/pulse/img/new-tab.png"></a>.</p>
+    <p>You can learn more about this best practice by reading <a href="https://michaelspellacy.com/the-last-word-on-opening-new-windows/" target="_blank">The Last Word (Maybe) on Opening New Windows {{ newWindow }}</a>.</p>
 
   </details>
 
