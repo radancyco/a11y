@@ -186,23 +186,19 @@ id: a11y-smoke-test
                 <p><b>Who is responsible?</b> Development & Accessibility Engineers</p>
                 
                 <ul>
-                    <li><a class="validate-w3c" href="https://validator.w3.org/nu/" target="_blank">W3C Validation {{ newWindow }}</a>
+                    <li>{% include pulse/test/validation-w3c.html %}
                     
                         <h4>Advanced Validation</h4>
 
                         <ul>
                             <li>
                             
-                                <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/dom-validate.js">W3C Validation (Serialized DOM) {{ newWindow }}</button>
-            
-                                - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
+                                {% include pulse/test/validation-w3c-dom.html %} - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
             
                             </li>
                             <li>
             
-                                <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/wcag-parsing.js">WCAG Parsing</button>
-            
-                                - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
+                                {% include pulse/test/validation-w3c-wcag-parse.html %} - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
             
                             </li>
                         </ul>
@@ -210,25 +206,7 @@ id: a11y-smoke-test
                     </li>
                 </ul>
 
-                <form action="https://validator.w3.org/nu/?showsource=yes" class="a11y-pulse__form" enctype="multipart/form-data" id="submitPartialPage" method="post" target="_blank">
-
-                    <fieldset>
-
-                        <legend>Validate HTML by Direct Input</legend>
-                    
-                        <input name="showsource" type="hidden" value="yes">
-
-                        <p id="note-char"><em>Maximum of <strong id="charlimit">2049</strong> characters.</em></p>
-
-                        <label for="contentToValidate">Markup:</label>
-
-                        <textarea aria-describedby="note-char" cols="60" name="contentToValidate" id="contentToValidate" maxlength="2049" placeholder="e.g., <p>Hello World!</p>" required rows="5"></textarea>
-                        
-                        <button class="a11y-pulse__cta" id="submitValidate" type="submit">Validate {{ newWindow }}</button>
-
-                    </fieldset>
-
-                </form>
+                {% include pulse/test/validation-markup.html %}
 
             </div>
 
@@ -250,9 +228,7 @@ id: a11y-smoke-test
                         <li><a href="{{ site.url }}{{ site.baseurl }}/audit/boilerplate">Testing Sheet {{ newWindow }}</a> - Bolierplate sheet used to set up a new audit.</li>
                         <li>
                             
-                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-pages.js">Get Career Site Pages</button>
-                        
-                            - Generates key career site pages to be used in testing. Please allow up to several minutes to scan.
+                            {% include pulse/test/career-site-pages.html %} - Generates key career site pages to be used in testing. Please allow up to several minutes to scan.
     
                             <div class="status-container status-container--career-site-pages"></div>
                             
@@ -261,9 +237,7 @@ id: a11y-smoke-test
                         </li>
                         <li>
                             
-                            <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/career-site-images.js">Get Career Site Images</button>
-                        
-                            - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan. 
+                            {% include pulse/test/career-site-images.html %} - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan. 
                         
                             <div class="status-container status-container--career-site-images"></div>
                             
@@ -385,7 +359,6 @@ id: a11y-smoke-test
     
                 </details>
 
-
             </div>
 
             <!-- h2 class="accordion__heading"><button id="ai-tools" class="accordion__toggle"><span>AI Tools (Experimental) <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-ai.png"></span></button></h2>
@@ -409,9 +382,9 @@ id: a11y-smoke-test
         <footer>
 
             <ul>
-            <li><a href="{{ site.url }}{{ site.baseurl }}" target="_blank">Accessibility at Radancy {{ newWindow }}</a></li>
-            <li><a href="{{ site.url }}{{ site.baseurl }}/pulse/about/" target="_blank">About A11y Pulse {{ newWindow }}</a></li>
-            <li><a href="https://jira.tmp.com/browse/TCDQ-60657" target="_blank">Report Issue {{ newWindow }}</a></li>
+                <li><a href="{{ site.url }}{{ site.baseurl }}" target="_blank">Accessibility at Radancy {{ newWindow }}</a></li>
+                <li><a href="{{ site.url }}{{ site.baseurl }}/pulse/about/" target="_blank">About A11y Pulse {{ newWindow }}</a></li>
+                <li><a href="https://jira.tmp.com/browse/TCDQ-60657" target="_blank">Report Issue {{ newWindow }}</a></li>
             </ul>
         
             <p><small>&copy; {{ "now" | date: "%Y" }} Radancy. An equal opportunity employer.</small></p>
