@@ -125,6 +125,10 @@ h2:not(.accordion__heading), h3, h4, b, strong {
 font-weight: bold;
 }
 
+em {
+font-style: italic;
+}
+
 // Global
 
 img {
@@ -182,6 +186,10 @@ margin: 0;
   
 ul, ol {
 padding-inline-start: 1em;
+}
+
+p {
+margin: 0.5em 0;
 }
 
 .a11y-pulse {
