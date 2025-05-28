@@ -33,7 +33,7 @@ layout: null
 
   // Show Modal
 
-  a11yPulse.showModal();
+  a11yPulse.show();
 
   // Focus on button (autofocus does odd things)
 

@@ -16,7 +16,7 @@ scrollbar-width: thin;
   
   @supports selector(::-webkit-scrollbar) {
    
-    padding-inline-end: calc(5em / 16);
+    padding-inline-end: calc(5em / 16) !important;
     scrollbar-color: initial;
     scrollbar-width: auto;
   
@@ -246,7 +246,7 @@ z-index: 2147483647;
 
   &[data-minimize] {
   inline-size: calc(360em / 16);
-  block-size: 30vh;
+  block-size: 0;
 
     @media(min-width: $primary-breakpoint) {
 
