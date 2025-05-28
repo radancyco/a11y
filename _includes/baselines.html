@@ -139,10 +139,10 @@
     <p>Review page components and ensure that the aforementioned rules are met. Here are some important things to be on the lookout for during review:</p>
 
     <ul>
-      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/forms.js">View Forms</button>{% endif %}</li>
+      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/forms.js">View Forms</button>{% endif %}</li>
       <li>Are placeholder attributes being used to stand-in for labels? Inappropriate use of placeholders <a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/" target="_blank">can have a negative impact {{ newWindow }}</a> on the user experience.</li>
-      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/title.js">View Title Attributes</button>{% endif %}</li>
-      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/aria.js">View ARIA</button>{% endif %}</li>
+      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/title.js">View Title Attributes</button>{% endif %}</li>
+      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">View ARIA</button>{% endif %}</li>
     </ul>
 
   </div>
@@ -226,13 +226,13 @@
     <ul>
       <li>Is semantic markup being used to convey proper structure and meaning to assistive technology users? {% if page.id == "a11y-smoke-test" %}<a class="validate-html" href=https://validator.w3.org/ target="_blank">Validate Markup {{ newWindow }}</a>{% endif %}</li>
       <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? Are any empty headings present? {% if page.id == "a11y-smoke-test" %}<a class="validate-heading" href="heading.html" target="_blank">Validate Headings {{ newWindow }}</a>{% endif %}</li>
-      <li>Are lists being marked up and implemented correctly? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/lists.js">View Lists</button>{% endif %}</li>
-      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/forms.js">View Forms</button>{% endif %}</li>
-      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/title.js">View Title Attributes</button>{% endif %}</li>
-      <li>Is <code>table</code> markup being used to implement tabular data only? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/tables.js">View Tables</button>{% endif %}</li>
-      <li>Does the page identify its language properly via the <code>lang</code>? Are shifts to other languages present within the page? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/lang.js">View Language</button>{% endif %}</li>
-      <li>Is ARIA being used to properly identify landmarks and regions of a page? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/aria.js">View ARIA</button>{% endif %}</li>
-      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/aria.js">View ARIA</button>{% endif %}</li>
+      <li>Are lists being marked up and implemented correctly? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/lists.js">View Lists</button>{% endif %}</li>
+      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/forms.js">View Forms</button>{% endif %}</li>
+      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/title.js">View Title Attributes</button>{% endif %}</li>
+      <li>Is <code>table</code> markup being used to implement tabular data only? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/tables.js">View Tables</button>{% endif %}</li>
+      <li>Does the page identify its language properly via the <code>lang</code>? Are shifts to other languages present within the page? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/lang.js">View Language</button>{% endif %}</li>
+      <li>Is ARIA being used to properly identify landmarks and regions of a page? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">View ARIA</button>{% endif %}</li>
+      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">View ARIA</button>{% endif %}</li>
     </ul>
 
   </div>
@@ -449,7 +449,7 @@
 
     {% if page.id == "a11y-smoke-test" %}
 
-    <p><strong>Note:</strong> If focus outlines have been suppressed (which is also a failure), you can <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">force focus</button> on the page to see where you are navigating.</p>
+    <p><strong>Note:</strong> If focus outlines have been suppressed (which is also a failure), you can <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/focus.js">force focus</button> on the page to see where you are navigating.</p>
 
     {% endif %}
 
@@ -604,7 +604,7 @@
         You can view tabindexs with the following tool:
 
         <ul>
-          <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/tabindex.js">View Tabindexs</button></li>
+          <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/tabindex.js">View Tabindexs</button></li>
         </ul>
 
         {% endif %}
@@ -614,7 +614,7 @@
 
     {% if page.id == "a11y-smoke-test" %}
 
-    <p><strong>Note:</strong> If focus outlines have been suppressed (which is also a failure), you can <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/focus.js">force focus</button> on the page to see where you are navigating.</p>
+    <p><strong>Note:</strong> If focus outlines have been suppressed (which is also a failure), you can <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/focus.js">force focus</button> on the page to see where you are navigating.</p>
 
     {% endif %}
 
@@ -677,9 +677,9 @@
     {% endif %}
 
     <ul>
-      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/aria.js">ARIA</button> - {% endif %}Is ARIA being implemented on the page? Is it used correctly? Do accessible names, roles, values, states and properties make sense? Can HTML be used instead of a custom control?</li>
-      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/forms.js">Forms</button> - {% endif %}Is form markup correct? Is labeling present and correctly associated with its input field?</li>
-      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/iframes.js">Iframes</button> - {% endif %}Do <code>iframe</code>'s have an accessible name? Does that name describe the contents of the <code>iframe</code> adequately?</li>
+      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">ARIA</button> - {% endif %}Is ARIA being implemented on the page? Is it used correctly? Do accessible names, roles, values, states and properties make sense? Can HTML be used instead of a custom control?</li>
+      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/forms.js">Forms</button> - {% endif %}Is form markup correct? Is labeling present and correctly associated with its input field?</li>
+      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/iframes.js">Iframes</button> - {% endif %}Do <code>iframe</code>'s have an accessible name? Does that name describe the contents of the <code>iframe</code> adequately?</li>
     </ul>
 
     <h3>Validation</h3>

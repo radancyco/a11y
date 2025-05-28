@@ -118,7 +118,7 @@
             a.textContent = url;
             a.target = "_blank";
 
-            img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
+            img.src = "https://radancy.dev/a11y/pulse/component/img/new-tab.png";
             img.alt = "(Opens in new window)";
 
             a.appendChild(img);
