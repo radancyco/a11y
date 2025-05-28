@@ -55,5 +55,11 @@ margin-top: 2em;
     .h6 {
     margin-left: 10em;
     }
- 
-}   
+
+}  
+
+.loader {
+inline-size: calc(130em / 16);
+margin: 2em 0;
+place-self: center;
+}

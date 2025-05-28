@@ -12,6 +12,7 @@
     "use strict";
 
     const pageElement = document.querySelector(".page-content");
+    const pageLoader = document.querySelector(".loader");
     const urlParam = new URLSearchParams(window.location.search);
     const pageTest = urlParam.get("url");
     let pageElementHref = "https://validator.w3.org/nu/?showoutline=yes&doc=" + pageTest;
@@ -41,6 +42,7 @@
 
             if (fragment) {
 
+                pageLoader.setAttribute("hidden", "");
                 pageElement.append(fragment);
 
             } else {
@@ -51,6 +53,7 @@
 
         } catch (error) {
 
+            pageLoader.setAttribute("hidden", "");
             console.error("Error fetching or parsing the page:", error);
             pageElement.append(pageError);
 

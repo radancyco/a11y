@@ -28,4 +28,10 @@ margin-top: 2em;
     }
     
 }
+
+.loader {
+inline-size: calc(130em / 16);
+margin: 2em 0;
+place-self: center;
+}
       
