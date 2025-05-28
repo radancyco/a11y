@@ -231,10 +231,10 @@
     <ul>
       <li>Is semantic markup being used to convey proper structure and meaning to assistive technology users? {% include_relative /test/validation-w3c.html %}</li>
       <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? Are any empty headings present? {% include_relative /test/validation-heading.html %}</li>
-      <li>Are lists being marked up and implemented correctly? <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/lists.js">View Lists</button></li>
+      <li>Are lists being marked up and implemented correctly? {% include_relative /test/validation-list.html %}</li>
       <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% include_relative /test/validation-form.html %}</li>
       <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% include_relative /test/validation-iframe.html %}, {% include_relative /test/validation-title-attribute.html %}</li>
-      <li>Is <code>table</code> markup being used to implement tabular data only? <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/tables.js">View Tables</button></li>
+      <li>Is <code>table</code> markup being used to implement tabular data only? {% include_relative /test/validation-table.html %}</li>
       <li>Does the page identify its language properly via the <code>lang</code>? Are shifts to other languages present within the page? {% include_relative /test/i18n-lang.html %}</li>
       <li>Is ARIA being used to properly identify landmarks and regions of a page? {% include_relative /test/validation-aria.html %}</li>
       <li>Is ARIA being used to provide an accessible name for user interface controls? {% include_relative /test/validation-aria.html %}</li>
