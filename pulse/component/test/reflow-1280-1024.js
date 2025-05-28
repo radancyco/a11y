@@ -8,7 +8,7 @@ javascript: (function () {
   
         newWindow.onload = function () {
         
-           //  newWindow.document.documentElement.style.zoom = "400%";
+           newWindow.document.documentElement.style.zoom = "400%";
   
         };
 

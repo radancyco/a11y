@@ -110,7 +110,7 @@
 
   <p>Provide text alternatives for non-text content, such as multimedia (audio, images, video) and interactive components (buttons, controls, inputs). <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content" target="_blank">Understanding 1.1.1 {{ newWindow }}</a></p>
 
-  <p><b>Who is responsible?</b> Developer, Designer</p>
+  <p><b>Who is responsible?</b> Designer, Developer, QA</p>
 
   <h2>Components and Multimedia</h2>
 
@@ -264,6 +264,8 @@
 
   <p><b>Who is responsible?</b> Designer, Developer</p>
 
+  {% if page.id == "a11y-smoke-test" %}
+
   <div class="qa-info">
 
     <h3>Testing</h3>
@@ -278,24 +280,19 @@
           <li>Links in the header and footer are typically understood to be a link, so the above rules may not apply.</li>
         </ol>
 
-        {% if page.id == "a11y-smoke-test" %}
-
-        <button data-script="contrast" data-fragment="link-contrast">Validate Link & Text Contrast</button>
-
-        {% endif %}
-
       </li>
     </ul>
 
-    {% if page.id == "a11y-smoke-test" %}
+    {% include_relative /test/link-contrast.html %}
 
     <p>In addition to testing specific color contrast ratios, pages should always be reviewed under various color-blindness or low vision simulations. Any concerns should be flagged with DPM (Digital Project Manager) and added to your report.</p>
 
-    {% include color-blindness.html %}
+    {% include_relative /test/color-blindness.html %}
 
-    {% endif %}
-
+   
   </div>
+  
+  {% endif %}
 
   <div class="resource-info">
 
@@ -315,22 +312,17 @@
 
   <p>Contrast ratio between text and background is at least <strong>4.5:1</strong>. <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum" target="_blank">Understanding 1.4.3 {{ newWindow }}</a></p>
 
-  <p><b>Who is responsible?</b> Designer</p>
+  <p><b>Who is responsible?</b> Designer, Developer, QA</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
     <h3>Testing</h3>
 
-    <p>Review page and test any <strong>text</strong> or <strong>images of text</strong> that you suspect may fail this guideline. Running the WAVE validator may also be helpful.</p>
+    <p>Review page and test any <strong>text</strong> or <strong>images of text</strong> that you suspect may fail this guideline. Running the {% include_relative /test/validation-wave.html %} may also be helpful.</p>
 
-    {% if page.id == "a11y-smoke-test" %}
-
-    <ul>
-      <li><button data-script="contrast" data-fragment="color-contrast">Validate Color Contrast</button></li>
-      <li><a class="validate-a11y" href="https://wave.webaim.org/" target="_blank">WAVE Validation {{ newWindow }}</a></li>
-    </ul>
-
-    {% endif %}
+    {% include_relative /test/color-contrast.html %}
 
     <p>This rule does not apply to the following:</p>
 
@@ -340,15 +332,13 @@
       <li><strong>Logotypes:</strong> Text that is part of a logo or brand name has no contrast requirement.</li>
     </ul>
 
-    {% if page.id == "a11y-smoke-test" %}
-
     <p>In addition to testing specific color contrast ratios, pages should always be reviewed under various color-blindness or low vision simulations. Any concerns should be flagged with DPM and added to your report.</p>
 
-    {% include color-blindness.html %}
-
-    {% endif %}
+    {% include_relative /test/color-blindness.html %}
 
   </div>
+
+  {% endif %}
 
 </div>
 
@@ -356,9 +346,11 @@
 
 <div class="accordion__panel">
 
-  <p>Text can be resized to 200% without loss of content or functionality.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text" target="_blank">Understanding 1.4.4 {{ newWindow }}</a></p>
+  <p>Text can be resized to 200% without loss of content or functionality. <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text" target="_blank">Understanding 1.4.4 {{ newWindow }}</a></p>
 
-  <p><b>Who is responsible?</b> Developer</p>
+  <p><b>Who is responsible?</b> Developer, QA</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
@@ -371,6 +363,8 @@
 
   </div>
 
+  {% endif %}
+
 </div>
 
 <h2 class="accordion__heading"><button id="reflow" class="accordion__toggle"><span>1.4.10: Reflow (Level AA)</span></button></h2>
@@ -379,7 +373,9 @@
 
   <p>Content can be resized without loss of functionality and no horizontal scrollbar (See exceptions).	<a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html" target="_blank">Understanding 1.4.10 {{ newWindow }}</a></p>
 
-  <p><b>Who is responsible?</b> Developer</p>
+  <p><b>Who is responsible?</b> Developer, QA</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
@@ -391,7 +387,11 @@
       <li>Page zoom should never be intentionally disabled. If the page cannot be zoomed in on at all, it is failure.</li>
     </ul>
 
+    <p>{% include_relative /test/reflow-1280-1024.html %}</p>
+
   </div>
+
+  {% endif %}
 
 </div>
 
@@ -425,7 +425,7 @@
 
     <p>In addition to testing specific color contrast ratios, pages should always be reviewed under various color-blindness or low vision simulations. Any concerns should be flagged with DPM and added to your report.</p>
 
-    {% include color-blindness.html %}
+    {% include_relative /test/color-blindness.html %}
 
     {% endif %}
 
