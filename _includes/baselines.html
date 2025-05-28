@@ -59,7 +59,7 @@
 
       <figure>
 
-        <img alt="" height="289" loading="lazy" src="{{ site.git-url }}/a11y-smoke-test/img/example-alt.jpg" width="504">
+        <img alt="" height="289" loading="lazy" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/example-alt.jpg" width="504">
 
         <figcaption>A little boy sitting on his mother's lap. Both are smiling and wearing American paraphernalia.</figcaption>
 
@@ -82,8 +82,8 @@
     You can run the following tests to review page images in more depth:</p>
 
     <ul>
-      <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/images.js">Check Alternative Text</button></li>
-      <li><a class="validate-images" href="images.html" target="_blank">Review All Page Images {{ newWindow }}</a></li>
+      <li>{% include_relative /script/validation-image-internal.html %}</li>
+      <li>{% include_relative /script/validation-image-external.html %}</li>
     </ul>
 
     {% endif %}
@@ -535,7 +535,7 @@
 
     <figure>
 
-      <img alt="Screen grab of a website, with a 'Skip to Main Content' hyperlink." height="104" loading="lazy" src="{{ site.git-url }}/a11y-smoke-test/img/example-skip-link.jpg" width="506">
+      <img alt="Screen grab of a website, with a 'Skip to Main Content' hyperlink." height="104" loading="lazy" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/example-skip-link.jpg" width="506">
 
       <figcaption>An example of a "Skip" link. These links, when present, will display when keyboard testing is performed. If it perfectly normal for the mechanism to be present for all user types.</figcaption>
 

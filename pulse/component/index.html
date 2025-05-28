@@ -4,7 +4,7 @@ title: "Accessibility Pulse Component"
 id: a11y-smoke-test
 ---
 
-{% include pulse/variables.html %}
+{% include variables.html %}
 
 <dialog class="a11y-pulse" dir="ltr" lang="en-US">
 
@@ -12,14 +12,14 @@ id: a11y-smoke-test
         
         <h1 class="a11y-pulse__label">
             
-            <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/icon-48.png"> A11y Pulse v{{ appVersion }}
+            <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/icon-48.png"> A11y Pulse v{{ pulseVersion }}
         
         </h1>
 
         <div class="a11y-pulse__controls">
 
-            <button aria-label="Minimize" class="a11y-pulse__btn a11y-pulse__btn--minimize"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-minimize.png"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-maximize.png"></button>
-            <button aria-label="Close Dialog" class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-close.png"></button>
+            <button aria-label="Minimize" class="a11y-pulse__btn a11y-pulse__btn--minimize"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/btn-minimize.png"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/btn-maximize.png"></button>
+            <button aria-label="Close Dialog" class="a11y-pulse__btn a11y-pulse__btn--close"><img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/btn-close.png"></button>
 
         </div>
 
@@ -64,8 +64,8 @@ id: a11y-smoke-test
                 <p><b>Who is responsible?</b> Development & QA</p>
 
                 <ul>
-                    <li>{% include pulse/test/validation-wave.html %}</li>
-                    <li>{% include pulse/test/validation-heading.html %}</li>
+                    <li>{% include_relative /script/validation-wave.html %}</li>
+                    <li>{% include_relative /script/validation-heading.html %}</li>
                 </ul>
 
                 <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
@@ -87,10 +87,10 @@ id: a11y-smoke-test
                 <p>The following tests are available but optional.</p>
 
                 <ul>
-                    <li>{% include pulse/test/validation-css.html %}</li>
-                    <li>{% include pulse/test/validation-link.html %}</li>
-                    <li>{% include pulse/test/validation-spelling.html %}</li>
-                    <li>{% include pulse/test/validation-seo.html %}</li>
+                    <li>{% include_relative /script/validation-css.html %}</li>
+                    <li>{% include_relative /script/validation-link.html %}</li>
+                    <li>{% include_relative /script/validation-spelling.html %}</li>
+                    <li>{% include_relative /script/validation-seo.html %}</li>
                 </ul>
 
             </div>
@@ -186,19 +186,19 @@ id: a11y-smoke-test
                 <p><b>Who is responsible?</b> Development & Accessibility Engineers</p>
                 
                 <ul>
-                    <li>{% include pulse/test/validation-w3c.html %}
+                    <li>{% include_relative /script/validation-w3c.html %}
                     
                         <h4>Advanced Validation</h4>
 
                         <ul>
                             <li>
                             
-                                {% include pulse/test/validation-w3c-dom.html %} - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
+                                {% include_relative /script/validation-w3c-dom.html %} - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
             
                             </li>
                             <li>
             
-                                {% include pulse/test/validation-w3c-wcag-parse.html %} - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
+                                {% include_relative /script/validation-w3c-wcag-parse.html %} - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
             
                             </li>
                         </ul>
@@ -206,7 +206,7 @@ id: a11y-smoke-test
                     </li>
                 </ul>
 
-                {% include pulse/test/validation-markup.html %}
+                {% include_relative /script/validation-markup.html %}
 
             </div>
 
@@ -228,7 +228,7 @@ id: a11y-smoke-test
                         <li><a href="{{ site.url }}{{ site.baseurl }}/audit/boilerplate">Testing Sheet {{ newWindow }}</a> - Bolierplate sheet used to set up a new audit.</li>
                         <li>
                             
-                            {% include pulse/test/career-site-pages.html %} - Generates key career site pages to be used in testing. Please allow up to several minutes to scan.
+                            {% include_relative /script/career-site-pages.html %} - Generates key career site pages to be used in testing. Please allow up to several minutes to scan.
     
                             <div class="status-container status-container--career-site-pages"></div>
                             
@@ -237,7 +237,7 @@ id: a11y-smoke-test
                         </li>
                         <li>
                             
-                            {% include pulse/test/career-site-images.html %} - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan. 
+                            {% include_relative /script/career-site-images.html %} - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan. 
                         
                             <div class="status-container status-container--career-site-images"></div>
                             
@@ -361,12 +361,12 @@ id: a11y-smoke-test
 
             </div>
 
-            <!-- h2 class="accordion__heading"><button id="ai-tools" class="accordion__toggle"><span>AI Tools (Experimental) <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-ai.png"></span></button></h2>
+            <!-- h2 class="accordion__heading"><button id="ai-tools" class="accordion__toggle"><span>AI Tools (Experimental) <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/btn-ai.png"></span></button></h2>
         
             <div class="accordion__panel">
 
                 <ul>
-                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/ai-images.js">Generate Alternative Text <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/img/btn-ai.png"></button>
+                    <li><button data-script="{{ site.url }}{{ site.baseurl }}/pulse/component/script/ai-images.js">Generate Alternative Text <img alt="" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/btn-ai.png"></button>
                 </ul>
 
             </div -->
