@@ -64,8 +64,8 @@ id: a11y-smoke-test
                 <p><b>Who is responsible?</b> Development & QA</p>
 
                 <ul>
-                    <li>{% include_relative /script/validation-wave.html %}</li>
-                    <li>{% include_relative /script/validation-heading.html %}</li>
+                    <li>{% include_relative /test/validation-wave.html %}</li>
+                    <li>{% include_relative /test/validation-heading.html %}</li>
                 </ul>
 
                 <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
@@ -87,10 +87,10 @@ id: a11y-smoke-test
                 <p>The following tests are available but optional.</p>
 
                 <ul>
-                    <li>{% include_relative /script/validation-css.html %}</li>
-                    <li>{% include_relative /script/validation-link.html %}</li>
-                    <li>{% include_relative /script/validation-spelling.html %}</li>
-                    <li>{% include_relative /script/validation-seo.html %}</li>
+                    <li>{% include_relative /test/validation-css.html %}</li>
+                    <li>{% include_relative /test/validation-link.html %}</li>
+                    <li>{% include_relative /test/validation-spelling.html %}</li>
+                    <li>{% include_relative /test/validation-seo.html %}</li>
                 </ul>
 
             </div>
@@ -186,19 +186,19 @@ id: a11y-smoke-test
                 <p><b>Who is responsible?</b> Development & A11y Specialists</p>
                 
                 <ul>
-                    <li>{% include_relative /script/validation-w3c.html %}
+                    <li>{% include_relative /test/validation-w3c.html %}
                     
                         <h4>Advanced Validation</h4>
 
                         <ul>
                             <li>
                             
-                                {% include_relative /script/validation-w3c-dom.html %} - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
+                                {% include_relative /test/validation-w3c-dom.html %} - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
             
                             </li>
                             <li>
             
-                                {% include_relative /script/validation-w3c-wcag-parse.html %} - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
+                                {% include_relative /test/validation-w3c-wcag-parse.html %} - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
             
                             </li>
                         </ul>
@@ -206,7 +206,7 @@ id: a11y-smoke-test
                     </li>
                 </ul>
 
-                {% include_relative /script/validation-markup.html %}
+                {% include_relative /test/validation-markup.html %}
 
             </div>
 
@@ -228,7 +228,7 @@ id: a11y-smoke-test
                         <li><a href="{{ site.url }}{{ site.baseurl }}/audit/boilerplate">Testing Sheet {{ newWindow }}</a> - Bolierplate sheet used to set up a new audit.</li>
                         <li>
                             
-                            {% include_relative /script/career-site-pages.html %} - Generates key career site pages to be used in testing. Please allow up to several minutes to scan.
+                            {% include_relative /test/career-site-pages.html %} - Generates key career site pages to be used in testing. Please allow up to several minutes to scan.
     
                             <div class="status-container status-container--career-site-pages"></div>
                             
@@ -237,7 +237,7 @@ id: a11y-smoke-test
                         </li>
                         <li>
                             
-                            {% include_relative /script/career-site-images.html %} - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan. 
+                            {% include_relative /test/career-site-images.html %} - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan. 
                         
                             <div class="status-container status-container--career-site-images"></div>
                             

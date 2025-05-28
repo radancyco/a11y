@@ -7,88 +7,83 @@
 
   <p><b>Who is responsible?</b> Designer, Copywriter, Content Producers, Developer</p>
 
-  <h2>Images</h2>
+  <div class="warning">
 
-  <details>
+    <p><strong>Warning:</strong> At this time, AI (Atrificial Intelligence) should not be used to generate alternative text until the impact on accessibility is better understood. Please speak to <a href="mailto:michael.spellacy@radancy.com">Michael Spellacy</a> for more details.</p>
 
-    <summary>Understanding Image Types</summary>
+  </div>
 
-    <p>Generally, images fall into one of several categories. It is very important to understand the difference between these image types in order to make a more informed decision on whether to include an alternative text value or not and what kind of value you may need to add.</p>
+  <h2>Understanding Image Types</h2>
 
-    <ul>
-      <li><strong>Decorative:</strong> Images that add accent or embellish. If content on the page can be experienced and understood without these images, then an alternative text value is not required.</li>
-      <li><strong>Functional:</strong> Images that indicate action to be taken, rather than a description of the image. Functional images are found within interactive elements, such as hyperlinks or buttons.</li>
-      <li><strong>Informative:</strong> Images that provide value to the surrounding content. If content on the page can't be experienced or understood without these images, or content is locked within image, then an alternative text value is required.</li>
-      <li><strong>Images of Text:</strong> Images that contain text. The alternative text used within this image type should often be verbatim.</li>
-      <li><strong>Complex Images:</strong> Images such as graphs or diagrams. These image often contain detailed information, so alternative text is not adequate here. This content should be conveyed through alternative text equivalents.</li>
-      <li><strong>Groups of Images:</strong> Multiple images that convey a single piece of information. In this case, the text alternative for one image should convey the information for the entire group.</li>
-      <li><strong>Image Maps:</strong> While used rarely, the text alternative for an image that contains multiple clickable areas should provide an overall context for the set of links. Also, each individually clickable area should have alternative text that describes the purpose or destination of the link.</li>
-    </ul>
+  <p>Generally, images fall into one of several categories. It is very important to understand the difference between these image types in order to make a more informed decision on whether to include an alternative text value or not and what kind of value you may need to add.</p>
 
-  </details>
+  <ul>
+    <li><strong>Decorative:</strong> Images that add accent or embellish. If content on the page can be experienced and understood without these images, then an alternative text value is not required.</li>
+    <li><strong>Functional:</strong> Images that indicate action to be taken, rather than a description of the image. Functional images are found within interactive elements, such as hyperlinks or buttons.</li>
+    <li><strong>Informative:</strong> Images that provide value to the surrounding content. If content on the page can't be experienced or understood without these images, or content is locked within image, then an alternative text value is required.</li>
+    <li><strong>Images of Text:</strong> Images that contain text. The alternative text used within this image type should often be verbatim.</li>
+    <li><strong>Complex Images:</strong> Images such as graphs or diagrams. These image often contain detailed information, so alternative text is not adequate here. This content should be conveyed through alternative text equivalents.</li>
+    <li><strong>Groups of Images:</strong> Multiple images that convey a single piece of information. In this case, the text alternative for one image should convey the information for the entire group.</li>
+    <li><strong>Image Maps:</strong> While used rarely, the text alternative for an image that contains multiple clickable areas should provide an overall context for the set of links. Also, each individually clickable area should have alternative text that describes the purpose or destination of the link.</li>
+  </ul>
 
-  <details>
+  <h2>The Rules</h2>
 
-    <summary>The Rules</summary>
+  <ol>
+    <li>All inline image elements require an alt attribute. For example: <code>&lt;img alt="" src="..."&gt;</code>. An image with an alt attribute that has no value, is known as a "null alt". Images with a null alt are ignored by assistive technology.</li>
+    <li>If image is informative or contextually important to surrounding content, then it must include an alternative text value. Some things to ask yourself about images:
 
-    <ol>
-      <li>All inline image elements require an alt attribute. For example: <code>&lt;img alt="" src="..."&gt;</code>. An image with an alt attribute that has no value, is known as a "null alt". Images with a null alt are ignored by assistive technology.</li>
-      <li>If image is informative or contextually important to surrounding content, then it must include an alternative text value. Some things to ask yourself about images:
+      <ul>
+        <li>Are they meant as labels?</li>
+        <li>Do they supplement or enhance surrounding content?</li>
+        <li>Are they meant to convey an impression or emotion?</li>
+      </ul>
 
-        <ul>
-          <li>Are they meant as labels?</li>
-          <li>Do they supplement or enhance surrounding content?</li>
-          <li>Are they meant to convey an impression or emotion?</li>
-        </ul>
+    </li>
+    <li>If image contains complex information, then alternative methods of conveying this information will be required as alternative text may not suffice. For example, a graph or chart may require the information be marked-up in HTML and linked to, etc.</li>
+    <li>If image contains text, then it must include an alternative text value if same information not conveyed nearby. Typically verbatim, to match what is embedded in the image.</li>
+    <li>If race or gender provide important context, then include them in your description.</li>
+    <li>If image is purely decorative, then it requires no alternative text value. While an <code>img</code> element that is decorative must contain a null alt, a decorative <code>SVG</code> element will require <code>aria-hidden="true"</code>. For example: <code>&lt;svg aria-hidden="true" ... &gt;&lt;/svg&gt;</code></li>
+    <li>If image is functional and contained within an interactive element (e.g., a hyperlink or button), then it must contain alternative text if no other functional text present within. For example: <code>&lt;a href="..."&gt;&lt;img alt="My Awesome Vacation (Video)" src="..."&gt;&lt;/a&gt;</code></li>
+    <li>Avoid superfluous phrases like "Image of ..." or "Picture of ..." as these are redundant to assistive technology (AT) users. If your image is a screenshot, then you may say this in your description.</li>
+    <li>Unless relevant to the image, avoid cute or clever jokes in your alternative text.</li>
+    <li>Background images are important if picture within is informative. The first rule of ARIA is to always use HTML, so an <code>&lt;img&gt;</code> element should be used, but in a pinch, the following may be acceptable: <code>&lt;div aria-label="..." role="img"&gt;&lt;/div&gt;</code></li>
+  </ol>
 
-      </li>
-      <li>If image contains complex information, then alternative methods of conveying this information will be required as alternative text may not suffice. For example, a graph or chart may require the information be marked-up in HTML and linked to, etc.</li>
-      <li>If image contains text, then it must include an alternative text value if same information not conveyed nearby. Typically verbatim, to match what is embedded in the image.</li>
-      <li>If image is purely decorative, then it requires no alternative text value. While an <code>img</code> element that is decorative must contain a null alt, a decorative <code>SVG</code> element will require <code>aria-hidden="true"</code>. For example: <code>&lt;svg aria-hidden="true" ... &gt;&lt;/svg&gt;</code></li>
-      <li>If image is functional and contained within an interactive element (e.g., a hyperlink or button), then it must contain alternative text if no other functional text present within. For example: <code>&lt;a href="..."&gt;&lt;img alt="My Awesome Vacation (Video)" src="..."&gt;&lt;/a&gt;</code></li>
-      <li>Avoid superfluous phrases like "Image of ..." or "Picture of ..." as these are redundant to assistive technology (AT) users. If your image is a screenshot, then you may say this in your description.</li>
-      <li>Unless relevant to the image, avoid cute or clever jokes in your alternative text.</li>
-      <li>Background images are important if picture within is informative. The first rule of ARIA is to always use HTML, so an <code>&lt;img&gt;</code> element should be used, but in a pinch, the following may be acceptable: <code>&lt;div aria-label="..." role="img"&gt;&lt;/div&gt;</code></li>
-    </ol>
+  <div class="a11y-info">
 
-    <div class="a11y-info">
+    <h3>Accessibility Tip</h3>
 
-      <h3>Accessibility Tip</h3>
+    <p>Alternative text should be as descriptive as possible. Think of how you might describe an image to a friend who is blind. For example:</p>
 
-      <p>Alternative text should be written in a descriptive, yet succinct manner. Think of how you might describe an image to a friend who is blind. For example:</p>
+    <figure>
 
-      <figure>
+      <img alt="" height="289" loading="lazy" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/example-alt.jpg" width="504">
 
-        <img alt="" height="289" loading="lazy" src="{{ site.url }}{{ site.baseurl }}/pulse/component/img/example-alt.jpg" width="504">
+      <figcaption>A little boy sitting on his mother's lap outdoors. Both are smiling and wearing American paraphernalia, such as red, white and blue sunglasses. The boy has an American flag t-shirt on, too.</figcaption>
 
-        <figcaption>A little boy sitting on his mother's lap. Both are smiling and wearing American paraphernalia.</figcaption>
+    </figure>
 
-      </figure>
+    <p><strong>Note:</strong> Unless it is relevant to the image, intentionally including keywords in alternative text descriptions, for the sole benefit of SEO (Search Engine Optimization), is strongly discouraged. <em>Websites are for people; not machines.</em></p>
 
-      <p><strong>Note:</strong> Unless it is relevant to the image, intentionally including keywords in alternative text descriptions, for the sole benefit of SEO (Search Engine Optimization), is strongly discouraged. <em>Websites are for people; not machines.</em></p>
+  </div>
 
-    </div>
-
-  </details>
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
     <h3>Testing</h3>
 
-    <p>Review images and ensure that the aforementioned rules are met.
-
-    {% if page.id == "a11y-smoke-test" %}
-
-    You can run the following tests to review page images in more depth:</p>
+    <p>Review images and ensure that the aforementioned rules are met. You can run the following tests to review page images in more depth:</p>
 
     <ul>
-      <li>{% include_relative /script/validation-image-internal.html %}</li>
-      <li>{% include_relative /script/validation-image-external.html %}</li>
+      <li>{% include_relative /test/validation-image-internal.html %}</li>
+      <li>{% include_relative /test/validation-image-external.html %}</li>
     </ul>
 
-    {% endif %}
-
   </div>
+  
+  {% endif %}
 
   <div class="resource-info">
 
@@ -132,6 +127,8 @@
 
   </details>
 
+  {% if page.id == "a11y-smoke-test" %}
+
   <div class="qa-info">
 
     <h3>Testing</h3>
@@ -139,13 +136,15 @@
     <p>Review page components and ensure that the aforementioned rules are met. Here are some important things to be on the lookout for during review:</p>
 
     <ul>
-      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}{% include_relative /script/validation-form.html %}{% endif %}</li>
+      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% include_relative /test/validation-form.html %}</li>
       <li>Are placeholder attributes being used to stand-in for labels? Inappropriate use of placeholders <a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/" target="_blank">can have a negative impact {{ newWindow }}</a> on the user experience.</li>
-      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}{% include_relative /script/validation-iframe.html %}, {% include_relative /script/validation-title-attribute.html %}{% endif %}</li>
-      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}{% include_relative /script/validation-aria.html %}{% endif %}</li>
+      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% include_relative /test/validation-iframe.html %}, {% include_relative /test/validation-title-attribute.html %}</li>
+      <li>Is ARIA being used to provide an accessible name for user interface controls? {% include_relative /test/validation-aria.html %}</li>
     </ul>
 
   </div>
+
+  {% endif %}
 
   <div class="resource-info">
 
@@ -167,6 +166,8 @@
   <p>Provide captions for videos with audio	<a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded" target="_blank">Understanding 1.2.2 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer, Content Producers, Digital Project Manager</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
@@ -195,6 +196,8 @@
 
   </div>
 
+  {% endif %}
+
   <div class="resource-info">
 
     <h3>Resources</h3>
@@ -217,6 +220,8 @@
 
   <p><b>Who is responsible?</b> Developer</p>
 
+  {% if page.id == "a11y-smoke-test" %}
+
   <div class="qa-info">
 
     <h3>Testing</h3>
@@ -224,18 +229,20 @@
     <p>HTML should be structured and labeled accordingly, so that the page makes visual <em>and structural</em> sense to everybody. Here are some important things to be on the lookout for during review:</p>
 
     <ul>
-      <li>Is semantic markup being used to convey proper structure and meaning to assistive technology users? {% if page.id == "a11y-smoke-test" %}<a class="validate-html" href=https://validator.w3.org/ target="_blank">Validate Markup {{ newWindow }}</a>{% endif %}</li>
-      <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? Are any empty headings present? {% if page.id == "a11y-smoke-test" %}<a class="validate-heading" href="heading.html" target="_blank">Validate Headings {{ newWindow }}</a>{% endif %}</li>
-      <li>Are lists being marked up and implemented correctly? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/lists.js">View Lists</button>{% endif %}</li>
-      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/forms.js">View Forms</button>{% endif %}</li>
-      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/title.js">View Title Attributes</button>{% endif %}</li>
-      <li>Is <code>table</code> markup being used to implement tabular data only? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/tables.js">View Tables</button>{% endif %}</li>
-      <li>Does the page identify its language properly via the <code>lang</code>? Are shifts to other languages present within the page? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/lang.js">View Language</button>{% endif %}</li>
-      <li>Is ARIA being used to properly identify landmarks and regions of a page? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">View ARIA</button>{% endif %}</li>
-      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">View ARIA</button>{% endif %}</li>
+      <li>Is semantic markup being used to convey proper structure and meaning to assistive technology users? {% include_relative /test/validation-w3c.html %}</li>
+      <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? Are any empty headings present? {% include_relative /test/validation-heading.html %}</li>
+      <li>Are lists being marked up and implemented correctly? <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/lists.js">View Lists</button></li>
+      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% include_relative /test/validation-form.html %}</li>
+      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% include_relative /test/validation-iframe.html %}, {% include_relative /test/validation-title-attribute.html %}</li>
+      <li>Is <code>table</code> markup being used to implement tabular data only? <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/tables.js">View Tables</button></li>
+      <li>Does the page identify its language properly via the <code>lang</code>? Are shifts to other languages present within the page? {% include_relative /test/i18n-lang.html %}</li>
+      <li>Is ARIA being used to properly identify landmarks and regions of a page? {% include_relative /test/validation-aria.html %}</li>
+      <li>Is ARIA being used to provide an accessible name for user interface controls? {% include_relative /test/validation-aria.html %}</li>
     </ul>
 
   </div>
+
+  {% endif %}
 
   <div class="resource-info">
 
