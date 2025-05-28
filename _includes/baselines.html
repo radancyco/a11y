@@ -139,10 +139,10 @@
     <p>Review page components and ensure that the aforementioned rules are met. Here are some important things to be on the lookout for during review:</p>
 
     <ul>
-      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/forms.js">View Forms</button>{% endif %}</li>
+      <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% if page.id == "a11y-smoke-test" %}{% include_relative /script/validation-form.html %}{% endif %}</li>
       <li>Are placeholder attributes being used to stand-in for labels? Inappropriate use of placeholders <a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/" target="_blank">can have a negative impact {{ newWindow }}</a> on the user experience.</li>
-      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/iframes.js">View Iframes</button>, <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/title.js">View Title Attributes</button>{% endif %}</li>
-      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">View ARIA</button>{% endif %}</li>
+      <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% if page.id == "a11y-smoke-test" %}{% include_relative /script/validation-iframe.html %}, {% include_relative /script/validation-title-attribute.html %}{% endif %}</li>
+      <li>Is ARIA being used to provide an accessible name for user interface controls? {% if page.id == "a11y-smoke-test" %}{% include_relative /script/validation-aria.html %}{% endif %}</li>
     </ul>
 
   </div>
