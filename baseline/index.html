@@ -1,21 +1,43 @@
 ---
 accordion: true
 localcss: init.css
+heading: false
 title: "Accessibility Testing Baselines"
 ---
 
 {% include variables.html %}
 
-<p>The following subset of WCAG 2.2 Success Criteria make up the baseline of accessibility guidelines Radancy <em>strives</em> to meet in our products and websites. These guidelines are representative of the <em>most common</em> accessibility barriers and issues we encounter on a day to day basis and so, believing accessibility to be critical, we make a good faith effort to always be on the lookout for them in our work. However, there are no guarantees we are meeting any level of conformance without full accessibility testing being performed. This kind of testing is by request only. If there is a need to fully support WCAG, please bring this to the attention of your account representative as soon as possible.</p>
+<h1>{{ page.title }}</h1>
 
-<p>Please note that these baselines are subject to change as guidelines and our understanding of accessibility continue to evolve.</p>
+<div class="post-overview">
+
+    <div>
+
+      <img src="https://www.gravatar.com/avatar/89e429d4a3effa9601cd19a851c0003e.jpg" alt="Headshot of Michael Spellacy">
+
+    </div>
+
+    <div>
+
+      <ul role="list">
+        <li><span class="visually-hidden">Posted by:</span> <a href='mailto:michael.spellacy@radancy.com?Subject={{ page.title | replace: " ", "%20" }}'>Michael "Spell" Spellacy</a>, Director of Accessibility</li>
+        <li><span class="visually-hidden">Pronouns:</span> He/Him</li>
+        <li><span class="visually-hidden">Posted:</span> Friday, July 29, 2021</li>
+        <li><span>Update:</span> June 1, 2025</li>
+      </ul>
+
+    </div>
+
+</div>
+
+<p>The following subset of WCAG 2.2 Success Criteria forms the <em>baseline</em> of accessibility guidelines that Radancy <em>strives</em> to meet in our products and websites. These guidelines reflect the most common accessibility barriers and issues we encounter on a day-to-day basis. Because we believe accessibility is critical, we make a good-faith effort to identify and address these issues in our work and make them the focal point of internal training efforts.</p>
+
+<p>However, striving to meet guidelines is no guarantee that any specific level of conformance is being met without comprehensive accessibility testing. Radancy can provide this level of testing upon request if more robust WCAG support is required. Please be sure to notify your account representative as early as possible.</p>
+
+<p>Note that these baselines are subject to change as both the guidelines and our understanding of accessibility continue to evolve.</p>
 
 <div class="accordion">
 
     {% include baselines.html %}
 
 </div>
-
-{% include a11y-overlays.html %}
-
-{% include bio-spell.html %}
