@@ -658,6 +658,17 @@ layout: null
     
   }
 
+  // Title
+
+  const hasTitle = document.title;
+  const titleMessage = shadowContainer.querySelector("#title-message"); 
+
+  if (hasTitle == null || hasTitle == "") {
+    
+    titleMessage.hidden = false;
+    
+  }
+
   // Check for any errors
 
   const alertPanel = shadowContainer.querySelector("#accordion-alerts");
