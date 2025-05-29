@@ -12,6 +12,7 @@ $primary-breakpoint: 50em;
 %scrollbar {
 
 scrollbar-color: var(--primary-color) #eee;
+scrollbar-gutter: stable;
 scrollbar-width: thin;
   
   @supports selector(::-webkit-scrollbar) {
@@ -273,6 +274,7 @@ z-index: 2147483647;
   &__container {
   block-size: 100%;
   overflow-y: auto;
+  padding-block-start: calc(20em / 16);
   padding-inline-end: calc(16em / 16);
   scroll-behavior: smooth;
   @extend %scrollbar;
