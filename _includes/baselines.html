@@ -9,11 +9,11 @@
 
   <div class="warning">
 
-    <p><strong>Warning:</strong> At this time, AI (Atrificial Intelligence) should not be used to generate alternative text until the impact on accessibility is better understood. Please speak to <a href="mailto:michael.spellacy@radancy.com">Michael Spellacy</a> for more details.</p>
+    <p><strong>Warning:</strong> At this time, AI (Atrificial Intelligence) should not be used to generate alternative text until the impact on accessibility is better understood. Please speak to <a href="mailto:{{ site.owner-email }}">{{ site.owner-name }}</a> for more details.</p>
 
   </div>
 
-  <h2>Understanding Image Types</h2>
+  <h3>Understanding Image Types</h3>
 
   <p>Generally, images fall into one of several categories. It is very important to understand the difference between these image types in order to make a more informed decision on whether to include an alternative text value or not and what kind of value you may need to add.</p>
 
@@ -27,7 +27,7 @@
     <li><strong>Image Maps:</strong> While used rarely, the text alternative for an image that contains multiple clickable areas should provide an overall context for the set of links. Also, each individually clickable area should have alternative text that describes the purpose or destination of the link.</li>
   </ul>
 
-  <h2>The Rules</h2>
+  <h3>The Rules</h3>
 
   <ol>
     <li>All inline image elements require an alt attribute. For example: <code>&lt;img alt="" src="..."&gt;</code>. An image with an alt attribute that has no value, is known as a "null alt". Images with a null alt are ignored by assistive technology.</li>
@@ -112,20 +112,14 @@
 
   <p><b>Who is responsible?</b> Designer, Developer, QA</p>
 
-  <h2>Components and Multimedia</h2>
+  <h3>The Rules</h3>
 
-  <details>
-
-    <summary>The Rules</summary>
-
-    <ol>
-      <li>Ensure that interactive components (e.g., buttons, controls, inputs), have an accessible name. Interactive elements that are not visually labeled, must still include an accessible name.</li>
-      <li>If text is not explicit in the design of a component, then use various methods to provide this information. Accessible names can be applied in various ways, such as with, labels, inclusively hidden techniques, and with ARIA.</li>
-      <li>Ensure that multimedia is identified via accessible text. For example: <code>&lt;video src="..." controls aria-label="My Summer Vacation"&gt;...&lt;/video&gt;</code></li>
-      <li>Ensure that inline frames (iframe) are appropriately titled and describe contents of the frame accurately. For example: <code>&lt;iframe src="..." title="Job Application Form"&gt;...&lt;/iframe&gt;</code>.</li>
-    </ol>
-
-  </details>
+  <ol>
+    <li>Ensure that interactive components (e.g., buttons, controls, inputs), have an accessible name. Interactive elements that are not visually labeled, must still include an accessible name.</li>
+    <li>If text is not explicit in the design of a component, then use various methods to provide this information. Accessible names can be applied in various ways, such as with, labels, inclusively hidden techniques, and with ARIA.</li>
+    <li>Ensure that multimedia is identified via accessible text. For example: <code>&lt;video src="..." controls aria-label="My Summer Vacation"&gt;...&lt;/video&gt;</code></li>
+    <li>Ensure that inline frames (iframe) are appropriately titled and describe contents of the frame accurately. For example: <code>&lt;iframe src="..." title="Job Application Form"&gt;...&lt;/iframe&gt;</code>.</li>
+  </ol>
 
   {% if page.id == "a11y-smoke-test" %}
 
@@ -289,7 +283,6 @@
 
     {% include_relative /test/color-blindness.html %}
 
-   
   </div>
   
   {% endif %}
@@ -401,7 +394,9 @@
 
   <p>Ensure <em>important</em> visual components, such as images, icons, and buttons, have a contrast ratio of at least <strong>3:1</strong>. <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast" target="_blank">Understanding 1.4.11 {{ newWindow }}</a></p>
 
-  <p><b>Who is responsible?</b> Designer</p>
+  <p><b>Who is responsible?</b> Designer, Developer, QA</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
@@ -414,22 +409,17 @@
       <li><strong>Graphical Objects:</strong> Parts of graphics required to understand the content, except when a particular presentation of graphics is essential to the information being conveyed.</li>
     </ul>
 
-    <p>Review page and test any UI components or images that you suspect may fail this guideline. Running the WAVE validator may also be helpful.</p>
+    <p>Review page and test any UI components or images that you suspect may fail this guideline. Running the {% include_relative /test/validation-wave.html %} may also be helpful.</p>
 
-    {% if page.id == "a11y-smoke-test" %}
-
-    <ul>
-      <li><button data-script="contrast" data-fragment="color-contrast">Validate Color Contrast</button></li>
-      <li><a class="validate-a11y" href="https://wave.webaim.org/" target="_blank">WAVE Validation {{ newWindow }}</a></li>
-    </ul>
+    {% include_relative /test/color-contrast.html %}
 
     <p>In addition to testing specific color contrast ratios, pages should always be reviewed under various color-blindness or low vision simulations. Any concerns should be flagged with DPM and added to your report.</p>
 
     {% include_relative /test/color-blindness.html %}
 
-    {% endif %}
-
   </div>
+
+  {% endif %}
 
 </div>
 
@@ -439,7 +429,9 @@
 
   <p>Accessible by keyboard only.	<a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard" target="_blank">Understanding 2.1.1 {{ newWindow }}</a></p>
 
-  <p><b>Who is responsible?</b> Developer</p>
+  <p><b>Who is responsible?</b> Developer, QA</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
@@ -454,13 +446,11 @@
       <li>Non-interactive elements, such as a <code>div</code>, should not receive keyboard focus while tabbing.</li>
     </ul>
 
-    {% if page.id == "a11y-smoke-test" %}
-
-    <p><strong>Note:</strong> If focus outlines have been suppressed (which is also a failure), you can <button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/focus.js">force focus</button> on the page to see where you are navigating.</p>
-
-    {% endif %}
+    <p><strong>Note:</strong> If focus outlines have been suppressed (which is also a failure), you can override this to see where you are navigating by running {% include_relative /test/force-focus.html %}.</p>
 
   </div>
+
+  {% endif %}
 
   <div class="a11y-info">
 
@@ -480,7 +470,9 @@
 
   <p>Provide user controls for moving content. <a href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide" target="_blank">Understanding 2.2.2 {{ newWindow }}</a></p>
 
-  <p><b>Who is responsible?</b> Designer, Developer</p>
+  <p><b>Who is responsible?</b> Designer, Developer, QA</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
@@ -491,6 +483,8 @@
     </ul>
 
   </div>
+
+  {% endif %}
 
   <div class="a11y-info">
 
@@ -510,6 +504,8 @@
 
   <p><b>Who is responsible?</b> Everybody</p>
 
+  {% if page.id == "a11y-smoke-test" %}
+
   <div class="qa-info">
 
     <h3>Testing</h3>
@@ -522,6 +518,8 @@
 
   </div>
 
+  {% endif %}
+
 </div>
 
 <h2 class="accordion__heading"><button id="bypass-blocks" class="accordion__toggle"><span>2.4.1: Bypass Blocks (Level A)</span></button></h2>
@@ -531,6 +529,8 @@
   <p>Provide a "Skip to Content" link. <a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks" target="_blank">Understanding 2.4.1 {{ newWindow }}</a></p>
 
   <p><b>Who is responsible?</b> Developer</p>
+
+  {% if page.id == "a11y-smoke-test" %}
 
   <div class="qa-info">
 
@@ -549,6 +549,8 @@
     </figure>
 
   </div>
+
+  {% endif %}
 
 </div>
 
@@ -669,54 +671,23 @@
 
   <p><b>Who is responsible?</b> Developer</p>
 
+  {% if page.id == "a11y-smoke-test" %}
+  
   <div class="qa-info">
 
     <h3>Testing</h3>
 
-    {% if page.id == "a11y-smoke-test" %}
-
-    <p>The usual suite of tests can be run to take a deep dive into the code.</p>
-
-    {% else %}
-
-    <p>Be sure to ask yourself some of the following questions:</p>
-
-    {% endif %}
+    <p>The usual suite of tests can be run to take a deep dive into the code. Be sure to ask yourself some of the following questions:</p>
 
     <ul>
-      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/aria.js">ARIA</button> - {% endif %}Is ARIA being implemented on the page? Is it used correctly? Do accessible names, roles, values, states and properties make sense? Can HTML be used instead of a custom control?</li>
-      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/forms.js">Forms</button> - {% endif %}Is form markup correct? Is labeling present and correctly associated with its input field?</li>
-      <li>{% if page.id == "a11y-smoke-test" %}<button data-script="{{ site.url }}{{ site.baseurl }}/pulse/script/component/iframes.js">Iframes</button> - {% endif %}Do <code>iframe</code>'s have an accessible name? Does that name describe the contents of the <code>iframe</code> adequately?</li>
+      <li>Is ARIA being implemented on the page? Is it used correctly? Do accessible names, roles, values, states and properties make sense? Can HTML be used instead of a custom control? {% include_relative /test/validation-aria.html %}</li>
+      <li>Is form markup correct? Is labeling present and correctly associated with its input field? {% include_relative /test/validation-form.html %}</li>
+      <li>Do <code>iframe</code>'s have an accessible name? Does that name describe the contents of the <code>iframe</code> adequately? {% include_relative /test/validation-iframe.html %}</li>
     </ul>
-
-    <h3>Validation</h3>
-
-    {% if page.id == "a11y-smoke-test" %}
-
-    <ul>
-      <li><a class="validate-html" href="https://validator.w3.org/" target="_blank">W3C Validation {{ newWindow }}</a>
-
-        <details>
-
-          <summary>Advanced (Dev Only)</summary>
-
-          <ul>
-            <li><button class="new-window" data-script="{{ site.git-url }}/a11y-smoke-test/local/dom-validate.js">W3C Validation (Serialized DOM) ~~~</button></li>
-            <li><button data-script="{{ site.git-url }}/a11y-smoke-test/local/wcag-parsing.js">WCAG Parsing</button></li>
-          </ul>
-
-        </details>
-
-      </li>
-    </ul>
-
-    {% else %}
-
-    <p>Be sure to validate your work.</p>
-
-    {% endif %}
 
   </div>
+
+  {% endif %}
 
 </div>
 
@@ -728,42 +699,21 @@
 
   <p><b>Who is responsible?</b> Everybody</p>
 
-  <details>
+  <h3>Carousels</h3>
 
-    <summary>Carousels</summary>
+  <p>{{ site.company-name }} UI/UX discourages use of carousels whenever possible and instead recommends alternative forms of page layout. While carousels may be useful in certain situations, they can bury important content you may wish for users to access and engage with and are often inaccessible. Approach usage with caution. Check out <a href="https://shouldiuseacarousel.com/">Should I Use A Carousel?</a> for more information.</p>
 
-    <p>{{ site.company-name }} UI/UX discourages use of carousels whenever possible and instead recommends alternative forms of page layout. While carousels may be useful in certain situations, they can bury important content you may wish for users to access and engage with and are often inaccessible. Approach usage with caution. Check out <a href="https://shouldiuseacarousel.com/">Should I Use A Carousel?</a> for more information.</p>
+  <p><strong>Important:</strong> Slick is a popular plugin that many developers use to easily implement a carousel. If a carousel is required, please only use the approved version, <a href="https://accessible360.github.io/accessible-slick/" target="_blank">Accessible Slick {{ newWindow }}</a>, in new implementations.</p>
 
-    <p><strong>Important:</strong> Slick is a popular plugin that many developers use to easily implement a carousel. If a carousel is required, please only use the approved version, <a href="https://accessible360.github.io/accessible-slick/" target="_blank">Accessible Slick {{ newWindow }}</a>, in new implementations.</p>
+  <h3>PDF</h3>
 
-  </details>
+  <ul>
+    <li>When possible, a PDF should never be used over HTML. PDF files often have accessibility issues that can only be remediated by a PDF specialist. Should PDF's require accessibility testing and/or remediation, please contact <a href="mailto:{{ site.owner-email }}">{{ site.owner-name }}</a>.</li>
+    <li>When linking to a PDF, it is customary to include the file type, visually, within the link itself. For example: <code>&lt;a href="../docs/legal-waiver.pdf"&gt;Legal Waiver (PDF)&lt;/a&gt;</code>. PDF's are common in our footers but can also be found in other areas of our sites, pointing to brochures or other company related information. By including this helper text, we are setting a better expectation for users as to what will happen when the link is accessed.</li>
+  </ul>
 
-  <details>
+  <h3>New Tabs (Windows)</h3>
 
-    <summary>PDF</summary>
-
-    <ul>
-      <li>When possible, a PDF should never be used over HTML. PDF files often have accessibility issues that can only be remediated by a PDF specialist. Should PDF's require accessibility testing and/or remediation, please contact <a href="mailto:{{ site.owner-email }}">{{ site.owner-name }}</a>.</li>
-      <li>When linking to a PDF, it is customary to include the file type, visually, within the link itself. For example: <code>&lt;a href="../docs/legal-waiver.pdf"&gt;Legal Waiver (PDF)&lt;/a&gt;</code>. PDF's are common in our footers but can also be found in other areas of our sites, pointing to brochures or other company related information. By including this helper text, we are setting a better expectation for users as to what will happen when the link is accessed.</li>
-    </ul>
-
-  </details>
-
-  <details>
-
-    <summary>New Tabs (Windows)</summary>
-
-    <p>Launching new tabs should only occur in the rarest of circumstances and, if required, be approached with care and caution. Here are some points to consider:</p>
-
-    <ul>
-      <li><b>Ask Why</b> - One should have an excellent reason to spawn a new tab. Opening new tabs, just to keep users on your site, is <strong>not</strong> a good enough reason.</li>
-      <li><b>Trust Users</b> - Let your users decide if opening a new tab is the best course of action.</li>
-      <li><b>Accessibility</b> - If a new tab is a necessity, use <code>aria-label</code> or alternative techniques for assistive technology and <em>include visual indicators</em>.</li>
-      <li><b>Security & Performance</b> - If a new tab is a necessity, make use of <code>rel="noopener"</code>. This will prevent "tabnabbing" and improve page load between parent and child tabs.</li>
-    </ul>
-
-    <p>You can learn more about this best practice by reading <a href="https://michaelspellacy.com/the-last-word-on-opening-new-windows/" target="_blank">The Last Word (Maybe) on Opening New Windows {{ newWindow }}</a>.</p>
-
-  </details>
+  <p>Launching new tabs should only occur in the rarest of circumstances and, if required, be approached with care and caution. You can learn more about this best practice by reading <a href="https://radancy.dev/guidance-on-new-windows/" target="_blank">Guidance on Designing For and Implementing New Windows {{ newWindow }}</a>.</p>
 
 </div>
