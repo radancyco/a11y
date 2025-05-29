@@ -1,7 +1,7 @@
 (() => {
 
-    const cbName = "deuteranopia";
-    const cbGraphic = "0.625, 0.375, 0, 0, 0 0.7, 0.3, 0, 0, 0 0, 0.3, 0.7, 0, 0 0, 0, 0, 1, 0";
+    const cbName = "achromatomaly";
+    const cbGraphic = "0.618, 0.320, 0.062, 0, 0 0.163, 0.775, 0.062, 0, 0 0.163, 0.320, 0.516, 0, 0 0, 0, 0, 1, 0";
     
     const svgNameSpace = "http://www.w3.org/2000/svg";
     const colorBlindSVG = document.createElementNS(svgNameSpace, "svg");
