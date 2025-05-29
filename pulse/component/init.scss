@@ -251,6 +251,13 @@ z-index: 2147483647;
   inline-size: calc(360em / 16);
   block-size: 0;
 
+    &:not([style*="width"]):not([style*="height"]) {
+
+      padding-top: calc(48em / 16);
+      padding-bottom: 0;
+
+    }
+
     @media(min-width: $primary-breakpoint) {
 
       inline-size: calc(380em / 16);
