@@ -340,7 +340,7 @@ z-index: 2147483647;
   align-items: center;
   background-color: var(--secondary-color);
   block-size: calc(24em / 16);
-  border-radius: calc(5em / 16);
+  border-radius: 100vw;
   border: 0;
   cursor: pointer;
   display: grid;

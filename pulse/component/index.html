@@ -210,7 +210,7 @@ id: a11y-smoke-test
                             </li>
                         </ul>
                     
-                        {% include_relative /test/link-contrast.html %}
+                        {% include_relative /test/link-contrast.html id="uranus" %}
                     
                         <p>In addition to testing specific color contrast ratios, pages should always be reviewed under various color-blindness or low vision simulations. Any concerns should be flagged with DPM (Digital Project Manager) and added to your report.</p>
                     
@@ -232,7 +232,7 @@ id: a11y-smoke-test
                 
                         <p>Review page and test any <strong>text</strong> or <strong>images of text</strong> that you suspect may fail this guideline. Running {% include_relative /test/validation-wave.html %} may also be helpful.</p>
                     
-                        {% include_relative /test/color-contrast.html %}
+                        {% include_relative /test/color-contrast.html id="saturn" %}
                     
                         <p>This rule does not apply to the following:</p>
                     
@@ -335,7 +335,7 @@ id: a11y-smoke-test
                     
                         <p>Review page and test any UI components or images that you suspect may fail this guideline. Running {% include_relative /test/validation-wave.html %} may also be helpful.</p>
                     
-                        {% include_relative /test/color-contrast.html %}
+                        {% include_relative /test/color-contrast.html id="jupiter" %}
                     
                         <p>In addition to testing specific color contrast ratios, pages should always be reviewed under various color-blindness or low vision simulations. Any concerns should be flagged with DPM and added to your report.</p>
                     
@@ -503,7 +503,7 @@ id: a11y-smoke-test
 
                         <p>Review and test page against criteria above. If you not sure if the state of the element or ring is meeting the correct ratio, you can test the colors manually:</p>
                     
-                        {% include_relative /test/color-contrast.html %}
+                        {% include_relative /test/color-contrast.html id="mars" %}
                     
                     </div>
 
@@ -669,7 +669,7 @@ id: a11y-smoke-test
                         <li><a href="https://accessibilityinsights.io/" target="_blank">Accessibility Insights for Windows {{ newWindow }}</a></li>
                         <li><a href="https://www.tpgi.com/aviewer-2013/" target="_blank">Accessibility Viewer (aViewer) {{ newWindow }}</a></li>
                         <li><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank">Colour Contrast Analyser (CCA) {{ newWindow }}</a></li>
-                        <li><a href="https://trace.umd.edu/peat/" target="_blank">PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</li>
+                        <li><a href="https://trace.umd.edu/peat/" target="_blank">PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a></li>
                         <li><a href="https://pac.pdf-accessibility.org/en" target="_blank">PAC (PDF Accessibility Checker) {{ newWindow }}</a></li>
                     </ul>
 
@@ -754,9 +754,9 @@ id: a11y-smoke-test
 
                 <h3>Contrast Checkers</h3>
 
-                {% include_relative /test/color-contrast.html %}
+                {% include_relative /test/color-contrast.html id="pluto" %}
 
-                {% include_relative /test/link-contrast.html %}
+                {% include_relative /test/link-contrast.html id="earth" %}
 
                 <h3>Color Blindness</h3>
 
