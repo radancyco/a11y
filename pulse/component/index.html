@@ -158,15 +158,15 @@ id: a11y-smoke-test
                     <p>HTML should be structured and labeled accordingly, so that the page makes visual <em>and structural</em> sense to everybody. Here are some important things to be on the lookout for during review:</p>
                 
                     <ul>
-                      <li>Is semantic markup being used to convey proper structure and meaning to assistive technology users? {% include_relative /test/validation-w3c.html %}</li>
-                      <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? Are any empty headings present? {% include_relative /test/validation-heading.html %}</li>
+                      <li>Is semantic markup being used to convey proper structure and meaning? {% include_relative /test/validation-w3c.html %}</li>
+                      <li>Are headings (<code>h1</code>-<code>h6</code>) being used properly to identify content hierarchy? {% include_relative /test/validation-heading.html %}</li>
                       <li>Are lists being marked up and implemented correctly? {% include_relative /test/validation-list.html %}</li>
                       <li>Are <code>label</code> elements associated with specific form controls? Is the <code>label</code> element being hidden with <code>display: none</code>? {% include_relative /test/validation-form.html %}</li>
                       <li>Are <code>iframe</code> and multimedia elements, like <code>audio</code> and <code>video</code> properly labeled? {% include_relative /test/validation-iframe.html %}, {% include_relative /test/validation-title-attribute.html %}</li>
                       <li>Is <code>table</code> markup being used to implement tabular data only? {% include_relative /test/validation-table.html %}</li>
-                      <li>Does the page identify its language properly via the <code>lang</code>? Are shifts to other languages present within the page? {% include_relative /test/i18n-lang.html %}</li>
-                      <li>Is ARIA being used to properly identify landmarks and regions of a page? {% include_relative /test/validation-aria.html %}</li>
-                      <li>Is ARIA being used to provide an accessible name for user interface controls? {% include_relative /test/validation-aria.html %}</li>
+                      <li>Does the page identify its language properly via the <code>lang</code> attribute? Are shifts to other languages present within the page? {% include_relative /test/i18n-lang.html %}</li>
+                      <li>Does the page contain landmarks and regions? Are the labeled properly? Are there too many landmarks? {% include_relative /test/validation-landmark.html %}</li>
+                      <li>Is ARIA being used to provide roles, accessible names, and states to interface controls? {% include_relative /test/validation-aria.html %}</li>
                     </ul>
                 
                 </div>
@@ -255,11 +255,32 @@ id: a11y-smoke-test
                       <li>Page zoom should never be intentionally disabled. If the page cannot be zoomed in on at all, it is failure.</li>
                     </ul>
                 
-                    <p>{% include_relative /test/reflow-1280-1024.html %}</p>
+                    <p>{% include_relative /test/reflow-1280-1024.html %} and then zoom in to 400%.</p>
                 
                 </div>
 
                 <p>See <a href="#reflow">1.4.10: Reflow (Level AA)</a> for additional guidance.</p>
+
+                <h3>Text Spacing</h3>
+
+                <div class="qa-info">
+
+                    <h3>Testing</h3>
+
+                    <p>Ensure no loss of content or functionality occurs when:</p>
+
+                    <ul>
+                        <li>Line height (line spacing) to at least 1.5 times the font size.</li>
+                        <li>Spacing following paragraphs to at least 2 times the font size.</li>
+                        <li>Letter spacing (tracking) to at least 0.12 times the font size.</li>
+                        <li>Word spacing is at least 0.16 times the font size.</li>
+                    </ul>
+                
+                    <p>{% include_relative /test/text-spacing.html %}</p>
+                
+                </div>
+
+                <p>See <a href="#text-spacing">1.4.12: Text Spacing (Level AA)</a> for additional guidance.</p>
                 
                 <h3>Non-text Contrast</h3>
 
