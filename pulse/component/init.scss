@@ -8,6 +8,7 @@
 */
 
 $primary-breakpoint: 50em;
+$secondary-breakpoint: 500px;
 
 %scrollbar {
 
@@ -202,6 +203,7 @@ block-size: calc(700em / 16);
 border-radius: 5px;
 border: 0;
 box-shadow: 0 0 calc(10em / 16) 0 rgba(0, 0, 0, 0.75);
+container-type: inline-size;
 display: block;
 font-family: Arial, Helvetica, sans-serif;
 font-size: calc(14em / 16);
@@ -215,7 +217,7 @@ resize: both;
 inset-block-start: calc(16em / 16);
 z-index: 2147483647;
 
-  @media(min-width: $primary-breakpoint) {
+  @media (min-width: $primary-breakpoint) {
 
     block-size: 70vh;
     font-size: calc(16em / 16);
@@ -259,7 +261,7 @@ z-index: 2147483647;
 
     }
 
-    @media(min-width: $primary-breakpoint) {
+    @media (min-width: $primary-breakpoint) {
 
       inline-size: calc(380em / 16);
 
@@ -285,6 +287,7 @@ z-index: 2147483647;
   display: grid;
   grid-template-rows: 1fr 1fr;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
   padding-block-start: calc(20em / 16);
   padding-inline-end: calc(16em / 16);
   @extend %scrollbar;
@@ -450,7 +453,7 @@ z-index: 2147483647;
 
       &--column-3 {
 
-        @container (min-width: 370px) {
+        @container (min-width: 500px) {
     
           grid-template-columns: repeat(3, 1fr);
     
@@ -460,7 +463,7 @@ z-index: 2147483647;
 
       &--column-4 {
     
-        @container (min-width: 370px) {
+        @container (min-width: 500px) {
     
           grid-template-columns: repeat(4, 1fr);
     
