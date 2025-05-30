@@ -16,6 +16,7 @@
   
     colorBlindFilter.appendChild(colorBlindMatrix);
     colorBlindDef.appendChild(colorBlindFilter);
+    colorBlindSVG.classList.add("color-blineness-filter");
     colorBlindSVG.appendChild(colorBlindDef);
   
     document.body.appendChild(colorBlindSVG);

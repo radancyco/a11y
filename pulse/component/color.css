@@ -1,5 +1,9 @@
 /* A11y Pulse: Color Blindness Test */
 
+.color-blindness-filter {
+display: none;
+}
+
 body[data-color-blindness="achromatomaly"] {
 filter: url("#achromatomaly");
 }

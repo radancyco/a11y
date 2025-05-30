@@ -450,7 +450,7 @@ z-index: 2147483647;
 
       &--column-3 {
 
-        @media(min-width: $primary-breakpoint) {
+        @container (min-width: 370px) {
     
           grid-template-columns: repeat(3, 1fr);
     
@@ -460,7 +460,7 @@ z-index: 2147483647;
 
       &--column-4 {
     
-        @media(min-width: $primary-breakpoint) {
+        @container (min-width: 370px) {
     
           grid-template-columns: repeat(4, 1fr);
     
