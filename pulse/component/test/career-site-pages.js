@@ -171,7 +171,7 @@
            
             let titleElement = dom.querySelector("title");
             let paddedID = String(urlObj.id).padStart(3, "0");
-            let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title = A11Y${paddedID}`;
+            let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title - A11Y${paddedID}`;
 
             if (isAjd) {
 
