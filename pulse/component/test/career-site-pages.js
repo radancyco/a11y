@@ -133,7 +133,7 @@
     
         await Promise.all(promises);
         return urls;
-        
+
     };
     
     // Function to process the sitemap
@@ -168,7 +168,9 @@
             const response = await fetch(url);
             const html = await response.text();
             const dom = new DOMParser().parseFromString(html, "text/html");
-            let title = dom.querySelector("title").textContent;
+            let titleElement = dom.querySelector("title");
+            let paddedID = String(urlObj.id).padStart(3, "0");
+            let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title (A11Y${paddedID})`;
 
             if (isAjd) {
 
@@ -226,10 +228,14 @@
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
 
+        let ID = 1;
+        
         for (const url of urls) {
-
+    
+            url.id = ID;
             url.title = await getPageTitle(url);
-
+            ID++;
+        
         }
 
         return urls;
