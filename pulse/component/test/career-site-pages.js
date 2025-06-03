@@ -212,7 +212,7 @@
 
     // Build sitemap URL
     
-    const sitemapUrl = isLangFolder? `${location.origin}/${pathSegments[0]}/sitemap.xml`: `${location.origin}/sitemap.xml`;
+    const sitemapUrl = isLangFolder ? `${location.origin}/${pathSegments[0]}/sitemap.xml` : `${location.origin}/sitemap.xml`;
 
     convertSitemapToArray(sitemapUrl).then((data) => {
     
