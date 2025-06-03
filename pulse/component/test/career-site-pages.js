@@ -168,6 +168,7 @@
             const response = await fetch(url);
             const html = await response.text();
             const dom = new DOMParser().parseFromString(html, "text/html");
+           
             let titleElement = dom.querySelector("title");
             let paddedID = String(urlObj.id).padStart(3, "0");
             let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title (A11Y${paddedID})`;
@@ -175,6 +176,14 @@
             if (isAjd) {
 
                 title += " (AJD)";
+
+            }
+
+            const isCmsContent = dom.querySelector('meta[name="career-site-page-type"][content="ContentPage-CMS"]') !== null;
+
+            if (isCmsContent) {
+
+                title += " (CMS Content)";
 
             }
 
