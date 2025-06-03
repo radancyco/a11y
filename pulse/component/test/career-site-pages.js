@@ -42,7 +42,7 @@
 
         if(careerSitePagesLang === "de") {
 
-            allowedSubfolders = ["/stellenbeschreibung/", "/länderauswahl/", "/beschäftigung/", "/berufsfeld/", "/geschäft/", "/arbeitsort/"];
+            allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
 
         } else { 
 
