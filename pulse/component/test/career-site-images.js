@@ -339,16 +339,27 @@
 
     // Call the functions to convert sitemap to array, convert to CSV, and trigger download
 
-    convertSitemapToArray("sitemap.xml").then((data) => {
+    // Split pathname into segments
 
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+
+    // Check if the first segment looks like a language code
+        
+    const isLangFolder = /^[a-z]{2}(-[A-Z]{2})?$/.test(pathSegments[0]);
+    
+    // Build sitemap URL
+        
+    const sitemapUrl = isLangFolder ? `${location.origin}/${pathSegments[0]}/sitemap.xml` : `${location.origin}/sitemap.xml`;
+    
+    convertSitemapToArray(sitemapUrl).then((data) => {
+        
         const csv = makeCsv(data);
         const domain = location.hostname.replace(/\./g, '-');
         const file = `${domain}-images.csv`;
-
+    
         triggerDownload(csv, file);
-
         statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
-
+        
     });
 
 })();

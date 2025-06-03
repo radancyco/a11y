@@ -12,6 +12,12 @@
     const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
 
+    var careerSitePages = document.getElementById("career-site-pages");
+  
+    // Data Attributes
+  
+    var careerSitePagesLang = careerSitePages.getAttribute("data-lang");
+
     // Function to load the sitemap from URL
 
     const loadSitemap = async (url) => {
@@ -31,7 +37,19 @@
     const expandUrlSet = (urlset) => {
 
         const urls = [];
-        const allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+        
+        let allowedSubfolders;
+
+        if(careerSitePagesLang === "de") {
+
+            allowedSubfolders = ["/stellenbeschreibung/", "/länderauswahl/", "/beschäftigung/", "/berufsfeld/", "/geschäft/", "/arbeitsort/"];
+
+        } else { 
+
+            allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+
+        }
+        
         const subfolderCounts = {};
 
         for (const url of urlset.children) {

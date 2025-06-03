@@ -347,6 +347,23 @@ layout: null
 
           const bookMarklet = document.createElement("script");
           bookMarklet.setAttribute("src", this.getAttribute("data-script"));
+
+          if(btn.hasAttribute("data-lang")) {
+
+            const language = btn.getAttribute("data-lang");
+
+            bookMarklet.setAttribute("data-lang", language);
+
+          }
+
+          if(btn.hasAttribute("data-id")) {
+
+            const scriptID = btn.getAttribute("data-id");
+
+            bookMarklet.setAttribute("id", scriptID);
+
+          }
+
           document.body.append(bookMarklet);
 
       });    
