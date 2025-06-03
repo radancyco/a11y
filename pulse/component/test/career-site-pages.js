@@ -202,23 +202,27 @@
 
     // Call the functions to convert sitemap to array, convert to CSV, and trigger download
 
-    // Ensure pathname ends with a slash
+    // Split pathname into segments
 
-    const basePath = location.pathname.endsWith("/") ? location.pathname : location.pathname + '/';
+    const pathSegments = location.pathname.split('/').filter(Boolean);
 
-    // Create the full URL to sitemap.xml within current subdirectory
+    // Check if the first segment looks like a language code
     
-    const sitemapUrl = `${location.origin}${basePath}sitemap.xml`;
+    const isLangFolder = /^[a-z]{2}(-[A-Z]{2})?$/.test(pathSegments[0]);
+
+    // Build sitemap URL
+    
+    const sitemapUrl = isLangFolder? `${location.origin}/${pathSegments[0]}/sitemap.xml`: `${location.origin}/sitemap.xml`;
 
     convertSitemapToArray(sitemapUrl).then((data) => {
-
+    
         const csv = makeCsv(data);
         const domain = location.hostname.replace(/\./g, '-');
         const file = `${domain}-pages.csv`;
 
         triggerDownload(csv, file);
         statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
-
+    
     });
 
 })();
