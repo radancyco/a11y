@@ -202,14 +202,15 @@
 
     // Call the functions to convert sitemap to array, convert to CSV, and trigger download
 
-    convertSitemapToArray("sitemap.xml").then((data) => {
+    const sitemapUrl = `${location.origin}/sitemap.xml`;
+
+    convertSitemapToArray(sitemapUrl).then((data) => {
 
         const csv = makeCsv(data);
         const domain = location.hostname.replace(/\./g, '-');
         const file = `${domain}-pages.csv`;
 
         triggerDownload(csv, file);
-
         statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
 
     });
