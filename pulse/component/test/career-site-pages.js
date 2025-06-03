@@ -68,7 +68,7 @@
                 const html = await response.text();
                 const dom = new DOMParser().parseFromString(html, "text/html");
 
-                return dom.head.querySelector("input#ajdType") !== null;
+                return dom.querySelector("input#ajdType") !== null;
 
             } catch (e) {
 
