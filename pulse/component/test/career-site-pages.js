@@ -202,7 +202,13 @@
 
     // Call the functions to convert sitemap to array, convert to CSV, and trigger download
 
-    const sitemapUrl = `${location.origin}/sitemap.xml`;
+    // Ensure pathname ends with a slash
+
+    const basePath = location.pathname.endsWith("/") ? location.pathname : location.pathname + '/';
+
+    // Create the full URL to sitemap.xml within current subdirectory
+    
+    const sitemapUrl = `${location.origin}${basePath}sitemap.xml`;
 
     convertSitemapToArray(sitemapUrl).then((data) => {
 
