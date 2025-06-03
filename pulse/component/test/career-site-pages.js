@@ -34,7 +34,7 @@
 
     // Function to expand the URL set
 
-    const expandUrlSet = (urlset) => {
+    const expandUrlSet = async (urlset) => {
 
         const urls = [];
         
@@ -51,7 +51,7 @@
         }
         
         const subfolderCounts = {};
-        
+
         let ajdJobsIncluded = 0;
 
         const isJobPage = (loc) => {
