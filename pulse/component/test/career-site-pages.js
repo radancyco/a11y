@@ -51,10 +51,38 @@
         }
         
         const subfolderCounts = {};
+        
+        let ajdJobsIncluded = 0;
+
+        const isJobPage = (loc) => {
+
+            return careerSitePagesLang === "de" ? loc.includes("/berufsfeld/") : loc.includes("/job/");
+
+        };
+
+        const checkAjdInput = async (loc) => {
+
+            try {
+
+                const response = await fetch(loc);
+                const html = await response.text();
+                const dom = new DOMParser().parseFromString(html, "text/html");
+
+                return dom.head.querySelector("input#ajdType") !== null;
+
+            } catch (e) {
+
+                return false;
+
+            }
+        };
+
+        const queue = [];
 
         for (const url of urlset.children) {
 
             const loc = url.querySelector("loc").textContent;
+
             let found = false;
 
             for (const subfolder of allowedSubfolders) {
@@ -68,12 +96,14 @@
 
                         urls.push({ loc });
 
+                    } else if (isJobPage(loc) && ajdJobsIncluded < 5) {
+
+                        queue.push(loc);
+
                     }
 
                     break;
-
                 }
-
             }
 
             if (!found) {
@@ -81,8 +111,21 @@
                 urls.push({ loc });
 
             }
-
         }
+
+        const ajdChecks = await Promise.all(queue.map(async (loc) => {
+
+            const hasAjd = await checkAjdInput(loc);
+
+            if (hasAjd && ajdJobsIncluded < 5) {
+
+                ajdJobsIncluded++;
+
+                urls.push({ loc, ajd: true });
+
+            }
+
+        }));
 
         return Promise.resolve(urls);
 
@@ -110,14 +153,23 @@
 
     // Function to retrieve the title of a webpage given its URL
 
-    const getPageTitle = async (url) => {
+    const getPageTitle = async (urlObj) => {
+
+        const url = urlObj.loc;
+        const isAjd = urlObj.ajd;
 
         try {
 
             const response = await fetch(url);
             const html = await response.text();
             const dom = new DOMParser().parseFromString(html, "text/html");
-            const title = dom.querySelector("title").textContent;
+            let title = dom.querySelector("title").textContent;
+
+            if (isAjd) {
+
+                title += " (AJD)";
+
+            }
 
             const li = document.createElement("li");
             const a = document.createElement("a");
@@ -171,7 +223,7 @@
 
         for (const url of urls) {
 
-            url.title = await getPageTitle(url.loc);
+            url.title = await getPageTitle(url);
 
         }
 
