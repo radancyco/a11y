@@ -264,7 +264,7 @@ layout: null
   btnValidateImage.forEach((btn) => {
 
       const getLink = btn.getAttribute("href");
-      btn.setAttribute("href", `${getLink}${getLocation}`);
+      btn.setAttribute("href", `${getLink}${getLocation}#imagereport`);
 
   });
 
