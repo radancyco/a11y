@@ -253,7 +253,7 @@ layout: null
   btnValidateHeading.forEach((btn) => {
 
       const getLink = btn.getAttribute("href");
-      btn.setAttribute("href", `${getLink}?url=${getLocation}`);
+      btn.setAttribute("href", `${getLink}${getLocation}#headingoutline`);
 
   });
 
