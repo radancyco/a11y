@@ -183,10 +183,15 @@
 
             if (isCmsContent) title += " (CMS Content)";
     
-            // Check for links with "slick" in href
+            // Check for elements with "slick" in class
 
             const hasSlick = !!dom.querySelector('[class*="slick"]') || !!dom.querySelector('[class*="slide"]');
             urlObj.hasSlick = hasSlick;
+
+            // Check for Tabcordion
+
+            const hasTabcordion = !!dom.querySelector('[class*="tab-accordion"]') || !!dom.querySelector('[class*="tabcordion"]');
+            urlObj.hasTabcordion = hasTabcordion;
     
             const li = document.createElement("li");
             const a = document.createElement("a");
@@ -226,6 +231,8 @@
             statusList.prepend(li);
     
             urlObj.hasSlick = false;
+
+            urlObj.hasTabcordion = false;
     
             return "Title not found";
 
@@ -263,7 +270,7 @@
 
             const paddedID = String(ID).padStart(3, "0");
 
-            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline"," "," ","https://wave.webaim.org/report#/${row.loc}"," "," "," "," ","${row.hasSlick ? "Yes" : ""}","A11Y${paddedID}"\n`;
+            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline"," "," ","https://wave.webaim.org/report#/${row.loc}"," "," "," "," ","${row.hasSlick ? "Yes" : ""}","${row.hasTabcordion ? "Yes" : ""}","A11Y${paddedID}"\n`;
 
             ID++;
 
