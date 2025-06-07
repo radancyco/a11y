@@ -150,11 +150,11 @@
 
             case "urlset":
 
-                return expandUrlSet(sitemap);
+            return expandUrlSet(sitemap);
 
             default:
 
-                return Promise.resolve([]);
+            return Promise.resolve([]);
 
         }
 
@@ -166,74 +166,73 @@
 
         const url = urlObj.loc;
         const isAjd = urlObj.ajd;
-
+    
         try {
 
             const response = await fetch(url);
             const html = await response.text();
             const dom = new DOMParser().parseFromString(html, "text/html");
-           
+    
             let titleElement = dom.querySelector("title");
             let paddedID = String(urlObj.id).padStart(3, "0");
             let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title - A11Y${paddedID}`;
-
-            if (isAjd) {
-
-                title += " (AJD)";
-
-            }
-
+    
+            if (isAjd) title += " (AJD)";
+    
             const isCmsContent = dom.querySelector('meta[name="career-site-page-type"][content="ContentPage-CMS"]') !== null;
 
-            if (isCmsContent) {
+            if (isCmsContent) title += " (CMS Content)";
+    
+            // Check for links with "slick" in href
 
-                title += " (CMS Content)";
-
-            }
-
+            const hasSlick = !!dom.querySelector('link[href*="slick"]');
+            urlObj.hasSlick = hasSlick;
+    
             const li = document.createElement("li");
             const a = document.createElement("a");
             const img = document.createElement("img");
-
+    
             a.href = url;
             a.textContent = url;
             a.target = "_blank";
-
+    
             img.src = "https://radancy.dev/a11y/pulse/component/img/new-tab.png";
             img.alt = "(Opens in new window)";
-
+    
             a.appendChild(img);
             li.appendChild(a);
             statusList.prepend(li);
-
+    
             return title;
-
+    
         } catch (error) {
 
             console.error("Error retrieving page title:", error);
-
+    
             const li = document.createElement("li");
             const a = document.createElement("a");
             const img = document.createElement("img");
-
+    
             a.href = url;
             a.textContent = "Error retrieving: " + url;
             a.target = "_blank";
-
+    
             img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
             img.alt = "(Opens in new window)";
-
+    
             a.appendChild(img);
             li.appendChild(a);
             li.classList.add = "status-error";
             statusList.prepend(li);
-
+    
+            urlObj.hasSlick = false;
+    
             return "Title not found";
 
         }
 
     };
-
+    
     // Function to convert sitemap to array of objects
 
     const convertSitemapToArray = async (url) => {
@@ -256,14 +255,15 @@
 
     const makeCsv = (data) => {
 
-        let csv = "Title, URL, W3C Validation, Error, Heading Validation, Error, Screenshot, WAVE Validation, Errors, Contrast Errors, Screenshot, Radancy Notes, ID\n";
+        let csv = "Title, URL, W3C Validation, Error, Heading Validation, Error, Screenshot, WAVE Validation, Errors, Contrast Errors, Screenshot, Radancy Notes, Slick, ID\n";
+
         let ID = 1;
 
         data.forEach((row) => {
 
             const paddedID = String(ID).padStart(3, "0");
 
-            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline"," "," ","https://wave.webaim.org/report#/${row.loc}"," "," "," "," ","A11Y${paddedID}"\n`;
+            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline"," "," ","https://wave.webaim.org/report#/${row.loc}"," "," "," "," ","${row.hasSlick ? "Yes" : ""}","A11Y${paddedID}"\n`;
 
             ID++;
 
