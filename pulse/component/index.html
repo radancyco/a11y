@@ -560,6 +560,14 @@ id: a11y-smoke-test
 
                 </details>
 
+                <div class="reminder-info">
+
+                    <h2 class="info-header">Need More Help?</h2>
+
+                    <p>The <a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank">WCAG Quick Reference {{ newWindow }}</a> is a helpful guide that explains web accessibility rules in a clear, easy-to-use format with tips and examples.</p>
+            
+                </div>
+
             </div>
 
             <h2 class="accordion__heading"><button id="w3c-validation-services" class="accordion__toggle"><span>W3C Validation</span></button></h2>
@@ -614,13 +622,13 @@ id: a11y-smoke-test
                             
                             <h3>Get Career Site Pages</h3>
 
+                            <p>Generates key career site pages to be used in testing and for upload to PopeTech. Select the langauge of site you are on to begin scan. Please allow up to several minutes to run. </p>
+                            
                             <ul>
                                 <li>{% include_relative /test/career-site-pages.html %}</li>
                                 <li>{% include_relative /test/career-site-pages.html lang="de" name="German" %}</li>
                                 <li>{% include_relative /test/career-site-pages.html lang="pt-br" name="Portuguese" %}</li>
                             </ul>
-                            
-                            <p>Generates key career site pages to be used in testing. Please allow up to several minutes to scan. Select the langauge of site you are on.</p>
                             
                             <div class="status-container status-container--career-site-pages"></div>
                             
@@ -720,7 +728,7 @@ id: a11y-smoke-test
     
                 <details>
     
-                    <summary>Disabled User Testing</summary>
+                    <summary>Disability User Testing</summary>
     
                     <p>Automated and manual testing are valuable, but nothing matches the lived experience of people with disabilities and the unique insights they can provide. When needed, consider reaching out to one of the following:</p>
     
@@ -747,7 +755,13 @@ id: a11y-smoke-test
                         <li><a href="https://www.w3.org/TR/wai-aria-practices/" target="_blank">WAI-ARIA Authoring Practices {{ newWindow }}</a></li>
                         <li><a href="https://www.w3.org/WAI/" target="_blank">Web Accessibility Initiative (WAI) {{ newWindow }}</a></li>
                         <li><a href="https://www.w3.org/WAI/policies/" target="_blank">Web Accessibility Laws & Policies {{ newWindow }}</a></li>
-                        <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank">Web Content Accessibility Guidelines (WCAG) 2.2 {{ newWindow }}</a></li>
+                        <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank">Web Content Accessibility Guidelines (WCAG) 2.2 {{ newWindow }}</a>
+                        
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank">How to Meet WCAG (Quick Reference) {{ newWindow }}</a></li>
+                            </ul>
+                        
+                        </li>
                     </ul>
     
                 </details>
