@@ -270,7 +270,7 @@
 
             const paddedID = String(ID).padStart(3, "0");
 
-            csv += `"${row.title}", "${row.loc}", "https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}", " ", "https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline", " ", "https://wave.webaim.org/report#/${row.loc}", " ", " ", "${row.hasSlick ? "Yes" : ""}", "${row.hasTabcordion ? "Yes" : ""}", " ", "A11Y${paddedID}"\n`;
+            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline"," ","https://wave.webaim.org/report#/${row.loc}"," "," ","${row.hasSlick ? "Yes" : ""}","${row.hasTabcordion ? "Yes" : ""}"," ","A11Y${paddedID}"\n`;
 
             ID++;
 
