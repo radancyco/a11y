@@ -185,7 +185,7 @@
     
             // Check for links with "slick" in href
 
-            const hasSlick = !!dom.querySelector('link[href*="slick"]');
+            const hasSlick = !!dom.querySelector('[class*="slick"]') || !!dom.querySelector('[class*="slide"]');
             urlObj.hasSlick = hasSlick;
     
             const li = document.createElement("li");
