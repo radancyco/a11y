@@ -262,7 +262,7 @@
 
     const makeCsv = (data) => {
 
-        let csv = "Title, URL, W3C Validation, Error, Heading Validation, Error, Screenshot, WAVE Validation, Errors, Contrast Errors, Slick, Tabcordion, Screenshot, Radancy Notes, ID\n";
+        let csv = "Title, URL, W3C Validation, Error, Heading Validation, Error, WAVE Validation, Error, Contrast Errors, Slick, Tabcordion, Radancy Notes, ID\n";
 
         let ID = 1;
 
@@ -270,7 +270,7 @@
 
             const paddedID = String(ID).padStart(3, "0");
 
-            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline"," "," ","https://wave.webaim.org/report#/${row.loc}"," "," ","${row.hasSlick ? "Yes" : ""}","${row.hasSlick ? "Yes" : ""}","${row.hasTabcordion ? "Yes" : ""}","${row.hasTabcordion ? "Yes" : ""}"," "," ","A11Y${paddedID}"\n`;
+            csv += `"${row.title}", "${row.loc}", "https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}", " ", "https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline", " ", "https://wave.webaim.org/report#/${row.loc}", " ", " ", "${row.hasSlick ? "Yes" : ""}", "${row.hasTabcordion ? "Yes" : ""}", " ", "A11Y${paddedID}"\n`;
 
             ID++;
 
