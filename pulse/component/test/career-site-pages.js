@@ -80,7 +80,34 @@
             }
         };
     
-        const promises = Array.from(urlset.children).map(async (url) => {
+        const urlElements = Array.from(urlset.children);
+
+        // Determine subfolder from current page
+
+        const currentPath = window.location.pathname;
+        const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
+        const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
+
+        // Adjust the first <loc> if needed
+
+        if (
+            
+            urlElements.length &&
+            urlElements[0].querySelector("loc") &&
+            urlElements[0].querySelector("loc").textContent === window.location.origin &&
+            subfolderPrefix
+
+        ) {
+    
+            // Replace root URL with subfolder URL
+    
+            urlElements[0].querySelector("loc").textContent = expectedPrefix;
+
+        }
+
+        // Now map over the updated elements
+
+        const promises = urlElements.map(async (url) => {
 
             const loc = url.querySelector("loc").textContent;
 
@@ -262,9 +289,7 @@
 
     const makeCsv = (data) => {
 
-        let csv = 
-
-        "ID, Title, URL, Heading Validation, WAVE Validation, Slick, Tabcordion, W3C Validation\n";
+        let csv = "ID, Title, URL, Heading Validation, WAVE Validation, Slick, Tabcordion, Heading Issue, Missing Page Title, W3C Validation\n";
 
         let ID = 1;
 
@@ -272,7 +297,7 @@
 
             const paddedID = String(ID).padStart(3, "0");
 
-            csv += `"A11Y${paddedID}","${row.title}","${row.loc}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
+            csv += `"A11Y${paddedID}","${row.title}","${row.loc}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}"," ","${row.missingTitle ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
 
             ID++;
 
