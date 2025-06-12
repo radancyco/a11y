@@ -262,7 +262,9 @@
 
     const makeCsv = (data) => {
 
-        let csv = "Title, URL, W3C Validation, Error, Heading Validation, Error, WAVE Validation, Error, Contrast Errors, Slick, Tabcordion, Radancy Notes, ID\n";
+        let csv = 
+
+        "ID, Title, URL, Heading Validation, WAVE Validation, Slick, Tabcordion, W3C Validation\n";
 
         let ID = 1;
 
@@ -270,7 +272,7 @@
 
             const paddedID = String(ID).padStart(3, "0");
 
-            csv += `"${row.title}","${row.loc}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"," ","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline"," ","https://wave.webaim.org/report#/${row.loc}"," "," ","${row.hasSlick ? "Yes" : ""}","${row.hasTabcordion ? "Yes" : ""}"," ","A11Y${paddedID}"\n`;
+            csv += `"A11Y${paddedID}","${row.title}","${row.loc}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
 
             ID++;
 

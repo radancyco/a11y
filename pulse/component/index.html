@@ -8,7 +8,7 @@ id: a11y-smoke-test
 
 <dialog class="a11y-pulse" dir="ltr" lang="en-US">
 
-    <header class="a11y-pulse__banner">
+    <div class="a11y-pulse__banner">
         
         <h1 class="a11y-pulse__label">
             
@@ -23,7 +23,7 @@ id: a11y-smoke-test
 
         </div>
 
-    </header>
+    </div>
 
     <div class="a11y-pulse__container">
         
@@ -872,7 +872,7 @@ id: a11y-smoke-test
 
         <!-- TODO: include 2.5.3 Label in Name -->
 
-        <footer>
+        <div class="a11y-pulse__footer">
 
             <ul>
                 <li><a href="{{ site.url }}{{ site.baseurl }}" target="_blank">Accessibility at Radancy {{ newWindow }}</a></li>
@@ -882,7 +882,7 @@ id: a11y-smoke-test
         
             <p><small>&copy; {{ "now" | date: "%Y" }} Radancy. An equal opportunity employer.</small></p>
         
-        </footer>
+        </div>
 
     </div>
 
