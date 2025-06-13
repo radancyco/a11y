@@ -276,16 +276,26 @@
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
 
-        let ID = 1;
+        const generateRandomID = () => Math.floor(100000 + Math.random() * 900000);
+
+        const usedIDs = new Set();
         
         for (const url of urls) {
-    
-            url.id = ID;
+
+            let randomID;
+
+            do {
+                
+                randomID = generateRandomID();
+            
+            } while (usedIDs.has(randomID));
+        
+            usedIDs.add(randomID);
+            url.id = randomID;
             url.title = await getPageTitle(url);
-            ID++;
         
         }
-
+        
         return urls;
     };
 
@@ -293,16 +303,10 @@
 
         let csv = "ID, Title, URL, Heading Validation, WAVE Validation, Slick, Tabcordion, Heading Issue, Missing Page Title, W3C Validation\n";
 
-        let ID = 1;
-
         data.forEach((row) => {
 
-            const paddedID = String(ID).padStart(3, "0");
-
-            csv += `"A11Y${paddedID}","${row.title}","${row.loc}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}"," ","${row.missingTitle ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
-
-            ID++;
-
+            csv += `"A11Y${row.id}","${row.title}","${row.loc}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}"," ","${row.missingTitle ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
+        
         });
 
         return csv;
