@@ -122,12 +122,12 @@
                     if (isJobPage(loc)) {
                         const hasAjd = await checkAjdInput(loc);
     
-                        if (hasAjd && ajdJobsIncluded < 5) {
+                        if (hasAjd && ajdJobsIncluded < 2) {
 
                             ajdJobsIncluded++;
                             urls.push({ loc, ajd: true });
 
-                        } else if (!hasAjd && regularJobsIncluded < 5) {
+                        } else if (!hasAjd && regularJobsIncluded < 2) {
 
                             regularJobsIncluded++;
                             urls.push({ loc });
@@ -140,7 +140,7 @@
 
                         subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
 
-                        if (subfolderCounts[subfolder] <= 5) {
+                        if (subfolderCounts[subfolder] <= 2) {
 
                             urls.push({ loc });
 
