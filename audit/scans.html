@@ -1,0 +1,88 @@
+---
+title: "Scans"
+---
+
+<style>
+
+    ul {}
+
+.btn::after {
+content: "🚩";
+margin-inline-start: 0.5em;
+display: inline-block;
+}
+
+.btn[aria-pressed="true"]::after {
+content: "✔️";
+}
+
+.issues {
+display: grid;
+gap: 1em;
+}
+
+.issues li {
+display: grid;
+grid-template-columns: 200px 1fr;
+gap: 1em;
+}
+
+
+</style>
+
+<h2>Boilerplate Responses</h2>
+
+<ul class="issues">
+
+    <li><button class="btn btn-copy" data-content-id="issue-1">Copy</button><span id="issue-1"><b>Auditor:</b> Resolve all WAVE and heading issues (if any), missing page titles, etc. There should no errors or contrast issues. If you're unsure how to fix something, contact your assigned auditor. If issue is product related, third-party, or false positive, please indicate that. Certain contrast issues may require client approval before proceeding. However, some contrast problems may not be as obvious and involve text over images or offscreen text. If images are removed, there may be no fallback color, making the text unreadable. In these cases, apply a darker or lighter color to achieve a contrast ratio of at least 4.5:1. See Spell for further guidance.</span></li>
+    <li><button class="btn btn-copy" data-content-id="issue-2">Copy</button><span id="issue-2"><b>Auditor:</b> Page has contrast issues that need to be resolved. </span></li>
+    <li><button class="btn btn-copy" data-content-id="issue-3">Copy</button><span id="issue-3"><b>Auditor:</b> Ensure that Accessible Slick is being used. We can see that the CSS is using Accessible Slick, but uncertain of the script, which could be older (it is minified). If not Accessible Slick or in doubt, please upgrade. See https://accessible360.github.io/accessible-slick/</li>
+    <li><button class="btn btn-copy" data-content-id="issue-4">Copy</button><span id="issue-4"><b>Auditor:</b> Ensure that Accessible Slick is being used. See https://accessible360.github.io/accessible-slick/</span></li>
+    <li><button class="btn btn-copy" data-content-id="issue-5">Copy</button><span id="issue-5"><b>Auditor:</b> The carousel has auto-playing content. Please add a pause button. If it is easier, simply disable the auto-play though client appoval may be necessary.</span></li>
+    <li><button class="btn btn-copy" data-content-id="issue-6">Copy</button><span id="issue-6"><b>Auditor:</b> Duplicate contrast issue and/or error. No need to address as it will likely be fixed elsewhere.</span></li>
+    <li><button class="btn btn-copy" data-content-id="issue-7">Copy</button><span id="issue-7"><b>Auditor:</b> Duplicate contrast issue. No need to address as it will likely be fixed elsewhere. However, other issues on page need to be investigated further and addressed. If issue is product related, third-party, or false positive, please indicate that.</span></li>
+</ul> 
+
+
+<script>
+
+// Code Copier
+	// Note: I probably have dupes of this. Condense into a single function.
+
+	var btnCopyCode = document.querySelectorAll(".btn-copy");
+
+	btnCopyCode.forEach(function(code){
+
+		code.setAttribute("aria-pressed", "false");
+
+		code.addEventListener("click", function () {
+
+			var codeID = this.getAttribute("data-content-id");
+			var codeContainer = document.getElementById(codeID);
+			var codeCopy = codeContainer.textContent;
+			
+			navigator.clipboard.writeText(codeCopy).then(function() {
+
+				code.classList.add("code-copied");
+				code.setAttribute("aria-pressed", "true");
+				
+			}, function() {
+
+				code.classList.add("code-not-copied");
+
+			});
+
+			setTimeout(function(){
+
+				code.classList.remove("code-copied");
+				code.classList.remove("code-not-copied");
+				code.setAttribute("aria-pressed", "false");
+
+			}, 3000);
+
+		});
+
+	});
+
+
+</script>
