@@ -44,6 +44,10 @@
 
             allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
 
+        } else if (careerSitePagesLang === "fr") {
+
+            allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+
         } else if (careerSitePagesLang === "pt-br") {
 
             allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
