@@ -48,6 +48,10 @@
 
             allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
 
+        } else if (careerSitePagesLang === "nl") {
+
+            allowedSubfolders = ["/categorie/", "/plaats/", "/werk/", "/firma/", "/banen/", "banen-locatie"];
+
         } else if (careerSitePagesLang === "pt-br") {
 
             allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
@@ -64,7 +68,29 @@
     
         const isJobPage = (loc) => {
 
-            return careerSitePagesLang === "de" ? loc.includes("/berufsfeld/") : loc.includes("/job/");
+            switch (careerSitePagesLang) {
+        
+                case "de":
+        
+                return loc.includes("/stellenbeschreibung/");
+        
+                case "fr":
+        
+                return loc.includes("/emploi/");
+
+                case "nl":
+        
+                return loc.includes("/banen/");
+        
+                case "pt-br":
+        
+                return loc.includes("/vaga/");
+        
+                default:
+        
+                return loc.includes("/job/");
+    
+            }
 
         };
     
