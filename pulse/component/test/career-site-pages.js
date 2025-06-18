@@ -98,7 +98,7 @@ const expandUrlSet = async (urlset) => {
         }
     }
 
-    for (const subfolder in subfolderPageLists) {
+for (const subfolder in subfolderPageLists) {
     let subfolderRegularIncluded = 0;
     let subfolderAjdIncluded = 0;
     let subfolderOtherIncluded = 0;
@@ -119,10 +119,7 @@ const expandUrlSet = async (urlset) => {
             subfolderOtherIncluded++;
         }
 
-        // Updated break condition
-        if ((subfolderAjdIncluded + subfolderRegularIncluded) >= 2 && subfolderOtherIncluded >= 2) {
-            break;
-        }
+        // 🛑 Do NOT break — allow all 20 pages to be checked.
     }
 }
 
