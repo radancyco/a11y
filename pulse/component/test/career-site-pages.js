@@ -66,7 +66,7 @@
     
             if (careerSitePagesLang === "de") {
 
-                return loc.includes("/berufsfeld/");
+                return loc.includes("/stellenbeschreibung/");
 
             } else if (careerSitePagesLang === "fr") {
 
