@@ -37,11 +37,9 @@
 const expandUrlSet = async (urlset) => {
 
     const urls = [];
-    const subfolderCounts = {};
+
     const subfolderPageLists = {};
 
-    let ajdJobsIncluded = 0;
-    let regularJobsIncluded = 0;
 
     const urlElements = Array.from(urlset.children);
 
@@ -56,7 +54,6 @@ const expandUrlSet = async (urlset) => {
     const jobLocationUrls = [];
 
     const isJobPage = (loc) => {
-
         if (careerSitePagesLang === "de") {
             return loc.includes("/stellenbeschreibung/");
         } else if (careerSitePagesLang === "fr") {
@@ -66,7 +63,6 @@ const expandUrlSet = async (urlset) => {
         } else {
             return loc.includes("/job/");
         }
-
     };
 
     const checkAjdInput = async (loc) => {
@@ -86,7 +82,6 @@ const expandUrlSet = async (urlset) => {
         const pathParts = new URL(loc).pathname.split("/").filter(Boolean);
         const subfolder = `/${pathParts[0]}/`;
 
-        // Special handling for missing /job-location/ path
         if (loc.includes(jobLocationPath)) {
             if (jobLocationUrls.length < 5) {
                 jobLocationUrls.push(loc);
@@ -101,53 +96,41 @@ const expandUrlSet = async (urlset) => {
         if (subfolderPageLists[subfolder].length < 20) {
             subfolderPageLists[subfolder].push(loc);
         }
-
     }
 
-    // Traverse each subfolder’s first 20 pages (now stored in subfolderPageLists)
     for (const subfolder in subfolderPageLists) {
 
         let subfolderRegularIncluded = 0;
         let subfolderAjdIncluded = 0;
+        let subfolderOtherIncluded = 0;
 
         for (const loc of subfolderPageLists[subfolder]) {
 
             if (isJobPage(loc)) {
-
                 const hasAjd = await checkAjdInput(loc);
-
                 if (hasAjd && subfolderAjdIncluded < 2) {
-                    subfolderAjdIncluded++;
                     urls.push({ loc, ajd: true });
+                    subfolderAjdIncluded++;
                 } else if (!hasAjd && subfolderRegularIncluded < 2) {
+                    urls.push({ loc });
                     subfolderRegularIncluded++;
-                    urls.push({ loc });
                 }
-
-            } else {
-
-                subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
-
-                if (subfolderCounts[subfolder] <= 2) {
-                    urls.push({ loc });
-                }
-
+            } else if (subfolderOtherIncluded < 2) {
+                urls.push({ loc });
+                subfolderOtherIncluded++;
             }
 
-            if (subfolderAjdIncluded + subfolderRegularIncluded >= 2 && subfolderCounts[subfolder] >= 2) {
+            if ((subfolderAjdIncluded + subfolderRegularIncluded + subfolderOtherIncluded) >= 2) {
                 break;
             }
-
         }
-
     }
 
-    // Now handle missing /job-location/ pages (not in sitemap)
+    // Handle /job-location/ pages
     let jobLocAdded = 0;
     let jobLocAjdAdded = 0;
 
     for (const loc of jobLocationUrls) {
-
         if (isJobPage(loc)) {
             const hasAjd = await checkAjdInput(loc);
             if (hasAjd && jobLocAjdAdded < 2) {
@@ -163,12 +146,11 @@ const expandUrlSet = async (urlset) => {
         }
 
         if (jobLocAjdAdded + jobLocAdded >= 2) break;
-
     }
 
     return urls;
-
 };
+
 
     
     // Function to process the sitemap
