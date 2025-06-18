@@ -34,71 +34,162 @@
 
     // Function to expand the URL set
 
-const subfolderCounts = {};
-const subfolderScanned = {}; // NEW: Track scanned pages per subfolder
+    const expandUrlSet = async (urlset) => {
 
-let ajdJobsIncluded = 0;
-let regularJobsIncluded = 0;
+        const urls = [];
+        
+        let allowedSubfolders;
+    
+        if (careerSitePagesLang === "de") {
 
-const promises = urlElements.map(async (url) => {
+            allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
 
-    const loc = url.querySelector("loc").textContent;
+        } else if (careerSitePagesLang === "fr") {
 
-    let found = false;
+            allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
 
-    for (const subfolder of allowedSubfolders) {
+        } else if (careerSitePagesLang === "pt-br") {
 
-        if (loc.includes(subfolder)) {
+            allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
 
-            found = true;
+        } else {
 
-            subfolderScanned[subfolder] = (subfolderScanned[subfolder] || 0) + 1;
+            allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
 
-            if (subfolderScanned[subfolder] > 10) break; // Skip excess
+        }
+    
+        const subfolderCounts = {};
+        let ajdJobsIncluded = 0;
+        let regularJobsIncluded = 0;
+    
+        const isJobPage = (loc) => {
+    
+            if (careerSitePagesLang === "de") {
 
-            if (isJobPage(loc)) {
+                return loc.includes("/stellenbeschreibung/");
 
-                const hasAjd = await checkAjdInput(loc);
+            } else if (careerSitePagesLang === "fr") {
 
-                if (hasAjd && ajdJobsIncluded < 2) {
+                return loc.includes("/emploi/");
 
-                    ajdJobsIncluded++;
-                    urls.push({ loc, ajd: true });
+            } else if (careerSitePagesLang === "pt-br") {
 
-                } else if (!hasAjd && regularJobsIncluded < 2) {
-
-                    regularJobsIncluded++;
-                    urls.push({ loc });
-
-                }
+                return loc.includes("/vaga/");
 
             } else {
 
-                subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
+                return loc.includes("/job/");
 
-                if (subfolderCounts[subfolder] <= 2) {
+            }
 
-                    urls.push({ loc });
+        };
+    
+        const checkAjdInput = async (loc) => {
+
+            try {
+
+                const response = await fetch(loc);
+                const html = await response.text();
+                const dom = new DOMParser().parseFromString(html, "text/html");
+                return dom.querySelector("input#ajdType") !== null;
+
+            } catch (e) {
+
+                return false;
+
+            }
+        };
+    
+        const urlElements = Array.from(urlset.children);
+
+        // Determine subfolder from current page
+
+        const currentPath = window.location.pathname;
+        const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
+        const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
+
+        // Adjust the first <loc> if needed
+
+        if (
+            
+            urlElements.length &&
+            urlElements[0].querySelector("loc") &&
+            urlElements[0].querySelector("loc").textContent === window.location.origin &&
+            subfolderPrefix
+
+        ) {
+    
+            // Replace root URL with subfolder URL
+    
+            urlElements[0].querySelector("loc").textContent = expectedPrefix;
+
+        }
+
+        // Now map over the updated elements
+
+        const promises = urlElements.map(async (url) => {
+
+            const loc = url.querySelector("loc").textContent;
+
+            let found = false;
+    
+            for (const subfolder of allowedSubfolders) {
+
+                if (loc.includes(subfolder)) {
+
+                    found = true;
+    
+                    if (isJobPage(loc)) {
+                        
+                        const hasAjd = await checkAjdInput(loc);
+    
+                        if (hasAjd && ajdJobsIncluded < 2) {
+
+                            ajdJobsIncluded++;
+                            urls.push({ loc, ajd: true });
+
+                        } else if (!hasAjd && regularJobsIncluded < 2) {
+
+                            regularJobsIncluded++;
+                            urls.push({ loc });
+
+                        }
+    
+                        break;
+
+                    } else {
+
+                        subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
+
+                        if (subfolderCounts[subfolder] <= 2) {
+
+                            urls.push({ loc });
+
+                        }
+
+                        break;
+
+                    }
 
                 }
 
             }
-
-            break;
-
-        }
-
-    }
-
-    if (!found) {
-
-        urls.push({ loc });
-
-    }
-
-});
-
     
+            if (!found) {
+
+                urls.push({ loc });
+
+            }
+
+        });
+    
+        await Promise.all(promises);
+        return urls;
+
+    };
+    
+    // Function to process the sitemap
+
     const processSitemap = (sitemap) => {
 
         sitemap = sitemap.documentElement;
@@ -116,6 +207,8 @@ const promises = urlElements.map(async (url) => {
         }
 
     };
+
+    // Function to retrieve the title of a webpage given its URL
 
     const getPageTitle = async (urlObj) => {
 
@@ -140,8 +233,12 @@ const promises = urlElements.map(async (url) => {
 
             if (isCmsContent) title += " (CMS Content)";
     
+            // Check for elements with "slick" in class
+
             const hasSlick = !!dom.querySelector('[class*="slick"]') || !!dom.querySelector('[class*="slide"]');
             urlObj.hasSlick = hasSlick;
+
+            // Check for Tabcordion
 
             const hasTabcordion = !!dom.querySelector('[class*="tab-accordion"]') || !!dom.querySelector('[class*="tabcordion"]');
             urlObj.hasTabcordion = hasTabcordion;
@@ -184,6 +281,7 @@ const promises = urlElements.map(async (url) => {
             statusList.prepend(li);
     
             urlObj.hasSlick = false;
+
             urlObj.hasTabcordion = false;
     
             return "Title not found";
@@ -191,59 +289,35 @@ const promises = urlElements.map(async (url) => {
         }
 
     };
-
-    const runWithConcurrency = async (tasks, limit = 5) => {
-
-        const results = [];
-        const executing = [];
-
-        for (const task of tasks) {
-            const p = task().then(result => {
-                executing.splice(executing.indexOf(p), 1);
-                return result;
-            });
-            results.push(p);
-            executing.push(p);
-            if (executing.length >= limit) {
-                await Promise.race(executing);
-            }
-        }
-
-        return Promise.all(results);
-
-    };
     
+    // Function to convert sitemap to array of objects
+
     const convertSitemapToArray = async (url) => {
 
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
 
         const generateRandomID = () => Math.floor(100000 + Math.random() * 900000);
+
         const usedIDs = new Set();
+        
+        for (const url of urls) {
 
-        await runWithConcurrency(
+            let randomID;
 
-            urls.map((url) => async () => {
-
-                let randomID;
-
-                do {
-                    randomID = generateRandomID();
-
-                } while (usedIDs.has(randomID));
-
-                usedIDs.add(randomID);
-                url.id = randomID;
-                url.title = await getPageTitle(url);
-
-            }),
-
-            5
-
-        );
-
+            do {
+                
+                randomID = generateRandomID();
+            
+            } while (usedIDs.has(randomID));
+        
+            usedIDs.add(randomID);
+            url.id = randomID;
+            url.title = await getPageTitle(url);
+        
+        }
+        
         return urls;
-
     };
 
     const makeCsv = (data) => {
@@ -259,6 +333,8 @@ const promises = urlElements.map(async (url) => {
         return csv;
 
     };
+
+    // Function to trigger CSV download
 
     const triggerDownload = (csv, file) => {
 
@@ -279,8 +355,18 @@ const promises = urlElements.map(async (url) => {
 
     };
 
+    // Call the functions to convert sitemap to array, convert to CSV, and trigger download
+
+    // Split pathname into segments
+
     const pathSegments = location.pathname.split('/').filter(Boolean);
+
+    // Check if the first segment looks like a language code
+    
     const isLangFolder = /^[a-z]{2}(-[A-Z]{2})?$/.test(pathSegments[0]);
+
+    // Build sitemap URL
+    
     const sitemapUrl = isLangFolder ? `${location.origin}/${pathSegments[0]}/sitemap.xml` : `${location.origin}/sitemap.xml`;
 
     convertSitemapToArray(sitemapUrl).then((data) => {
