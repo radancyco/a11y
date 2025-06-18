@@ -34,159 +34,142 @@
 
     // Function to expand the URL set
 
-    const expandUrlSet = async (urlset) => {
+const expandUrlSet = async (urlset) => {
 
-        const urls = [];
-        
-        let allowedSubfolders;
-    
+    const urls = [];
+    const subfolderCounts = {};
+    const subfolderPageLists = {};
+
+    let ajdJobsIncluded = 0;
+    let regularJobsIncluded = 0;
+
+    const urlElements = Array.from(urlset.children);
+
+    const jobLocationPaths = {
+        "de": "/arbeitsort/",
+        "fr": "/lieu-de-travail/",
+        "pt-br": "/sub-localização/",
+        "default": "/job-location/"
+    };
+
+    const jobLocationPath = jobLocationPaths[careerSitePagesLang] || jobLocationPaths["default"];
+    const jobLocationUrls = [];
+
+    const isJobPage = (loc) => {
+
         if (careerSitePagesLang === "de") {
-
-            allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
-
+            return loc.includes("/stellenbeschreibung/");
         } else if (careerSitePagesLang === "fr") {
-
-            allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
-
+            return loc.includes("/emploi/");
         } else if (careerSitePagesLang === "pt-br") {
-
-            allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
-
+            return loc.includes("/vaga/");
         } else {
-
-            allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
-
+            return loc.includes("/job/");
         }
-    
-        const subfolderCounts = {};
-        let ajdJobsIncluded = 0;
-        let regularJobsIncluded = 0;
-    
-        const isJobPage = (loc) => {
-    
-            if (careerSitePagesLang === "de") {
 
-                return loc.includes("/stellenbeschreibung/");
+    };
 
-            } else if (careerSitePagesLang === "fr") {
+    const checkAjdInput = async (loc) => {
+        try {
+            const response = await fetch(loc);
+            const html = await response.text();
+            const dom = new DOMParser().parseFromString(html, "text/html");
+            return dom.querySelector("input#ajdType") !== null;
+        } catch (e) {
+            return false;
+        }
+    };
 
-                return loc.includes("/emploi/");
+    for (const url of urlElements) {
 
-            } else if (careerSitePagesLang === "pt-br") {
+        const loc = url.querySelector("loc").textContent;
+        const pathParts = new URL(loc).pathname.split("/").filter(Boolean);
+        const subfolder = `/${pathParts[0]}/`;
 
-                return loc.includes("/vaga/");
+        // Special handling for missing /job-location/ path
+        if (loc.includes(jobLocationPath)) {
+            if (jobLocationUrls.length < 5) {
+                jobLocationUrls.push(loc);
+            }
+            continue;
+        }
+
+        if (!subfolderPageLists[subfolder]) {
+            subfolderPageLists[subfolder] = [];
+        }
+
+        if (subfolderPageLists[subfolder].length < 20) {
+            subfolderPageLists[subfolder].push(loc);
+        }
+
+    }
+
+    // Traverse each subfolder’s first 20 pages (now stored in subfolderPageLists)
+    for (const subfolder in subfolderPageLists) {
+
+        let subfolderRegularIncluded = 0;
+        let subfolderAjdIncluded = 0;
+
+        for (const loc of subfolderPageLists[subfolder]) {
+
+            if (isJobPage(loc)) {
+
+                const hasAjd = await checkAjdInput(loc);
+
+                if (hasAjd && subfolderAjdIncluded < 2) {
+                    subfolderAjdIncluded++;
+                    urls.push({ loc, ajd: true });
+                } else if (!hasAjd && subfolderRegularIncluded < 2) {
+                    subfolderRegularIncluded++;
+                    urls.push({ loc });
+                }
 
             } else {
 
-                return loc.includes("/job/");
+                subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
 
-            }
-
-        };
-    
-        const checkAjdInput = async (loc) => {
-
-            try {
-
-                const response = await fetch(loc);
-                const html = await response.text();
-                const dom = new DOMParser().parseFromString(html, "text/html");
-                return dom.querySelector("input#ajdType") !== null;
-
-            } catch (e) {
-
-                return false;
-
-            }
-        };
-    
-        const urlElements = Array.from(urlset.children);
-
-        // Determine subfolder from current page
-
-        const currentPath = window.location.pathname;
-        const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
-        const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
-
-        // Adjust the first <loc> if needed
-
-        if (
-            
-            urlElements.length &&
-            urlElements[0].querySelector("loc") &&
-            urlElements[0].querySelector("loc").textContent === window.location.origin &&
-            subfolderPrefix
-
-        ) {
-    
-            // Replace root URL with subfolder URL
-    
-            urlElements[0].querySelector("loc").textContent = expectedPrefix;
-
-        }
-
-        // Now map over the updated elements
-
-        const promises = urlElements.map(async (url) => {
-
-            const loc = url.querySelector("loc").textContent;
-
-            let found = false;
-    
-            for (const subfolder of allowedSubfolders) {
-
-                if (loc.includes(subfolder)) {
-
-                    found = true;
-    
-                    if (isJobPage(loc)) {
-                        
-                        const hasAjd = await checkAjdInput(loc);
-    
-                        if (hasAjd && ajdJobsIncluded < 2) {
-
-                            ajdJobsIncluded++;
-                            urls.push({ loc, ajd: true });
-
-                        } else if (!hasAjd && regularJobsIncluded < 2) {
-
-                            regularJobsIncluded++;
-                            urls.push({ loc });
-
-                        }
-    
-                        break;
-
-                    } else {
-
-                        subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
-
-                        if (subfolderCounts[subfolder] <= 2) {
-
-                            urls.push({ loc });
-
-                        }
-
-                        break;
-
-                    }
-
+                if (subfolderCounts[subfolder] <= 2) {
+                    urls.push({ loc });
                 }
 
             }
-    
-            if (!found) {
 
-                urls.push({ loc });
-
+            if (subfolderAjdIncluded + subfolderRegularIncluded >= 2 && subfolderCounts[subfolder] >= 2) {
+                break;
             }
 
-        });
-    
-        await Promise.all(promises);
-        return urls;
+        }
 
-    };
+    }
+
+    // Now handle missing /job-location/ pages (not in sitemap)
+    let jobLocAdded = 0;
+    let jobLocAjdAdded = 0;
+
+    for (const loc of jobLocationUrls) {
+
+        if (isJobPage(loc)) {
+            const hasAjd = await checkAjdInput(loc);
+            if (hasAjd && jobLocAjdAdded < 2) {
+                urls.push({ loc, ajd: true });
+                jobLocAjdAdded++;
+            } else if (!hasAjd && jobLocAdded < 2) {
+                urls.push({ loc });
+                jobLocAdded++;
+            }
+        } else if (jobLocAdded < 2) {
+            urls.push({ loc });
+            jobLocAdded++;
+        }
+
+        if (jobLocAjdAdded + jobLocAdded >= 2) break;
+
+    }
+
+    return urls;
+
+};
+
     
     // Function to process the sitemap
 
