@@ -102,13 +102,9 @@
     
         const urlElements = Array.from(urlset.children);
 
-        // Determine subfolder from current page
-
         const currentPath = window.location.pathname;
         const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
         const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
-
-        // Adjust the first <loc> if needed
 
         if (
             
@@ -119,13 +115,9 @@
 
         ) {
     
-            // Replace root URL with subfolder URL
-    
             urlElements[0].querySelector("loc").textContent = expectedPrefix;
 
         }
-
-        // Now map over the updated elements
 
         const promises = urlElements.map(async (url) => {
 
@@ -188,8 +180,6 @@
 
     };
     
-    // Function to process the sitemap
-
     const processSitemap = (sitemap) => {
 
         sitemap = sitemap.documentElement;
@@ -207,8 +197,6 @@
         }
 
     };
-
-    // Function to retrieve the title of a webpage given its URL
 
     const getPageTitle = async (urlObj) => {
 
@@ -233,12 +221,8 @@
 
             if (isCmsContent) title += " (CMS Content)";
     
-            // Check for elements with "slick" in class
-
             const hasSlick = !!dom.querySelector('[class*="slick"]') || !!dom.querySelector('[class*="slide"]');
             urlObj.hasSlick = hasSlick;
-
-            // Check for Tabcordion
 
             const hasTabcordion = !!dom.querySelector('[class*="tab-accordion"]') || !!dom.querySelector('[class*="tabcordion"]');
             urlObj.hasTabcordion = hasTabcordion;
@@ -281,7 +265,6 @@
             statusList.prepend(li);
     
             urlObj.hasSlick = false;
-
             urlObj.hasTabcordion = false;
     
             return "Title not found";
@@ -289,35 +272,59 @@
         }
 
     };
-    
-    // Function to convert sitemap to array of objects
 
+    const runWithConcurrency = async (tasks, limit = 5) => {
+
+        const results = [];
+        const executing = [];
+
+        for (const task of tasks) {
+            const p = task().then(result => {
+                executing.splice(executing.indexOf(p), 1);
+                return result;
+            });
+            results.push(p);
+            executing.push(p);
+            if (executing.length >= limit) {
+                await Promise.race(executing);
+            }
+        }
+
+        return Promise.all(results);
+
+    };
+    
     const convertSitemapToArray = async (url) => {
 
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
 
         const generateRandomID = () => Math.floor(100000 + Math.random() * 900000);
-
         const usedIDs = new Set();
-        
-        for (const url of urls) {
 
-            let randomID;
+        await runWithConcurrency(
 
-            do {
-                
-                randomID = generateRandomID();
-            
-            } while (usedIDs.has(randomID));
-        
-            usedIDs.add(randomID);
-            url.id = randomID;
-            url.title = await getPageTitle(url);
-        
-        }
-        
+            urls.map((url) => async () => {
+
+                let randomID;
+
+                do {
+                    randomID = generateRandomID();
+
+                } while (usedIDs.has(randomID));
+
+                usedIDs.add(randomID);
+                url.id = randomID;
+                url.title = await getPageTitle(url);
+
+            }),
+
+            5
+
+        );
+
         return urls;
+
     };
 
     const makeCsv = (data) => {
@@ -333,8 +340,6 @@
         return csv;
 
     };
-
-    // Function to trigger CSV download
 
     const triggerDownload = (csv, file) => {
 
@@ -355,18 +360,8 @@
 
     };
 
-    // Call the functions to convert sitemap to array, convert to CSV, and trigger download
-
-    // Split pathname into segments
-
     const pathSegments = location.pathname.split('/').filter(Boolean);
-
-    // Check if the first segment looks like a language code
-    
     const isLangFolder = /^[a-z]{2}(-[A-Z]{2})?$/.test(pathSegments[0]);
-
-    // Build sitemap URL
-    
     const sitemapUrl = isLangFolder ? `${location.origin}/${pathSegments[0]}/sitemap.xml` : `${location.origin}/sitemap.xml`;
 
     convertSitemapToArray(sitemapUrl).then((data) => {
