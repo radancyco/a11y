@@ -105,20 +105,18 @@ for (const [sub, pages] of Object.entries(subfolderPageLists)) {
         let totalIncluded = 0;
 
         for (const subfolder in subfolderPageLists) {
-            if (totalIncluded >= 20) break;
+    let subfolderIncludedCount = 0;
 
-            let subfolderIncludedCount = 0;
+    for (const loc of subfolderPageLists[subfolder]) {
+        if (subfolderIncludedCount >= 2) break;
 
-            for (const loc of subfolderPageLists[subfolder]) {
-                if (subfolderIncludedCount >= 2) break;
+        const hasAjd = isJobPage(loc) ? await checkAjdInput(loc) : false;
 
-                const hasAjd = isJobPage(loc) ? await checkAjdInput(loc) : false;
+        urls.push({ loc, ajd: hasAjd });
+        subfolderIncludedCount++;
+    }
+}
 
-                urls.push({ loc, ajd: hasAjd });
-                subfolderIncludedCount++;
-                totalIncluded++;
-            }
-        }
 
         // Handle /job-location/ pages
         let jobLocAdded = 0;
