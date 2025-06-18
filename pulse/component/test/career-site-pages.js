@@ -61,8 +61,41 @@
 
         for (const url of urlElements) {
             const loc = url.querySelector("loc").textContent;
-            const pathParts = new URL(loc).pathname.split("/").filter(Boolean);
-            const subfolder = `/${pathParts[0]}/`;
+           
+            try {
+    const pathname = new URL(loc).pathname;
+    const pathParts = pathname.split("/").filter(Boolean);
+
+    if (!pathParts.length) {
+        console.warn("Skipping URL with no subfolder path:", loc);
+        continue;
+    }
+
+    const subfolder = `/${pathParts[0]}/`;
+
+    if (loc.includes(jobLocationPath)) {
+        if (jobLocationUrls.length < 5) {
+            jobLocationUrls.push(loc);
+        }
+        continue;
+    }
+
+    if (!subfolderPageLists[subfolder]) {
+        subfolderPageLists[subfolder] = [];
+    }
+
+    if (subfolderPageLists[subfolder].length < 20) {
+        subfolderPageLists[subfolder].push(loc);
+    }
+
+} catch (e) {
+    console.error("Invalid loc in sitemap:", loc, e);
+    continue;
+}
+
+for (const [sub, pages] of Object.entries(subfolderPageLists)) {
+    console.log(`Subfolder: ${sub} → ${pages.length} pages`);
+}
 
             if (loc.includes(jobLocationPath)) {
                 if (jobLocationUrls.length < 5) {
