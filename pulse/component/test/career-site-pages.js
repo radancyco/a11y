@@ -221,7 +221,7 @@
             const dom = new DOMParser().parseFromString(html, "text/html");
     
             let titleElement = dom.querySelector("title");
-            let paddedID = String(urlObj.id).padStart(3, "0");
+            let paddedID = urlObj.id ? String(urlObj.id).padStart(3, "0") : "000";
             let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title - A11Y${paddedID}`;
             
             urlObj.missingTitle = !titleElement || titleElement.textContent.trim() === "";
@@ -283,7 +283,7 @@
 
             urlObj.hasTabcordion = false;
     
-            return "Title not found";
+            return `Title not found - A11Y${urlObj.id || "000"}`;
 
         }
 
