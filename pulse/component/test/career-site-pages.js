@@ -42,19 +42,19 @@
     
         if (careerSitePagesLang === "de") {
 
-            allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
+            allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/"];
 
         } else if (careerSitePagesLang === "fr") {
 
-            allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+            allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/"];
 
         } else if (careerSitePagesLang === "pt-br") {
 
-            allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
+            allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/"];
 
         } else {
 
-            allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+            allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/"];
 
         }
     
@@ -63,8 +63,24 @@
         let regularJobsIncluded = 0;
     
         const isJobPage = (loc) => {
+    
+            if (careerSitePagesLang === "de") {
 
-            return careerSitePagesLang === "de" ? loc.includes("/berufsfeld/") : loc.includes("/job/");
+                return loc.includes("/stellenbeschreibung/");
+
+            } else if (careerSitePagesLang === "fr") {
+
+                return loc.includes("/emploi/");
+
+            } else if (careerSitePagesLang === "pt-br") {
+
+                return loc.includes("/vaga/");
+
+            } else {
+
+                return loc.includes("/job/");
+
+            }
 
         };
     
