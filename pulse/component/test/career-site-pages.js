@@ -260,7 +260,7 @@ const expandUrlSet = async (urlset) => {
     
             a.appendChild(img);
             li.appendChild(a);
-            li.classList.add = "status-error";
+            li.classList.add("status-error");
             statusList.prepend(li);
     
             urlObj.hasSlick = false;
