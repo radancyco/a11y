@@ -99,29 +99,23 @@ const expandUrlSet = async (urlset) => {
     }
 
 for (const subfolder in subfolderPageLists) {
-    let subfolderRegularIncluded = 0;
-    let subfolderAjdIncluded = 0;
-    let subfolderOtherIncluded = 0;
+    let subfolderIncludedCount = 0;
 
     for (const loc of subfolderPageLists[subfolder]) {
+        if (subfolderIncludedCount >= 2) break;
+
         if (isJobPage(loc)) {
             const hasAjd = await checkAjdInput(loc);
 
-            if (hasAjd && subfolderAjdIncluded < 2) {
-                urls.push({ loc, ajd: true });
-                subfolderAjdIncluded++;
-            } else if (!hasAjd && subfolderRegularIncluded < 2) {
-                urls.push({ loc });
-                subfolderRegularIncluded++;
-            }
-        } else if (subfolderOtherIncluded < 2) {
+            urls.push({ loc, ajd: hasAjd });
+            subfolderIncludedCount++;
+        } else {
             urls.push({ loc });
-            subfolderOtherIncluded++;
+            subfolderIncludedCount++;
         }
-
-        // 🛑 Do NOT break — allow all 20 pages to be checked.
     }
 }
+
 
 
     // Handle /job-location/ pages
