@@ -99,32 +99,33 @@ const expandUrlSet = async (urlset) => {
     }
 
     for (const subfolder in subfolderPageLists) {
+    let subfolderRegularIncluded = 0;
+    let subfolderAjdIncluded = 0;
+    let subfolderOtherIncluded = 0;
 
-        let subfolderRegularIncluded = 0;
-        let subfolderAjdIncluded = 0;
-        let subfolderOtherIncluded = 0;
+    for (const loc of subfolderPageLists[subfolder]) {
+        if (isJobPage(loc)) {
+            const hasAjd = await checkAjdInput(loc);
 
-        for (const loc of subfolderPageLists[subfolder]) {
-
-            if (isJobPage(loc)) {
-                const hasAjd = await checkAjdInput(loc);
-                if (hasAjd && subfolderAjdIncluded < 2) {
-                    urls.push({ loc, ajd: true });
-                    subfolderAjdIncluded++;
-                } else if (!hasAjd && subfolderRegularIncluded < 2) {
-                    urls.push({ loc });
-                    subfolderRegularIncluded++;
-                }
-            } else if (subfolderOtherIncluded < 2) {
+            if (hasAjd && subfolderAjdIncluded < 2) {
+                urls.push({ loc, ajd: true });
+                subfolderAjdIncluded++;
+            } else if (!hasAjd && subfolderRegularIncluded < 2) {
                 urls.push({ loc });
-                subfolderOtherIncluded++;
+                subfolderRegularIncluded++;
             }
+        } else if (subfolderOtherIncluded < 2) {
+            urls.push({ loc });
+            subfolderOtherIncluded++;
+        }
 
-            if ((subfolderAjdIncluded + subfolderRegularIncluded + subfolderOtherIncluded) >= 2) {
-                break;
-            }
+        // Updated break condition
+        if ((subfolderAjdIncluded + subfolderRegularIncluded) >= 2 && subfolderOtherIncluded >= 2) {
+            break;
         }
     }
+}
+
 
     // Handle /job-location/ pages
     let jobLocAdded = 0;
