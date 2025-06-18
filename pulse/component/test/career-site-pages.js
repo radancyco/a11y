@@ -97,20 +97,7 @@ for (const [sub, pages] of Object.entries(subfolderPageLists)) {
     console.log(`Subfolder: ${sub} → ${pages.length} pages`);
 }
 
-            if (loc.includes(jobLocationPath)) {
-                if (jobLocationUrls.length < 5) {
-                    jobLocationUrls.push(loc);
-                }
-                continue;
-            }
-
-            if (!subfolderPageLists[subfolder]) {
-                subfolderPageLists[subfolder] = [];
-            }
-
-            if (subfolderPageLists[subfolder].length < 20) {
-                subfolderPageLists[subfolder].push(loc);
-            }
+          
         }
 
         console.log("DEBUG: Subfolders found:", Object.keys(subfolderPageLists));
