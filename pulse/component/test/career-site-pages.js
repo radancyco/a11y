@@ -6,11 +6,15 @@
     const shadowContainer = shadowHost.shadowRoot;
     const ul = document.createElement("ul");
     const statusContainer = shadowContainer.querySelector(".status-container--career-site-pages");
+
     statusContainer.appendChild(ul);
+
     const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
     const careerSitePages = document.getElementById("career-site-pages");
     const careerSitePagesLang = careerSitePages.getAttribute("data-lang");
+    
+    statusMessage.textContent = "Loading. Please be patient. Maybe go make a sandwhich.";
 
     const loadSitemap = async (url) => {
 
@@ -68,14 +72,7 @@
         const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
         const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
 
-        if (
-
-            urlElements.length &&
-            urlElements[0].querySelector("loc") &&
-            urlElements[0].querySelector("loc").textContent === window.location.origin &&
-            subfolderPrefix
-
-        ) {
+        if (urlElements.length && urlElements[0].querySelector("loc") && urlElements[0].querySelector("loc").textContent === window.location.origin && subfolderPrefix) {
 
             urlElements[0].querySelector("loc").textContent = expectedPrefix;
 
@@ -207,6 +204,12 @@
             const a = document.createElement("a");
             const img = document.createElement("img");
 
+            if (statusList.children.length === 0) {
+
+                statusMessage.textContent = "";
+        
+            }
+
             a.href = url;
             a.textContent = url;
             a.target = "_blank";
@@ -215,6 +218,7 @@
 
             a.appendChild(img);
             li.appendChild(a);
+        
             statusList.prepend(li);
 
             return title;
@@ -224,6 +228,12 @@
             const li = document.createElement("li");
             const a = document.createElement("a");
             const img = document.createElement("img");
+
+            if (statusList.children.length === 0) {
+
+                statusMessage.textContent = "";
+        
+            }
 
             a.href = url;
             a.textContent = "Error retrieving: " + url;
