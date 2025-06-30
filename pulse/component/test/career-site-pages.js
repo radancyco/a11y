@@ -1,10 +1,6 @@
 (() => {
-  "use strict";
 
-  // === CONFIGURABLE LIMITS ===
-  const maxAjdJobs = 5;
-  const maxRegularJobs = 10;
-  const maxPerSubfolder = 5;
+  "use strict";
 
   const shadowHost = document.querySelector("a11y-pulse-component");
   const shadowContainer = shadowHost.shadowRoot;
@@ -16,18 +12,15 @@
   const careerSitePages = document.getElementById("career-site-pages");
   const careerSitePagesLang = careerSitePages.getAttribute("data-lang");
 
-  // Load sitemap
   const loadSitemap = async (url) => {
     const response = await fetch(url);
     const text = await response.text();
-    return new DOMParser().parseFromString(text, "text/xml");
+    return (new DOMParser()).parseFromString(text, "text/xml");
   };
 
-  // Check if page has AJD input
   const checkAjdInput = async (loc) => {
     try {
       const response = await fetch(loc);
-      if (!response.ok) return false;
       const html = await response.text();
       const dom = new DOMParser().parseFromString(html, "text/html");
       return dom.querySelector("input#ajdType") !== null;
@@ -36,23 +29,18 @@
     }
   };
 
-  // Expand sitemap
   const expandUrlSet = async (urlset) => {
+
     const urls = [];
     const subfolderCounts = {};
     let ajdJobsIncluded = 0;
     let regularJobsIncluded = 0;
 
     const allowedSubfolders = (() => {
-      if (careerSitePagesLang === "de") {
-        return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
-      } else if (careerSitePagesLang === "fr") {
-        return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
-      } else if (careerSitePagesLang === "pt-br") {
-        return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
-      } else {
-        return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
-      }
+      if (careerSitePagesLang === "de") return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
+      if (careerSitePagesLang === "fr") return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+      if (careerSitePagesLang === "pt-br") return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
+      return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
     })();
 
     const isJobPage = (loc) => {
@@ -62,46 +50,69 @@
       return loc.includes("/job/");
     };
 
-    const urlElements = Array.from(urlset.getElementsByTagName("url"));
+    const urlElements = Array.from(urlset.children);
+    const currentPath = window.location.pathname;
+    const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
+    const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
 
-    const promises = urlElements.map(async (urlNode) => {
-      const loc = urlNode.querySelector("loc").textContent;
+    if (urlElements.length &&
+      urlElements[0].querySelector("loc") &&
+      urlElements[0].querySelector("loc").textContent === window.location.origin &&
+      subfolderPrefix
+    ) {
+      urlElements[0].querySelector("loc").textContent = expectedPrefix;
+    }
 
-      if (isJobPage(loc)) {
-        const hasAjd = await checkAjdInput(loc);
-        if (hasAjd && ajdJobsIncluded < maxAjdJobs) {
-          ajdJobsIncluded++;
-          urls.push({ loc, ajd: true });
-        } else if (!hasAjd && regularJobsIncluded < maxRegularJobs) {
-          regularJobsIncluded++;
-          urls.push({ loc });
-        }
-      } else {
-        const matchedFolder = allowedSubfolders.find((sub) => loc.includes(sub));
-        if (matchedFolder) {
-          subfolderCounts[matchedFolder] = (subfolderCounts[matchedFolder] || 0) + 1;
-          if (subfolderCounts[matchedFolder] <= maxPerSubfolder) {
-            urls.push({ loc });
+    const jobPageChecks = [];
+
+    for (const url of urlElements) {
+      const loc = url.querySelector("loc").textContent;
+      let found = false;
+
+      for (const subfolder of allowedSubfolders) {
+        if (loc.includes(subfolder)) {
+          found = true;
+
+          if (isJobPage(loc)) {
+            // Delay check for AJD to after URL collection
+            jobPageChecks.push({ loc });
+          } else {
+            subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
+            if (subfolderCounts[subfolder] <= 2) {
+              urls.push({ loc });
+            }
           }
+          break;
         }
       }
-    });
 
-    await Promise.all(promises);
+      if (!found) {
+        urls.push({ loc });
+      }
+    }
+
+    // Process job pages separately with async AJD check AFTER initial collection
+    for (const job of jobPageChecks) {
+      const hasAjd = await checkAjdInput(job.loc);
+
+      if (hasAjd && ajdJobsIncluded < 2) {
+        ajdJobsIncluded++;
+        urls.push({ loc: job.loc, ajd: true });
+      } else if (!hasAjd && regularJobsIncluded < 2) {
+        regularJobsIncluded++;
+        urls.push({ loc: job.loc });
+      }
+    }
+
     return urls;
   };
 
-  // Process sitemap
   const processSitemap = (sitemap) => {
     sitemap = sitemap.documentElement;
-    if (sitemap.tagName === "urlset") {
-      return expandUrlSet(sitemap);
-    }
-    return Promise.resolve([]);
+    return sitemap.tagName === "urlset" ? expandUrlSet(sitemap) : Promise.resolve([]);
   };
 
-  // Get page title
-  const getPageTitle = async (urlObj) => {
+  const getPageInsights = async (urlObj) => {
     const url = urlObj.loc;
     const isAjd = urlObj.ajd;
 
@@ -109,16 +120,17 @@
       const response = await fetch(url);
       const html = await response.text();
       const dom = new DOMParser().parseFromString(html, "text/html");
+
       const titleElement = dom.querySelector("title");
       const paddedID = String(urlObj.id).padStart(3, "0");
-      const title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title - A11Y${paddedID}`;
-
+      let title = titleElement && titleElement.textContent.trim() ? titleElement.textContent.trim() : `No Page Title - A11Y${paddedID}`;
       urlObj.missingTitle = !titleElement || titleElement.textContent.trim() === "";
-      urlObj.title = isAjd ? `${title} (AJD)` : title;
 
+      if (isAjd) title += " (AJD)";
       const isCmsContent = dom.querySelector('meta[name="career-site-page-type"][content="ContentPage-CMS"]');
-      if (isCmsContent) urlObj.title += " (CMS Content)";
+      if (isCmsContent) title += " (CMS Content)";
 
+      urlObj.title = title;
       urlObj.hasSlick = !!dom.querySelector('[class*="slick"]') || !!dom.querySelector('[class*="slide"]');
       urlObj.hasTabcordion = !!dom.querySelector('[class*="tab-accordion"]') || !!dom.querySelector('[class*="tabcordion"]');
 
@@ -129,7 +141,6 @@
       a.href = url;
       a.textContent = url;
       a.target = "_blank";
-
       img.src = "https://radancy.dev/a11y/pulse/component/img/new-tab.png";
       img.alt = "(Opens in new window)";
 
@@ -137,7 +148,7 @@
       li.appendChild(a);
       statusList.prepend(li);
 
-      return urlObj.title;
+      return title;
     } catch {
       const li = document.createElement("li");
       const a = document.createElement("a");
@@ -146,7 +157,6 @@
       a.href = url;
       a.textContent = "Error retrieving: " + url;
       a.target = "_blank";
-
       img.src = "https://radancy.dev/a11y/pulse/img/new-tab.png";
       img.alt = "(Opens in new window)";
 
@@ -155,16 +165,15 @@
       li.classList.add = "status-error";
       statusList.prepend(li);
 
+      urlObj.title = `Title not found - A11Y${urlObj.id}`;
       urlObj.hasSlick = false;
       urlObj.hasTabcordion = false;
       urlObj.missingTitle = true;
-      urlObj.title = `Title not found - A11Y${urlObj.id || "000"}`;
 
       return urlObj.title;
     }
   };
 
-  // Convert sitemap to array
   const convertSitemapToArray = async (url) => {
     const sitemap = await loadSitemap(url);
     const urls = await processSitemap(sitemap);
@@ -172,31 +181,33 @@
     const generateRandomID = () => Math.floor(100000 + Math.random() * 900000);
     const usedIDs = new Set();
 
-    for (const url of urls) {
+    urls.forEach((url) => {
       let randomID;
       do {
         randomID = generateRandomID();
       } while (usedIDs.has(randomID));
       usedIDs.add(randomID);
       url.id = randomID;
-      await getPageTitle(url);
-    }
+    });
 
     return urls;
   };
 
-  // Make CSV
+  const enrichUrlsWithInsights = async (urls) => {
+    for (const url of urls) {
+      await getPageInsights(url);
+    }
+    return urls;
+  };
+
   const makeCsv = (data) => {
     let csv = "ID, Title, URL, Heading Validation, WAVE Validation, Slick, Tabcordion, Heading Issue, Missing Page Title, W3C Validation\n";
-
     data.forEach((row) => {
       csv += `"A11Y${row.id}","${row.title}","${row.loc}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}"," ","${row.missingTitle ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
     });
-
     return csv;
   };
 
-  // Trigger CSV download
   const triggerDownload = (csv, file) => {
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
@@ -208,20 +219,23 @@
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
     URL.revokeObjectURL(url);
   };
 
-  // Run it
-  const pathSegments = location.pathname.split("/").filter(Boolean);
+  const pathSegments = location.pathname.split('/').filter(Boolean);
   const isLangFolder = /^[a-z]{2}(-[A-Z]{2})?$/.test(pathSegments[0]);
   const sitemapUrl = isLangFolder ? `${location.origin}/${pathSegments[0]}/sitemap.xml` : `${location.origin}/sitemap.xml`;
 
   convertSitemapToArray(sitemapUrl).then((data) => {
+    return enrichUrlsWithInsights(data);
+  }).then((data) => {
     const csv = makeCsv(data);
-    const domain = location.hostname.replace(/\./g, "-");
+    const domain = location.hostname.replace(/\./g, '-');
     const file = `${domain}-pages.csv`;
 
     triggerDownload(csv, file);
     statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
   });
+
 })();
