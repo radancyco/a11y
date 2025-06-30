@@ -11,10 +11,11 @@
 
     const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
+    const statusContainerMsg = shadowContainer.querySelector(".status-container__msg");
     const careerSitePages = document.getElementById("career-site-pages");
     const careerSitePagesLang = careerSitePages.getAttribute("data-lang");
     
-    statusContainer.textContent = "Loading. Please be patient. Maybe go make a sandwhich.";
+    statusContainerMsg.textContent = "Loading. Please be patient. Maybe go make a sandwhich.";
 
     const loadSitemap = async (url) => {
 
@@ -206,7 +207,7 @@
 
             if (statusList.children.length === 0) {
 
-                statusContainer.textContent = "";
+                statusContainerMsg.textContent = "";
         
             }
 
@@ -231,7 +232,7 @@
 
             if (statusContainer.children.length === 0) {
 
-                statusMessage.textContent = "";
+                statusContainerMsg.textContent = "";
         
             }
 
