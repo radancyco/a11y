@@ -24,76 +24,57 @@
     }
   };
 
-  const expandUrlSet = async (urlset) => {
-    const urls = [];
+const expandUrlSet = async (urlset) => {
+  const urls = [];
 
-    let allowedSubfolders;
-
-    if (careerSitePagesLang === "de") {
-      allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
-    } else if (careerSitePagesLang === "fr") {
-      allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
-    } else if (careerSitePagesLang === "pt-br") {
-      allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
-    } else {
-      allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
-    }
-
-    const subfolderCounts = {};
-    const maxPerSubfolder = 10;
-
-    const urlElements = Array.from(urlset.getElementsByTagName("url"));
-
-    const bucket = (loc) => {
-      const path = new URL(loc).pathname;
-      const firstPart = path.split("/").filter(Boolean)[0];
-      return firstPart ? firstPart : "_root";
-    };
-
-   const checkAjdInput = async (loc) => {
-  try {
-    const response = await fetch(loc);
-    if (!response.ok) {
-      console.warn(`Skipped (AJD check) ${loc} — HTTP ${response.status}`);
-      return false;
-    }
-    const html = await response.text();
-    const dom = new DOMParser().parseFromString(html, "text/html");
-    return dom.querySelector("input#ajdType") !== null;
-  } catch (e) {
-    console.warn(`Skipped (AJD check) ${loc} — Fetch error`);
-    return false;
+  let allowedSubfolders;
+  if (careerSitePagesLang === "de") {
+    allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
+  } else if (careerSitePagesLang === "fr") {
+    allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+  } else if (careerSitePagesLang === "pt-br") {
+    allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
+  } else {
+    allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
   }
+
+  const subfolderCounts = {};
+
+  const urlElements = Array.from(urlset.children);
+
+  const promises = urlElements.map(async (url) => {
+    const loc = url.querySelector("loc").textContent;
+    let matchedSubfolder = allowedSubfolders.find((sub) => loc.includes(sub));
+
+    // If not in known subfolders, bucket as "_other"
+    const bucket = matchedSubfolder || "_other";
+    subfolderCounts[bucket] = (subfolderCounts[bucket] || 0);
+
+    if (subfolderCounts[bucket] >= 10) {
+      return; // Skip this page — bucket full
+    }
+
+    const isJob = matchedSubfolder && (
+      (careerSitePagesLang === "de" && matchedSubfolder === "/stellenbeschreibung/") ||
+      (careerSitePagesLang === "fr" && matchedSubfolder === "/emploi/") ||
+      (careerSitePagesLang === "pt-br" && matchedSubfolder === "/vaga/") ||
+      (careerSitePagesLang !== "de" && careerSitePagesLang !== "fr" && careerSitePagesLang !== "pt-br" && matchedSubfolder === "/job/")
+    );
+
+    if (isJob) {
+      const hasAjd = await checkAjdInput(loc);
+      urls.push({ loc, ajd: hasAjd });
+    } else {
+      urls.push({ loc });
+    }
+
+    subfolderCounts[bucket]++;
+  });
+
+  await Promise.all(promises);
+  return urls;
 };
 
-
-    const promises = urlElements.map(async (urlNode) => {
-      const loc = urlNode.querySelector("loc").textContent;
-      const folder = bucket(loc);
-
-      if (!subfolderCounts[folder]) subfolderCounts[folder] = 0;
-
-      if (subfolderCounts[folder] >= maxPerSubfolder) return;
-
-      const isJobPage =
-        loc.includes("/stellenbeschreibung/") ||
-        loc.includes("/emploi/") ||
-        loc.includes("/vaga/") ||
-        loc.includes("/job/");
-
-      if (isJobPage) {
-        const hasAjd = await checkAjdInput(loc);
-        urls.push({ loc, ajd: hasAjd });
-      } else {
-        urls.push({ loc });
-      }
-
-      subfolderCounts[folder]++;
-    });
-
-    await Promise.all(promises);
-    return urls;
-  };
 
   const processSitemap = (sitemap) => {
     sitemap = sitemap.documentElement;
