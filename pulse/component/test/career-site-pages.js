@@ -139,9 +139,7 @@
 
             const titleElement = dom.querySelector("title");
             const paddedID = String(urlObj.id).padStart(3, "0");
-            const title = titleElement && titleElement.textContent.trim() !== ""
-                ? titleElement.textContent
-                : `No Page Title - A11Y${paddedID}`;
+            let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent: `No Page Title - A11Y${paddedID}`;
 
             urlObj.missingTitle = !titleElement || titleElement.textContent.trim() === "";
 
