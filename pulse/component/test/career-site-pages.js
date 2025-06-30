@@ -27,39 +27,57 @@
 const expandUrlSet = async (urlset) => {
   const urls = [];
 
-  let allowedSubfolders;
-  if (careerSitePagesLang === "de") {
-    allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
-  } else if (careerSitePagesLang === "fr") {
-    allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
-  } else if (careerSitePagesLang === "pt-br") {
-    allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
-  } else {
-    allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
-  }
+  const allowedSubfolders = (() => {
+    if (careerSitePagesLang === "de") {
+      return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
+    } else if (careerSitePagesLang === "fr") {
+      return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+    } else if (careerSitePagesLang === "pt-br") {
+      return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
+    } else {
+      return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+    }
+  })();
 
   const subfolderCounts = {};
+  const maxPerSubfolder = 10;
 
-  const urlElements = Array.from(urlset.children);
+  const checkAjdInput = async (loc) => {
+    try {
+      const response = await fetch(loc);
+      if (!response.ok) {
+        console.warn(`Skipped (AJD check) ${loc} — HTTP ${response.status}`);
+        return false;
+      }
+      const html = await response.text();
+      const dom = new DOMParser().parseFromString(html, "text/html");
+      return dom.querySelector("input#ajdType") !== null;
+    } catch (e) {
+      console.warn(`Skipped (AJD check) ${loc} — Fetch error`);
+      return false;
+    }
+  };
 
-  const promises = urlElements.map(async (url) => {
-    const loc = url.querySelector("loc").textContent;
-    let matchedSubfolder = allowedSubfolders.find((sub) => loc.includes(sub));
+  const urlElements = Array.from(urlset.getElementsByTagName("url"));
 
-    // If not in known subfolders, bucket as "_other"
-    const bucket = matchedSubfolder || "_other";
-    subfolderCounts[bucket] = (subfolderCounts[bucket] || 0);
+  const promises = urlElements.map(async (urlNode) => {
+    const loc = urlNode.querySelector("loc").textContent;
 
-    if (subfolderCounts[bucket] >= 10) {
-      return; // Skip this page — bucket full
+    const matchedSubfolder = allowedSubfolders.find((sub) => loc.includes(sub)) || "_other";
+    subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0);
+
+    if (subfolderCounts[matchedSubfolder] >= maxPerSubfolder) {
+      return; // Skip — already hit limit
     }
 
-    const isJob = matchedSubfolder && (
-      (careerSitePagesLang === "de" && matchedSubfolder === "/stellenbeschreibung/") ||
-      (careerSitePagesLang === "fr" && matchedSubfolder === "/emploi/") ||
-      (careerSitePagesLang === "pt-br" && matchedSubfolder === "/vaga/") ||
-      (careerSitePagesLang !== "de" && careerSitePagesLang !== "fr" && careerSitePagesLang !== "pt-br" && matchedSubfolder === "/job/")
-    );
+    const isJob =
+      matchedSubfolder &&
+      (
+        (careerSitePagesLang === "de" && matchedSubfolder === "/stellenbeschreibung/") ||
+        (careerSitePagesLang === "fr" && matchedSubfolder === "/emploi/") ||
+        (careerSitePagesLang === "pt-br" && matchedSubfolder === "/vaga/") ||
+        (careerSitePagesLang !== "de" && careerSitePagesLang !== "fr" && careerSitePagesLang !== "pt-br" && matchedSubfolder === "/job/")
+      );
 
     if (isJob) {
       const hasAjd = await checkAjdInput(loc);
@@ -68,7 +86,7 @@ const expandUrlSet = async (urlset) => {
       urls.push({ loc });
     }
 
-    subfolderCounts[bucket]++;
+    subfolderCounts[matchedSubfolder]++;
   });
 
   await Promise.all(promises);
