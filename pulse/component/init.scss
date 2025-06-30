@@ -630,10 +630,13 @@ z-index: 2147483647;
   padding: 1em;
   @extend %scrollbar;
   
-    &:empty {
+    &:empty, ul:empty {
     display: none;
     }
 
+    &__msg {
+    color: var(--primary-color);
+    }
 
   }
 

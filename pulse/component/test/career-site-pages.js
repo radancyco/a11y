@@ -15,7 +15,7 @@
     const careerSitePages = document.getElementById("career-site-pages");
     const careerSitePagesLang = careerSitePages.getAttribute("data-lang");
     
-    statusContainerMsg.textContent = "Loading. Please be patient. Maybe go make a sandwhich.";
+    statusContainerMsg.textContent = "Loading. Please be pateint. Go make a sandwich. Actually, make me one too.";
 
     const loadSitemap = async (url) => {
 
