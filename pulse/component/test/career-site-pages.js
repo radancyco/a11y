@@ -13,57 +13,29 @@
     const careerSitePagesLang = careerSitePages.getAttribute("data-lang");
 
     const loadSitemap = async (url) => {
-
         const response = await fetch(url);
         const text = await response.text();
         return (new DOMParser()).parseFromString(text, "text/xml");
-
-    };
-
-    const checkAjdInput = async (loc) => {
-
-        try {
-
-            const response = await fetch(loc);
-            const html = await response.text();
-            const dom = new DOMParser().parseFromString(html, "text/html");
-            return dom.querySelector("input#ajdType") !== null;
-
-        } catch {
-
-            return false;
-
-        }
-
     };
 
     const expandUrlSet = async (urlset) => {
 
         const urls = [];
         const subfolderCounts = {};
-
-        let ajdJobsIncluded = 0;
-        let regularJobsIncluded = 0;
+        const jobPageCandidates = [];
 
         const allowedSubfolders = (() => {
-
             if (careerSitePagesLang === "de") return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
-
             if (careerSitePagesLang === "fr") return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
-
             if (careerSitePagesLang === "pt-br") return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
-
             return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
-
         })();
 
         const isJobPage = (loc) => {
-
             if (careerSitePagesLang === "de") return loc.includes("/stellenbeschreibung/");
             if (careerSitePagesLang === "fr") return loc.includes("/emploi/");
             if (careerSitePagesLang === "pt-br") return loc.includes("/vaga/");
             return loc.includes("/job/");
-
         };
 
         const urlElements = Array.from(urlset.children);
@@ -72,118 +44,93 @@
         const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
 
         if (urlElements.length &&
-
-            urlElements[0].querySelector("loc") && urlElements[0].querySelector("loc").textContent === window.location.origin && subfolderPrefix
-
-        ) {
-
+            urlElements[0].querySelector("loc") &&
+            urlElements[0].querySelector("loc").textContent === window.location.origin &&
+            subfolderPrefix) {
             urlElements[0].querySelector("loc").textContent = expectedPrefix;
-
         }
 
-        const jobPageChecks = [];
-
         for (const url of urlElements) {
-
             const loc = url.querySelector("loc").textContent;
-
             let found = false;
 
             for (const subfolder of allowedSubfolders) {
-
                 if (loc.includes(subfolder)) {
-
                     found = true;
 
                     if (isJobPage(loc)) {
-
-                        // Delay check for AJD to after URL collection
-
-                        jobPageChecks.push({ loc });
-
+                        jobPageCandidates.push({ loc });
                     } else {
-
                         subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
-
                         if (subfolderCounts[subfolder] <= 2) {
-
                             urls.push({ loc });
-
                         }
-
                     }
-
                     break;
-
                 }
-
             }
 
             if (!found) {
-
                 urls.push({ loc });
-
             }
-
         }
 
-        // Process job pages separately with async AJD check AFTER initial collection
-
-        for (const job of jobPageChecks) {
-
-            const hasAjd = await checkAjdInput(job.loc);
-
-            if (hasAjd && ajdJobsIncluded < 2) {
-
-                ajdJobsIncluded++;
-
-                urls.push({ loc: job.loc, ajd: true });
-
-            } else if (!hasAjd && regularJobsIncluded < 2) {
-
-                regularJobsIncluded++;
-
-                urls.push({ loc: job.loc });
-
-            }
-
-        }
+        // Add job pages (all for now — filtering happens later)
+        urls.push(...jobPageCandidates);
 
         return urls;
-
     };
 
     const processSitemap = (sitemap) => {
-
         sitemap = sitemap.documentElement;
-
         return sitemap.tagName === "urlset" ? expandUrlSet(sitemap) : Promise.resolve([]);
-
     };
 
-    const getPageInsights = async (urlObj) => {
+    const checkAjdInput = async (loc) => {
+        try {
+            const response = await fetch(loc);
+            const html = await response.text();
+            const dom = new DOMParser().parseFromString(html, "text/html");
+            return dom.querySelector("input#ajdType") !== null;
+        } catch {
+            return false;
+        }
+    };
+
+    const getPageInsights = async (urlObj, ajdTracker) => {
 
         const url = urlObj.loc;
-        const isAjd = urlObj.ajd;
 
         try {
-
             const response = await fetch(url);
             const html = await response.text();
             const dom = new DOMParser().parseFromString(html, "text/html");
 
             const titleElement = dom.querySelector("title");
             const paddedID = String(urlObj.id).padStart(3, "0");
-            
             let title = titleElement && titleElement.textContent.trim() ? titleElement.textContent.trim() : `No Page Title - A11Y${paddedID}`;
-
             urlObj.missingTitle = !titleElement || titleElement.textContent.trim() === "";
 
-            if (isAjd) title += " (AJD)";
-
             const isCmsContent = dom.querySelector('meta[name="career-site-page-type"][content="ContentPage-CMS"]');
-
             if (isCmsContent) title += " (CMS Content)";
+
+            const isJobPage = (() => {
+                if (careerSitePagesLang === "de") return url.includes("/stellenbeschreibung/");
+                if (careerSitePagesLang === "fr") return url.includes("/emploi/");
+                if (careerSitePagesLang === "pt-br") return url.includes("/vaga/");
+                return url.includes("/job/");
+            })();
+
+            if (isJobPage) {
+                const hasAjd = dom.querySelector("input#ajdType") !== null;
+                urlObj.ajd = hasAjd;
+
+                if (hasAjd) {
+                    ajdTracker.ajdJobs.push(urlObj);
+                } else {
+                    ajdTracker.regularJobs.push(urlObj);
+                }
+            }
 
             urlObj.title = title;
             urlObj.hasSlick = !!dom.querySelector('[class*="slick"]') || !!dom.querySelector('[class*="slide"]');
@@ -229,13 +176,10 @@
             urlObj.missingTitle = true;
 
             return urlObj.title;
-                
         }
-
     };
 
     const convertSitemapToArray = async (url) => {
-            
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
 
@@ -243,38 +187,39 @@
         const usedIDs = new Set();
 
         urls.forEach((url) => {
-            
             let randomID;
-
             do {
-                    
                 randomID = generateRandomID();
-
-            } while (
-                    
-                usedIDs.has(randomID)
-            
-            );
-            
+            } while (usedIDs.has(randomID));
             usedIDs.add(randomID);
             url.id = randomID;
-                
         });
 
         return urls;
-                
     };
 
     const enrichUrlsWithInsights = async (urls) => {
 
+        const ajdTracker = { ajdJobs: [], regularJobs: [] };
+        const finalUrls = [];
+
         for (const url of urls) {
-
-            await getPageInsights(url);
-
+            await getPageInsights(url, ajdTracker);
         }
 
-        return urls;
+        // Apply 2 AJD and 2 regular job limits
+        finalUrls.push(...ajdTracker.ajdJobs.slice(0, 2));
+        finalUrls.push(...ajdTracker.regularJobs.slice(0, 2));
 
+        // Non-job pages were already added
+        const nonJobPages = urls.filter((u) => {
+            const isJob = u.loc.includes("/job/") || u.loc.includes("/stellenbeschreibung/") || u.loc.includes("/emploi/") || u.loc.includes("/vaga/");
+            return !isJob;
+        });
+
+        finalUrls.push(...nonJobPages);
+
+        return finalUrls;
     };
 
     const makeCsv = (data) => {
@@ -282,30 +227,22 @@
         let csv = "ID, Title, URL, Heading Validation, WAVE Validation, Slick, Tabcordion, Heading Issue, Missing Page Title, W3C Validation\n";
 
         data.forEach((row) => {
-
             csv += `"A11Y${row.id}","${row.title}","${row.loc}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}"," ","${row.missingTitle ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
-
         });
 
         return csv;
-
     };
 
     const triggerDownload = (csv, file) => {
-
         const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
-
         link.href = url;
         link.setAttribute("download", file);
-
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-
         URL.revokeObjectURL(url);
-
     };
 
     const pathSegments = location.pathname.split('/').filter(Boolean);
@@ -313,18 +250,14 @@
     const sitemapUrl = isLangFolder ? `${location.origin}/${pathSegments[0]}/sitemap.xml` : `${location.origin}/sitemap.xml`;
 
     convertSitemapToArray(sitemapUrl).then((data) => {
-
         return enrichUrlsWithInsights(data);
-
     }).then((data) => {
-
         const csv = makeCsv(data);
         const domain = location.hostname.replace(/\./g, '-');
         const file = `${domain}-pages.csv`;
-
         triggerDownload(csv, file);
         statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
-    
     });
 
 })();
+
