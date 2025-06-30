@@ -42,19 +42,19 @@
     
         if (careerSitePagesLang === "de") {
 
-            allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/"];
+            allowedSubfolders = ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
 
         } else if (careerSitePagesLang === "fr") {
 
-            allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/"];
+            allowedSubfolders = ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
 
         } else if (careerSitePagesLang === "pt-br") {
 
-            allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/"];
+            allowedSubfolders = ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
 
         } else {
 
-            allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/"];
+            allowedSubfolders = ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
 
         }
     
@@ -140,6 +140,7 @@
                     found = true;
     
                     if (isJobPage(loc)) {
+                        
                         const hasAjd = await checkAjdInput(loc);
     
                         if (hasAjd && ajdJobsIncluded < 2) {
@@ -221,7 +222,7 @@
             const dom = new DOMParser().parseFromString(html, "text/html");
     
             let titleElement = dom.querySelector("title");
-            let paddedID = urlObj.id ? String(urlObj.id).padStart(3, "0") : "000";
+            let paddedID = String(urlObj.id).padStart(3, "0");
             let title = titleElement && titleElement.textContent.trim() !== "" ? titleElement.textContent : `No Page Title - A11Y${paddedID}`;
             
             urlObj.missingTitle = !titleElement || titleElement.textContent.trim() === "";
@@ -283,7 +284,7 @@
 
             urlObj.hasTabcordion = false;
     
-            return `Title not found - A11Y${urlObj.id || "000"}`;
+            return "Title not found";
 
         }
 
@@ -296,26 +297,11 @@
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
 
-        // Group by subfolder prefix, limit to 20 pages per group
-const subfolderBuckets = {};
-urls.forEach((urlObj) => {
-    const path = new URL(urlObj.loc).pathname;
-    const firstPart = path.split('/').filter(Boolean)[0] || '_root';
-    subfolderBuckets[firstPart] = subfolderBuckets[firstPart] || [];
-    if (subfolderBuckets[firstPart].length < 20) {
-        subfolderBuckets[firstPart].push(urlObj);
-    }
-});
-
-// Flatten back to a single array
-const limitedUrls = Object.values(subfolderBuckets).flat();
-
-
         const generateRandomID = () => Math.floor(100000 + Math.random() * 900000);
 
         const usedIDs = new Set();
         
-        for (const url of limitedUrls) {
+        for (const url of urls) {
 
             let randomID;
 
