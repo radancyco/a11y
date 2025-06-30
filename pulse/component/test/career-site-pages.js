@@ -14,7 +14,7 @@
     const careerSitePages = document.getElementById("career-site-pages");
     const careerSitePagesLang = careerSitePages.getAttribute("data-lang");
     
-    statusMessage.textContent = "Loading. Please be patient. Maybe go make a sandwhich.";
+    statusContainer.textContent = "Loading. Please be patient. Maybe go make a sandwhich.";
 
     const loadSitemap = async (url) => {
 
@@ -31,7 +31,7 @@
             const response = await fetch(loc);
             const html = await response.text();
             const dom = new DOMParser().parseFromString(html, "text/html");
-            return dom.querySelector("input#ajdType") !== null;
+            return dom.querySelector("#ajd-header") !== null;
 
         } catch {
 
@@ -206,7 +206,7 @@
 
             if (statusList.children.length === 0) {
 
-                statusMessage.textContent = "";
+                statusContainer.textContent = "";
         
             }
 
@@ -229,7 +229,7 @@
             const a = document.createElement("a");
             const img = document.createElement("img");
 
-            if (statusList.children.length === 0) {
+            if (statusContainer.children.length === 0) {
 
                 statusMessage.textContent = "";
         
