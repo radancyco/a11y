@@ -37,121 +37,101 @@
 
     };
 
-    const expandUrlSet = async (urlset) => {
+const expandUrlSet = async (urlset) => {
 
-        const urls = [];
-        const subfolderCounts = {};
+    const urls = [];
+    const subfolderCounts = {};
+    const urlElements = Array.from(urlset.children);
 
-        let ajdJobsIncluded = 0;
-        let regularJobsIncluded = 0;
+    let ajdJobsIncluded = 0;
+    let regularJobsIncluded = 0;
 
-        const allowedSubfolders = (() => {
+    const allowedSubfolders = (() => {
+        if (careerSitePagesLang === "de") return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
+        if (careerSitePagesLang === "fr") return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+        if (careerSitePagesLang === "pt-br") return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
+        return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+    })();
 
-            if (careerSitePagesLang === "de") return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
+    const isJobPage = (loc) => {
+        if (careerSitePagesLang === "de") return loc.includes("/stellenbeschreibung/");
+        if (careerSitePagesLang === "fr") return loc.includes("/emploi/");
+        if (careerSitePagesLang === "pt-br") return loc.includes("/vaga/");
+        return loc.includes("/job/");
+    };
 
-            if (careerSitePagesLang === "fr") return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+    const currentPath = window.location.pathname;
+    const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
+    const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
 
-            if (careerSitePagesLang === "pt-br") return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
+    if (
+        urlElements.length &&
+        urlElements[0].querySelector("loc") &&
+        urlElements[0].querySelector("loc").textContent === window.location.origin &&
+        subfolderPrefix
+    ) {
+        urlElements[0].querySelector("loc").textContent = expectedPrefix;
+    }
 
-            return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+    for (const url of urlElements) {
 
-        })();
+        const loc = url.querySelector("loc").textContent;
+        let found = false;
 
-        const isJobPage = (loc) => {
+        for (const subfolder of allowedSubfolders) {
 
-            if (careerSitePagesLang === "de") return loc.includes("/stellenbeschreibung/");
-            if (careerSitePagesLang === "fr") return loc.includes("/emploi/");
-            if (careerSitePagesLang === "pt-br") return loc.includes("/vaga/");
-            return loc.includes("/job/");
+            if (loc.includes(subfolder)) {
+                found = true;
 
-        };
-
-        const urlElements = Array.from(urlset.children);
-        const currentPath = window.location.pathname;
-        const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
-        const expectedPrefix = `${window.location.origin}/${subfolderPrefix}/`;
-
-        if (urlElements.length &&
-
-            urlElements[0].querySelector("loc") && urlElements[0].querySelector("loc").textContent === window.location.origin && subfolderPrefix
-
-        ) {
-
-            urlElements[0].querySelector("loc").textContent = expectedPrefix;
-
-        }
-
-        const jobPageChecks = [];
-
-        for (const url of urlElements) {
-
-            const loc = url.querySelector("loc").textContent;
-
-            let found = false;
-
-            for (const subfolder of allowedSubfolders) {
-
-                if (loc.includes(subfolder)) {
-
-                    found = true;
-
-                    if (isJobPage(loc)) {
-
-                        // Delay check for AJD to after URL collection
-
-                        jobPageChecks.push({ loc });
-
-                    } else {
-
-                        subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
-
-                        if (subfolderCounts[subfolder] <= 2) {
-
-                            urls.push({ loc });
-
-                        }
-
+                if (isJobPage(loc)) {
+                    // Check if job limits are already met
+                    if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) {
+                        // ✅ Skip job checks — limits met
+                        break;
                     }
 
-                    break;
+                    // Fetch page only if limits not met
+                    const hasAjd = await checkAjdInput(loc);
 
+                    if (hasAjd && ajdJobsIncluded < 2) {
+                        ajdJobsIncluded++;
+                        urls.push({ loc, ajd: true });
+                    } else if (!hasAjd && regularJobsIncluded < 2) {
+                        regularJobsIncluded++;
+                        urls.push({ loc });
+                    }
+
+                } else {
+                    subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
+                    if (subfolderCounts[subfolder] <= 2) {
+                        urls.push({ loc });
+                    }
                 }
 
+                break;
             }
-
-            if (!found) {
-
-                urls.push({ loc });
-
-            }
-
         }
 
-        // Process job pages separately with async AJD check AFTER initial collection
-
-        for (const job of jobPageChecks) {
-
-            const hasAjd = await checkAjdInput(job.loc);
-
-            if (hasAjd && ajdJobsIncluded < 2) {
-
-                ajdJobsIncluded++;
-
-                urls.push({ loc: job.loc, ajd: true });
-
-            } else if (!hasAjd && regularJobsIncluded < 2) {
-
-                regularJobsIncluded++;
-
-                urls.push({ loc: job.loc });
-
-            }
-
+        if (!found) {
+            urls.push({ loc });
         }
 
-        return urls;
+        // 🔥 Exit early if all limits are met for jobs and subfolders
+        const allSubfoldersDone = allowedSubfolders.every(
+            (sub) => (subfolderCounts[sub] || 0) >= 2
+        );
+        if (
+            ajdJobsIncluded >= 2 &&
+            regularJobsIncluded >= 2 &&
+            allSubfoldersDone
+        ) {
+            break;
+        }
+    }
 
-    };
+    return urls;
+};
+
 
     const processSitemap = (sitemap) => {
 
