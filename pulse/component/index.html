@@ -631,23 +631,23 @@ id: a11y-smoke-test
                                 <li>{% include_relative /test/career-site-pages.html lang="de" name="German (DE)" %}</li>
                                 <li>{% include_relative /test/career-site-pages.html lang="pt-br" name="Portuguese (PT-BR)" %}</li>
                             </ul>
+
+                            <p class="status-message status-message--career-site-pages"></p>
                             
                             <div class="status-container status-container--career-site-pages">
                                 
                                 <div class="status-container__msg"></div>
                             
                             </div>
-                            
-                            <p class="status-message status-message--career-site-pages"></p>
     
                         </li>
                         <li>
                             
                             {% include_relative /test/career-site-images.html %} - Generates all images and alternative text used across a career site. Please allow up to several minutes to scan.
                         
-                            <div class="status-container status-container--career-site-images"></div>
-                            
                             <p class="status-message status-message--career-site-images"></p>
+                            
+                            <div class="status-container status-container--career-site-images"></div>
                         
                         </li>
                         <li><a href="https://login.pope.tech/login?redirect=/" target="_blank">PopeTech {{ newWindow }}</a> - Automated web accessibility testing tool that scans websites for WCAG compliance issues using the WAVE engine, helping organizations identify and fix accessibility barriers.</li>
