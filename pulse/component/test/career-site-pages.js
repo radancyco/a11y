@@ -20,10 +20,30 @@
 
     };
 
+    const checkAjdInput = async (loc) => {
+
+        try {
+
+            const response = await fetch(loc);
+            const html = await response.text();
+            const dom = new DOMParser().parseFromString(html, "text/html");
+            return dom.querySelector("input#ajdType") !== null;
+
+        } catch {
+
+            return false;
+
+        }
+
+    };
+
     const expandUrlSet = async (urlset) => {
 
         const urls = [];
         const subfolderCounts = {};
+
+        let ajdJobsIncluded = 0;
+        let regularJobsIncluded = 0;
 
         const allowedSubfolders = (() => {
 
@@ -36,6 +56,15 @@
             return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
 
         })();
+
+        const isJobPage = (loc) => {
+
+            if (careerSitePagesLang === "de") return loc.includes("/stellenbeschreibung/");
+            if (careerSitePagesLang === "fr") return loc.includes("/emploi/");
+            if (careerSitePagesLang === "pt-br") return loc.includes("/vaga/");
+            return loc.includes("/job/");
+
+        };
 
         const urlElements = Array.from(urlset.children);
         const currentPath = window.location.pathname;
@@ -52,6 +81,8 @@
 
         }
 
+        const jobPageChecks = [];
+
         for (const url of urlElements) {
 
             const loc = url.querySelector("loc").textContent;
@@ -64,11 +95,21 @@
 
                     found = true;
 
-                    subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
+                    if (isJobPage(loc)) {
 
-                    if (subfolderCounts[subfolder] <= 2) {
+                        // Delay check for AJD to after URL collection
 
-                        urls.push({ loc });
+                        jobPageChecks.push({ loc });
+
+                    } else {
+
+                        subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
+
+                        if (subfolderCounts[subfolder] <= 2) {
+
+                            urls.push({ loc });
+
+                        }
 
                     }
 
@@ -81,6 +122,28 @@
             if (!found) {
 
                 urls.push({ loc });
+
+            }
+
+        }
+
+        // Process job pages separately with async AJD check AFTER initial collection
+
+        for (const job of jobPageChecks) {
+
+            const hasAjd = await checkAjdInput(job.loc);
+
+            if (hasAjd && ajdJobsIncluded < 2) {
+
+                ajdJobsIncluded++;
+
+                urls.push({ loc: job.loc, ajd: true });
+
+            } else if (!hasAjd && regularJobsIncluded < 2) {
+
+                regularJobsIncluded++;
+
+                urls.push({ loc: job.loc });
 
             }
 
@@ -101,6 +164,7 @@
     const getPageInsights = async (urlObj) => {
 
         const url = urlObj.loc;
+        const isAjd = urlObj.ajd;
 
         try {
 
@@ -110,16 +174,15 @@
 
             const titleElement = dom.querySelector("title");
             const paddedID = String(urlObj.id).padStart(3, "0");
-
+            
             let title = titleElement && titleElement.textContent.trim() ? titleElement.textContent.trim() : `No Page Title - A11Y${paddedID}`;
 
             urlObj.missingTitle = !titleElement || titleElement.textContent.trim() === "";
 
-            const hasAjd = dom.querySelector("input#ajdType") !== null;
-            if (hasAjd) title += " (AJD)";
-            urlObj.ajd = hasAjd;
+            if (isAjd) title += " (AJD)";
 
             const isCmsContent = dom.querySelector('meta[name="career-site-page-type"][content="ContentPage-CMS"]');
+
             if (isCmsContent) title += " (CMS Content)";
 
             urlObj.title = title;
@@ -166,13 +229,13 @@
             urlObj.missingTitle = true;
 
             return urlObj.title;
-
+                
         }
 
     };
 
     const convertSitemapToArray = async (url) => {
-
+            
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
 
@@ -180,26 +243,26 @@
         const usedIDs = new Set();
 
         urls.forEach((url) => {
-
+            
             let randomID;
 
             do {
-
+                    
                 randomID = generateRandomID();
 
             } while (
-
+                    
                 usedIDs.has(randomID)
-
+            
             );
-
+            
             usedIDs.add(randomID);
             url.id = randomID;
-
+                
         });
 
         return urls;
-
+                
     };
 
     const enrichUrlsWithInsights = async (urls) => {
@@ -261,7 +324,7 @@
 
         triggerDownload(csv, file);
         statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
-
+    
     });
 
 })();
