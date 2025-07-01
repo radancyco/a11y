@@ -53,10 +53,11 @@
 
         const allowedSubfolders = (() => {
 
-            if (careerSitePagesLang === "de") return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/", "/arbeitsort/"];
-            if (careerSitePagesLang === "fr") return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/", "/lieu-de-travail/"];
+            if (careerSitePagesLang === "de") return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/"];
+            if (careerSitePagesLang === "fr") return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/"];
+            if (careerSitePagesLang === "nl") return ["/categorie/", "/plaats/", "/werk/", "/banen/"];
             if (careerSitePagesLang === "pt-br") return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
-            return ["/job/", "/location/", "/employment/", "/category/", "/business/", "/job-location/"];
+            return ["/job/", "/location/", "/employment/", "/category/", "/business/"];
 
         })();
 
@@ -64,6 +65,7 @@
 
             if (careerSitePagesLang === "de") return loc.includes("/stellenbeschreibung/");
             if (careerSitePagesLang === "fr") return loc.includes("/emploi/");
+            if (careerSitePagesLang === "nl") return loc.includes("/banen/");
             if (careerSitePagesLang === "pt-br") return loc.includes("/vaga/");
             return loc.includes("/job/");
 
