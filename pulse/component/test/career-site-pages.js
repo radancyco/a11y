@@ -55,7 +55,7 @@
 
             if (careerSitePagesLang === "de") return ["/berufsfeld/", "/l%c3%a4nderauswahl/", "/besch%c3%a4ftigung/", "/firma/", "/stellenbeschreibung/"];
             if (careerSitePagesLang === "fr") return ["/cat%c3%a9gorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/"];
-            if (careerSitePagesLang === "nl") return ["/categorie/", "/plaats/", "/werk/", "/banen/"];
+            if (careerSitePagesLang === "nl") return ["/categorie/", "/plaats/", "/werk/", "/banen/", "/firma/"];
             if (careerSitePagesLang === "pt-br") return ["/%c3%a1rea/", "/localiza%c3%a7%c3%a3o/", "/firma/", "/vaga/", "/sub-localização/"];
             return ["/job/", "/location/", "/employment/", "/category/", "/business/"];
 
@@ -193,11 +193,11 @@
 
             urlObj.missingTitle = !titleElement || titleElement.textContent.trim() === "";
 
-            if (isAjd) title += " (AJD)";
+            if (isAjd) title = "(AJD) " + title;
 
             const isCmsContent = dom.querySelector('meta[name="career-site-page-type"][content="ContentPage-CMS"]');
 
-            if (isCmsContent) title += " (CMS Content)";
+            if (isCmsContent) title = "(CMS Content) " + title;
 
             urlObj.title = title;
             urlObj.hasSlick = !!dom.querySelector('[class*="slick"]') || !!dom.querySelector('[class*="slide"]');
