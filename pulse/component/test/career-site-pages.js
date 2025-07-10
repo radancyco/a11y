@@ -436,6 +436,8 @@
 
             csv += `"${row.title}","${row.loc}","A11Y${row.id}","https://validator.w3.org/nu/?showoutline=yes&doc=${row.loc}#headingoutline","https://wave.webaim.org/report#/${row.loc}","${row.hasSlick ? "X" : ""}","${row.hasTabcordion ? "X" : ""}"," ","${row.missingTitle ? "X" : ""}","https://validator.w3.org/nu/?showsource=yes&showoutline=yes&showimagereport=yes&doc=${row.loc}"\n`;
 
+            // TODO: Remove W3C Validation
+        
         });
 
         return csv;
@@ -444,7 +446,7 @@
 
     const triggerDownload = (csv, file) => {
 
-        const BOM = "\uFEFF"; // UTF-8 BOM
+        const BOM = "\uFEFF"; // UTF-8 BOM - Finally working! 
         const blob = new Blob([BOM + csv], { type: "text/csv;charset=utf-8;" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
