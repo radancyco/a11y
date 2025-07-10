@@ -95,53 +95,79 @@
 for (const url of urlElements) {
     const loc = url.querySelector("loc").textContent;
     const path = new URL(loc).pathname; // ✅ Move here — parse once per URL
+
+console.log(`🔍 Checking URL: ${loc}`);
+console.log(`📁 Normalized path: ${path}`);
+
+
     let found = false;
 
-    for (const subfolder of allowedSubfolders) {
-        if (path.includes(subfolder)) {
-            found = true;
+for (const subfolder of allowedSubfolders) {
+    console.log(`   ↪ Checking if path includes: ${subfolder}`);
 
-            const matchedSubfolder = subfolder;
+    if (path.includes(subfolder)) {
+        console.log(`✅ Match found: ${subfolder}`);
 
-            if (isJobPage(loc)) {
-                if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) break;
+        found = true;
+        const matchedSubfolder = subfolder;
 
-                const hasAjd = await checkAjdInput(loc);
-
-                if (hasAjd && ajdJobsIncluded < 2) {
-                    ajdJobsIncluded++;
-                    urls.push({ loc, ajd: true });
-                } else if (!hasAjd && regularJobsIncluded < 2) {
-                    regularJobsIncluded++;
-                    urls.push({ loc });
-                }
-            } else {
-                subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0) + 1;
-
-                if (subfolderCounts[matchedSubfolder] <= 2) {
-                    urls.push({ loc });
-                }
+        if (isJobPage(loc)) {
+            if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) {
+                console.log("🚫 Job page limits reached. Skipping.");
+                break;
             }
 
-            break;
+            const hasAjd = await checkAjdInput(loc);
+            console.log(`   🔎 AJD check for ${loc}: ${hasAjd}`);
+
+            if (hasAjd && ajdJobsIncluded < 2) {
+                ajdJobsIncluded++;
+                console.log(`   ✅ Adding AJD job (${ajdJobsIncluded}/2): ${loc}`);
+                urls.push({ loc, ajd: true });
+            } else if (!hasAjd && regularJobsIncluded < 2) {
+                regularJobsIncluded++;
+                console.log(`   ✅ Adding regular job (${regularJobsIncluded}/2): ${loc}`);
+                urls.push({ loc });
+            }
+        } else {
+            subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0) + 1;
+
+            console.log(`📊 Subfolder count for ${matchedSubfolder}: ${subfolderCounts[matchedSubfolder]}`);
+
+            if (subfolderCounts[matchedSubfolder] <= 2) {
+                console.log(`   ✅ Adding category/content page: ${loc}`);
+                urls.push({ loc });
+            } else {
+                console.log(`   🚫 Skipping (limit reached): ${loc}`);
+            }
         }
-    }
 
-    if (!found) {
-        urls.push({ loc });
-    }
-
-    const allSubfoldersDone = allowedSubfolders.every(
-        (sub) => (subfolderCounts[sub] || 0) >= 2
-    );
-
-    if (
-        ajdJobsIncluded >= 2 &&
-        regularJobsIncluded >= 2 &&
-        allSubfoldersDone
-    ) {
         break;
     }
+}
+
+
+    if (!found) {
+    console.log("🚫 No subfolder match — including anyway.");
+    urls.push({ loc });
+}
+
+
+    const allSubfoldersDone = allowedSubfolders.every(
+    (sub) => (subfolderCounts[sub] || 0) >= 2
+);
+
+if (
+    ajdJobsIncluded >= 2 &&
+    regularJobsIncluded >= 2 &&
+    allSubfoldersDone
+) {
+    console.log("🎯 All limits met — exiting early.");
+    break;
+}
+
+
+
 }
 
 
