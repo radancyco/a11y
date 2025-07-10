@@ -92,69 +92,58 @@
 
         }
 
-        for (const url of urlElements) {
+for (const url of urlElements) {
+    const loc = url.querySelector("loc").textContent;
+    const path = new URL(loc).pathname; // ✅ Move here — parse once per URL
+    let found = false;
 
-            const loc = url.querySelector("loc").textContent;
-            let found = false;
+    for (const subfolder of allowedSubfolders) {
+        if (path.includes(subfolder)) {
+            found = true;
 
-for (const subfolder of allowedSubfolders) {
-    if (loc.includes(subfolder)) {
-        found = true;
+            const matchedSubfolder = subfolder;
 
-        const matchedSubfolder = subfolder; // exact match from array
+            if (isJobPage(loc)) {
+                if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) break;
 
-        if (isJobPage(loc)) {
-            if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) break;
+                const hasAjd = await checkAjdInput(loc);
 
-            const hasAjd = await checkAjdInput(loc);
+                if (hasAjd && ajdJobsIncluded < 2) {
+                    ajdJobsIncluded++;
+                    urls.push({ loc, ajd: true });
+                } else if (!hasAjd && regularJobsIncluded < 2) {
+                    regularJobsIncluded++;
+                    urls.push({ loc });
+                }
+            } else {
+                subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0) + 1;
 
-            if (hasAjd && ajdJobsIncluded < 2) {
-                ajdJobsIncluded++;
-                urls.push({ loc, ajd: true });
-            } else if (!hasAjd && regularJobsIncluded < 2) {
-                regularJobsIncluded++;
-                urls.push({ loc });
+                if (subfolderCounts[matchedSubfolder] <= 2) {
+                    urls.push({ loc });
+                }
             }
-        } else {
-            subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0) + 1;
 
-            if (subfolderCounts[matchedSubfolder] <= 2) {
-                urls.push({ loc });
-            }
+            break;
         }
+    }
 
+    if (!found) {
+        urls.push({ loc });
+    }
+
+    const allSubfoldersDone = allowedSubfolders.every(
+        (sub) => (subfolderCounts[sub] || 0) >= 2
+    );
+
+    if (
+        ajdJobsIncluded >= 2 &&
+        regularJobsIncluded >= 2 &&
+        allSubfoldersDone
+    ) {
         break;
     }
 }
 
-
-            if (!found) {
-
-                urls.push({ loc });
-
-            }
-
-            // 🔥 Exit early if all limits are met for jobs and subfolders
-
-            const allSubfoldersDone = allowedSubfolders.every(
-
-                (sub) => (subfolderCounts[sub] || 0) >= 2
-
-            );
-
-            if (
-
-                ajdJobsIncluded >= 2 &&
-                regularJobsIncluded >= 2 &&
-                allSubfoldersDone
-
-            ) {
-
-                break;
-
-            }
-
-        }
 
         return urls;
 
