@@ -472,7 +472,14 @@
 
         const csv = makeCsv(data);
         const domain = location.hostname.replace(/\./g, '-');
-        const file = `${domain}-pages.csv`;
+
+        // Extract first subfolder (if present)
+
+        const firstSubfolder = location.pathname.split('/').filter(Boolean)[0] || null;
+
+        // Only include the subfolder if it exists (no sub-subfolders)
+
+        const file = `${domain}${firstSubfolder ? `-${firstSubfolder}` : ''}-inventory.csv`;
 
         triggerDownload(csv, file);
         statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
