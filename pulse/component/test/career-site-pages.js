@@ -13,7 +13,7 @@
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
     const statusContainerMsg = shadowContainer.querySelector(".status-container__msg");
     const careerSitePages = document.getElementById("career-site-pages");
-    const careerSitePagesLang = careerSitePages.getAttribute("data-lang");
+    const careerSitePagesLang = document.documentElement.lang;
     
     statusContainerMsg.textContent = "Loading. Please be pateint. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
 
@@ -138,56 +138,79 @@
             
                         console.log(`   🔎 AJD check for ${loc}: ${hasAjd}`);
 
-            if (hasAjd && ajdJobsIncluded < 2) {
-                ajdJobsIncluded++;
-                console.log(`   ✅ Adding AJD job (${ajdJobsIncluded}/2): ${loc}`);
-                urls.push({ loc, ajd: true });
-            } else if (!hasAjd && regularJobsIncluded < 2) {
-                regularJobsIncluded++;
-                console.log(`   ✅ Adding regular job (${regularJobsIncluded}/2): ${loc}`);
-                urls.push({ loc });
-            }
-        } else {
-            subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0) + 1;
+                        if (hasAjd && ajdJobsIncluded < 2) {
+                
+                            ajdJobsIncluded++;
+                            
+                            console.log(`   ✅ Adding AJD job (${ajdJobsIncluded}/2): ${loc}`);
+                
+                            urls.push({ loc, ajd: true });
+            
+                        } else if (!hasAjd && regularJobsIncluded < 2) {
+                
+                            regularJobsIncluded++;
+                
+                            console.log(`   ✅ Adding regular job (${regularJobsIncluded}/2): ${loc}`);
+                
+                            urls.push({ loc });
+            
+                        }
+        
+                    } else {
+            
+                        subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0) + 1;
 
-            console.log(`📊 Subfolder count for ${matchedSubfolder}: ${subfolderCounts[matchedSubfolder]}`);
+                        console.log(`📊 Subfolder count for ${matchedSubfolder}: ${subfolderCounts[matchedSubfolder]}`);
 
-            if (subfolderCounts[matchedSubfolder] <= 2) {
-                console.log(`   ✅ Adding category/content page: ${loc}`);
-                urls.push({ loc });
-            } else {
-                console.log(`   🚫 Skipping (limit reached): ${loc}`);
+                        if (subfolderCounts[matchedSubfolder] <= 2) {
+                
+                            console.log(`   ✅ Adding category/content page: ${loc}`);
+                            
+                            urls.push({ loc });
+            
+                        } else {
+                
+                            console.log(`   🚫 Skipping (limit reached): ${loc}`);
+                        
+                        }
+        
+                    }
+
+                    break;
+    
+                }
+
             }
+
+            if (!found) {
+    
+                console.log("🚫 No subfolder match — including anyway.");
+    
+                urls.push({ loc });
+
+            }
+
+            const allSubfoldersDone = allowedSubfolders.every(
+    
+                (sub) => (subfolderCounts[sub] || 0) >= 2
+
+            );
+
+            if (
+    
+                ajdJobsIncluded >= 2 &&
+                regularJobsIncluded >= 2 &&
+                allSubfoldersDone
+
+            ) {
+    
+                console.log("🎯 All limits met — exiting early.");
+                
+                break;
+            
+            }
+
         }
-
-        break;
-    }
-}
-
-
-    if (!found) {
-    console.log("🚫 No subfolder match — including anyway.");
-    urls.push({ loc });
-}
-
-
-    const allSubfoldersDone = allowedSubfolders.every(
-    (sub) => (subfolderCounts[sub] || 0) >= 2
-);
-
-if (
-    ajdJobsIncluded >= 2 &&
-    regularJobsIncluded >= 2 &&
-    allSubfoldersDone
-) {
-    console.log("🎯 All limits met — exiting early.");
-    break;
-}
-
-
-
-}
-
 
         return urls;
 
