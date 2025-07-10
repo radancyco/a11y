@@ -461,7 +461,7 @@
     };
 
     const pathSegments = location.pathname.split('/').filter(Boolean);
-    const isLangFolder = /^[a-z]{2}(-[A-Z]{2})?$/.test(pathSegments[0]);
+    const isLangFolder = /^[a-z]{2,3}(-[a-z]{2,4})?$/.test(pathSegments[0]);
     const sitemapUrl = isLangFolder ? `${location.origin}/${pathSegments[0]}/sitemap.xml` : `${location.origin}/sitemap.xml`;
 
     convertSitemapToArray(sitemapUrl).then((data) => {
