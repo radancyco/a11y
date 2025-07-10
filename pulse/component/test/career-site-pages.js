@@ -97,54 +97,36 @@
             const loc = url.querySelector("loc").textContent;
             let found = false;
 
-            for (const subfolder of allowedSubfolders) {
+for (const subfolder of allowedSubfolders) {
+    if (loc.includes(subfolder)) {
+        found = true;
 
-                if (loc.includes(subfolder)) {
-                    found = true;
+        const matchedSubfolder = subfolder; // exact match from array
 
-                    if (isJobPage(loc)) {
+        if (isJobPage(loc)) {
+            if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) break;
 
-                        // Check if job limits are already met
+            const hasAjd = await checkAjdInput(loc);
 
-                        if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) {
-
-                            // ✅ Skip job checks — limits met
-
-                            break;
-
-                        }
-
-                        // Fetch page only if limits not met
-
-                        const hasAjd = await checkAjdInput(loc);
-
-                        if (hasAjd && ajdJobsIncluded < 2) {
-
-                            ajdJobsIncluded++;
-
-                            urls.push({ loc, ajd: true });
-
-                        } else if (!hasAjd && regularJobsIncluded < 2) {
-
-                            regularJobsIncluded++;
-                            urls.push({ loc });
-
-                        }
-
-                    } else {
-
-                        subfolderCounts[subfolder] = (subfolderCounts[subfolder] || 0) + 1;
-
-                        if (subfolderCounts[subfolder] <= 2) {
-
-                            urls.push({ loc });
-
-                        }
-                    }
-
-                    break;
-                }
+            if (hasAjd && ajdJobsIncluded < 2) {
+                ajdJobsIncluded++;
+                urls.push({ loc, ajd: true });
+            } else if (!hasAjd && regularJobsIncluded < 2) {
+                regularJobsIncluded++;
+                urls.push({ loc });
             }
+        } else {
+            subfolderCounts[matchedSubfolder] = (subfolderCounts[matchedSubfolder] || 0) + 1;
+
+            if (subfolderCounts[matchedSubfolder] <= 2) {
+                urls.push({ loc });
+            }
+        }
+
+        break;
+    }
+}
+
 
             if (!found) {
 
