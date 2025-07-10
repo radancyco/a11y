@@ -52,41 +52,35 @@
         let regularJobsIncluded = 0;
 
        const allowedSubfolders = (() => {
+    const foldersByLang = {
+        "de": ["berufsfeld", "länderauswahl", "beschäftigung", "stellenbeschreibung", "arbeitsort", "jobsuche", "inhalt", "firma", "verweisung"],
+        "fr": ["catégorie", "lieu", "emplois", "entreprise", "emploi"],
+        "nl": ["categorie", "plaats", "werk", "banen", "firma"],
+        "pt-br": ["área", "localização", "firma", "vaga", "sub-localização"],
+        "default": ["job", "location", "employment", "category", "business"]
+    };
 
-            const foldersByLang = {
-        
-                "de": ["/berufsfeld/", "/länderauswahl/", "beschäftigung/", "/stellenbeschreibung/", "/arbeitsort/", "jobsuche", "/inhalt/", "/firma/", "Verweisung"],
-                "fr": ["/catégorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/"],
-                "nl": ["/categorie/", "/plaats/", "/werk/", "/banen/", "/firma/"],
-                "pt-br": ["/área/", "/localização/", "/firma/", "/vaga/", "/sub-localização/"],
-                "default": ["/job/", "/location/", "/employment/", "/category/", "/business/"]
-            
-            };
+    const rawFolders = foldersByLang[careerSitePagesLang] || foldersByLang["default"];
 
-            const rawFolders = foldersByLang[careerSitePagesLang] || foldersByLang["default"];
-
-            return rawFolders.map(f => encodeURI(f)); // use encodeURI instead of encodeURIComponent for full path parts
-
-        })();
+    // Always add leading slash and encode once
+    return rawFolders.map(f => encodeURI(`/${f}/`));
+})();
 
         const isJobPage = (loc) => {
-    
-            const jobPathByLang = {
-        
-                "de": "/stellenbeschreibung/",
-                "fr": "/emploi/",
-                "nl": "/banen/",
-                "pt-br": "/vaga/",
-                "default": "/job/"
-    
-            };
+    const jobPathByLang = {
+        "de": "stellenbeschreibung",
+        "fr": "emploi",
+        "nl": "banen",
+        "pt-br": "vaga",
+        "default": "job"
+    };
 
-            const rawJobPath = jobPathByLang[careerSitePagesLang] || jobPathByLang["default"];
-            const encodedJobPath = encodeURI(rawJobPath);
+    const rawJobPath = jobPathByLang[careerSitePagesLang] || jobPathByLang["default"];
+    const encodedJobPath = encodeURI(`/${rawJobPath}/`);
 
-            return loc.includes(encodedJobPath);
+    return loc.includes(encodedJobPath);
+};
 
-        };
 
         const currentPath = window.location.pathname;
         const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
