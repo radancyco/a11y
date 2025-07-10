@@ -55,7 +55,7 @@
 
             const foldersByLang = {
         
-                "de": ["/berufsfeld/", "/länderauswahl/", "beschäftigung/", "/stellenbeschreibung/", "/arbeitsort/", "jobsuche", "/inhalt/", "/firma/", "Verweisung"];
+                "de": ["/berufsfeld/", "/länderauswahl/", "beschäftigung/", "/stellenbeschreibung/", "/arbeitsort/", "jobsuche", "/inhalt/", "/firma/", "Verweisung"],
                 "fr": ["/catégorie/", "/lieu/", "/emplois/", "/entreprise/", "/emploi/"],
                 "nl": ["/categorie/", "/plaats/", "/werk/", "/banen/", "/firma/"],
                 "pt-br": ["/área/", "/localização/", "/firma/", "/vaga/", "/sub-localização/"],
