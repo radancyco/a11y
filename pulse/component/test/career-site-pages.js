@@ -94,7 +94,7 @@
 
 for (const url of urlElements) {
     const loc = url.querySelector("loc").textContent;
-    const path = new URL(loc).pathname; // ✅ Move here — parse once per URL
+    const path = new URL(loc).pathname.toLowerCase(); // ✅ Move here — parse once per URL
 
 console.log(`🔍 Checking URL: ${loc}`);
 console.log(`📁 Normalized path: ${path}`);
