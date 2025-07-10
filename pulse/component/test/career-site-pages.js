@@ -52,35 +52,43 @@
         let regularJobsIncluded = 0;
 
        const allowedSubfolders = (() => {
-    const foldersByLang = {
-        "de": ["berufsfeld", "länderauswahl", "beschäftigung", "stellenbeschreibung", "arbeitsort", "jobsuche", "inhalt", "firma", "verweisung"],
-        "fr": ["catégorie", "lieu", "emplois", "entreprise", "emploi"],
-        "nl": ["categorie", "plaats", "werk", "banen", "firma"],
-        "pt-br": ["área", "localização", "firma", "vaga", "sub-localização"],
-        "default": ["job", "location", "employment", "category", "business"]
-    };
 
-    const rawFolders = foldersByLang[careerSitePagesLang] || foldersByLang["default"];
+            const foldersByLang = {
+        
+                "de": ["berufsfeld", "länderauswahl", "beschäftigung", "stellenbeschreibung", "arbeitsort", "jobsuche", "inhalt", "firma", "verweisung"],
+                "fr": ["catégorie", "lieu", "emplois", "entreprise", "emploi"],
+                "nl": ["categorie", "plaats", "werk", "banen", "firma"],
+                "pt-br": ["área", "localização", "firma", "vaga", "sub-localização"],
+                "default": ["job", "location", "employment", "category", "business"]
+            
+            };
 
-    // Always add leading slash and encode once
-    return rawFolders.map(f => encodeURI(`/${f}/`));
-})();
+            const rawFolders = foldersByLang[careerSitePagesLang] || foldersByLang["default"];
+
+            // Always add leading slash and encode once
+    
+            return rawFolders.map(f => encodeURI(`/${f}/`).toLowerCase());
+
+        })();
 
         const isJobPage = (loc) => {
-    const jobPathByLang = {
-        "de": "stellenbeschreibung",
-        "fr": "emploi",
-        "nl": "banen",
-        "pt-br": "vaga",
-        "default": "job"
-    };
+    
+            const jobPathByLang = {
+        
+                "de": "stellenbeschreibung",
+                "fr": "emploi",
+                "nl": "banen",
+                "pt-br": "vaga",
+                "default": "job"
+    
+            };
 
-    const rawJobPath = jobPathByLang[careerSitePagesLang] || jobPathByLang["default"];
-    const encodedJobPath = encodeURI(`/${rawJobPath}/`);
+            const rawJobPath = jobPathByLang[careerSitePagesLang] || jobPathByLang["default"];
+            const encodedJobPath = encodeURI(`/${rawJobPath}/`);
 
-    return loc.includes(encodedJobPath);
-};
+            return loc.includes(encodedJobPath);
 
+        };
 
         const currentPath = window.location.pathname;
         const subfolderPrefix = currentPath.split('/').filter(Boolean)[0];
@@ -92,33 +100,43 @@
 
         }
 
-for (const url of urlElements) {
-    const loc = url.querySelector("loc").textContent;
-    const path = new URL(loc).pathname.toLowerCase(); // ✅ Move here — parse once per URL
+        for (const url of urlElements) {
+    
+            const loc = url.querySelector("loc").textContent;
+    
+            const path = new URL(loc).pathname.toLowerCase(); // ✅ Move here — parse once per URL
 
-console.log(`🔍 Checking URL: ${loc}`);
-console.log(`📁 Normalized path: ${path}`);
+            console.log(`🔍 Checking URL: ${loc}`);
+            
+            console.log(`📁 Normalized path: ${path}`);
 
+            let found = false;
 
-    let found = false;
+            for (const subfolder of allowedSubfolders) {
+    
+                console.log(`   ↪ Checking if path includes: ${subfolder}`);
 
-for (const subfolder of allowedSubfolders) {
-    console.log(`   ↪ Checking if path includes: ${subfolder}`);
+                if (path.includes(subfolder)) {
+        
+                    console.log(`✅ Match found: ${subfolder}`);
 
-    if (path.includes(subfolder)) {
-        console.log(`✅ Match found: ${subfolder}`);
+                    found = true;
+        
+                    const matchedSubfolder = subfolder;
 
-        found = true;
-        const matchedSubfolder = subfolder;
+                    if (isJobPage(loc)) {
+            
+                        if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) {
+                
+                            console.log("🚫 Job page limits reached. Skipping.");
+                
+                            break;
+            
+                        }
 
-        if (isJobPage(loc)) {
-            if (ajdJobsIncluded >= 2 && regularJobsIncluded >= 2) {
-                console.log("🚫 Job page limits reached. Skipping.");
-                break;
-            }
-
-            const hasAjd = await checkAjdInput(loc);
-            console.log(`   🔎 AJD check for ${loc}: ${hasAjd}`);
+                        const hasAjd = await checkAjdInput(loc);
+            
+                        console.log(`   🔎 AJD check for ${loc}: ${hasAjd}`);
 
             if (hasAjd && ajdJobsIncluded < 2) {
                 ajdJobsIncluded++;
