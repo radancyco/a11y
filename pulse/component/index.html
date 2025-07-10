@@ -624,13 +624,7 @@ id: a11y-smoke-test
 
                             <p>Generates key career site pages to be used in testing and for upload to PopeTech. Select the langauge of site you are on to begin scan. Please allow up to several minutes to run. </p>
                             
-                            <ul>
-                                <li>{% include_relative /test/career-site-pages.html %}</li>
-                                <li>{% include_relative /test/career-site-pages.html lang="nl" name="Dutch (NL)" %}</li>
-                                <li>{% include_relative /test/career-site-pages.html lang="fr" name="French (FR)" %}</li>
-                                <li>{% include_relative /test/career-site-pages.html lang="de" name="German (DE)" %}</li>
-                                <li>{% include_relative /test/career-site-pages.html lang="pt-br" name="Portuguese (PT-BR)" %}</li>
-                            </ul>
+                            {% include_relative /test/career-site-pages.html %}
 
                             <p class="status-message status-message--career-site-pages"></p>
                             
