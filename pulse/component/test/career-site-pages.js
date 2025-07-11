@@ -50,7 +50,7 @@
         let ajdJobsIncluded = 0;
         let regularJobsIncluded = 0;
 
-       const allowedSubfolders = (() => {
+        const allowedSubfolders = (() => {
 
             const foldersByLang = {
         
@@ -96,7 +96,9 @@
                 "tr": ["kategori", "konum", "işe-alım", "iş", "iş-bulma", "iş-arama", "içerik", "işletme", "referans"],
                 "uk": ["категорія", "місцезнаходження", "зайнятість", "вакансія", "місцезнаходження-вакансії", "пошук-вакансій", "контент", "бізнес", "направлення"],
                 "vi": ["danh-mục", "địa-điểm", "tuyển-dụng", "công-việc", "công-việc-địa-điểm", "tìm-kiếm-công-việc", "nội-dung", "kinh-doanh", "giới-thiệu"],
-                "default": ["category", "location", "employment", "job", "job_location", "search-jobs", "content", "business", "referral"]
+                "default": ["category", "location", "employment", "job", "job_location", "search-jobs", "content", "business", "referral"]  
+                
+                // TODO: default is also en, remove one of them.
             
             };
 
@@ -155,6 +157,8 @@
                 "uk": "вакансія",
                 "vi": "công-việc",
                 "default": "job"
+
+                // TODO: Default is also en. Remove one of them.
     
             };
 
@@ -178,11 +182,9 @@
         for (const url of urlElements) {
     
             const loc = url.querySelector("loc").textContent;
-    
-            const path = new URL(loc).pathname.toLowerCase(); // ✅ Move here — parse once per URL
+            const path = new URL(loc).pathname.toLowerCase();
 
-            console.log(`🔍 Checking URL: ${loc}`);
-            
+            console.log(`🔍 Checking URL: ${loc}`);  
             console.log(`📁 Normalized path: ${path}`);
 
             let found = false;
@@ -389,7 +391,6 @@
             
         const sitemap = await loadSitemap(url);
         const urls = await processSitemap(sitemap);
-
         const generateRandomID = () => Math.floor(100000 + Math.random() * 900000);
         const usedIDs = new Set();
 
@@ -474,13 +475,7 @@
 
         const csv = makeCsv(data);
         const domain = location.hostname.replace(/\./g, '-');
-
-        // Extract first subfolder (if present)
-
         const firstSubfolder = location.pathname.split('/').filter(Boolean)[0] || null;
-
-        // Only include the subfolder if it exists (no sub-subfolders)
-
         const file = `${domain}${firstSubfolder ? `-${firstSubfolder}` : ''}-inventory.csv`;
 
         triggerDownload(csv, file);
