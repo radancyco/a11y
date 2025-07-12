@@ -37,19 +37,19 @@ id: a11y-smoke-test
 
                 <p>Page issues have been automatically detected. Please review and log them as soon as possible to ensure they're tracked and resolved promptly.</p>
 
-                <div id="magicbullet-message" class="warning-info" hidden>
+                <div id="magicbullet-message" class="a11y-pulse__info--warning" hidden>
 
                     <p><strong>Issue:</strong> MagicBullet is not currently installed on this site. Adding it will help address many product-related accessibility issues. See the <a href="https://radancy.dev/magicbullet/a11y/" target="_blank">support page {{ newWindow }}</a> for installation details.</p>
 
                 </div>
 
-                <div id="title-message" class="warning-info" hidden>
+                <div id="title-message" class="a11y-pulse__info--warning" hidden>
 
                     <p><strong>Issue:</strong> The page is missing a <code>title</code> element or is empty. All pages must include a proper title element with value. This not only benefits accessibility but SEO. See <a href="{{ site.url }}{{ site.baseurl }}/baseline/#page-titled" target="_blank">2.4.2: Page Titled (Level A) {{ newWindow}}</a> for more details.</p>
 
                 </div>
 
-                <div id="language-message" class="warning-info" hidden>
+                <div id="language-message" class="a11y-pulse__info--warning" hidden>
 
                     <p><strong>Issue:</strong> The document does not specify the current language in use. The <code>html</code> element must contain a <code>lang</code> attribute and proper language code. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html" target="_blank">Understanding SC 3.1.1: Language of Page (Level A) {{ newWindow }}</a> for more details.</p>
 

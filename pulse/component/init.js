@@ -692,7 +692,7 @@ layout: null
 
   // Get all visible .warning-info elements (i.e., not [hidden])
 
-  const visibleWarnings = alertPanel.querySelectorAll(".warning-info:not([hidden])");
+  const visibleWarnings = alertPanel.querySelectorAll(".a11y-pulse__info--warning:not([hidden])");
 
   if (visibleWarnings.length > 0) {
 
