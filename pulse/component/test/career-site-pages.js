@@ -5,19 +5,21 @@
     const shadowHost = document.querySelector("a11y-pulse-component");
     const shadowContainer = shadowHost.shadowRoot;
     const careerSitePagesLang = document.documentElement.lang.toLowerCase();
-    const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
+    const hasList = shadowContainer.querySelector(".status-container--career-site-pages ul");
 
-    if(statusList) {
+    if(hasList) {
 
-        statusList.remove();
+        hasList.remove();
+
+    } else { 
+
+        const ul = document.createElement("ul");
+        const statusContainer = shadowContainer.querySelector(".status-container--career-site-pages");
+        statusContainer.appendChild(ul);
 
     }
 
-    const ul = document.createElement("ul");
-    const statusContainer = shadowContainer.querySelector(".status-container--career-site-pages");
-
-    statusContainer.appendChild(ul);
-
+    const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
 
     statusMessage.classList.remove("status-message--complete"); 

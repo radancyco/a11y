@@ -2,19 +2,22 @@
 
     const shadowHost = document.querySelector("a11y-pulse-component");
     const shadowContainer = shadowHost.shadowRoot;
-    const statusList = shadowContainer.querySelector(".status-container--career-site-images ul");
+    const hasList = shadowContainer.querySelector(".status-container--career-site-images ul");
 
-    if(statusList) {
+    if(hasList) {
 
-        statusList.remove();
+        hasList.remove();
 
-    } 
+    } else { 
 
-    const ul = document.createElement("ul");
-    const statusContainer = shadowContainer.querySelector(".status-container--career-site-images");
+        const ul = document.createElement("ul");
+        const statusContainer = shadowContainer.querySelector(".status-container--career-site-images");
    
-    statusContainer.appendChild(ul);
+        statusContainer.appendChild(ul);
 
+    }
+
+    const statusList = shadowContainer.querySelector(".status-container--career-site-images ul");
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-images");
 
     statusMessage.classList.add("status-message--complete");
