@@ -2,20 +2,23 @@
 
     const shadowHost = document.querySelector("a11y-pulse-component");
     const shadowContainer = shadowHost.shadowRoot;
-    const ul = document.createElement("ul");
-    const statusContainer = shadowContainer.querySelector(".status-container--career-site-images");
-    const statusMessage = shadowContainer.querySelector(".status-message--career-site-images");
-
-    statusContainer.appendChild(ul);
-
     const statusList = shadowContainer.querySelector(".status-container--career-site-images ul");
 
     if(statusList) {
 
         statusList.remove();
 
+    } else { 
+
+        const ul = document.createElement("ul");
+        const statusContainer = shadowContainer.querySelector(".status-container--career-site-images");
+   
+        statusContainer.appendChild(ul);
+
     }
     
+    const statusMessage = shadowContainer.querySelector(".status-message--career-site-images");
+
     statusMessage.classList.add("status-message--complete");
     statusMessage.textContent = "🔎 Fetching images. Please be patient. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
 

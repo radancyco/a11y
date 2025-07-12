@@ -4,20 +4,24 @@
 
     const shadowHost = document.querySelector("a11y-pulse-component");
     const shadowContainer = shadowHost.shadowRoot;
-    const ul = document.createElement("ul");
-    const statusContainer = shadowContainer.querySelector(".status-container--career-site-pages");
-
-    statusContainer.appendChild(ul);
-
-    const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
-    const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
     const careerSitePagesLang = document.documentElement.lang.toLowerCase();
+    const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
 
     if(statusList) {
 
         statusList.remove();
 
+    } else { 
+
+        const ul = document.createElement("ul");
+        const statusContainer = shadowContainer.querySelector(".status-container--career-site-pages");
+
+        statusContainer.appendChild(ul);
+
+
     }
+
+    const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
 
     statusMessage.classList.remove("status-message--complete"); 
     statusMessage.textContent = "🔎 Fetching pages. Please be patient. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
