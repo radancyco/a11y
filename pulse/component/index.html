@@ -70,7 +70,7 @@ id: a11y-smoke-test
                     <li>{% include_relative /test/validation-heading.html %}</li>
                 </ul>
 
-                <div class="a11y-pulse__info a11y-pulse__info--reminder reminder-info">
+                <div class="a11y-pulse__info a11y-pulse__info--reminder">
 
                     <h3 class="a11y-pulse__info__heading">Development Reminder!</h3>
     
@@ -109,9 +109,9 @@ id: a11y-smoke-test
                 
                     <summary>Non-text Content: Images</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <p>Review images and ensure that the aforementioned rules are met. You can run the following tests to review page images in more depth:</p>
                     
@@ -130,9 +130,9 @@ id: a11y-smoke-test
 
                     <summary>Captions</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                 
                         <ul>
                             <li>Video on a page should be manually reviewed. If the video includes spoken dialogue or important information, then it must contain captions <!-- and/or an audio description -->.</li>
@@ -165,9 +165,9 @@ id: a11y-smoke-test
 
                     <summary>Info and Relationships</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <p>HTML should be structured and labeled accordingly, so that the page makes visual <em>and structural</em> sense to everybody. Here are some important things to be on the lookout for during review:</p>
                     
@@ -193,9 +193,9 @@ id: a11y-smoke-test
 
                     <summary>Use of Color</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Manually ensure that color is not used as the sole method of conveying content or distinguishing visual elements. For example, saying "Please correct all text highlighted in red", would be a failure.</li>
@@ -226,9 +226,9 @@ id: a11y-smoke-test
 
                     <summary>Contrast</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                 
                         <p>Review page and test any <strong>text</strong> or <strong>images of text</strong> that you suspect may fail this guideline. Running {% include_relative /test/validation-wave.html %} may also be helpful.</p>
                     
@@ -256,9 +256,9 @@ id: a11y-smoke-test
 
                     <summary>Resize Text</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Use your browser settings to increase text size from 16 (100%) to 32 (200%). When 200% is reached, test to see if all page content can still be accessed and that site continues to be fully operable and usable.</li>
@@ -275,9 +275,9 @@ id: a11y-smoke-test
 
                     <summary>Reflow</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Resize browser to 1280 x 1024 and then use <kbd>Control</kbd> (PC) or <kbd>Command</kbd> (Mac) and <kbd>+</kbd> keys to increase zoom level of browser viewport. When 400% is reached, test to see if all page features can be used at this size and that the user does not need to horizontally scroll.</li>
@@ -297,9 +297,9 @@ id: a11y-smoke-test
 
                     <summary>Text Spacing</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
 
                         <p>Ensure no loss of content or functionality occurs when:</p>
 
@@ -322,9 +322,9 @@ id: a11y-smoke-test
 
                     <summary>Non-text Contrast</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <p>Ensure that the visual presentation of the following have a contrast ratio of at least <strong>3:1</strong> against adjacent color(s):</p>
                     
@@ -351,9 +351,9 @@ id: a11y-smoke-test
 
                     <summary>Keyboard</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Using your <kbd>Tab</kbd> key, navigate through the page and engage with interactive components. Anything that can be used with a pointing device, such as a mouse, must be equally usable via keyboard.</li>
@@ -376,9 +376,9 @@ id: a11y-smoke-test
 
                     <summary>Pause, Stop, Hide & High Flash Rate</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Manually check to see if the page contains automatically moving content, such as a carousel or video. If such features have no mechanism to pause them, then this is a failure.</li>
@@ -394,9 +394,9 @@ id: a11y-smoke-test
 
                     <summary>Three Flashes or Below Threshold</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>A high rate of flashing can cause potential harm, or even death, in individuals with epilepsy. If you suspect that any feature on a page is harmful, you can download and install <a href="https://trace.umd.edu/peat/" target="_blank">PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a> to see if there is any risk or reach out to the <a href="mailto:a11y@radancy.com">Accessibility Team</a> to perform this test for you.</li>
@@ -414,9 +414,9 @@ id: a11y-smoke-test
 
                     <summary>Bypass Blocks</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Areas of a web page that may be cumbersome to navigate through via keyboard or assistive technology, must provide a mechanism to skip over that content. These "Skip" links should be available to <em>all</em> users when needed and not obscure other content on the page when visible. You will often find these links placed before a websites primary navigation, but they can be useful elsewhere. If it takes you a long time to tab through a certain portion of the interface, then this may be a good indication that a skip link is necessary.</li>
@@ -440,9 +440,9 @@ id: a11y-smoke-test
 
                     <summary>Page Titled</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <p>Ensure that all pages have a title and that it is useful and adequately describes the page at hand. Pages that are dynamic in nature, such as those found when utilizing React or similar frameworks, will need their <code>title</code> element continuously updated.</p>
                     
@@ -458,9 +458,9 @@ id: a11y-smoke-test
 
                     <summary>Focus Order</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Navigate through the page using the <kbd>Tab</kbd> key on your keyboard, while being mindful of the focus order. Tab stops that are not in a fairly logical visual order should be considered a failure. You can view the focus order with the following tool:
@@ -491,9 +491,9 @@ id: a11y-smoke-test
 
                     <summary>Focus Visible</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <ul>
                             <li>Using your <kbd>Tab</kbd> key, navigate through the page and review all focus rings of interactive elements. If focus ring is missing or an alternative and adequate focus ring or state has not been provided, then this is a failure.</li>
@@ -519,9 +519,9 @@ id: a11y-smoke-test
 
                     <summary>Non-text Content: Components & Multimedia</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <p>Review page components and ensure that the aforementioned rules are met. Here are some important things to be on the lookout for during review:</p>
                     
@@ -542,9 +542,9 @@ id: a11y-smoke-test
 
                     <summary>Name, Role, Value</summary>
 
-                    <div class="qa-info">
+                    <div class="a11y-pulse__info a11y-pulse__info--qa">
 
-                        <h3>Testing</h3>
+                        <h3 class="a11y-pulse__info__heading">Testing</h3>
                     
                         <p>The usual suite of tests can be run to take a deep dive into the code. Be sure to ask yourself some of the following questions:</p>
                     
@@ -560,9 +560,9 @@ id: a11y-smoke-test
 
                 </details>
 
-                <div class="reminder-info">
+                <div class="a11y-pulse__info a11y-pulse__info--reminder">
 
-                    <h2 class="info-header">Need More Help?</h2>
+                    <h2 class="a11y-pulse__info__heading">Need More Help?</h2>
 
                     <p>The <a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank">WCAG Quick Reference {{ newWindow }}</a> is a helpful guide that explains web accessibility rules in a clear, easy-to-use format with tips and examples.</p>
             
