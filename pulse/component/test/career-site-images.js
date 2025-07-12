@@ -10,6 +10,8 @@
 
     const statusList = shadowContainer.querySelector(".status-container--career-site-images ul");
 
+    statusMessage.textContent = "🔎 Fetching images. Please be pateint. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
+
     // Function to load the sitemap from URL
 
     const loadSitemap = async (url) => {
@@ -358,7 +360,9 @@
         const file = `${domain}-images.csv`;
     
         triggerDownload(csv, file);
-        statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
+
+        statusMessage.textContent = `🎉 Complete! Please check your download folder (${file}).`;
+        
         
     });
 
