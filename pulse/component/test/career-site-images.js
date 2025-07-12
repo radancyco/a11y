@@ -125,6 +125,12 @@
             const a = document.createElement("a");
             const img = document.createElement("img");
 
+            if (statusList.children.length) {
+
+                statusMessage.textContent = "🛠️ One moment. Building image inventory...";
+        
+            }
+
             a.href = url;
             a.textContent = url;
             a.target = "_blank";

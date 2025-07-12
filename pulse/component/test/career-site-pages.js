@@ -342,7 +342,7 @@
 
             if (statusList.children.length) {
 
-                statusMessage.textContent = "Almost there. Building inventory...";
+                statusMessage.textContent = "🛠️ One moment. Building page inventory...";
         
             }
 
@@ -367,7 +367,7 @@
 
             if (statusList.children.length) {
 
-                statusMessage.textContent = "Almost there. Building inventory...";
+                statusMessage.textContent = "🛠️ One moment. Building page inventory...";
         
             }
 
