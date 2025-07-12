@@ -18,7 +18,7 @@
     const statusList = shadowContainer.querySelector(".status-container--career-site-images ul");
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-images");
 
-    statusMessage.classList.add("status-message--complete");
+    statusMessage.classList.remove("status-message--complete");
     statusMessage.textContent = "🔎 Fetching images. Please be patient. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
 
     // Function to load the sitemap from URL
