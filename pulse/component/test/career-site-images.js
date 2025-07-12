@@ -361,6 +361,7 @@
     
         triggerDownload(csv, file);
 
+        statusMessage.classList.add("status-message--complete");
         statusMessage.textContent = `🎉 Complete! Please check your download folder (${file}).`;
         
         
