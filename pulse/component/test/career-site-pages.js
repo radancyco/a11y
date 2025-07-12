@@ -11,15 +11,12 @@
 
         statusList.remove();
 
-    } else { 
-
-        const ul = document.createElement("ul");
-        const statusContainer = shadowContainer.querySelector(".status-container--career-site-pages");
-
-        statusContainer.appendChild(ul);
-
-
     }
+
+    const ul = document.createElement("ul");
+    const statusContainer = shadowContainer.querySelector(".status-container--career-site-pages");
+
+    statusContainer.appendChild(ul);
 
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
 
