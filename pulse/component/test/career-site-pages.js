@@ -12,8 +12,9 @@
     const statusList = shadowContainer.querySelector(".status-container--career-site-pages ul");
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
     const careerSitePagesLang = document.documentElement.lang.toLowerCase();
-    
-    statusMessage.textContent = "🔎 Fetching pages. Please be pateint. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
+
+    statusMessage.classList.remove("status-message--complete"); 
+    statusMessage.textContent = "🔎 Fetching pages. Please be patient. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
 
     const loadSitemap = async (url) => {
 
