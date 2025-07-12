@@ -340,6 +340,12 @@
             const a = document.createElement("a");
             const img = document.createElement("img");
 
+            if (statusList.children.length) {
+
+                statusMessage.textContent = "Almost there. Building inventory...";
+        
+            }
+
             a.href = url;
             a.textContent = url;
             a.target = "_blank";
@@ -358,6 +364,12 @@
             const li = document.createElement("li");
             const a = document.createElement("a");
             const img = document.createElement("img");
+
+            if (statusList.children.length) {
+
+                statusMessage.textContent = "Almost there. Building inventory...";
+        
+            }
 
             a.href = url;
             a.textContent = "Error retrieving: " + url;
