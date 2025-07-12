@@ -10,6 +10,12 @@
 
     const statusList = shadowContainer.querySelector(".status-container--career-site-images ul");
 
+    if(statusList) {
+
+        statusList.remove();
+
+    }
+    
     statusMessage.classList.add("status-message--complete");
     statusMessage.textContent = "🔎 Fetching images. Please be patient. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
 

@@ -13,6 +13,12 @@
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
     const careerSitePagesLang = document.documentElement.lang.toLowerCase();
 
+    if(statusList) {
+
+        statusList.remove();
+
+    }
+
     statusMessage.classList.remove("status-message--complete"); 
     statusMessage.textContent = "🔎 Fetching pages. Please be patient. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
 
