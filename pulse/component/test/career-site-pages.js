@@ -13,7 +13,7 @@
     const statusMessage = shadowContainer.querySelector(".status-message--career-site-pages");
     const careerSitePagesLang = document.documentElement.lang.toLowerCase();
     
-    statusMessage.textContent = "Fetching pages. Please be pateint. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
+    statusMessage.textContent = "🔎 Fetching pages. Please be pateint. Go make a sandwich. Actually, make me one too. Mmmm sammiches.";
 
     const loadSitemap = async (url) => {
 
@@ -332,12 +332,6 @@
             const a = document.createElement("a");
             const img = document.createElement("img");
 
-            if (statusList.children.length === 0) {
-
-                statusMessage.textContent = "";
-        
-            }
-
             a.href = url;
             a.textContent = url;
             a.target = "_blank";
@@ -356,12 +350,6 @@
             const li = document.createElement("li");
             const a = document.createElement("a");
             const img = document.createElement("img");
-
-            if (statusContainer.children.length === 0) {
-
-                statusMessage.textContent = "";
-        
-            }
 
             a.href = url;
             a.textContent = "Error retrieving: " + url;
@@ -478,7 +466,9 @@
         const file = `${domain}${firstSubfolder ? `-${firstSubfolder}` : ''}-inventory.csv`;
 
         triggerDownload(csv, file);
-        statusMessage.textContent = `Complete! Please check your download folder (${file}).`;
+    
+        statusMessage.classList.add("status-message--complete");
+        statusMessage.textContent = `🎉 Complete! Please check your download folder (${file}).`;
     
     });
 

@@ -631,13 +631,10 @@ z-index: 2147483647;
   padding: 1em;
   @extend %scrollbar;
   
-    &:empty, ul:empty {
+    &:has(ul:empty), &:empty, ul:empty {
     display: none;
     }
 
-    &__msg {
-    color: var(--primary-color);
-    }
 
   }
 
@@ -651,12 +648,11 @@ z-index: 2147483647;
   }
 
   .status-message {
-  color: green;
   text-wrap: balance;
+  color: var(--primary-color);
 
-    &::before {
-    content: "\2713";
-    margin-inline-end: 0.5em;
+    &--complete {
+    color: green;
     }
 
     &:empty {
