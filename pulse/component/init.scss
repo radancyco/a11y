@@ -631,7 +631,7 @@ z-index: 2147483647;
   padding: 1em;
   @extend %scrollbar;
   
-    &:has(.status-container__msg:empty), &:empty, ul:empty {
+    &:empty, ul:empty {
     display: none;
     }
 
