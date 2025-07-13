@@ -162,6 +162,19 @@ color: #fff;
 
 }
 
+details {
+
+  summary {
+  cursor: pointer;
+
+    &:hover, &:focus {
+    color: var(--primary-color);
+    }
+
+  }
+
+}
+
 kbd {
 background-color: #ccc;
 border: calc(1em / 16) dotted black;
