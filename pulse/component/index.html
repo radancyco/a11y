@@ -652,16 +652,16 @@ id: a11y-smoke-test
 
                     <ul>
                         <li><a href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US" target="_blank">Chrome {{ newWindow }}</a></li>
-                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/" target="_blank">FireFox {{ newWindow }}</a></li>
+                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/" target="_blank">Firefox {{ newWindow }}</a></li>
                         <li><a href="https://microsoftedge.microsoft.com/addons/detail/axe-devtools-web-access/kcenlimkmjjkdfcaleembgmldmnnlfkn" target="_blank">Edge {{ newWindow }}</a></li>
                     </ul>
 
                     <h3>IBM Equal Access Accessibility Extension</h3>
 
                     <ul>
-                        <li><a href="https://chromewebstore.google.com/detail/ibm-equal-access-accessib/lkcagbfjnkomcinoddgooolagloogehp?hl=en-US" target="_blank">Chrome Extension {{ newWindow }}</a></li>
-                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/accessibility-checker/" target="_blank">Firefox Plugin {{ newWindow }}</a></li>
-                        <li><a href="https://microsoftedge.microsoft.com/addons/detail/ibm-equal-access-accessib/ompccpejakabkmfepbijnagedbdfldka" target="_blank">Edge Extension {{ newWindow }}</a></li>
+                        <li><a href="https://chromewebstore.google.com/detail/ibm-equal-access-accessib/lkcagbfjnkomcinoddgooolagloogehp?hl=en-US" target="_blank">Chrome {{ newWindow }}</a></li>
+                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/accessibility-checker/" target="_blank">Firefox {{ newWindow }}</a></li>
+                        <li><a href="https://microsoftedge.microsoft.com/addons/detail/ibm-equal-access-accessib/ompccpejakabkmfepbijnagedbdfldka" target="_blank">Edge {{ newWindow }}</a></li>
                     </ul>
 
                     <h3>ARC Toolkit Extension</h3>
@@ -677,13 +677,13 @@ id: a11y-smoke-test
                         <li><a href="https://accessibilityinsights.io/" target="_blank">Accessibility Insights for Windows {{ newWindow }}</a></li>
                         <li><a href="https://www.tpgi.com/aviewer-2013/" target="_blank">Accessibility Viewer (aViewer) {{ newWindow }}</a></li>
                         <li><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank">Colour Contrast Analyser (CCA) {{ newWindow }}</a></li>
-                        <li><a href="https://trace.umd.edu/peat/" target="_blank">PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a></li>
-                        <li><a href="https://pac.pdf-accessibility.org/en" target="_blank">PAC (PDF Accessibility Checker) {{ newWindow }}</a></li>
+                        <li><a aria-describedby="peat-note" href="https://trace.umd.edu/peat/" target="_blank">PEAT (Photosensitive Epilepsy Analysis Tool) {{ newWindow }}</a></li>
+                        <li><a aria-describedby="pdf-note" href="https://pac.pdf-accessibility.org/en" target="_blank">PAC (PDF Accessibility Checker) {{ newWindow }}</a></li>
                     </ul>
 
-                    <p><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
+                    <p id="peat-note"><strong>Note:</strong> Animations that fail PEAT should be brought to the attention of your team immediately and could be a legal concern. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
     
-                    <p><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
+                    <p id="pdf-note"><strong>Note:</strong> PDF remediation is unlike web remediation and will need to go through a third party. Please contact <a href="mailto:{{site.owner-email}}">{{site.owner-name}}</a> for more information.</p>
     
                 </details>
 
@@ -722,7 +722,7 @@ id: a11y-smoke-test
     
                     <summary>Disability User Testing</summary>
     
-                    <p>Automated and manual testing are valuable, but nothing matches the lived experience of people with disabilities and the unique insights they can provide. When needed, consider reaching out to one of the following:</p>
+                    <p>Automated and manual testing are valuable, but nothing matches the lived experience of people with disabilities and the unique insights they can provide into our work. When needed, consider reaching out to one of the following organizations to help with usability testing:</p>
     
                     <ul>
                         <li><a href="https://access-works.com/" target="_blank">Access Works {{ newWindow }} </a></li>
