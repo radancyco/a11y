@@ -653,7 +653,7 @@ layout: null
 
   // BugHerd
 
-  const bugHerdComponent = document.querySelector("#sidebar-root");
+  const bugHerdComponent = document.querySelector("bugherd-sidebar");
   const bugHerdPanel = shadowContainer.querySelector("#bugherd");
 
   if(!bugHerdComponent) {
