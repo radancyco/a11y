@@ -651,7 +651,18 @@ layout: null
 
   initAccordion();
 
-  // ** Alert Center
+  // BugHerd
+
+  const bugHerdComponent = document.querySelector("#sidebar-root");
+  const bugHerdPanel = shadowContainer.querySelector("#bugherd");
+
+  if(!bugHerdComponent) {
+
+    bugHerdPanel.remove();
+
+  }
+
+  // ** Alert Center **
 
   // MagicBullet
 

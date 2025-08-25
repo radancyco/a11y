@@ -81,6 +81,16 @@ id: a11y-smoke-test
                         <li><a href="https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/" target="_blank">FireFox {{ newWindow }}</a></li>
                         <li><a href="https://microsoftedge.microsoft.com/addons/detail/axe-devtools-web-access/kcenlimkmjjkdfcaleembgmldmnnlfkn" target="_blank">Edge {{ newWindow }}</a></li>
                     </ul>
+
+                    <div id="bugherd">
+
+                        <h3>Note on BugHerd</h3>
+
+                        <p>Bugherd may produce false positive in your results, so you can remove it before running Axe.</p>
+
+                        <p>{% include_relative /test/bugherd-remove.html %}</p>
+
+                    </div>
     
                 </div>
 
