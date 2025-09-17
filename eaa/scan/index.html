@@ -1,0 +1,434 @@
+---
+localcss: init.css
+heading: false
+title: "EAA: Producing a Scan & Findings Report"
+---
+
+<h1>{{ page.title }}</h1>
+
+<div class="post-overview">
+
+  <div>
+
+   <img src="https://www.gravatar.com/avatar/89e429d4a3effa9601cd19a851c0003e.jpg" alt="Headshot of Michael Spellacy">
+
+  </div>
+
+  <div>
+
+   <ul>
+    <li><span class="visually-hidden">Posted by:</span> <a href='mailto:michael.spellacy@radancy.com?Subject={{ page.title | replace: " ", "%20" }}'>Michael "Spell" Spellacy</a>, Director of Accessibility</li>
+    <li><span class="visually-hidden">Pronouns:</span> He/Him</li>
+    <li><span class="visually-hidden">Posted:</span> Tuesday, September 16, 2025</li>
+    <!-- li><span>Update:</span> June 1, 2025</li -->
+   </ul>
+
+  </div>
+
+</div>
+
+
+<p>The European Accessibility Act (EAA) is an EU directive aimed at ensuring key digital products and services are accessible to people with disabilities. Our career sites and products fall under this directive. This training will teach you how to scan a website for low hanging accessibility issues so that we can reduce barriers for users—and risk for our clients.</p>
+
+<section id="prerequisites">
+
+    <h2>Prerequisites</h2> 
+
+    <p>Before scanning, please keep the follwoing prerequisites in mind:</p>
+
+    <div class="warning">
+
+        <h3>Site Redesigns & GST Migrations</h3>
+    
+        <p>If a site is undergoing major work, such as a redesign, GST migration, or other significant updates, please assign the ticket back to <strong>Amy Moss</strong> and recommend that it be closed. Remediating a site during active or imminent changes results in unnecessary work, which will not be carried over to a new site.</p>
+
+        <p>Ideally, no tickets should be created for sites in transition, but schedules can shift. Before starting, reach out to <strong>Josh Mahoney</strong> to confirm any ongoing activity or search JIRA to see if work is being performed.</p>
+
+    </div>
+
+    <div class="warning">
+
+        <h3>MagicBullet</h3>
+
+        <p>Before running the scan, confirm that <a href="/magicbullet/a11y/">MagicBullet</a> is properly installed. This ensures our sites are more accessible to users and prevents issues in the report that MagicBullet may fix, reducing remediation time.</p>
+
+        <p>You can verify the code is running in two ways on the Accessibility Patch <a href="/magicbullet/a11y/">installation page</a>. Troubleshooting tips are also available there. If the script is not loading, block the ticket, assign it back to <strong>Amy Moss</strong>, and include a link to the installation page to help CSS resolve the issue.</p>
+
+    </div>
+
+</section>
+
+<section id="install-a11y-pulse">
+
+    <h2>Install A11y Pulse</h2> 
+
+    <ol>
+        <li><a href="../../pulse/">Install A11y Pulse</a>. This is the successor to our accessibility smoke-testing tool and what you will use to produce an inventory of pages from a careers site.</li>
+        <li>To install, simply press and drag the “A11y Pulse” button to your bookmark bar. A demo can be found on the page. From here, you can run on any website, career or otherwise.</li>
+    </ol>
+
+</section>
+
+<section id="inventory-scan">
+ 
+    <h2>Running Page Inventory Scans</h2> 
+ 
+    <ol>
+        <li>Navigate to the home page of the QA site you will be producing a page inventory for and run A11y Pulse. If a link to QA has not been provided already, please block the ticket and reach out to Amy Moss.</li></li>
+        <li>
+            
+            In A11y Pulse, navigate to <strong>Auditing Tools & Resources > Audit Setup</strong>. Then press <strong>Get Page Inventory</strong>.
+
+            <figure>
+
+                <img alt="Screenshot of A11y Pulse with Get Page Inventory button highlighted." src="get-page-inventory.png">
+
+                <figcaption>Figure 1. A11y Pulse is a custom tool built to help aid with certain aspects of accessibility testing. Scanning a websites pages is one such included feature.</figcaption>
+ 
+            </figure>
+
+        </li>
+        <li>Allow the scan to run to completion. Depending on the size of the site and connectivity issues, this could take <strong>several minutes or more</strong> to complete. Be patient. If you want, you can duplicate this process on another site in another tab while the other is running. If you see errors pop up in the scan, these are usually just missing pages or redirects, and you can ignore them.</li>
+        <li>If you encounter any issues with the scan or it is not working on your site, please reach out to <strong>Michael Spellacy</strong> and move on to the next site to scan. <em>This will be a blocker for scanning the site until the issue is resolved.</em></li>
+        <li>
+            
+            Upon completion of the scan, you will be greeted with a message that the process has finished, and a spreadsheet will be automatically saved to your <strong>Downloads</strong> folder. For example, <em>emplois-bd-runmytests-com-pages.csv</em>. This is your page inventory.
+
+            <figure>
+        
+                <img alt="Screenshot of Page Inventory produced by the A11y Pulse scan." src="page-inventory.png">
+
+                <figcaption>Figure 2. Page inventory report produced by the A11y Pulse scan.</figcaption>
+
+            <figure>
+
+        </li> 
+    </ol>
+
+</section>
+
+<section id="pruning-inventory">
+
+    <h2>Pruning Inventory Results</h2> 
+
+    <ol>
+        <li>
+    
+            The inventory scan will pick up pages that we will <strong>not</strong> wish to include in Pope Tech (we'll get to Pope Tech in a moment). We are only allowed a finite number of unique URLs in this tool, so it is <em class="alert">critical</em> to prune this document before uploading it. Inspect the <strong>Title</strong> and <strong>URL</strong> columns in your inventory very carefully and do the following: 
+
+            <ul>
+                <li><strong>Remove test pages.</strong> Often these pages include “test” or “sandbox” or similar in them. You'll know them when you see them. A general rule of thumb to follow is that if a user cannot access a page through normal, navigational means, then it should not be included in the inventory.</li>
+                <li><strong>Remove old pages.</strong> For example, a page with the name “faq-old” is likely no longer in use.</li>
+                <li><strong>Look for patterns and remove thematic duplicates.</strong> If you see multiple pages with the same name, for example, Meet Spell, Meet Ann Marie, etc., or multiple Search Result pages, then these are likely part of an overall theme, and you can remove many of them. If you are not sure, then keep them in the inventory.</li>
+                <li><strong>Remove guides.</strong> Styleguide, dev-guide, cms-guide, etc. Users do not access these, so we do not need to test them.</li>
+                <li>
+        
+                    CMS Pages. CMS pages can be plentiful, so we only want random samples. Only 2 CMS pages for every 10 are allowed. If there are 20 or less CMS pages, you may keep them all.
+
+                    <p class="note"><strong>Note:</strong> CMS pages missing a <strong>title</strong> must be kept, so do be careful not to remove these from the inventory.</p>
+
+                </li>
+                <li><strong>Questionable pages.</strong> Pages that do not fit the above descriptions but that seem questionable, may also be removed. E.g., <a href="https://az_v2_2019_fr.runmytests.com/modules">https://az_v2_2019_fr.runmytests.com/modules</a></li> 
+                <li><strong>Error Pages.</strong> Remove any pages that may be an error. 504 Gateway Time-out, Job error pages, etc. We can do without these.</li>
+            </ul>
+
+        </li>
+        <li>If you are not sure about any of the above, you can keep those pages in your inventory but do try to remove what you can. Likewise, if you accidentally remove a page that you should not have, then don't worry about it. Our goal is to get the most unique pages, not every single one. This is a shotgun approach, but it works very well in auditing your average website.</li>
+    </ol>
+
+    <p class="note"><strong>Note:</strong> At this time, the <strong>job-location</strong> pages are not picked up in our scans because they are <strong>not</strong> included in each site's <em>sitemap.xml</em> file. We will include support for these page types at a later date. 
+
+    <p class="reminder"><strong>Reminder:</strong> The job detail pages that you add to Pope Tech may eventually expire, so you will need to manually add and test new ones during remediation. 
+
+</section>
+
+<section id="pope-tech-site-create">
+    
+    <h2>Creating a Site in Pope Tech</h2> 
+
+    <p>Once you have your final page inventory and feel confident that there is a good sampling of pages to run continual scans and reports on, then it is time to create your site in Pope Tech. 
+
+    <ol>
+        <li>
+        
+            <a href="https://login.pope.tech/login">Log into Pope Tech</a>. If you have not received an account, please reach out to <strong>Michael Spellacy</strong> or <strong>Dan Green</strong> and look for an invite in your inbox. From here, you can finish setting up your account. 
+
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's Login Page." src="pope-tech-login.png">
+
+                <figcaption>Figure 3. If you do not have a login, then one will be created for you. Once assigned you will receive an email with a link to continue setting up your account.</figcaption>
+
+            <figure>
+
+        </li>
+        <li>
+    
+            Navigate to <strong>Websites > Create Website</strong> 
+
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's Create Website section." src="pope-tech-create-website.png">
+
+                <figcaption>Figure 4. Pope Tech's Create Website section. All of the other website's in the system will be listed here, too.</figcaption>
+
+            <figure>
+
+
+        </li>
+        <li>
+    
+            On the <strong>Create Website</strong> page, fill in the following two fields: <strong>Base URL & Name</strong>. The base URL should be the path to the <strong>QA site</strong> you were given, including the language sub-directory if it is present. The name is self-explanatory, but in keeping with already established naming conventions, please use the client's name, <strong>along with the language of the site being tested</strong>, in parenthesis. For example, <em>Radancy (FR)</em>. If the company is for a specific country and language, then please use <em>Radancy (France, FR)</em>. Once you are done, press the <strong>Save</strong> button. 
+
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's New Website form." src="pope-tech-new-website.png">
+
+                <figcaption>Figure 5. When filling out Pope Tech’s New Website form, make sure to add the language to the name (e.g., Clarity Robotics (EN)). If it’s relevant, include the country name too (e.g., Clarity Robotics (France, FR)).</figcaption>
+
+            <figure>
+
+        </li>
+    </ol>
+
+</section>
+
+<section id="pope-tech-page-upload">
+
+    <h2>Uploading Your Page Inventory to Pope Tech</h2>
+
+    <p>Now that you have created a site, it is time to upload your page inventory.</p>
+
+    <ol>
+        <li>After pressing <strong>Save</strong> in the previous step, the state of your page will change. Scroll down to the section labeled <strong>Pages</strong>. And press the <strong>Upload Pages</strong> button. A dialog will appear.</li>
+        <li>In the dialog, press the <strong>Choose File</strong> button and select this site's inventory from your computer. Make sure you are selecting the correct one. Once your file has been selected, press the <strong>Upload</strong> button.</li>
+        <li>
+            
+            <p>It may not be immediately apparent that your file is being uploaded, but rest assured that it is. You can check the progress of the upload by pressing the refresh button (<img alt="Refresh icon" src="ico-refresh.png">).</p>
+            
+            <p>If you do not see pages being added, please reach out to <strong>Michael Spellacy</strong>, who will investigate further and open a ticket with Pope Tech if needed.</p>
+        
+        </li>
+        <li>When your pages are finished populating, they will appear in the <strong>Pages</strong> table. You can review, organize, and edit all of the pages by using the various features available.</li>
+    </ol>
+
+    <figure>
+        
+        <img alt="Screenshot of Pope Tech's Page Upload feature." src="pope-tech-upload-pages.png">
+
+        <figcaption>Figure 6. Pope Tech's Page Upload feature. All of the page inventory URL's for this particular site will be cataloged here.</figcaption>
+
+    <figure>
+
+</section>
+
+<section id="pope-tech-site-scan">
+
+    <h2>Scanning Your Site</h2> 
+
+    <p>Now that your page inventory has been uploaded, it is time to run your first scan.</p>
+
+    <ol>
+        <li>
+            
+            <p>On the same page as in the previous step, you will see a section in the upper right-hand corner called Scans and <strong>Crawls</strong>. Press the <strong>Scan</strong> button to run your first scan. This will queue your scan, and the application will eventually begin checking your pages. Be patient as this process can sometimes take a little while. As in the previous step, you can press the refresh button (<img alt="Refresh icon" src="ico-refresh.png">) to see your progress.</p>
+            
+            <p>If the scan is taking too long or is not running at all, please reach out to <strong>Michael Spellacy</strong>, who will investigate further and open a ticket with Pope Tech if needed.</p>
+        
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's Scan feature." src="pope-tech-site-scan.png">
+
+                <figcaption>Figure 7. Pope Tech's Scanning feature. All of the pages that have been inventoried for this site will now be tested against WAVE.</figcaption>
+
+            <figure>
+
+        </li>
+    </ol>
+
+</section>
+
+<section id="pope-tech-site-report">
+
+    <h2>Running Your Report</h2> 
+
+    <p>Now that you have created a site, added your pages, and conducted a scan, it is now time to run the report that you will share with the team. Scanning and running reports are the same steps you will take when you need to re-evaluate the progress of a site to see where it currently stands. 
+
+    <ol>
+    
+        <li>
+        
+            Go to <strong>Accessibility > Reports</strong> 
+
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's Report feature." src="pope-tech-report.png">
+
+                <figcaption>Figure 8. Pope Tech's Reporting feature. Reports are compiled based on the last scan that was performed, so make sure you do that first!</figcaption>
+
+            <figure>
+
+        </li>
+        <li>
+        
+            Once here, we set the criteria that we wish to see in our report. The only fields we ever need to edit are <strong>Website</strong>, <strong>Format</strong>, and <strong>Report Type</strong>. 
+
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's Report feature with specific fields being highlighted." src="pope-tech-report-details.png">
+
+                <figcaption>Figure 9. Here we can customize what kind of report we wish to produce.</figcaption>
+
+            <figure>
+
+            <ul type="a">
+                <li>For Website, choose the site of the report you wish to create.</li> 
+                <li>For format, select <strong>PDF</strong>.</li>
+                <li>For report type, select <strong>Page Detail</strong>.</li>
+            </ul> 
+
+        </li>
+        <li>
+
+            Once these are selected, press the <strong>Create</strong> button. After a few moments, you will see your report in the table below. As in previous steps, press the refresh button (<img alt="Refresh icon" src="ico-refresh.png">) to see if your report has finished being generated. Once it is complete, you may download the <strong>PDF</strong> by pressing the <strong>Download</strong> button in the <strong>Actions</strong> column. 
+
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's Report feature with specific fields being highlighted. Here we are indicating how to download a completed report." src="pope-tech-report-download.png">
+
+                <figcaption>Figure 10. The report is now ready for download! You are alomost done!</figcaption>
+
+            <figure>
+
+        </li>
+    </ol>
+
+</section>
+
+<section id="estimation">
+
+    <h2>Estimating Remediation Time</h2> 
+
+    <p>Once your report and inventory are complete, you will need to estimate the development-only remediation time (CSS and Creative time are not included) using this formula:</p>
+
+    <p><strong>(Number of Pages x 0.4) + Tabcordion (4 hrs per unique Tabcordion) + Slick (2 hrs total) + Additional Issues = Total Hours</strong></p> 
+
+    <h3>Notes</h3>
+
+    <ul>
+        <li><strong>Slick sliders:</strong> Flat 2 hours for all sliders across the site.</li>
+        <li><strong>Tabcordions:</strong> Flat 4 hours per unique Tabcordion, but review them individually—some may need more time.</li>
+        <li><strong>Additional Issues:</strong> Use sparingly for uncommon or complex issues such as color contrast or custom components.</li>
+    </ul>
+
+    <h3>Example</h3>
+
+    <p><strong>7 pages + 2 Unique Tabcordions + Slick = 7 x 0.4 + 4 + 2 = 8.8 (round to 9 hours).</strong></p> 
+
+    <p>Once you have completed your estimate, press the <strong>Edit</strong> button in the JIRA ticket assigned to you and look for the <strong>Remediation Estimate Hours</strong> field and add your number.</p>
+
+    <p>If you do not see this field, please reach out to <strong>Amy Moss</strong>.</p>
+
+    <figure>
+        
+        <img alt="Screenshot of JIRA ticket with dialog open to edit fields." src="site-estimate.png">
+
+        <figcaption>Figure 11. Many parties are reliant on the remediation estimate, so do not forget to add it!</figcaption>
+
+    <figure>
+
+</section>
+
+<section id="final-steps">
+
+    <h2>Final Steps</h2>
+
+    <p>Once your remediation hours have been added, you can now finalize your ticket.</p>
+
+    <ol>
+        <li>Upload your Pope Tech Report and Page Inventory files.</li>
+        <li>
+            
+            The description field will be pre-populated with information that you will need to edit to complete the ticket. You will see text in the boilerplate addresse to you (A11y Team). Please follow the instructions: 
+
+            <blockquote>
+        
+                <h3>Accessibility Remediation Required</h3> 
+
+                <p>Please see the attached PDF and remediate all accessibility errors identified during scan and through light manual review. This is not a full audit, but a measure to reduce any low hanging accessibility barriers and limit client risk when it comes to EAA (European Accessibility Act).</p>
+
+                <h3>Slick Installed</h3>
+
+                <p>Slick has been found on the site. If it's not Accessible Slick, please upgrade to the accessible version. Although WAVE does not flag Slick issues in older versions, it has known accessibility issues that are flagged in other third-party scans.</p>
+
+                <p><strong>Note:</strong> Slick may only appear on mobile, not desktop, so you will need to check that.</p> 
+
+                <p>Accessible Slick can be found at <a href="https://accessible360.github.io/accessible-slick/">https://accessible360.github.io/accessible-slick/</a>. Please make sure to only point to the CDN version (do not create a localized version). As a reminder, only Accessible Slick should be used for all new project work.</p>
+
+                <h3>How to Check Slick Version</h3> 
+
+                <p>Inspect the carousel container in the DOM. If you see <code>role="region"</code> and <code>aria-label="carousel"</code>, then Accessible Slick is in use. If not, an upgrade is needed.</p>
+
+                <p><strong>Note:</strong> If the upgrade breaks the carousel, please roll it back and note it here. The CSS team should then decide whether to pursue the fix further.</p>
+
+                <h3>Pages:</h3> 
+
+                <p class="note">A11y Team, insert page list here if needed. You can copy from your page inventory. Remove the entire section if the component is not found.</p>
+
+                <h3>Tabcordion Installed</h3> 
+
+                <p>Tabcordion has been identified on the site. Please replace it with a Tablist if possible. The experience differs on mobile, so creative input and client approval will be required before making changes. As a reminder, only the Tablist should be used for all new project work. See: <a href="https://radancy.dev/component-library/tablist/">https://radancy.dev/component-library/tablist/</a></p>
+
+                <h3>Pages:</h3> 
+
+                <p class="note">A11y Team, insert page list here if needed. You can copy from your page inventory. Remove the entire section if the component is not found.</p> 
+
+                <p class="note">A11y Team, you may add any other issues found during review, if any. Note, please be sure to remove this line if there are no additional issues to cite.</p>
+
+                <h3>WAVE Errors</h3> 
+
+                <p>Please see the attached PDF for all other issues reported by WAVE. All errors—contrast or otherwise—must be resolved to the best of your ability. Our goal is zero automated errors.</p>
+
+                <h3>Regarding Contrast</h3> 
+
+                <p>Some contrast issues—such as those requiring design changes—may need creative involvement and client approval. Others, like those identified over images, can often be resolved without approval by simply adding a background color that meets the required contrast ratio. If text is hidden offscreen, changing its color may also resolve the issue.</p>
+
+                <h3>Product & Third-party Issues</h3>
+
+                <p>If you believe issues to be product or third-party related, please log it here.</p>
+
+                <h3>Reminders</h3> 
+
+                <p><strong>Note for UI:</strong> For all updates that will lead to a visible change for the customer, please flag in the ticket, and request that the CSS confirm the change before you proceed.</p>
+
+                <p><strong>Note for UI:</strong> Keep in mind that AJD's and Job Descriptions will sometimes expire. If this occurs, simply find an equivalent page. It is likely the same issues exist there as well. Please log these new pages in this ticket if you can.</p> 
+
+                <p><strong>Note for CSS:</strong> You may need to involve CS and the Customer is responsible for visible changes required by the European Accessibility Act (EAA).</p>
+
+                <h3>Need Help?</h3> 
+
+                <p>It's okay. Accessibility can be hard. If you're unsure how to fix something, please reach out to Spellacy, Michael, Rebecca Hammer, Goncalves, Carla.</p>
+        
+            </blockquote>
+
+            <div class="info info--reminder">
+
+                <h3 class="info-heading">Editing Tips</h3> 
+
+                <ol>
+                    <li>You only need to pull in the first two columns from Page Inventory. The Title and URL columns are all that are required. You can <a href="https://jira.radancy.com/browse/UDS-20424">review a completed ticket</a> here.</li>
+                    <li>Be kind. Do your future self and fellow team members a favor and quickly change the link sin the URL column to hyperlinks, Place focus on the end of the link and press the space bar to make the link clickable. 
+
+
+                    </li>
+                </ol>
+
+            </div>
+
+        </li>
+
+    </ol>
+
+    <p>w00t! You are done! One you have reviewed your work, you may assign the ticket to <strong>Amy Moss</strong>. Nice job!</p>
+
+</section>

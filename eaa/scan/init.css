@@ -1,0 +1,23 @@
+figure {
+margin: 1em 0;
+}
+
+figcaption {
+color: #666;
+}
+
+main li {
+margin: 0.5em 0;
+}
+
+main figure img {
+width: 86em;
+border: 1px #767676 solid;
+border-radius: 10px;
+}
+
+img[src="ico-refresh.png"] {
+display: inline-block;
+vertical-align: middle;
+border-radius: 50%;
+}
