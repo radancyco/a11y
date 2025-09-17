@@ -11,13 +11,20 @@ margin: 0.5em 0;
 }
 
 main figure img {
-width: 86em;
-border: 1px #767676 solid;
 border-radius: 10px;
+border: 1px #767676 solid;
+width: 86em;
+}
+
+main video {
+border-radius: 10px;
+display: block;
+margin: 1em 0;
+max-width: 60em;
 }
 
 img[src="ico-refresh.png"] {
+border-radius: 50%;
 display: inline-block;
 vertical-align: middle;
-border-radius: 50%;
 }
