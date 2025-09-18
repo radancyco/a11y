@@ -1,0 +1,66 @@
+// Local CSS
+
+main { 
+
+    blockquote {
+    border: 1px #767676 solid;
+    background-color: #fff;
+    margin: 1em 0 1em -2em;
+    padding: 1em;
+    }
+
+    figure {
+    margin: 1em 0;
+
+        img {
+        border: 1px #767676 solid;
+        width: 86em;
+        }
+
+    }
+
+    figcaption {
+    color: #666;
+    }
+
+    img[src="ico-refresh.png"] {
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    }
+
+    li {
+    margin: 0.5em 0;
+    }
+
+    ol {
+    margin-inline-start: 0;
+    }
+
+    section {
+    border: 1px transparent solid;padding: 1em;
+    margin: 1em 0;
+    overflow-wrap: break-word;
+    padding: 1px 1em;
+    scroll-margin-top: 2em;
+    
+        &:target {
+        background-color: #EEE;
+        border-color: #767676;
+        }
+
+    }
+
+    video {
+    display: block;
+    margin: 1em 0;
+    max-width: 60em;
+    }
+
+    // Shared
+
+    blockquote, figure img, video, section {
+    border-radius: 10px;
+    }
+
+}
