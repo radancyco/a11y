@@ -1,7 +1,7 @@
 ---
 localcss: init.css
 heading: false
-title: "EAA: Producing a Scan & Findings Report"
+title: "EAA: Scan & Findings Report and Remediation"
 ---
 
 {% include variables.html %}
@@ -48,7 +48,8 @@ title: "EAA: Producing a Scan & Findings Report"
             <li><a href="#pope-tech-site-scan">Scanning Your Site</a></li>
             <li><a href="#pope-tech-site-report">Running Your Report</a></li>
             <li><a href="#estimation">Estimating Remediation Time</a></li>
-            <li><a href="#final-steps">Final Steps</a></li>
+            <li><a href="#final-steps">Final Scan & Findings Report Steps</a></li>
+            <li><a href="#remediation">Remediation</a></li>
         </ol>
 
     </details>
@@ -99,7 +100,7 @@ title: "EAA: Producing a Scan & Findings Report"
     <h2>Running Page Inventory Scans {% include permalink.html name="Inventory Scan" hash="inventory-scan" %}</h2> 
  
     <ol>
-        <li>Navigate to the home page of the QA site you will be producing a page inventory for and run A11y Pulse. If a link to QA has not been provided already, please block the ticket and reach out to Amy Moss.</li>
+        <li>Navigate to the home page of the QA site you will be producing a page inventory for and run A11y Pulse. If a link to QA has not been provided already, please block the ticket and reach out to <strong>Amy Moss</strong>.</li>
         <li>
             
             In A11y Pulse, navigate to <strong>Auditing Tools & Resources > Audit Setup</strong>. Then press <strong>Get Page Inventory</strong>.
@@ -366,7 +367,7 @@ title: "EAA: Producing a Scan & Findings Report"
 
 <section id="final-steps">
 
-    <h2>Final Steps {% include permalink.html name="Final Steps" hash="final-steps" %}</h2>
+    <h2>Final Scan & Findings Report Steps {% include permalink.html name="Final Steps" hash="final-steps" %}</h2>
 
     <p>Once your remediation hours have been added, you can now finalize your ticket.</p>
 
@@ -374,7 +375,7 @@ title: "EAA: Producing a Scan & Findings Report"
         <li>Upload your Pope Tech Report and Page Inventory files.</li>
         <li>
             
-            The description field will be pre-populated with information that you will need to edit to complete the ticket. You will see text in the boilerplate addressed to you (A11y Team). Please follow the instructions: 
+            The description field will be pre-populated with information that you will need to edit to complete the ticket. You will see text in the boilerplate addressed to you (A11y Team). Please follow the instructions and try not to edit any other portion of the description: 
 
             <blockquote>
         
@@ -460,6 +461,37 @@ title: "EAA: Producing a Scan & Findings Report"
 
     <h3>Huzzah!</h3>
 
-    <p>You are done! Once you have reviewed your work; you may assign the ticket to <strong>Amy Moss</strong>. Nice job!</p>
+    <p>You are done! Once you have reviewed your work; you may assign the ticket to <strong>Amy Moss</strong>. Nice job! Now on to remediation!</p>
 
 </section>
+
+<section id="remediation">
+
+    <h2>Remediation  {% include permalink.html name="Remediation" hash="remediation" %}</h2>
+
+    <p>Once a site’s report is ready, it will be copied to an associated ticket and assigned to <strong>Development Support</strong>, who will remediate the findings. When remediation is complete, the ticket may be reassigned to you for review. At this point, you'll need to do a few things before we can say remediaition is complete:</p>
+
+    <ol>
+        <li>Log into <a href="https://login.pope.tech/login">Pope Tech</a> and run another report using the same steps described in <a href="#pope-tech-site-report">Running Your Report</a> and review results.</li>
+        <li>If there are still issues, assign the ticket back to <strong>Development Support</strong>. This process will be repeated until you are satisifed that all issues have been resolved to your satisfaction.</li>
+        <li>When no issues remain, run and attach a final report to the ticket. We or the client may need this document for legal reasons, though it is not legally binding. This report does not confirm full accessibility, but only that automated issues have been addressed. A full audit is required for complete verification. This is by request only.</li>
+        <li>Once the final report is attached, reassign the ticket to the reporter and let them know remediation is complete so they can proceed with the build.</lI>
+        <li>
+            
+            Delete the client's website from Pope Tech. You can do this from the website listing page or the site’s edit screen (shown below). Once there, press the <strong>Delete</strong> button and confirm. Keeping unique pages to a minimum is critical to stay under the 3,000-page cap.
+
+            <figure>
+        
+                <img alt="Screenshot of Pope Tech's Website Edit page" src="pope-tech-site-delete.png">
+
+                <figcaption>Figure 12. Be sure to clear the remove websites that no longer need to be tested once remediation is done. This will make room for new sites!</figcaption>
+
+            </figure>
+
+        </li>
+    </ol>
+
+    <p>If there are any questions about this process, please reach out to <a href="mailto:michael.spellacy@radancy.com">Michael Spellacy</a></p>
+
+</section>
+
