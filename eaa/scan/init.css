@@ -7,9 +7,9 @@ color: #666;
 }
 
 main section {
-border-radius: 13px;
 border: 1px transparent solid;padding: 1em;
 margin: 1em 0;
+overflow-wrap: break-word;
 padding: 1px 1em;
 scroll-margin-top: 2em;
 }
@@ -24,13 +24,11 @@ margin: 0.5em 0;
 }
 
 main figure img {
-border-radius: 10px;
 border: 1px #767676 solid;
 width: 86em;
 }
 
 main video {
-border-radius: 10px;
 display: block;
 margin: 1em 0;
 max-width: 60em;
@@ -43,7 +41,11 @@ vertical-align: middle;
 }
 
 blockquote {
-border-radius: 10px;
 border: 1px #767676 solid;
+margin: 1em -1em;
 padding: 1em;
+}
+
+blockquote, main figure img, main video, main section {
+border-radius: 10px;
 }
