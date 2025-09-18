@@ -13,7 +13,9 @@ main {
     margin: 1em 0 0;
 
         img {
-        border: 1px #767676 solid;
+        background-color: #fff;
+        border: 3px #fff solid;
+        outline: 1px #767676 solid;
         width: 86em;
         }
 
@@ -40,15 +42,26 @@ main {
     section {
     border: 1px transparent solid;
     overflow-wrap: break-word;
-    padding: 0 1em 1em;
+    padding: 0 0 1em;
     scroll-margin-top: 2em;
     
         &:target {
         background-color: #EEE;
         border-color: #767676;
-        transition: all 300ms 1.2s ease-in-out;
+        padding-left: 1em;
+        padding-right: 1em;
+        transition: background-color 300ms 1.2s ease-in-out, border-color 300ms 1.2s ease-in-out;
         }
 
+    }
+
+    summary:not(.btn,.video__transcript-toggle) {
+    background-color: #eee;
+    border: 1px #666 solid;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.75em;
+    text-decoration: none;
     }
 
     video {
