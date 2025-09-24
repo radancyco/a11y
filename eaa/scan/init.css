@@ -1,1 +1,89 @@
-main blockquote{border:1px #767676 solid;background-color:#fff;margin:1em 0 1em -2em;padding:1em}main figure{margin:1em 0 0}main figure img{background-color:#fff;border:3px #fff solid;outline:1px #767676 solid;width:86em}main figcaption{color:#666}main img[src="ico-refresh.png"]{border-radius:50%;display:inline-block;vertical-align:middle}main li{margin:.5em 0}main ol{margin-inline-start:0}main section{border:1px rgba(0,0,0,0) solid;overflow-wrap:break-word;padding:0 0 1em;scroll-margin-top:2em}main section:target{background-color:#eee;border-color:#767676;padding-left:1em;padding-right:1em;transition:background-color 300ms 1.2s ease-in-out,border-color 300ms 1.2s ease-in-out}main summary:not(.btn,.video__transcript-toggle){background-color:#eee;border:1px #666 solid;cursor:pointer;display:inline-block;padding:.75em;text-decoration:none}main video{display:block;margin:1em 0;max-width:60em}main blockquote,main figure img,main video,main section{border-radius:10px}/*# sourceMappingURL=init.css.map */
+/*! 
+
+    EAA: Scan & Findings Report and Remediation
+    Author: Michael "Spell" Spellacy
+
+*/
+
+main { 
+
+    --primary-color: #767676;
+    --secondary-color: #fff;
+    --tertiary-color: #eee;
+    --quaternary-color: #666;
+
+    blockquote {
+    border: 1px var(--primary-color) solid;
+    background-color: var(--secondary-color);
+    margin: 1em 0 1em -2em;
+    padding: 1em;
+    }
+
+    figure {
+    margin: 1em 0 0;
+
+        img {
+        background-color: var(--secondary-color);
+        border: 3px var(--secondary-color) solid;
+        outline: 1px var(--primary-color) solid;
+        width: 86em;
+        }
+
+    }
+
+    figcaption {
+    color: var(--quaternary-color);
+    }
+
+    img[src="ico-refresh.png"] {
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    }
+
+    li {
+    margin: 0.5em 0;
+    }
+
+    ol {
+    margin-inline-start: 0;
+    }
+
+    section {
+    border: 1px transparent solid;
+    overflow-wrap: break-word;
+    padding: 0 0 1em;
+    scroll-margin-top: 2em;
+    
+        &:target {
+        background-color: var(--tertiary-color);
+        border-color: var(--primary-color);
+        padding-left: 1em;
+        padding-right: 1em;
+        transition: background-color 300ms 1.2s ease-in-out, border-color 300ms 1.2s ease-in-out;
+        }
+
+    }
+
+    summary:not(.btn,.video__transcript-toggle) {
+    background-color: var(--tertiary-color);
+    border: 1px var(--quaternary-color) solid;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.75em;
+    text-decoration: none;
+    }
+
+    video {
+    display: block;
+    margin: 1em 0;
+    max-width: 60em;
+    }
+
+    /* Shared */
+
+    blockquote, figure img, video, section {
+    border-radius: 10px;
+    }
+
+}
