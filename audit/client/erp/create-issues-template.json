@@ -1,0 +1,100 @@
+{
+
+    "issueUpdates": [
+      
+        {%- for a11y in site.data.erp -%}{
+
+            {%- assign description = "\n\n*Audit ID:* " | append: a11y.ID | append: "\n\n*WCAG Success Criteria:* " | append: a11y.SC | append: "\n\n*WCAG Level:* " | append: a11y.Level | append: "\n\n*WCAG Synopsis:* " | append: a11y.Synopsis | append: "\n\n*WCAG Understanding:* " | append: a11y.Understanding | append: "\n\n*Impact/Severity:* " | append: a11y.Impact | append: "\n\n*Issue/Recommendation:*\n\n" | append: a11y.Issue -%}
+            
+            {%- if a11y.Testing -%}
+
+                {%- assign Testing = "\n\n*Testing Criteria:* \n\n" | append: a11y.Testing -%}
+          
+                {%- assign description = description | append: Testing -%}
+          
+            {%- endif %}
+
+            {%- if a11y.Links -%}
+
+                {%- assign Links = "\n\n*Links:* \n\n" | append: a11y.Links -%}
+          
+                {%- assign description = description | append: Links -%}
+          
+            {%- endif %}
+            
+            {%- if a11y.Screengrab -%}
+
+                {%- assign Screengrab = "\n\n*Screengrab:* \n\n" | append: a11y.Screengrab -%}
+          
+                {%- assign description = description | append: Screengrab -%}
+          
+            {%- endif %}
+
+            {%- if a11y.ProductNote -%}
+
+              {%- assign productNote = "\n\n*Note:* " | append: a11y.ProductNote -%}
+            
+              {%- assign description = description | append: productNote -%}
+            
+            {%- endif %}
+
+            "fields": {
+            
+                "project": { 
+
+                    "key": "{{ site.data.jira.project.key }}"
+
+                },
+                "summary": {{ a11y.Summary | jsonify | replace: "\n", "" | replace: "\r", "" }},
+                "description": {{ description | jsonify | replace: "\\n", "\n" }},
+                {%- if site.data.jira.project.key == "BRAZ" %}
+                {%- if a11y.Environment -%}
+                "environment": {{ a11y.Environment | jsonify }},
+                {%- endif -%}
+                {% endif -%}
+                "issuetype": {
+
+                    "name": "{{ site.data.jira.issuetype.name }}"
+
+                },
+                "assignee": {
+
+                    "name": "{{ site.data.jira.assignee.name }}"
+
+                },
+
+                {%- if site.data.jira.project.key == "UDS" %}
+                "customfield_11112": [{
+                
+                    "id": "{{ site.data.jira.client.id }}"
+                
+                }],
+                "customfield_11113": "{{ site.data.jira.workbook }}",
+                {% endif -%}
+                {%- if site.data.jira.track %}
+                "customfield_16525": {
+                
+                    "id": "{{ site.data.jira.track }}"
+                
+                },
+                {% endif -%}
+                {%- if site.data.jira.capitalizable %}
+                "customfield_12400": {
+                
+                    "id": "{{ site.data.jira.capitalizable }}"
+                
+                },
+                {% endif -%}
+                {%- if site.data.jira.epic %}
+                "customfield_10900" : "{{ site.data.jira.epic }}",
+                {% endif -%}
+                "labels": ["Accessibility", "WCAG_Level_{{a11y.Level}}", "WCAG_Criteria_{{a11y.SC | replace: " ", "_" | replace: ",", "_" | replace: ":", "" | replace: "__", "_"}}", "A11Y_Severity_{{a11y.Impact}}"{% if a11y.Labels %}, {{a11y.Labels}}{% endif %}]
+            }
+  
+        }{% unless forloop.last %},{% endunless %}
+
+        {%- endfor -%}
+
+    ]
+
+}

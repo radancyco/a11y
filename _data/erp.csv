@@ -1,0 +1,690 @@
+ID,SC,Level,Synopsis,Understanding,Links,Summary,Environment,Issue,Testing,Screengrab,ProductNote,Labels,Impact,Status,Assignment,Implementation,Notes,JIRA,Estimate
+A11YERP001,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,https://www.w3.org/WAI/WCAG22/Understanding/non-text-content,https://referrals.radancy.com/dashboard/jobs/active,Global: Company Logo Missing Alt Attribute and Value,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The client/company logo in the bottom-left navigation is missing an alt text attribute and value. This is an informative image, so it must be described to the user.
+ 
+ *Before:* 
+ 
+ {code}<img width=""182"" height=""45"" class=""sidenav_footer_logo"" src=""https://api.1brd.com/v1/companies/ce9bf599-f0b4-4a9e-969a-25df747610a9/logo"" style=""border-radius: 3px;"">{code}
+ 
+ *After:* 
+ 
+ {code}<img alt=""Radancy Logo"" width=""182"" height=""45"" class=""sidenav_footer_logo"" src=""https://api.1brd.com/v1/companies/ce9bf599-f0b4-4a9e-969a-25df747610a9/logo"" style=""border-radius: 3px;"">{code}",Ensure that image now includes an alt attribute with proper value. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP001.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP002,2.4.1: Bypass Blocks,A,Provide a ‘Skip to Content’ link,https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks,https://referrals.radancy.com/dashboard/jobs/active,Global: Skip LInk is Missing,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Please ensure that a *Skip Navigation* link is implemented across all pages of the application to bypass interactive elements in the header and primary navigation. Providing such a link is helpful, as it avoids unnecessary tabbing and allows users to access the content more quickly. The same can be said for other components across the site if they exhibit excessive tabbing, but we will revisit those later. For now, just focus on this instance.
+ 
+ *TODO*
+ 
+ 1. The link should say *Skip to main content*.
+ 
+ 2. The link should be presented visually when the user tabs through the UI. It is often the first item one can tab to in the interface from the address bar. See screengrab for example.
+ 
+ 3. Accessing the link should jump the user to the primary content of the page.
+ 
+ 4. A simple HTML anchor can be used here. No JavaScript needed. See screengrab.","Review pages and ensure that a ""Skip Navigation"" link is present and operabable upon tabbing through the interface. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP002.mp4,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP003,3.1.1: Language of Page,A,Page has a language assigned,https://www.w3.org/WAI/WCAG22/Understanding/language-of-page,https://referrals.radancy.com/dashboard/jobs/active,Global: All ERP Pages Missing Language Declaration,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The opening _html_ element is missing a _lang_ attribute. 
+ 
+ When configuring a screen reader, users select a default language. If the language of a webpage or app is not specified, the screen reader assumes the default language set by the user. Language settings become an issue for users who speak multiple languages and access website in more than one language. It is essential to specify a language and ensure that it is valid, so website text is pronounced correctly.
+ 
+ Screen readers use different sound libraries for each language, based on the pronunciation and characteristics of that language. Screen readers can switch between these language libraries easily, but only if the documents specify which language(s) to read and when. If the language is not specified, the screen reader reads the document in the user's default language, resulting in a strange accent! It is impossible to understand anything when screen readers are using the wrong language library.","Ensure that a _lang_ attribute is present on the opening HTML element. Be sure that it includes the proper, default language value (en or en-US). If the application is ever tanslated, it must contain proper ISO 639-1 language codes.","https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP003-1.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP003-2.png ",,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP004,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://referrals.radancy.com/dashboard/jobs/active,Global: Achievements & Notification Disclosures - Require Additional Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The *Achievements* & *Notification* components at the top of all pages require more work. Please coordinate with Michael Spellacy before sprint planning.
+ 
+ *TODO*
+ 
+ 1. Ensure that each button receives a focus outline. Using _outline: 0_ or _outline: none_ must always be avoided, unless an alternative outline or state that meets a 3:1 contrast ratio with the background is provided as a replacement. 
+ 
+ 2. Ensure that both buttons include an accessible name (accName). 
+
+*Before:* 
+ 
+{code}<button _ngcontent-ng-c53642259="""" type=""button"" appstoppropagation=""click"" class=""dashboard-dropdowns_toggle""> ... </button>{code}
+ 
+*After:* 
+ 
+{code}<button _ngcontent-ng-c53642259="""" aria-label=""Achivements"" type=""button"" appstoppropagation=""click"" class=""dashboard-dropdowns_toggle"">{code}
+ 
+*Note:* Also ensure that _aria-label_ content reflects unread updates. Something like _aria-label=""Achievements (Unread Updates Available)""_ or similar. 
+ 
+ 3. Ensure that each button includes a proper state using _aria-expanded_ and be sure that this state toggles between ""true"" and ""false"" when repeatedly pressed. Please note that pressing one button should reset the state of any other button that is already open, etc.
+ 
+{code}<button _ngcontent-ng-c53642259="""" type=""button"" appstoppropagation=""click"" class=""dashboard-dropdowns_toggle""> ... </button>{code}
+ 
+*After:* 
+ 
+{code}<button _ngcontent-ng-c53642259="""" aria-label=""Notifications"" aria-expanded=""false"" type=""button"" appstoppropagation=""click"" class=""dashboard-dropdowns_toggle"">{code}
+ 
+4. Provide escape key support. Pressing the escape key should reset the open component to its closed state. 
+ 
+5. Ensure that links within the open disclosure panel also have a focus outline when being tabbed to. 
+ 
+6. Both the *Achievements* and *Notification* disclosures appear to have inner scrollbars when the application is at certain height. These should likely be removed because the navigation itself already has a scrollbar present. Having two inner scrollbars is problematic and also , when a disclosure contains no interactive content, like a button or link, it must contain a tabindex, along with a an accName and role (region). By removing the scroll here, will not require the attention of these attributes.",Verify that all outlined criteria is now being implemented and that the disclosures are now operating properly. Screen reader and keyboard re-testing will be required here. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP004.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP005,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://referrals.radancy.com/dashboard/jobs/active,Global: Carousel Component Requires Additional Overhaul,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The carousel component on most pages of the application has several glaring accessibility issues. While the carousel can be tabbed to, the focus appears to land out of view or ""under"" the primary content area on the left. This is not acceptable, as people with low vision who also use a keyboard to navigate will not be able to tell where they are. For screen reader users, there are other critical elements that appear to be missing, and there is also improper use of ARIA. Please see screengrab. 
+ 
+A carousel component requires the following key elements to work more broadly and for more users. These are as follows:
+ 
+1. An accessible name (accName), description, and role.
+ 
+2. Navigational buttons must include an accessible name.
+ 
+3. Pressing navigation buttons should indicate that a new slide is in view and which slide one is on (e.g., Data-Driven Recruitment in the Age of AI - Radancy Blog, Slide 3 of 7). Here we will require _aria-live_.
+ 
+4. Tabbing should be confined to the visible slide only. Continuing to tab should bring the user to navigation buttons or to other components on the page. Focus should not land on any hidden content.
+ 
+5. Links within the slide should be more discernible (they should also be link--not buttons). We can use _aria-describedby_ to link the blog post title if we want.
+ 
+6. Links that open in new windows should indicate the same to assistive technology as well. Either use an image with alt text or visually hidden text. 
+ 
+7. On mobile devices, arrow buttons must be present. 
+ 
+Please review the example posted in the delivery component library, as it will help guide product during remediation. See https://radancy.dev/component-library/carousel/  
+ 
+Alternatively, we may also wish to see if Angular has a better-built carousel component available. However, it should be reviewed _carefully_ before integrating it into the product.
+ 
+Please reach out to Michael Spellacy before moving forward with this in a future sprint. I think the team would benefit from speaking about the issues first and working together to come up with a proper solution for this component.",TBD,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP005.mp4,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP006,1.4.4: Resize text,AA,Text can be resized to 200% without loss of content or function,https://www.w3.org/WAI/WCAG22/Understanding/resize-text,https://referrals.radancy.com/dashboard/jobs/active,Global: Meta Element Parameter Restricing Page Zoom,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The _user-scalable=""no""_ parameter inside the content attribute of _<meta name=""viewport"">_ element disables zooming on a page. The _maximum-scale parameter_ limits the amount the user can zoom. This is problematic for people with low vision who rely on screen magnifiers to properly see the contents of a web page. To remedy, please remove _user-scalable=""no""_. 
+ 
+ *Before:* 
+ 
+ {code}<meta name=""viewport"" content=""width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"">{code} 
+ 
+ *After:* 
+ 
+ {code{<meta name=""viewport"" content=""width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"">{code}","Verify that _user-scalable=""no""_ has been removed. Validate in Axe and also test with screen mgnification or mobile to see if user can zoom, etc.  ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP006.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP007,2.4.7: Focus Visible,AA,Ensure keyboard focus is visible and clear,https://www.w3.org/WAI/WCAG22/Understanding/focus-visible,https://referrals.radancy.com/dashboard/jobs/active,Global: Multiple Interactive Elements Missing Focus Outline or Focus Outline Fails Contrast,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Rather than call the same issue out in every component or page across application, the product team would do well to inventory *all* of their CSS and remove *all instances* of _outline: 0_ and/or _outline: none_. Allowing, for now, the browser's default outline to be revealed when a user tabs to an interactive element. Product will also need to ensure that shared stylesheets used by the app, also do not contain these supressive properties. 
+ 
+In addition to restoring the native focus state, the team should also remove custom outlines that are present. Not only do these not meet the needed 3:1 contrast ratio with its background color, they create an inconsistent experience with native focus states that are (and will be) now common across the application.",Verify that these properties no longer exist in CSS and tab through all interactions to see if browser's default outline is present and consistent. ,"https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP007-A.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP007-B.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP007-C.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP007-D.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP007-E.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP007-F.png ",,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP008,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://referrals.radancy.com/dashboard/jobs/active,Global: Landmarks Used or Nested Inappropiately,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Most pages across the application appear to have structural landmark issues. Proper usage of landmark elements aids assistive technology users in navigating the page and help them understand where they are within structure of the page.
+ 
+For example, the _main_ element in use should wrap the whole page and there is also another element on the page with _role=""main""_, which should likely be removed, as there can only be one _main_ element per-page. 
+
+Before proceeding, please assign ticket back to Michael Spellacy for further analysis and guidance on next steps before sprint.",TBD,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP008.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Specialist_Support""",Serious,Fail,Product Support,Failed in Preview,,,0
+A11YERP009,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,"https://referrals.radancy.com/dashboard/jobs/active 
+
+https://referrals.radancy.com/dashboard/my-referrals 
+
+https://referrals.radancy.com/dashboard/my-rewards 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/content-sharing ",Global: Multiple Pages Missing Primary Heading (H1),"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Please add an _h1_ element to each page cited. For example, on the *Jobs* page, add: 
+ 
+{code}<h1>Jobs</h1>{code}
+ 
+*Note:* Adding a new heading to the page or changing it can cause a cascading heading failure, so please ensure that other headings on the page are not being skipped or are out of order due to such changes. If they are, these headings will need to be adjusted, too. For example, the *Filters* heading will need to be changed to an _h2_.",Ensure that primary headings exist on all pages and that subsequent headings are not skipped. Be sure to run Axe as it will indicate if these are still issues. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP009.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP010,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,"https://referrals.radancy.com/dashboard/leaderboard 
+
+https://referrals.radancy.com/dashboard/my-settings/profile 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/statistics/general 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/job-form 
+
+https://referrals.radancy.com/dashboard/reward-policy ",Global: Multiple Page Using Secondary Heading as Primary Heading,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Please change the _h2_ used as a primary heading to an _h1_. For example: 
+ 
+*Before:*
+ 
+{code}<h2>Leaderboard</h2>{code}
+ 
+*After:* 
+ 
+{code}<h1>Leaderboard</h1>{code}
+ 
+*Note:* Adding a new heading to the page or changing it can cause a cascading heading failure, so please ensure that other headings on the page are not being skipped or are out of order due to such changes. If they are, these headings will need to be adjusted, too. For example, the *Filters* heading will need to be changed to an _h2_.
+ 
+*Important:* Headings should _never_ be hidden on smaller screens. We do not sacrifice semantics for aesthetics at Radancy. Please remove the *class=""hide-tablet""*.",Ensure that primary headings exist on all pages and that subsequent headings are not skipped. Be sure to run Axe as it will indicate if these are still issues. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP010.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP011,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/jobs/active,Jobs: Personal Referral Copy Feature Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The *Personal Referral* component is not accessible to keyboard. Please make this a _button_ element instead and then adjust style as needed. A _button_ is *always* the best approach as it has all the roles, interactivity, and expectations built in, with no extra effort required to make fully accessible. In addition to making this a _button_, let's also include a label with a value of *Copy URL* or similar. 
+ 
+*Before:* 
+ 
+<div _ngcontent-ng-c3573690564="""" class=""personal-referral-link__display""><span _ngcontent-ng-c3573690564="""">https://hyperdriveinnovations.qa-1brd.com/r/BPKGURWB</span><ic-copy _ngcontent-ng-c3573690564="""" class=""ic"" style=""color: rgb(73, 98, 241);"">...</ic-copy></div>
+ 
+*After:*
+ 
+<button _ngcontent-ng-c3573690564="""" aria-label=""Copy URL"" class=""personal-referral-link__display""><span _ngcontent-ng-c3573690564="""">https://hyperdriveinnovations.qa-1brd.com/r/BPKGURWB</span><ic-copy _ngcontent-ng-c3573690564="""" class=""ic"" style=""color: rgb(73, 98, 241);"">...</ic-copy></button>
+ 
+Later, it may be beneficial to layer in more for assistive technology users, like _aria-pressed_, but we can omit this for now.",Ensure that componet is now accessible to keyboard use. Pressing it should copy the link just like a mouse press can.,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP011.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP012,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://referrals.radancy.com/dashboard/leaderboard,Leaderboard: Presented Information Should Be Tabular Data,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The product team should strongly consider changing the Leaderboard data to be tabular as this will be much more navigable and read better to assistive technology users. While it visually looks like a table it is not structurally represented as one and really should be.
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",TBD,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP012.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP013,2.4.2: Page Titled,A,Use helpful and clear page titles,https://www.w3.org/WAI/WCAG22/Understanding/page-titled,"https://hyperdriveinnovations.qa-1brd.com/dashboard/job-form
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/reward-shop/list 
+
+https://hyperdriveinnovations.qa-1brd.com/job/40f9d25a-e57f-4e27-9d09-70ea567699b5?referralId=6aba2273-597f-4200-bba2-0bf5722d8349&referraltoken=l3rskskmoc07 (Additional Information) 
+
+https://hyperdriveinnovations.qa-1brd.com/job/40f9d25a-e57f-4e27-9d09-70ea567699b5?referralId=6aba2273-597f-4200-bba2-0bf5722d8349&referraltoken=l3rskskmoc07 (Congratulations) ",Global: Multiple Pages Require More Descriptive Titles,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The following page(s) have generic and non-descriptive title element(s). Page titles should always reflect the primary heading on the page as closely as possible. For example, on the ""Create New Job"" page, the primary heading (currently an _h2_, that will eventually be an h1) says ""Create a New Job"", while the title has a generic ""Employee Referral"". Having better page titles helps assistive technology users understand what tab they are in, etc. Please address cited page(s).","Review all pages for proper heading structure. Headings should next, be in correct order, and not skipped. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP013.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP014,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://hyperdriveinnovations.qa-1brd.com/dashboard/job-form,Global: Custom Disclosure with Predictive Search Require More Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The disclosure buttons with custom input elements with predictive search are _very_ problematic and require further review. Please assign this ticket back to Michael Spellacy for further analysis and guidance. 
+ 
+*General Issues*
+ 
+1. Buttons receive focus, but there is no state announced when pressing them. Here, _aria-expanded_ will be required.
+ 
+2. When disclosure is opened the next tab stop should be within the input field and then subsequent tab stops should jump into the list below the input. However, these listing do not appear to be interactive. Instead, my focus moves to next interactive element _outside_ of disclosure before returning to the input field in the disclosure. Likely the disclosures are at the bottom of the page, rather than directly below the button. If we cannot move these disclosures, then focus management will be required. 
+ 
+3. Overall, the accessibility of the component is so poor, it is recommended that a different disclosure component, with predictive search be used, etc., but we will revisit this.
+
+*Note:* Component used in multiple locations across application. ",TBD,"https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP014-A.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP014-B.png ",,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Difficult""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP015,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,https://www.w3.org/WAI/WCAG22/Understanding/non-text-content,https://referrals.radancy.com/jobs?st=g69f13mop3fg,Multiple Jobs Landing: Company Logo Missing Alternative Text,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The client logo in the header is missing an alt text attribute and value. This is an informative image, so it should be described to the user.
+ 
+*Before:* 
+ 
+{code}<img width=""182"" height=""45"" src=""https://api.1brd.com/v1/companies/ce9bf599-f0b4-4a9e-969a-25df747610a9/logo"" style=""border-radius: 3px;"">{code} 
+ 
+*After:* 
+ 
+{code}<img alt=""Radancy logo"" width=""182"" height=""45"" src=""https://api.1brd.com/v1/companies/ce9bf599-f0b4-4a9e-969a-25df747610a9/logo"" style=""border-radius: 3px;"">{code}",Ensure that image now includes an alt attribute with proper value. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP015.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Multiple_Jobs_Landing""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP016,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,https://www.w3.org/WAI/WCAG22/Understanding/non-text-content,https://referrals.radancy.com/jobs?st=g69f13mop3fg,Multiple Jobs Landing: Hero Banner Missing Alternative Text,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The ""hero"" banner at the top of the page has text in it and therefore requires that alternative text be provided. Is there a field in the admin tool that permits alternative text in images? Regardless, if an image does not require alternative text, a ""null alt"" should be present by default. 
+ 
+*Before:*
+ 
+{code}<img class=""jobs-advert-list_intro_img"" src=""https://cdn.1brd.com/job-branding/company:ce9bf599-f0b4-4a9e-969a-25df747610a9/job-branding:c40ff81d-4e1c-48e2-a0c6-ac45410aa42b/job-headers/1440x470/313803df-acf6-4252-8d2d-43ff4052ef33.jpeg"">{code}
+ 
+*After:*
+ 
+{code}<img alt=""Connected Careers: Advance your career with the talent technology leader."" class=""jobs-advert-list_intro_img"" src=""https://cdn.1brd.com/job-branding/company:ce9bf599-f0b4-4a9e-969a-25df747610a9/job-branding:c40ff81d-4e1c-48e2-a0c6-ac45410aa42b/job-headers/1440x470/313803df-acf6-4252-8d2d-43ff4052ef33.jpeg"">{code}
+ 
+*After (No Alt Text):*
+ 
+{code}<img alt="""" class=""jobs-advert-list_intro_img"" src=""https://cdn.1brd.com/job-branding/company:ce9bf599-f0b4-4a9e-969a-25df747610a9/job-branding:c40ff81d-4e1c-48e2-a0c6-ac45410aa42b/job-headers/1440x470/313803df-acf6-4252-8d2d-43ff4052ef33.jpeg"">{code}",Ensure that image now includes an alt attribute with proper value. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP016.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Multiple_Jobs_Landing""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP017,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://referrals.radancy.com/jobs?st=g69f13mop3fg,Multiple Jobs Landing: Page Missing Primary Heading (H1),"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Please change the ""Jobs at Radancy"" heading, which is currently an _h2_, to an _h1_. Upon changing this to an _h1_ please ensure that lower headings are also updated to avoid skipped headings, which is not allowed. Proper heading structure and hierarchy help aid the overall understanding of the page. Getting basic HTML correct is the best thing one can do for their application in regard to accessibility. 
+ 
+*Before:*
+ 
+{code}<h2 class=""jobs-advert-list_intro_title"">Jobs at Radancy</h2>{code}
+ 
+*After:*
+ 
+{code}<h1 class=""jobs-advert-list_intro_title"">Jobs at Radancy</h1>{code}",Ensure that current heading is now an _h1_. Run page through Axe to see if any heading issues continue to be reported. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP017.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Multiple_Jobs_Landing""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP018,3.1.1: Language of Page,A,Page has a language assigned,https://www.w3.org/WAI/WCAG22/Understanding/language-of-page,https://referrals.radancy.com/jobs?st=g69f13mop3fg,Multiple Jobs Landing: Page Missing Language Declaration,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The opening _html_element is missing a _lang_ attribute. 
+ 
+When configuring a screen reader, users select a default language. If the language of a webpage or app is not specified, the screen reader assumes the default language set by the user. Language settings become an issue for users who speak multiple languages and access website in more than one language. It is essential to specify a language and ensure that it is valid, so website text is pronounced correctly.
+ 
+Screen readers use different sound libraries for each language, based on the pronunciation and characteristics of that language. Screen readers can switch between these language libraries easily, but only if the documents specify which language(s) to read and when. If the language is not specified, the screen reader reads the document in the user's default language, resulting in a strange accent! It is impossible to understand anything when screen readers are using the wrong language library.","Ensure that a _lang_ attribute is present on the opening HTML element. Be sure that it includes the proper, default language value (en or en-US). If the application is ever tanslated, it must contain proper ISO 639-1 language codes.",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP018.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Multiple_Jobs_Landing""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP019,1.4.4: Resize text,AA,Text can be resized to 200% without loss of content or function,https://www.w3.org/WAI/WCAG22/Understanding/resize-text,https://referrals.radancy.com/jobs?st=g69f13mop3fg,Multiple Job Landing: Meta Element Parameter Restricing Page Zoom,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The _user-scalable=""no""_ parameter inside the content attribute of _<meta name=""viewport"">_ element disables zooming on a page. The _maximum-scale parameter_ limits the amount the user can zoom. This is problematic for people with low vision who rely on screen magnifiers to properly see the contents of a web page. To remedy, please remove _user-scalable=""no""_. 
+ 
+*Before:* 
+ 
+{code}<meta name=""viewport"" content=""width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"">{code} 
+ 
+*After:* 
+ 
+{code{<meta name=""viewport"" content=""width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"">{code}","Verify that _user-scalable=""no""_ has been removed. Validate in Axe and also test with screen mgnification or mobile to see if user can zoom, etc.  ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP019.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Multiple_Jobs_Landing""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP020,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://referrals.radancy.com/jobs?st=g69f13mop3fg,Multiple Job Landing: Remove Navigation Role From Header,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Please remove _role=""navigation_ from the _header_ element. Overriding an element’s native role should be done rarely and with justified purpose and is generally not allowed. This is clearly a header and not a navigation. While the header does contain a single link, you should be using a nested _nav_ element were their multiple links in use. As it stands now, a single link is fine withing a header. 
+ 
+*Before:*
+ 
+{code}<header role=""navigation""> ... </header>{code}
+ 
+*After:*
+ 
+{code}<header > ... </header>{code}","Verify that _user-scalable=""no""_ has been removed. Validate in Axe and also test with screen mgnification or mobile to see if user can zoom, etc.  ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP020.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Multiple_Jobs_Landing""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP021,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/jobs?st=g69f13mop3fg,"Multiple Job Landing: ""View Role"" Links Not Keyboad Accessible","Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The ""View Role"" links are not accessible to keyboard users. 
+ 
+Before arriving at a solution, we need to ask ourselves whether hiding these critical links is even necessary. If there is no valid reason to hide them, it is *strongly* recommended that we allow these links to always remain visible. This is the easiest solution, and it would also resolve the issue of them being unavailable on mobile (was this even tested on mobile?).
+ 
+However, the link must include an _href_ attribute so that it becomes keyboard-focusable, even if it means using a null value such as _href=""#""_. Links without an _href_ cannot be focused via keyboard, regardless of whether they are hidden or not. Adding _tabindex=""0""_ is not acceptable, as it removes the link’s native role and behavior.
+ 
+If we want to retain the current behavior, then the CSS will likely need to be adjusted. Now, a wrapper element reveals a child element on _:hover_. In addition to _:hover_, we will need to include _:focus-within_ and remove display: none. Like a “skip link,” the child element should be visually hidden offscreen and brought into view when it receives hover or focus. See example here:
+ 
+https://codepen.io/Spell/pen/QwyMYya 
+ 
+Please set up a meeting with Michael Spellacy first, if we proceed with the second solution.","Using your keyboard, ensure that the links are now visible when tabbed to. Also ensure that hacks like _tabindex_ are not included, as this will strip the link of it's native semantics, creating confusion for assisitve technology users. Ensure links are readily available on mobile, as well. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP021.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Multiple_Jobs_Landing""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP022,Best Practice,BP,"The issues does not fail WCAG, but is a well-established and recommended design or usability best practice on the web",https://radancy.dev/uid/code-standards/,https://jobs.radancy.com/en/referral/-/-/34730/84784113856?firstbirdDomain=radancy&st=9pi582m9jm9i,Career Site: Referral Form Testing,NA,"This is just a brief note to indicate that career site forms require more testing but will likely fall to the Sites team to address any accessibility shortcomings. 
+ 
+In the meantime, like other form types across our career sites, many issues are already being remediated by MagicBullet. a custom built accessibility patch; see https://radancy.dev/magicbullet/a11y/. 
+ 
+This ticket should be assigned to Michael Spellacy.","Using your keyboard, ensure that the links are now visible when tabbed to. Also ensure that hacks like _tabindex_ are not included, as this will strip the link of it's native semantics, creating confusion for assisitve technology users. Ensure links are readily available on mobile, as well. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP022.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Career_Site""",Serious,Fail,Product Support,Failed in Preview,,,0
+A11YERP023,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,https://www.w3.org/WAI/WCAG22/Understanding/non-text-content,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Company Logo Missing Alternative Text,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The client logo in the header is missing an alt text attribute and value. This is an informative image, so it should be described to the user.
+ 
+*Before:*
+ 
+{code}<img width=""182"" height=""45"" src=""https://api.qa-1brd.com/v1/companies/0e8db95d-27f9-4b09-9ff7-9374b1c0ebe5/logo"" style=""border-radius: 3px;"">code}
+ 
+*After:* 
+ 
+{code}<img alt=""Company Name logo"" width=""182"" height=""45"" src=""https://api.qa-1brd.com/v1/companies/0e8db95d-27f9-4b09-9ff7-9374b1c0ebe5/logo"" style=""border-radius: 3px;"">{code}",Ensure that image now includes an alt attribute with proper value. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP023.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP024,1.1.1: Non-text Content,A,Provide text alternatives for non-text content,https://www.w3.org/WAI/WCAG22/Understanding/non-text-content,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Hero Banner Missing Alternative Text,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The ""hero"" banner at the top of the page requires a ""null alt"". If no alternative text is required, then the image must include an empty an _alt_ attribute with no value. Null alts are very important in accessibility, as they essentially make non-essential images invisible to assistive technology, which is what we want an image that is non-informative to be. Failure to not add a null alt means the image's path could be read back to assistive technology user, which nobody wants. 
+ 
+*Before:*
+ 
+{code}<img class=""job-advert_company-hero-img"" src=""https://cdn.qa-1brd.com/images/default-job-header-720x235-5b-radancy.png"">{code}
+ 
+*After:*
+ 
+{code}<img alt="""" class=""job-advert_company-hero-img"" src=""https://cdn.qa-1brd.com/images/default-job-header-720x235-5b-radancy.png"">{code}",Ensure that image now includes an alt attribute with proper value (if any),https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP024.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP025,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Page Missing Primary Heading (H1),"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Please change the Job Title heading, which is currently an _h2_, to an _h1_. Upon changing this to an _h1_ please ensure that lower headings are also updated to avoid the skipping headings, which is not allowed. Proper heading structure and hierarchy help aid the overall understanding of the page. Getting basic HTML correct is the best thing one can do for their application in regard to accessibility. 
+ 
+*Before:*
+ 
+{code}<h2 class=""job-advert_heading""><span e2e=""jobTitle"">Propulsion Engineer</span></h2>{code}
+ 
+*After:*
+ 
+{code}<h1 class=""job-advert_heading""><span e2e=""jobTitle"">Propulsion Engineer</span></h1>{code}",Ensure that current heading is now an _h1_. Run page through Axe to see if any heading issues continue to be reported. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP025.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP026,3.1.1: Language of Page,A,Page has a language assigned,https://www.w3.org/WAI/WCAG22/Understanding/language-of-page,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Page Missing Language Declaration,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The opening _html_element is missing a _lang_ attribute. 
+ 
+When configuring a screen reader, users select a default language. If the language of a webpage or app is not specified, the screen reader assumes the default language set by the user. Language settings become an issue for users who speak multiple languages and access website in more than one language. It is essential to specify a language and ensure that it is valid, so website text is pronounced correctly.
+ 
+Screen readers use different sound libraries for each language, based on the pronunciation and characteristics of that language. Screen readers can switch between these language libraries easily, but only if the documents specify which language(s) to read and when. If the language is not specified, the screen reader reads the document in the user's default language, resulting in a strange accent! It is impossible to understand anything when screen readers are using the wrong language library.","Ensure that a _lang_ attribute is present on the opening HTML element. Be sure that it includes the proper, default language value (en or en-US). If the application is ever tanslated, it must contain proper ISO 639-1 language codes.",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP026.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP027,1.4.4: Resize text,AA,Text can be resized to 200% without loss of content or function,https://www.w3.org/WAI/WCAG22/Understanding/resize-text,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Meta Element Parameter Restricing Page Zoom,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The _user-scalable=""no""_ parameter inside the content attribute of _<meta name=""viewport"">_ element disables zooming on a page. The _maximum-scale parameter_ limits the amount the user can zoom. This is problematic for people with low vision who rely on screen magnifiers to properly see the contents of a web page. To remedy, please remove _user-scalable=""no""_. 
+ 
+*Before:* 
+ 
+{code}<meta name=""viewport"" content=""width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"">{code} 
+ 
+*After:* 
+ 
+{code{<meta name=""viewport"" content=""width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"">{code}","Verify that _user-scalable=""no""_ has been removed. Validate in Axe and also test with screen mgnification or mobile to see if user can zoom, etc.  ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP027.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP028,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Remove Navigation Role From Header,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Please remove _role=""navigation_ from the _header_ element. Overriding an element’s native role should be done rarely and with justified purpose and is generally not allowed. This is clearly a header and not a navigation. While the header does contain a single link, you should be using a nested _nav_ element were their multiple links in use. As it stands now, a single link is fine withing a header. 
+ 
+*Before:*
+ 
+{code}<header role=""navigation""> ... </header>{code}
+ 
+*After:*
+ 
+{code}<header > ... </header>{code}","Verify that _user-scalable=""no""_ has been removed. Validate in Axe and also test with screen mgnification or mobile to see if user can zoom, etc.  ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP028.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP029,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Proper Heading Required,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","There is _div_ on the page that is styled to look like a heading, but which is not. This element should be an _h2_. 
+ 
+*Before:* 
+ 
+{code}<div class=""person-badge_caption"">Hugo Plasternaff invites you to apply</div>{code}
+ 
+*After:*
+ 
+{code}<h2 class=""person-badge_caption"">Hugo Plasternaff invites you to apply</h2>{code}",Verify that _div_ is now an _h2_ heading. A simple code check will do. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP029.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP030,3.3.3: Error Suggestion,AA,Suggest fixes when users make errors,https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion,"https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/jobs/active 
+
+https://referrals.radancy.com/dashboard/job/58d3467a-e8f5-4dfd-8212-24228ecdd342 
+
+",Job Referral Stepper: Personal Information Form Requires More Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","No immediate action required. Further analysis and discussion will be needed. Please consult with Michael Spellacy before sprint planning.
+ 
+*Personal Information Form*
+ 
+*Note:* Many of these same form issues were seen in other forms within the application, so consider this guidance for those as well, though each forms unique issues will be cited separately. 
+ 
+1. Avoid _role=""alert""_ on individual field errors
+ 
+Using _role=""alert""_ on each field error is disruptive and overwhelming for users, especially screen reader users.
+ 
+Instead, use inline error messages with aria-describedby:
+ 
+{code}<input ... aria-describedby=""error-id"">
+ <span id=""error-id"">First Name is required.</span>{code}
+ 
+On submission, focus should move to the first invalid field. A single _role=""alert""_ may be used at the top of the form for a general message, e.g.:
+ 
+{code}<p role=""alert"">The form contains errors. Please correct them.</p>{code}
+ 
+2. Use the native _required_ attribute
+ 
+Form fields (input, select, etc.) should include the required attribute. The visual asterisk can remain but should be hidden from assistive technology:
+ 
+{code}<label ... >First Name <span aria-hidden=""true"">*</span></label>
+ 
+<input required ... >{code}
+ 
+3. Form success messaging
+ 
+After a successful submission, consider displaying a confirmation on the next page—e.g., “Step 1 completed successfully.” We may need UX input for the final messaging. If this is a multi-step process, make that clearly communicated so users understand where they are in the flow.
+ 
+4. Submission issues with screen readers
+ 
+In testing with NVDA and JAWS on Chrome, form submission behavior appeared inconsistent. May be impacting other browser/AT combos as well. This needs further investigation.
+ 
+5. Form Instructions
+ 
+At the top of each form, include instructional text such as: “Fields marked with an asterisk (*) are required.”*",TBD ,"https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP030-1.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP030-2.png ",,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Difficult"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP031,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Additional Information - Button Missing Accessible Name,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The phone number region disclosure button is missing an accessible name. Please provide one. 
+ 
+*Before:*
+ 
+{code}<button _ngcontent-ng-c2317085488="""" type=""button"" class=""intl-phone_flag btn __clear __l control-button app-dropdown_trigger"">{code}
+ 
+*After:*
+ 
+{code}<button _ngcontent-ng-c2317085488="""" aria-label=""Select Phone Number Region"" type=""button"" class=""intl-phone_flag btn __clear __l control-button app-dropdown_trigger"">{code}",Ensure that cited button now includes an accessible name. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP031.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP032,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Additional Information - Heading Adjustment Required,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver",The heading order is incorrect. Please see screengrab and make the necessary adjustments.,Ensure that cited button now includes an accessible name. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP032.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP033,2.4.7: Focus Visible,AA,Ensure keyboard focus is visible and clear,https://www.w3.org/WAI/WCAG22/Understanding/focus-visible,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Additional Information - Elements Missing Focus State,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The following elements are not showing a focus outline when tabbed to: 
+ 
+1. Phone Region Button
+2. Add Files Input
+3. Finish Button
+ 
+Please ensure they have one by removing either _outline: 0_ or _outline: none_ when focus is applied to it, etc. 
+ 
+The ""Add Files..."" button may require an alternative approach to providing a focus outline since it is a custom component. Michael Spellacy can provide a possible solution here. Reach out during sprint planning. 
+ 
+*Note:* As has been stated in other tickets, please only allow the browsers native focus state to be shown. Avoid customization unless it can be assured that the state of the button or new focus ring is meeting a 3:1 color contrast ratio with background it sits atop.",Use keyboard to tab to the button and see if the outline is present.  ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP033.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP034,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Additional Information - Add File Button Needs More Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The *Add Files...* upload button is problematic. When reached with a screen reader, it informs users that files can be uploaded but does not convey other critical information, such as the acceptable file types or file size limits. This information is essential and should be included using _aria-describedby_ on the _input_ element.
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",TBD  ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP034.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP035,3.3.1: Error Identification,A,Clearly identify input errors,https://www.w3.org/WAI/WCAG22/Understanding/error-identification,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Additional Information - Add File Button Needs More Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","As cited elsewhere in this audit (A11YERP030), use of _role=""alert""_ is not appropriate here. We also need to indicate that the checkbox is also required field. The same guidance suggested there, should be used here, as well. 
+ 
+Ensure that checkbox has a required attribute and an asterisk indicating that it is required, though this can be hidden using _aria-hidden=""true""_. The _aria-describedby_ attribute can also be used here to connect the checkbox to the error and focus should be placed on the checkbox if users have not selected it.",Ensure that criteria outlined in issue has been remediated. Inspect code and use a screen reader to ensure all is working as recommended.,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP035.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP036,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: Additional Information - Add File Button Needs More Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Upon pressing the ""Finish Button"" the page reveals a success message that is not read aloud to assistive technology users. There are various ways to address this including _aria-live_, _role=""alert""_, or through focus management. 
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",Ensure that criteria outlined in issue has been remediated. Inspect code and use a screen reader to ensure all is working as recommended.,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP036.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP037,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: No Referral Found - Replace Page Heading,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Headings should only precede content on the page, not _be_ the content. If there is no content, you do not require a heading. Please remove the _h1_ and replace with _p_ or _div_ element. Styling can remain the same. See screengrab for more details.",Verify code and make sure heading has been replaced as recommended.,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP037.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP038,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://hyperdriveinnovations.qa-1brd.com/job/7e93621b-97c4-4114-ad4a-34084b582f7b?st=stk506iuoq5c&birdly=YmlyZGx5LWNsaWNrPWNhNmRlODAzLTc3YzYtNGNjNi1iM2JmLWFkN2JkNmE0Y2M0YiZiaXJkbHktaGFzaD1yakJWWA%3D%3D,Job Referral Stepper: All Steps - Replace Title Element With Specifc Values,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Whether we are arriving at a new page or the content of the page is being dynamically updated, the _title_ element must always reflect the page at hand. Assistive technology users rely on this to understand where they are or, if they leave the page and come back, the title of the page will be read back to them. For each page in the referral stepper, please ensure that each page has a unique title. For example: 
+ 
+1. Job Title | Personal Information | Company Name
+2. Job Title | Additional Information | Company Name
+3. Job Title | Referral Complete | Company Name",Verify code and make sure heading has been replaced as recommended.,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP038.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP039,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://hyperdriveinnovations.qa-1brd.com/dashboard/jobs/active,Primary Search: Search Not Announcing Updates to Assistive Technology,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The primary search component on the ""Jobs"" page does not announce how many results have been found when user is finished typing or if no results are present. As is conveyed visually, so we must also convey to assistive technology users. The page will require _aria-live=""polite"" that we can pass messages into to update users. Example: 
+ 
+If 4 jobs are found: 
+ 
+{code}<div aria-live=""polite"">Total of 4 jobs.</div>{code}
+ 
+If no jobs are found: 
+ 
+{code}<div aria-live=""polite"">No jobs have been found.</div>{code}
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.","Using a screen reader like NVDA or JAWS, navigate to the search input and begin typing in a query. As the results change on the page, so too should that be reflected in the announcement made to your screen reader. This should also include when no results have been found. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP039.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Job_Referral_Stepper""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP040,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://hyperdriveinnovations.qa-1brd.com/dashboard/jobs/active,Primary Search: Input Field ARIA Incorrect,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The primary search needs more work to be in a better state of conformance. 
+ 
+ *TODO*
+ 
+1. A _placeholder_ attribute is being used to stand in as a visible label, which may or may not provide an accessible name. Please add an explicit attribute such as _aria-label=""Search for jobs""_ or similar.
+ 
+2. The control includes ARIA roles and attributes suggesting it is a combobox, but no suggestion list appears when typing. If this is not a true combobox, please remove the following attributes: _role=""combobox""_, _aria-autocomplete=""list""_, _aria-expanded=""false""_, _aria-haspopup=""listbox""_, and _autocomplete=""off""_.
+ 
+*Before:*
+ 
+{code}<input type=""text"" e2e=""searchQuery"" class=""mat-mdc-autocomplete-trigger form-control ng-valid ng-dirty ng-touched"" placeholder=""Search by keyword or reference"" autocomplete=""off"" role=""combobox"" aria-autocomplete=""list"" aria-expanded=""false"" aria-haspopup=""listbox"">(code}
+ 
+*After:*
+ 
+{code}<input type=""text"" e2e=""searchQuery"" aria-placeholder=""Search for jobs"" class=""mat-mdc-autocomplete-trigger form-control ng-valid ng-dirty ng-touched"" placeholder=""Search by keyword or reference"">(code}",Verify with visual inspection and ensure that requested changes have been made. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP040.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Primary_Search""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP041,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://referrals.radancy.com/dashboard/job/1a000956-467e-433a-b69e-2cdb787a2753,Job Details: Heading Updates Required,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver",Please adjust the headings on the job details page. See screengrab for more details.,Verify with visual inspection and ensure that requested changes have been made. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP041.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Easy"", ""Job_Details""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP042,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://referrals.radancy.com/dashboard/job/1a000956-467e-433a-b69e-2cdb787a2753,Job Details: Rewards Button Needs More Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The ""Reward"" toggle on the Job Details page requires more attention. The toggle should be a button and convey a state, via _aria-expanded_. There should also be no heading here. If there are any questions about what is needed, please reach out to Michael Spellacy for more help. 
+ 
+At a base level, we have the following: 
+ 
+*Before:*
+ 
+{code}<app-job-reward-accordion>
+ 
+    <div class=""job-reward __job-advert __l"">
+ 
+        <div class=""job-reward_caption"">
+ 
+            <h4 class=""job-reward_title"">Reward</h4>
+ 
+            <ul class=""job-reward_list"" hidden>
+ 
+                ...
+ 
+            </ul>
+ 
+        </div>
+ 
+    </div>
+ 
+</app-job-reward-accordion>{code}
+ 
+When what we really need is this: 
+ 
+*After:*
+ 
+{code}<app-job-reward-accordion>
+ 
+    <button aria-expanded=""false"" class=""job-reward __job-advert __l"">Reward</button>
+ 
+    <ul class=""job-reward_list"" hidden>
+ 
+        ...
+ 
+    </ul>
+ 
+</app-job-reward-accordion>(code}","Visual inspect items to ensure a button is now in place, with proper ARIA state. Testing with keyboard and screen reader should also be performed. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP042.png,,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Medium"", ""Job_Details""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP043,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,"https://hyperdriveinnovations.qa-1brd.com/dashboard/my-referrals 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/my-rewards 
+
+https://hyperdriveinnovations.qa-1brd.com/job/40f9d25a-e57f-4e27-9d09-70ea567699b5?referralId=d08ae895-1ff2-40dd-ac91-7769e37cd495&referraltoken=7ljduu3nls2l 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/my-settings/profile 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/jobs/active  (Recruiter View)
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/job-form 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/jobs/archived 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/referrals 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/referrals/462d518d-7215-4d59-937e-7f3b5b08516a 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/statistics/general 
+
+https://hyperdriveinnovations.qa-1brd.com/dashboard/company-settings/reward-shop/new ",Global: Tooltips Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Tooltips across the application do not appear to be keyboard-accessible, nor is the information they contain accessible to assistive technologies. In many cases, these tooltips might be considered superfluous; however, this can be subjective depending on who is performing the evaluation. That said, there are instances where tooltips contain critical information, such as when uploading a résumé, which includes details like allowed file types and maximum file size. *This information must be fully accessible to all users.*
+ 
+Tooltips are a controversial component in both web design and accessibility communities. Further analysis and discussion will be necessary before determining the best approach. While designers may favor tooltips for reducing visual clutter, we must consider all possibilities—including removing them altogether across products if accessibility cannot be ensured. Toggle tips may also be a better alternative to a hover tooltip, as well. 
+ 
+Let’s revisit this issue as we get closer to planning a future sprint. Just wanted to log it as point of concern for us.
+
+Two possible solutions include Toggle Tips or Tooltips that are simply better built with accessibility in mind. The latter option will require more testing though before implementations. 
+
+
+https://codepen.io/Spell/pen/yyejNmM 
+
+https://codepen.io/Spell/pen/jEEYdBq 
+
+I would also like to hold off on remediating this one until 2026, as position anchoring and popover may be fully supported by the end of the year, allowing to come up with a more modern solution to this issue. ","Visual inspect items to ensure a button is now in place, with proper ARIA state. Testing with keyboard and screen reader should also be performed. ","https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP043-A.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP043-B.png ",,"ERP_Global_Issue"", ""S4_Low"", ""Effort_Difficult""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP044,1.3.1: Info and Relationships,A,"Semantic markup is used appropriately. Logical structure, etc. ", https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships ,https://referrals.radancy.com/dashboard/legal-terms/privacy-policy,Legal Terms: Privacy Policy - Heading and Navigation Improvements.,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The heading on the page (which has already been cited as needing to be an _h1_ element) needs to be moved outside of the _nav_ element. This should be the heading for the overall page and not that navigation, but we can use it for both if we apply ARIA intelligently. In addition to making the heading an _h1_, also give the heading a unique ID and then associate this id with the _nav_ element by tying it the heading. This can be done with _aria-labelledby_.
+ 
+*Before:* 
+ 
+{code}<nav class=""legal-terms_nav ng-star-inserted"">
+ 
+    <h2>Legal Terms</h2>
+ 
+    <app-tabs>...</app-tabs>
+ 
+</nav>(code}
+ 
+*After:* 
+ 
+{code}<h1 id=""legal-terms"">Legal Terms</h1>
+ 
+<nav class=""legal-terms_nav ng-star-inserted"" aria-labelledby=""legal-terms"">
+ 
+    <app-tabs>...</app-tabs>
+ 
+</nav>{code}
+ 
+Each navigation item, when active, would also benefit from including _aria-current=""true""_ . If users leave the navigation and return to it later, it is clear as to which portion is active. This can be achieved with _aria-current=""true""_.
+ 
+*Before:*
+ 
+{code}<a uisref=""..."" class=""..."" href=""..."">Privacy Policy</a>{code}
+ 
+*After:* 
+ 
+{code}<a aria-current=""true"" uisref=""..."" class=""..."" href=""..."">Privacy Policy</a>{code}",Visual inspect items to ensure heading is in proper position and that nav now has a properly implement accessible name. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP044.png,,"Legal_Terms"", ""S4_Low"", ""Effort_Easy""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP045,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,"https://referrals.radancy.com/dashboard/legal-terms/privacy-policy
+",Legal Terms: Navigation - Focus Lost ,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","When on the ""Legal Terms"" navigation, focus appears to be lost when user clicks on a link, causing user to have to tab back to where they were when the pressed it. If focus cannot be retained due to then nature of an internal content refresh after a link is pressed, focus will need to be placed back on the link programmatically. On a similar UI used in My Settings, this does not appear to happen. so, use this as a guide to help you mimic that behavior here. 
+
+See screengrab for more details. If needed, please reach out to Michael Spellacy for more details.","Tab to the Legal Terms navigation and press any of the links within the navigation. Focus should remain or possibly be placed back on link that pressed it. Ideally, the focus will simply remain where it is. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP045.mp4,,"Legal_Terms"", ""S4_Low"", ""Effort_Medium""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP046,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://referrals.radancy.com/dashboard/jobs/active,Global: No Content Changed Announced When Navigating,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","When navigating within the application, updates to the main content region are not announced to assistive technology users. While the URL and _title_ element may change, screen reader users receive no indication that new content has been loaded or that a navigation event has occurred.
+ 
+If the application is built with Angular, it’s worth noting that the framework provides a built-in accessibility utility called LiveAnnouncer within the Angular CDK (@angular/cdk/a11y). This can be used to programmatically announce page or view changes without moving user focus—ideal for SPA navigation.
+ 
+*Reference:* https://material.angular.dev/cdk/a11y/overview#liveannouncer 
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.
+ 
+*Note:* While all accessibility barriers are important, addressing this issue should be top priority.","Once solution has been applied globally, test the site using a screen reader. Navigating to a page must announce the page title, letting user know where they are. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP046.mp4,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP047,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,"https://referrals.radancy.com/dashboard/jobs/active 
+
+https://referrals.radancy.com/dashboard/my-referrals 
+
+https://hyperdriveinnovations.qa-1brd.com/r/BPKGURWB?jobId=1bdf7bb0-53f7-4e50-a4e7-b06ff3c6a6bc&st=vdsp0i0hadfg&applicationStep=1&birdly=YmlyZGx5LWNsaWNrPTg5MGFkNzBiLWJmOTUtNDRhYy04MzM4LTliM2EwOTU3ZWUzNSZiaXJkbHktaGFzaD1xQlFHOQ%3D%3D 
+
+https://referrals.radancy.com/dashboard/job/9ec19f8d-b911-463f-9c59-818a3f6f9dc3 ",Global: Dialogs Require More Work,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Citing this as a global issue. All dialog (modal) windows appear to have the same common issues. These are: 
+ 
+1. Close buttons are not accessible to keyboard.
+2. The aria-modal attribute is set to false and should be true. 
+3. The modal has no accessible name.
+ 
+*Before:* 
+ 
+{code}<mat-dialog-container tabindex=""-1"" class=""mat-mdc-dialog-container mdc-dialog cdk-dialog-container mdc-dialog--open"" id=""mat-mdc-dialog-1"" role=""dialog"" aria-modal=""false"" style=""--mat-dialog-transition-duration: 150ms;""><div class=""mat-mdc-dialog-inner-container mdc-dialog__container""> 
+ 
+    <div class=""modal-close extend-click-area""> ... </div> 
+ 
+    ,,, 
+ 
+</mat-dialog-container>{code} 
+ 
+*After:* 
+ 
+{code}<mat-dialog-container tabindex=""-1"" aria-label=""Referral Form"" class=""mat-mdc-dialog-container mdc-dialog cdk-dialog-container mdc-dialog--open"" id=""mat-mdc-dialog-1"" role=""dialog"" aria-modal=""false"" style=""--mat-dialog-transition-duration: 150ms;""><div class=""mat-mdc-dialog-inner-container mdc-dialog__container""> 
+ 
+    <button aria-label=""Close"" class=""modal-close extend-click-area""> ... </button> 
+ 
+    ... 
+ 
+</mat-dialog-container>{code}","Once solution has been applied globally, test the site using a screen reader. Navigating to a page must announce the page title, letting user know where they are. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP047.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP048,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/leaderboard,Leaderboard: New Entries Not Announced  When Scrolling & Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Upon scrolling through the listings on the Leaderboard page, the interface appears to implement a (somewhat) infinite scroll, but new listings are not announced to screen readers when additional search results are loaded. Using ARIA live, an update message should be provided each time a new set of listings is added. For example: “5 new results added. Now showing 75 of 128 total results.” or similar. 
+ 
+Additionally, the data cannot be navigated via keyboard. Although a scrollbar is present, the content needs to be defined as a region. The container with overflow should include a _tabindex_, _role=""region""_, and an accessible name to ensure keyboard and screen reader users can interact with it properly.
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.","Once solution has been applied globally, test the site using a screen reader. Navigating to a page must announce the page title, letting user know where they are. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP048.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP049,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,"https://referrals.radancy.com/dashboard/leaderboard
+
+https://referrals.radancy.com/dashboard/jobs/active ",Global: Filter Changes Not Being Announced to Screen Reader,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Upon selecting from the filters on various pages, changes in the main content area are not being conveyed to screen reader. Here is another issue that will need to be solved using ARIA live. 
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.","Once solution has been applied globally, test the site using a screen reader. Navigating to a page must announce the page title, letting user know where they are. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP049.mp4,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP050,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://referrals.radancy.com/dashboard/reward-policy ,Reward Policy: Show More Toggle Button Requires State Change,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The Show More/Show Less toggle button requires some improvements: 
+ 
+1. Do not allow the text to change on toggle. Have it always say, ""Show More"" and use a visual aid, like an up and down arrow to convey a state change. More here: https://radancy.dev/component-library/guidance/#avoid-toggling-text  
+ 
+2. Include the _aria-expanded_ attribute and toggle its state between true and false. 
+ 
+*Before:*
+ 
+{code}<button class=""btn __s __white float-right hide-laptop"" style=""..."">Show More ... </button>{code}
+ 
+*After:* 
+ 
+{code}<button aria-expanded=""false"" class=""btn __s __white float-right hide-laptop"" style=""..."">Show More ... </button>{code}",Ensure that state is now defined and that text no longer toolges.,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP050.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP051,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://referrals.radancy.com/dashboard/jobs/active,Share Dialog: Social Media Links Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The social media icons in the share dialog are not accessible to keyboard users. If you wish to keep these as links, which they should probably be due their role being helpful here and because they launch new windows, just add _href=""#""_. 
+ 
+Further testing of this component cannot be done until this issue is resolved.",Use keyboard to tab through each link and ensure the same functionaly exists as it does for mouse and touch users. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP051.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP052,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://hyperdriveinnovations.qa-1brd.com/dashboard/my-referral,My Referrals: LInks Not Clickable via Mouse Still Reachable via Keyboard,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","In the listings under the heading ""Tell us more about your referrals"" the job links appear to be focusable, but do not do anything when you click on them via mouse 
+ 
+ t looks like pointer-events: none is tied to each link. However, we also need to prevent keyboard users from accessing them as well, so please add tabindex=""-1"" to the link, too. What we do for one user experience, we must do for all.",Use keyboard to tab through each link to see if it is still focusable. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP052.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP053,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://hyperdriveinnovations.qa-1brd.com/dashboard/my-referral,My Referrals: Clickable Elements Not Accessible To Keyboard,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The ""More Info"" and ""Status"" icons do not accept keyboard focus. These need to be buttons. 
+ 
+*Before:*
+
+{code}<app-my-referral-status-icon class=""my-referral-card_status"" style=""cursor: pointer;""></app-my-referral-status-icon>{code}
+
+*After:*
+
+{code}<button class=""my-referral-card_status"" style=""cursor: pointer;""></button>{code}","Use keyboard to tab through each ""button"" to see if it is focusable and can launch modal window properly.  ","https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP053-1.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP053-2.png ",,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP054,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://hyperdriveinnovations.qa-1brd.com/dashboard/my-referral,Feedback: On Submit System Error Repeats Muliple Times,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","On system error, the alert message reads back multiple times when it should only read a single time. Please investigate. This is a common issue acroos the application. 
+
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",TBD,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP054.mp4,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP055,4.1.3: Status Messages,AA,Let assistive technologies notify users about changes to the content that don’t take focus,https://www.w3.org/WAI/WCAG22/Understanding/status-messages,https://hyperdriveinnovations.qa-1brd.com/dashboard/my-referral,Feedback: Form Errors Not Announed To Screen Reader,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The feedback form has similar accessibility issues to other forms across the site. In this case, when the “Send” button is pressed and an error occurs, screen reader users are not alerted, nor are alternative error presentation methods provided as outlined in other tickets. See ####.",TBD,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP055.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP056,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/my-settings/profile,Settings: Profile - Crop Image Buttons Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The “Crop Image” button in the profile image selection dialog is not keyboard accessible. Further keyboard testing will not be performed until this has been addressed. Related to A11YERP057. 
+ 
+*Before:*
+ 
+{code}<span class=""btn __s __transparent-blue"">Crop Image</span>{code}
+ 
+*After:*
+ 
+{code}<button class=""btn __s __transparent-blue"">Crop Image</button>{code}",Ensure that this button now accepts focus and included an accName. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP056.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP057,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/my-settings/profile,Settings: Profile - Crop Image Features Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","We need to discuss keyboard accessibility for the profile image cropping feature, including rotation controls and other related actions. 
+
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",TBD,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP057.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP058,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/my-settings/profile,Settings: Profile - Delete Account Button Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The “Delete Account” control is not keyboard accessible. It appears to be marked up as a heading rather than an interactive element. This should be a _button_ element with the appropriate state managed via _aria-expanded_.
+ 
+*Before:*
+ 
+{code}<h3 class=""...""><span class=""link __black __dashed""> Delete account </span></h3>{code}
+ 
+*After:*
+ 
+{code}<button aria-expanded=""false"" class=""...""><span class=""link __black __dashed""> Delete account </span></button>{code}
+ 
+*Note:* Further testing on this component is paused until the issue is resolved. 
+ 
+*TODO:* Coordinate with Alexis to set up a few dummy accounts for account deletion testing.",Ensure that this button now accepts focus and included an accName and works properly when used via keyboard-only testing. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP058.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP059,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/my-settings/notifications,Settings: MFA - Current MFA Fundamentally Inaccessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Logging this to raise awareness: the current implementation of Multi-Factor Authentication (MFA) is _fundamentally inaccessible_. Users who are blind, have low vision, or experience motor or cognitive disabilities may be unable to complete the MFA setup process — or may encounter significant barriers when attempting to do so.
+ 
+Radancy should investigate alternative, more inclusive authentication methods that support users with diverse accessibility needs (e.g., accessible verification flows, screen reader-compatible input methods, or non-visual alternatives to QR and time-based codes).
+ 
+Further accessibility testing of this feature is on hold until we can discuss potential remediations and identify a more universally accessible solution.",TBD,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP059.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP060,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/jobs/active,Global (Mobile): Hamburger Menu Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The hamburger navigation menu is not accessible via keyboard input. Keyboard users are unable to open the menu using standard interaction patterns (e.g., Enter or Space). Additionally, the close button within the menu is not operable or reachable via keyboard focus.
+ 
+To remediate, ensure that both the hamburger trigger and close controls are implemented as semantic _button_ elements.",Ensure that this button now accepts focus and included an accName. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP060.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP061,"4.1.2: Name, Role, Value",A,Build all elements for accessibility,https://www.w3.org/WAI/WCAG22/Understanding/name-role-value,https://referrals.radancy.com/dashboard/jobs/active,Global (Mobile): Achievements & Notification Disclosures -  Redesign Required,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The *Achievement* and *Notification* disclosures visually resemble modal dialogs on mobile but do not exhibit dialog-like behavior. When a user encounters this presentation, they reasonably expect standard dialog functionality, such as focus being moved into the dialog, an accessible name (aria-labelledby or aria-label), and keyboard focus trapping within the dialog.
+ 
+Currently, because the disclosure overlays the entire viewport, tab navigation can move behind the open panel, leading to potential confusion and focus loss.
+ 
+To prevent false affordances and focus management issues (which can occur even on mobile devices with external keyboards), the recommendation is to align the mobile behavior with the desktop implementation. Specifically, the disclosure panel should not occupy the full viewport but instead expand beneath the associated disclosure buttons. This approach should address the accessibility concerns in the updated design.
+ 
+See https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP061-B.png 
+
+*Note:* if a scrollbar is required on the disclosure and the content has no interactive content available, then _role=""region""_, _tabindex_ and _aria-label_ or _aria-labelledby_ will be required.
+
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",Ensure that disclosure is redesigned to bevhave similalry to the way it does in desktop.,"https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP061-A.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP061-B.png ",,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP062,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/jobs/active,Global (Mobile): Filters Dropdown Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The “Filters” dropdown (implemented as a heading on desktop) is not keyboard-accessible on mobile. Additionally, the hidden content appears to remain focusable via keyboard navigation, resulting in unintended focus on visually hidden elements.
+ 
+It looks like we’re currently binding an onClick event to the heading on desktop and unbinding it on mobile. Key accessibility attributes such as a semantic role and tabindex are also missing.
+ 
+To remediate, we can preserve the heading structure but nest an interactive <button> element within it to properly manage focus and semantics. An alternative CSS-based approach exists to mitigate this issue, but we should review and align on the implementation before moving forward. See https://codepen.io/Spell/full/emJLpRd ",Ensure that disclosure is re-worked so that is is aheader on desktop and fully keyboard accessible on mobile. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP062.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP063,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/jobs/active,Global (Mobile): Link Text Changes Across Viewports Sizes,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","In the carousel, the Share button label should remain consistent across breakpoints. Currently, it displays “Share” on mobile but “Spread the word” on desktop. UI behavior should not change based solely on screen size.
+ 
+If the label needs to be shortened, it should be shortened consistently across both mobile and desktop. Maintaining consistent UX copy helps reinforce familiarity for users who switch between devices or use zoom. Inconsistent labeling can also create confusion for assistive technology users by altering the link’s context.",Ensure carousel link says one or the other and not both. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP063.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP064,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/legal-terms/privacy-policy,Legal Terms: Sub-Navigation Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The “Legal Terms” navigation is not keyboard accessible. This sub-navigation (breadcrumbs?) is relatively small, and instead of replacing it with a different mobile component, we should consider retaining the desktop version across all viewports.
+ 
+Changing components can negatively impact users who rely on zoom and reduces visual and interaction consistency. Maintaining the same look and behavior across devices improves familiarity and usability. The User Settings page exhibits the same issue.",TBD,"https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP064-A.png 
+
+https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP064-B.png ",,,Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP065,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/jobs/active,Global: Visually Hidden Focusable Element Detected,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","A visually hidden, focusable element has been detected on all pages, which appears to be an accessibility workaround. It is flagged because it combines _aria-hidden=""true""_ with _tabindex=""0""_, making it focusable to keyboard users despite being hidden.
+ 
+The purpose of this element needs to be clarified and potentially remediated (possibly by adding _tabindex=""-1""_ if the element is for temporary focus only). If it serves no functional role, it should be removed. 
+ 
+{code}<div aria-hidden=""true"" class=""cdk-visually-hidden cdk-focus-trap-anchor"" tabindex=""0"">{code}",TBD ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP065.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP066,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/dashboard/leaderboard,Leaderboard: Visually Hidden Focusable Element Detected,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","The “Leaderboard” toggle on mobile is not keyboard accessible. Activating this toggle with a mouse appears to shift the view of the last two columns (Level & Points). As previously suggested (See ticket ######), we should consider revisiting the entire table design and discuss potential improvements to it.
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",TBD ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP066.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP067,3.3.2: Labels or Instructions,A,Label elements and give instructions,https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions,https://referrals.radancy.com/dashboard/leaderboard,Leaderboard: Critical Text Being Truncated,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Text in the “Leaderboard” columns is being truncated. This presents both a UX and accessibility issue, as it limits users’ ability to understand the content being displayed. As previously suggested (See ticket ######), we should consider revisiting the entire table design and discuss potential improvements to it.
+ 
+Please coordinate with Michael Spellacy before sprint planning to determine the best implementation approach.",TBD ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP067.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP068,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://referrals.radancy.com/legal-terms/terms-of-use ,Legal Terms:Table of Contents Not Keyboard Accessible,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","As observed elsewhere in the application, the Table of Contents disclosure is not keyboard accessible. Additionally, the hidden content can still receive focus even when the component is closed, creating potential confusion for keyboard users. For disclosures of this nature, you may wish to consider using a simple _details_ and _summary_.",Ensure that the TOC is fully keyboard accessible and ensure that hidden content no longer receives focus. ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP068.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP069,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://hyperdriveinnovations.auth.qa-1brd.com/site/login ,Login: Page Missing Main Landmark,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","This page is missing a <main> landmark. The _main_ element is important because it identifies the primary content of the page. Assistive technology users rely on landmarks to understand page structure and efficiently navigate the page, if landmarks are what they choose to navigate by. 
+ 
+*Before:*
+ 
+{code}<div class=""main""> ... </div>(code}
+ 
+*After:*
+ 
+{code}<main class=""main""> ... </main>{code}","Visually ispect to see if the _main_ element is now present. Run Axe to confirm, as well. ",https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP069.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0
+A11YERP070,2.1.1: Keyboard,A,Accessible by keyboard only,https://www.w3.org/WAI/WCAG22/Understanding/keyboard,https://hyperdriveinnovations.qa-1brd.com/dashboard/reward-shop/list,Rewards (Potentially Global): Dialog Spawns New Dialog Post Action,"Chrome & Firefox: Latest Versions, Windows 11, NVDA, JAWS, MacOS, Safari, VoiceOver","Flagging this issue for completeness. Further investigation is needed, but it appears that when certain actions occur with a dialog, it then closes, and new focus is placed inside a newly spawned dialog. This creates a potential accessibility issue because focus is not returned to the button that triggered the original dialog when it is closed or dismissed.",TBD ,https://radancy.dev/a11y/audit/client/erp/screengrab/A11YERP070.png,,"ERP_Global_Issue"", ""S4_High"", ""Effort_Difficult"", ""Specialist_Support""",Critical,Fail,Product Support,Failed in Preview,,,0

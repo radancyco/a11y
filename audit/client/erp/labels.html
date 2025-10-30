@@ -1,0 +1,11 @@
+---
+---
+      
+{%- for a11y in site.data.erp -%}
+
+    <h2>{{ a11y.Summary | prepend: " - " | prepend: a11y.ID | prepend: "Accessibility Audit (Test 1): "}}</h2>
+
+    <p>"Accessibility", "WCAG_Level_{{a11y.Level}}", "WCAG_Criteria_{{a11y.SC | replace: " ", "_" | replace: ",", "_" | replace: ":", "" | replace: "__", "_"}}", "A11Y_Severity_{{a11y.Impact}}"{% if a11y.Labels %}, {{a11y.Labels}}{% endif %}</p>
+
+{%- endfor -%}
+

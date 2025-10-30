@@ -1,0 +1,36 @@
+{
+
+    "issueUpdates": [{
+
+            "fields": {
+            
+                "project": { 
+
+                    "key": "UDS"
+
+                },
+                "summary": "Curl Test",
+                "description": "\n\n*Audit ID:* A11YLOBBY001\n\n*WCAG Success Criteria:* 1.4.10: Reflow\n\n*WCAG Level:* AA\n\n*WCAG Synopsis:* Ensure content can be enlarged without requiring horizontal scrolling\n\n*Impact/Severity:* Critical\n\n*Issue/Recommendation:*\n\nOn the lobby page, a similar issue is present when the page is tested at 400% zoom as is present on other pages across the site. When I zoom in to 400% and resize my browser window to 1280x1024 (the conditions required for the test), the navigation opens and appears to overlap all page content. Please ensure that this behavior does not occur under these conditions. This issue has been reported by clients as well, in their own testing.\n\n*Links:* \n\nhttps://app.brazenconnect.com/app/events/LrNMp#!lobby;eventCode=LrNMp","issuetype": {
+
+                    "name": "Accessibility Request "
+
+                },
+                "assignee": {
+
+                    "name": "Mspellac"
+
+                },
+                "customfield_11112": [{
+                
+                    "id": "11813"
+                
+                }],
+                "customfield_11113": "136728",
+                "labels": ["Spell_Test", "Accessibility", "WCAG_Level_AA", "WCAG_Criteria_1.4.10:_Reflow"]
+            }
+  
+    }
+        
+    ]
+
+}

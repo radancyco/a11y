@@ -1,0 +1,83 @@
+---
+title: "ERP: JIRA Management"
+---
+
+<h2>Create Issues</h2>
+
+<ul>
+    <li><a href="create-issues-raw.json">JSON</a></li>
+    <li><a href="create-issues-template.json">Template</a></li>
+</ul>
+
+<details>
+
+    <summary>Output</summary>
+
+    {% highlight json %}{% include_relative create-issues-template.json %}{% endhighlight %}
+
+</details>
+  
+<h2>Add Watchers</h2>
+
+<ul>
+    <li><a href="add-watchers-raw.json" download="add-watchers.json">JSON</a></li>
+    <li><a href="add-watchers-template.json">Template</a></li>
+</ul>
+
+<details>
+
+    <summary>Output</summary>
+
+    {% highlight json %}{% include_relative add-watchers-template.json %}{% endhighlight %}
+    
+</details>
+
+<h2>Update Issues</h2>
+
+<ul>
+    <li><a href="update-issues-raw.json" download="update-issues.json">JSON</a></li>
+    <li><a href="update-issues-template.json">Template</a></li>
+</ul>
+
+<details>
+
+    <summary>Output</summary>
+
+    <h3>Issue IDs for Collection Runner</h3>
+
+    {% highlight json %}{% include_relative update-issues-template.json %}{% endhighlight %}
+
+    <h3>Example Update (Raw)</h2>
+
+    {% highlight json %}{
+
+    "fields": {
+
+        "summary": "Accessibility is the Best",
+    
+    }
+
+}{% endhighlight %}
+    
+</details>
+
+<h2>Update Labels</h2>
+
+<ul>
+    <li><a href="update-labels-raw.json">JSON</a></li>
+    <li><a href="update-labels-template.json">Template</a></li>
+</ul>
+
+<details>
+
+    <summary>Output</summary>
+
+    <h3>Issue IDs & Labels for Collection Runner</h3>
+
+    {% highlight json %}{% include_relative update-labels-template.json %}{% endhighlight %}
+
+</details>
+
+
+
+
