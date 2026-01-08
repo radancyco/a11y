@@ -19,7 +19,7 @@ layout: null
 
   // Display which Disclosure is in use via console:
 
-  console.log("%c Accessibility Pulse v{{ pulseVersion }} in use. ", "background: #6e00ee; color: #fff");
+  console.log("%cAccessibility Pulse%cv{{ pulseVersion }}", "background: #2d2d2d; color: #fff; padding: 6px 10px; border-radius: 16px 0 0 16px; font-weight: 600;" , "background: #6e00ee; color: #fff; padding: 6px 10px; border-radius: 0 16px 16px 0; font-weight: 600;");
 
   // Commonly used Classes, Data Attributes, States, Strings, etc.
 
