@@ -452,7 +452,7 @@ layout: null
 
           toggleState.setAttribute("aria-hidden", "true");
           toggleState.classList.add(accordionArrowClassName);
-          btn.append(toggleState);
+          btn.prepend(toggleState);
 
         }
 

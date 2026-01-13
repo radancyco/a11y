@@ -759,6 +759,7 @@ z-index: 2147483647;
     display: grid;
     gap: 1em;
     grid-auto-flow: column;
+    grid-auto-columns: max-content;
     line-height: normal !important;
     padding: 0.8em 1em;
     position: relative;
