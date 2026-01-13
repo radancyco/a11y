@@ -281,7 +281,7 @@ layout: null
 
   // Validate Links
 
-  const btnValidateLinks = shadowContainer.querySelectorAll(".validation-link");
+  const btnValidateLinks = shadowContainer.querySelectorAll(".validation-link"); 
 
   btnValidateLinks.forEach((btn) => {
   
