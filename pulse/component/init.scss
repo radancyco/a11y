@@ -140,7 +140,7 @@ display: block;
 max-inline-size: 100%;
 }
   
-a:has(img[src*="new-tab"]), button:has(img[src*="new-tab"]) {
+a:has(img[src*="new-tab"]), button:has(img[src*="new-tab"]), .inline-icon {
 
   img {
   block-size: calc(14em / 16);

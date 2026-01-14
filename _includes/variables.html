@@ -1,3 +1,6 @@
 {% assign pulseVersion = "2.2" %}
-{% assign imagePath = site.url | append: site.baseurl | append: '/pulse/component/img/new-tab.png' %}
-{% assign newWindow = '<img alt="(Opens in new window)" src="' | append: imagePath | append: '">' %}
+{% assign imageNewWindow = site.url | append: site.baseurl | append: '/pulse/component/img/new-tab.png' %}
+{% assign newWindow = '<img alt="(Opens in new window)" src="' | append: imageNewWindow | append: '">' %}
+
+{% assign imageAI = site.url | append: site.baseurl | append: '/pulse/component/img/btn-ai.png' %}
+{% assign btnAI = '<img alt="" src="' | append: imageAI | append: '">' %}
