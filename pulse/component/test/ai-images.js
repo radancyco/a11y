@@ -74,15 +74,13 @@ javascript:(function() {
           continue;
         }
 
-        img.alt = altText;
-
         // assign anchor name to image
         img.style.cssText = `anchor-name: --image-anchor-${anchorCounter};`;
 
         // create description div with multiple styles in one block
         const desc = document.createElement("div");
         desc.textContent = altText;
-        desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; font-size: 0.875rem; color: #555; margin-top: 4px;`;
+        desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; margin: 1em; padding: 1em; position: absolute; top: anchor(bottom); z-index: 2147483647;`;
 
         img.insertAdjacentElement("afterend", desc);
 
@@ -99,5 +97,6 @@ javascript:(function() {
     alert("Alt text generation complete.");
   })();
 })();
+
 
 
