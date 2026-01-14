@@ -111,7 +111,7 @@ javascript:(function() {(async () => {
       const desc = document.createElement("div");
 
       desc.textContent = altText;
-      desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: 16px; margin: 1em; outline: 1px #000 solid; padding: 1em;`;
+      desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; margin: 1em; outline: 1px #000 solid; padding: 1em;`;
 
       img.insertAdjacentElement("afterend", desc);
 
