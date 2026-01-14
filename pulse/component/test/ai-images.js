@@ -121,16 +121,16 @@ javascript:(function() {(async () => {
 
       await new Promise((r) => { setTimeout(r, 2500); });
 
-    } catch (err) {
+      } catch (err) {
 
-      console.error("Fetch failed:", err);
+        console.error("Fetch failed:", err);
+
+      }
 
     }
 
-  }
+    alert("Alt text generation complete.");
 
-  alert("Alt text generation complete.");
-
-})();
+  })();
 
 })();
