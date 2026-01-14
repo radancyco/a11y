@@ -188,11 +188,15 @@
 
       {%- if page.select-internal != true %}
 
-        <h2 id="{{ example.id }}">{{ example.name }} <a class="anchor" href="#{{ example.id }}">{{ iconAnchor }} <span class="sr-only">Anchor ({{ example.name }})</span></a></h2>
+        <h2 id="{{ example.id }}">{{ example.name }} <a class="anchor" href="#{{ example.id }}">{{ iconAnchor }} <span class="sr-only">({{ example.name }} Anchor)</span></a></h2>
 
       {%- endif %}
+
+      <div class="component__view">
   
       {% include_relative html/{{ example.id }}.html %}
+
+      </div>
 
       {%- if example.warning %}
   
@@ -201,6 +205,16 @@
           <p><strong>Warning:</strong> {{ example.warning }}</p>
 
         </div>
+
+      {%- endif %}
+
+      {%- if example.best-practice %}
+  
+      <div class="best-practice">
+      
+        <p><strong>Best Practice:</strong> {{ example.best-practice }}</p>
+
+      </div>
 
       {%- endif %}
   
@@ -249,6 +263,16 @@
         {% for msg in example.message %}
 
           {% include message/{{ msg }}.html %}
+
+        {% endfor %}
+
+      {%- endif %}
+
+      {%- if component.guidance %}
+        
+        {% for msg in component.guidance %}
+
+          {% include guidance/{{ msg }}.html %}
 
         {% endfor %}
 
@@ -431,17 +455,17 @@
 
   <p>Use the following properties to configure this component.</p>
 
-  <div class="accordion" data-animation>
+  <div class="accordion">
 
 {%- endif %}
 
 {%- if page.elements %} 
 
-<button class="accordion__toggle" id="elements">Elements</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="elements">Elements</button></h3>
 
 <div class="accordion__panel">
 
-  <div class="table-container">
+  <div aria-label="Elements" class="table-container" role="region" tabindex="0">
 
     <table>
     <thead>
@@ -476,11 +500,11 @@
 
 {%- if page.aria %} 
 
-<button class="accordion__toggle" id="aria">ARIA</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="aria">ARIA</button></h3>
 
 <div class="accordion__panel">
 
-  <div class="table-container">
+  <div aria-label="ARIA" class="table-container" role="region" tabindex="0">
 
     <table>
     <thead>
@@ -517,11 +541,11 @@
 
 {%- if page.attributes %} 
 
-<button class="accordion__toggle" id="attributes">Attributes</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="attributes">Attributes</button></h3>
 
 <div class="accordion__panel">
 
-  <div class="table-container">
+  <div aria-label="Attributes" class="table-container" role="region" tabindex="0">
 
     <table>
     <thead>
@@ -558,11 +582,11 @@
 
 {%- if page.sass %} 
 
-<button class="accordion__toggle" id="sass">SASS</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="sass">SASS</button></h3>
 
 <div class="accordion__panel">
 
-  <div class="table-container">
+  <div aria-label="Variables" class="table-container" role="region" tabindex="0">
 
     <table>
     <thead>
@@ -595,11 +619,11 @@
 
 {%- if page.classes %} 
 
-<button class="accordion__toggle" id="classes">Classes</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="classes">Classes</button></h3>
 
 <div class="accordion__panel">
 
-  <div class="table-container">
+  <div aria-label="Classes" class="table-container" role="region" tabindex="0">
 
     <table>
     <thead>
@@ -636,11 +660,11 @@
 
 {%- if page.cookies %} 
 
-<button class="accordion__toggle" id="cookies">Cookies</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="cookies">Cookies</button></h3>
 
 <div class="accordion__panel">
 
-  <div class="table-container">
+  <div aria-label="Cookies" class="table-container" role="region" tabindex="0">
 
     <table>
     <thead>
@@ -683,11 +707,11 @@
 
 {%- if page.parameters %} 
 
-<button class="accordion__toggle" id="parameters">Parameters</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="parameters">Parameters</button></h3>
 
 <div class="accordion__panel">
 
-  <div class="table-container">
+  <div aria-label="Parameters" class="table-container" role="region" tabindex="0">
 
     <table>
     <thead>
@@ -732,13 +756,13 @@
 
   <p>Keep up to date on major changes to this component.</p>
 
-  <div class="accordion" data-animation>
+  <div class="accordion">
 
 {%- endif %}
 
 {%- if page.changelog %} 
 
-  <button class="accordion__toggle" id="changelog">Changelog</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="changelog">Changelog</button></h3>
 
   <div class="accordion__panel">
 
@@ -765,7 +789,7 @@
 
 {%- if page.notes %} 
 
-  <button class="accordion__toggle" id="notes">Additional Notes</button>
+<h3 class="accordion__heading"><button class="accordion__toggle" id="notes">Additional Notes</button></h3>
 
   <div class="accordion__panel">
 
@@ -792,7 +816,7 @@
 
   {%- if page.roadmap %} 
 
-  <button class="accordion__toggle" id="roadmap">Roadmap</button>
+  <h3 class="accordion__heading"><button class="accordion__toggle" id="roadmap">Roadmap</button></h3>
 
   <div class="accordion__panel">
 
