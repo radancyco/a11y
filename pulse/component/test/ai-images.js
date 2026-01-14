@@ -1,87 +1,74 @@
-javascript: (function() {
+javascript:(async function () {
+  const apiKey = prompt("Enter your Groq API key:");
+  if (!apiKey) {
+    alert("API key is required.");
+    return;
+  }
 
-    // Config: https://portal.azure.com/#@tmpww.microsoftonline.com/resource/subscriptions/e3b7e0f4-6c35-4a25-8256-3c2a4252240b/resourceGroups/Radancy/providers/Microsoft.CognitiveServices/accounts/a11y/overview 
+  const images = document.querySelectorAll("img");
 
-    const API_KEY = "key value here";
-    const ENDPOINT = "end point";
+  for (const img of images) {
+    if (img.alt && img.alt.trim() !== "") continue;
 
-    if (!API_KEY || !ENDPOINT) {
+    if (
+      img.getAttribute("role") === "presentation" ||
+      img.getAttribute("aria-hidden") === "true"
+    ) continue;
 
-      alert("Please update the script with your Azure API key and endpoint.");
+    const imageUrl = img.src.startsWith("http")
+      ? img.src
+      : new URL(img.src, location.href).href;
 
-    } else {
-
-      async function selectImage() {
-        
-        return new Promise((resolve) => {
-
-          document.body.addEventListener("click", function handler(event) {
-
-            if (event.target.tagName === "IMG") {
-
-              event.preventDefault();
-
-              document.body.removeEventListener("click", handler);
-
-              resolve(event.target);
-
-            }
-
-          }, { once: true });
-
-        });
-
-      }
-
-      async function generateAltText(imageUrl) {
-
-        const response = await fetch(`${ENDPOINT}/vision/v3.2/analyze?visualFeatures=Description`, {
-
-          method: 'POST',
-
+    try {
+      const response = await fetch(
+        "https://api.groq.com/openai/v1/chat/completions",
+        {
+          method: "POST",
           headers: {
-
-            "Ocp-Apim-Subscription-Key": API_KEY,
-            "Content-Type": "application/json"
-
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
           },
-
-          body: JSON.stringify({ url: imageUrl })
-
-        });
-
-        const data = await response.json();
-
-        return data.description?.captions[0]?.text || "No description available";
-
-      }
-
-      alert("Click on an image to generate alt text.");
-
-      (async function() {
-
-        const img = await selectImage();
-
-        const imageUrl = img.src.startsWith("http") ? img.src : window.location.origin + img.src;
-
-        try {
-
-          const altText = await generateAltText(imageUrl);
-
-          img.alt = altText;
-
-          alert(`Alt text generated: "${altText}"`);
-
-        } catch (error) {
-
-          alert("Error generating alt text. Check API key and endpoint.");
-
-          console.error(error);
-
+          body: JSON.stringify({
+            model: "meta-llama/llama-4-scout-17b-16e-instruct",
+            messages: [
+              {
+                role: "user",
+                content: [
+                  {
+                    type: "text",
+                    text: "Provide concise, accessible alt text for this image."
+                  },
+                  {
+                    type: "image_url",
+                    image_url: { url: imageUrl }
+                  }
+                ]
+              }
+            ],
+            max_completion_tokens: 150
+          })
         }
+      );
 
-      })();
+      const data = await response.json();
+      const altText = data.choices?.[0]?.message?.content;
 
+      if (!altText) continue;
+
+      img.alt = altText;
+
+      const desc = document.createElement("div");
+      desc.textContent = altText;
+      desc.style.fontSize = "0.875rem";
+      desc.style.color = "#555";
+      desc.style.marginTop = "4px";
+
+      img.insertAdjacentElement("afterend", desc);
+
+    } catch (err) {
+      console.error("Groq Vision error:", err);
     }
+  }
 
-})()
+  alert("Alt text generation complete.");
+})();
