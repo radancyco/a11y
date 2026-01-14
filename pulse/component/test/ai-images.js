@@ -80,7 +80,7 @@ javascript:(function() {
         // create description div with multiple styles in one block
         const desc = document.createElement("div");
         desc.textContent = altText;
-        desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; margin: 1em; padding: 1em; position: absolute; top: anchor(bottom); z-index: 2147483647;`;
+        desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; margin: 1em; outline: 1px #000 solid; padding: 1em; position: absolute; top: anchor(bottom); z-index: 2147483646;`;
 
         img.insertAdjacentElement("afterend", desc);
 
