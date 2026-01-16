@@ -16,7 +16,7 @@ javascript:(function() {(async () => {
 
   const defaultPrompt = "Generate concise, meaningful alternative text for this image that conveys only the essential content and purpose. " +
   "Do not include phrases like 'this is an image of' or 'picture of'. " +
-  "Keep it short (under 200 characters if possible) and usable by screen reader users. " +
+  "Keep it short (under 150 characters if possible) and usable by screen reader users. " +
   "Focus on content, context, and function.";
 
   const finalPrompt = userPrompt && userPrompt.trim() !== "" ? userPrompt : defaultPrompt;
@@ -108,21 +108,6 @@ javascript:(function() {(async () => {
   
         link.removeAttribute("href");
 
-      });
-
-      // remove overflow: hidden if found, yes this may break the break the page, but that is okay if goal is to generate alt text.
-      // todo: alternativey, it may be be better to allow user to turn off all styles on a page while running the script. 
-
-      document.querySelectorAll("*").forEach((elm) => {
-
-        const styles  = getComputedStyle(elm).overflow;
-
-        if (styles.overflow === "hidden" || styles.overflowX === "hidden" || styles.overflowY === "hidden") {
-
-          elm.style.overflow = "visible";
-
-        }
-  
       });
 
       // assign anchor name to image
