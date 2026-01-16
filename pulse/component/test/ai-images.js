@@ -134,7 +134,7 @@ javascript:(function() {(async () => {
       span.setAttribute("aria-hidden", "true");
       span.style.cssText = "background-color: rebeccapurple; block-size: 20px; inline-size:  20px; inset-block-start: -10px; position: absolute; transform: rotate(45deg);";
 
-      descWraper.prepend(span);
+      descWrapper.prepend(span);
       
       // wrap AI-generated content in child div with unique ID
 
