@@ -119,23 +119,21 @@ javascript:(function() {(async () => {
 
       const descWrapper = document.createElement("div");
 
-      descWrapper.style.cssText = "position: relative;";
+      descWrapper.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; position: absolute; top: anchor(bottom); z-index: 2147483646;`;
 
-      // create description div with multiple styles in one block
-
-      const descParent = document.createElement("div");
-
-      descParent.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; inline-size: calc(260em/16); margin: 1em; max-inline-size: calc(520em/16); outline: 1px #000 solid; overflow: hidden; padding: 1em; position: absolute; resize: both; top: anchor(bottom); z-index: 2147483646;`;
-
-      // append span to parent div
+      // append span to wrapper div
 
       const span = document.createElement("span");
 
       span.setAttribute("aria-hidden", "true");
       span.style.cssText = "background-color: rebeccapurple; block-size: 20px; inline-size:  20px; inset-block-start: -10px; position: absolute; transform: rotate(45deg);";
 
-      descWrapper.prepend(span);
-      
+      // create description div with multiple styles in one block
+
+      const descParent = document.createElement("div");
+
+      descParent.style.cssText = "background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; inline-size: calc(260em/16); margin: 1em; max-inline-size: calc(520em/16); outline: 1px #000 solid; overflow: hidden; padding: 1em; resize: both;";
+
       // wrap AI-generated content in child div with unique ID
 
       const content = document.createElement("div");
@@ -143,8 +141,9 @@ javascript:(function() {(async () => {
       content.id = `ai-alt-text-${anchorCounter}`;
       content.textContent = altText;
 
+      descWrapper.prepend(span);
       descParent.append(content);
-      
+      descWrapper.append(descParent);
       img.insertAdjacentElement("afterend", descWrapper);
 
       anchorCounter++; // increment for next image
