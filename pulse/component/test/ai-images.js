@@ -110,18 +110,6 @@ javascript:(function() {(async () => {
 
       });
 
-      // append span to parent div
-
-      if (img.parentElement) {
-
-        const span = document.createElement("span");
-
-        span.setAttribute("aria-hidden", "true");
-        span.style.cssText = "background-color: rebeccapurple; block-size: 20px; inline-size:  20px; inset-block-start: -10px; position: absolute; transform: rotate(45deg);";
-
-        img.parentElement.appendChild(span);
-
-      }
 
       // assign anchor name to image
 
@@ -133,6 +121,15 @@ javascript:(function() {(async () => {
 
       desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; inline-size: calc(260em/16); margin: 1em; max-inline-size: calc(520em/16); outline: 1px #000 solid; padding: 1em; position: absolute; resize: both; top: anchor(bottom); z-index: 2147483646;`;
 
+      // append span to parent div
+
+      const span = document.createElement("span");
+
+      span.setAttribute("aria-hidden", "true");
+      span.style.cssText = "background-color: rebeccapurple; block-size: 20px; inline-size:  20px; inset-block-start: -10px; position: absolute; transform: rotate(45deg);";
+
+      desc.prepend(span);
+      
       // wrap AI-generated content in child div with unique ID
 
       const content = document.createElement("div");
@@ -141,7 +138,7 @@ javascript:(function() {(async () => {
 
       content.textContent = altText;
 
-      desc.appendChild(content);
+      desc.append(content);
       
       img.insertAdjacentElement("afterend", desc);
 
