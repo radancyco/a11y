@@ -102,6 +102,14 @@ javascript:(function() {(async () => {
 
       }
 
+      // remove all hrefs on page so that alt text can be grabbed if nested in a link 
+
+      document.querySelectorAll("a").forEach((link) => {
+  
+        link.removeAttribute("href");
+
+      });
+
       // assign anchor name to image
 
       img.style.cssText = `anchor-name: --image-anchor-${anchorCounter};`;
