@@ -111,6 +111,7 @@ javascript:(function() {(async () => {
       });
 
       // remove overflow: hidden if found, yes this may break the break the page, but that is okay if goal is to generate alt text.
+      // todo: alternativey, it may be be better to allow user to turn off all styles on a page while running the script. 
 
       document.querySelectorAll("*").forEach((elm) => {
 
@@ -141,7 +142,11 @@ javascript:(function() {(async () => {
 
       // delay to avoid throttling (2.5 seconds per request)
 
-      await new Promise((r) => { setTimeout(r, 2500); });
+      await new Promise((r) => { 
+        
+        setTimeout(r, 2500); 
+      
+      });
 
       } catch (err) {
 
