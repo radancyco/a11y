@@ -16,7 +16,7 @@ javascript:(function() {(async () => {
 
   const defaultPrompt = "Generate concise, meaningful alternative text for this image that conveys only the essential content and purpose. " +
   "Do not include phrases like 'this is an image of' or 'picture of'. " +
-  "Keep it short (under 125 characters if possible) and usable by screen reader users. " +
+  "Keep it short (under 200 characters if possible) and usable by screen reader users. " +
   "Focus on content, context, and function.";
 
   const finalPrompt = userPrompt && userPrompt.trim() !== "" ? userPrompt : defaultPrompt;
@@ -111,7 +111,7 @@ javascript:(function() {(async () => {
       const desc = document.createElement("div");
 
       desc.textContent = altText;
-      desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; margin: 1em; max-inline-size: calc(260em/16); outline: 1px #000 solid; overflow: hidden; padding: 1em; position: absolute; resize: both; top: anchor(bottom); z-index: 2147483646;`;
+      desc.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; inline-size: calc(260em/16); margin: 1em; max-inline-size: calc(520em/16); outline: 1px #000 solid; overflow: hidden; padding: 1em; position: absolute; resize: both; top: anchor(bottom); z-index: 2147483646;`;
 
       img.insertAdjacentElement("afterend", desc);
 
