@@ -110,6 +110,20 @@ javascript:(function() {(async () => {
 
       });
 
+      // remove overflow: hidden if found, yes this may break the break the page, but that is okay if goal is to generate alt text.
+
+      document.querySelectorAll("*").forEach((elm) => {
+
+        const styles  = getComputedStyle(elm).overflow;
+
+        if (styles.overflow === "hidden" || styles.overflowX === "hidden" || styles.overflowY === "hidden") {
+
+          elm.style.overflow = "visible";
+
+        }
+  
+      });
+
       // assign anchor name to image
 
       img.style.cssText = `anchor-name: --image-anchor-${anchorCounter};`;
