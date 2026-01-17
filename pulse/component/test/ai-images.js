@@ -110,19 +110,19 @@ javascript:(function() {(async () => {
 
       const descWrapper = document.createElement("div");
 
-      descWrapper.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; position: absolute; inset-block-start: anchor(bottom); inset-inline-start: anchor(left); inline-size: anchor-size(block); z-index: 2147483646;`;
+      descWrapper.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; position: fixed; inset-block-start: anchor(bottom); inset-inline-start: anchor(left); inline-size: anchor-size(block); z-index: 2147483646;`;
 
       // append span to wrapper div
 
       const span = document.createElement("span");
 
-      span.style.cssText = "background-color: rebeccapurple; block-size: calc(20rem / 16); inline-size: calc(20rem / 16); inset-block-start: calc(10rem / 16); inset-inline-start: calc(30em / 16); position: absolute; transform: rotate(45deg);";
+      span.style.cssText = "background-color: rebeccapurple; block-size: 20px; inline-size: 20px; inset-block-start: 10px; inset-inline-start: 30px; position: absolute; transform: rotate(45deg);";
 
       // create description div with multiple styles in one block
 
       const descParent = document.createElement("div");
 
-      descParent.style.cssText = "background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; margin: 1em; max-inline-size: calc(520em / 16); min-inline-size: calc(200rem / 16); outline: 1px #000 solid; overflow: hidden; padding: 1em; resize: both;";
+      descParent.style.cssText = "background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; margin: 16px; max-inline-size: 520px; min-inline-size: 200px; outline: 1px #000 solid; overflow: hidden; padding: 16px; resize: both;";
 
       // wrap AI-generated content in child div with unique ID
 
