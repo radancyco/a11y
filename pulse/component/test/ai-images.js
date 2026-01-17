@@ -110,7 +110,7 @@ javascript:(function() {(async () => {
 
       const descWrapper = document.createElement("div");
 
-      descWrapper.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; position: fixed; inset-block-start: anchor(bottom); inset-inline-start: anchor(left); inline-size: anchor-size(block); z-index: 2147483646;`;
+      descWrapper.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; position: absolute; inset-block-start: anchor(bottom); inset-inline-start: anchor(left); inline-size: anchor-size(block); z-index: 2147483646;`;
 
       // append span to wrapper div
 
