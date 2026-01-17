@@ -116,8 +116,7 @@ javascript:(function() {(async () => {
 
       const span = document.createElement("span");
 
-      span.setAttribute("aria-hidden", "true");
-      span.style.cssText = "background-color: rebeccapurple; block-size: 20px; inline-size:  20px; inset-block-start: calc(10rem / 16); inset-inline-start: calc(30em / 16); position: absolute; transform: rotate(45deg);";
+      span.style.cssText = "background-color: rebeccapurple; block-size: calc(20rem / 16); inline-size: calc(20rem / 16); inset-block-start: calc(10rem / 16); inset-inline-start: calc(30em / 16); position: absolute; transform: rotate(45deg);";
 
       // create description div with multiple styles in one block
 
