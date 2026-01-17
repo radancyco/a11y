@@ -116,7 +116,7 @@ javascript:(function() {(async () => {
 
       const span = document.createElement("span");
 
-      span.style.cssText = "background-color: rebeccapurple; block-size: 20px; inline-size: 20px; inset-block-start: 10px; inset-inline-start: 30px; position: absolute; transform: rotate(45deg);";
+      span.style.cssText = "background-color: rebeccapurple; box-shadow: inset 1px 0 0 #000, inset 2px 0 0 #fff, inset 0 1px 0 #000, inset 0 2px 0 #fff; block-size: 20px; inline-size: 20px; inset-block-start: 6px; inset-inline-start: 30px; position: absolute; transform: rotate(45deg);";
 
       // create description div with multiple styles in one block
 
