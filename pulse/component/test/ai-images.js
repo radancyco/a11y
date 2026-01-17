@@ -119,7 +119,7 @@ javascript:(function() {(async () => {
 
       const descWrapper = document.createElement("div");
 
-      descWrapper.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; position: absolute; inset-block-start: anchor(bottom); z-index: 2147483646;`;
+      descWrapper.style.cssText = `position-anchor: --image-anchor-${anchorCounter}; position: fixed; inset-block-start: anchor(bottom); inset-inline-start: anchor(left)`;
 
       // append span to wrapper div
 
@@ -144,7 +144,7 @@ javascript:(function() {(async () => {
       descWrapper.prepend(span);
       descParent.append(content);
       descWrapper.append(descParent);
-      img.insertAdjacentElement("afterend", descWrapper);
+      document.body.append(descWrapper);
 
       anchorCounter++; // increment for next image
 
