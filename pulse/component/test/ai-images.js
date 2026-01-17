@@ -123,7 +123,7 @@ javascript:(function() {(async () => {
 
       const descParent = document.createElement("div");
 
-      descParent.style.cssText = "background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; margin: 1em; max-inline-size: calc(520em / 16); outline: 1px #000 solid; overflow: hidden; padding: 1em; resize: both;";
+      descParent.style.cssText = "background-color: rebeccapurple; border-radius: 5px; border: 1px #fff solid; color: #fff; font-size: large; margin: 1em; max-inline-size: calc(520em / 16); min-inline-size: calc(200rem / 16); outline: 1px #000 solid; overflow: hidden; padding: 1em; resize: both;";
 
       // wrap AI-generated content in child div with unique ID
 
