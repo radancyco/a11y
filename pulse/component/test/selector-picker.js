@@ -1,10 +1,11 @@
 javascript: (() => {
 
-    const pulse = document.querySelector('a11y-pulse-component');
-    const btnMin = pulse.shadowRoot.querySelector(".a11y-pulse__btn--minimize");
-    btnMin.click();
-
     try {
+
+        // Minimize Pulse
+
+        const pulse = document.querySelector("a11y-pulse-component");
+        pulse.shadowRoot.querySelector(".a11y-pulse__btn--minimize").click();
 
         const cssEsc = (s) => (window.CSS && CSS.escape ? CSS.escape(s) : String(s).replace(/[^a-zA-Z0-9_-]/g, "$&"));
 
