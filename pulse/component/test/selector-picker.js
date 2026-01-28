@@ -1,5 +1,9 @@
 javascript: (() => {
 
+    const pulse = document.querySelector('a11y-pulse-component');
+    const btnMin = pulse.shadowRoot.querySelector(".a11y-pulse__btn--minimize");
+    btnMin.click();
+
     try {
 
         const cssEsc = (s) => (window.CSS && CSS.escape ? CSS.escape(s) : String(s).replace(/[^a-zA-Z0-9_-]/g, "$&"));
@@ -65,9 +69,5 @@ javascript: (() => {
         alert("Selector picker failed: " + e.message);
 
     }
-
-    const pulse = document.querySelector('a11y-pulse-component');
-    const btnMin = pulse.shadowRoot.querySelector(".a11y-pulse__btn--minimize");
-    btnMin.click();
 
 })();
