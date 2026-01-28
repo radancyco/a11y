@@ -443,6 +443,7 @@ z-index: 2147483647;
     }
   
     input, .a11y-pulse__cta {
+    border-radius: 5px;
     cursor: pointer;
     inline-size: auto;
     min-block-size: calc(45em / 16);
@@ -454,6 +455,7 @@ z-index: 2147483647;
     }
 
     textarea {
+    border-radius: 5px;
     display: block;
     inline-size: 100%;
     margin-block-end: 1em;
