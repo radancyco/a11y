@@ -370,6 +370,26 @@ layout: null
   
   });
 
+
+  // AI Opt-in 
+
+  const checkbox = shadowContainer.querySelector("#ai-img-optin");
+  const genBtn = shadowContainer.querySelector("#btn-gen-ai");
+
+  checkbox.addEventListener("change", () => {
+  
+    if (checkbox.checked) {
+  
+      genBtn.removeAttribute("disabled");
+  
+    } else {
+  
+      genBtn.setAttribute("disabled", "");
+  
+    }
+  
+  });
+
   /*!
 
     Radancy Component Library: Accordion (ShadowDOM Variant)
