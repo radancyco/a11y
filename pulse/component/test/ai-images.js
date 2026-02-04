@@ -14,10 +14,12 @@ javascript:(function() {(async () => {
 
   // Default prompt if user cancels or leaves blank
 
-  const defaultPrompt = "Generate concise, meaningful alternative text for this image that conveys only the essential content and purpose. " +
-  "Do not include phrases like 'this is an image of' or 'picture of'. " +
-  "Keep it short (under 150 characters if possible) and usable by screen reader users. " +
-  "Focus on content, context, and function.";
+const defaultPrompt ="Generate concise, meaningful alternative text for this image that conveys only the essential content and purpose. " +
+"Do not include phrases like 'this is an image of' or 'picture of'. " +
+"Keep it short (under 150 characters if possible) and usable by screen reader users. " +
+"Focus on content, context, and function. " +
+"If the image is purely decorative and provides no informational or functional value, do not generate a description.";
+
 
   const finalPrompt = userPrompt && userPrompt.trim() !== "" ? userPrompt : defaultPrompt;
 
