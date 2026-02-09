@@ -8,18 +8,22 @@ javascript:(function() {(async () => {
 
   }
 
+  // Get language
+
+  const lang = document.documentElement.lang?.trim() || "en";
+
   // Ask user for a custom AI prompt
 
   const userPrompt = prompt("Enter a custom AI prompt for alt text generation.\nClick Cancel to use the default prompt.");
 
   // Default prompt if user cancels or leaves blank
 
-const defaultPrompt ="Generate concise, meaningful alternative text for this image that conveys only the essential content and purpose. " +
-"Do not include phrases like 'this is an image of' or 'picture of'. " +
-"Keep it short (under 150 characters if possible) and usable by screen reader users. " +
-"Focus on content, context, and function. " +
-"If the image is purely decorative and provides no informational or functional value, do not generate a description.";
-
+  const defaultPrompt ="Generate concise, meaningful alternative text for this image that conveys only the essential content and purpose. " +
+  "Do not include phrases like 'this is an image of' or 'picture of'. " +
+  "Keep it short (under 150 characters if possible) and usable by screen reader users. " +
+  "Focus on content, context, and function. " +
+  "If the image is purely decorative and provides no informational or functional value, do not generate a description." +
+  "Generate the alternative text in the same language as the page (" + lang + ").";
 
   const finalPrompt = userPrompt && userPrompt.trim() !== "" ? userPrompt : defaultPrompt;
 
