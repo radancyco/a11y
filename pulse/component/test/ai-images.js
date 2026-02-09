@@ -23,7 +23,7 @@ javascript:(function() {(async () => {
   "Keep it short (under 150 characters if possible) and usable by screen reader users. " +
   "Focus on content, context, and function. " +
   "If the image is purely decorative and provides no informational or functional value, do not generate a description." +
-  "Generate the alternative text in the same language as the page (" + lang + ").";
+  "Generate the alternative text in the same language as the page (" + lang + "), but if text in the image does not match" + lang + ", then ignore. ";
 
   const finalPrompt = userPrompt && userPrompt.trim() !== "" ? userPrompt : defaultPrompt;
 
