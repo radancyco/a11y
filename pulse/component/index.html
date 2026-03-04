@@ -580,39 +580,6 @@ id: a11y-smoke-test
 
             </div>
 
-            <h2 class="accordion__heading"><button id="w3c-validation-services" class="accordion__toggle"><span>W3C Validation</span></button></h2>
-        
-            <div class="accordion__panel">
-
-                <h3>W3C Validation Services</h3>
-
-                <p>While it is <em>still</em> best practice for developers to continue to validate their markup, please note that as of WCAG 2.2, <strong>4.1.1 Parsing (Level A)</strong> has been removed. As a result, this is <strong>no longer a required QA test</strong>. Issues previously flagged under this guideline are generally caught through other testing methods.</p>
-                
-                <ul>
-                    <li>{% include_relative /test/validation-w3c.html %}
-                    
-                        <h4>Advanced Validation</h4>
-
-                        <ul>
-                            <li>
-                            
-                                {% include_relative /test/validation-w3c-dom.html %} - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
-            
-                            </li>
-                            <li>
-            
-                                {% include_relative /test/validation-w3c-wcag-parse.html %} - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
-            
-                            </li>
-                        </ul>
-                                    
-                    </li>
-                </ul>
-
-                {% include_relative /test/validation-markup.html %}
-
-            </div>
-
             <h2 class="accordion__heading"><button id="audits" class="accordion__toggle"><span>Auditing Tools & Resources</span></button></h2>
         
             <div class="accordion__panel">
@@ -793,6 +760,37 @@ id: a11y-smoke-test
                         <li><a href="https://a11y-tools.com/markup-de-crapulator/">HTML De-crapulator {{ newWindow }}</a></li>
                     </ul>
     
+                </details>
+
+                <details>
+                    
+                    <summary>W3C Validation Services</summary>
+
+                    <p>While it is <em>still</em> best practice for developers to continue to validate their markup, please note that as of WCAG 2.2, <strong>4.1.1 Parsing (Level A)</strong> has been removed. As a result, this is <strong>no longer a required QA test</strong>. Issues previously flagged under this guideline are generally caught through other testing methods.</p>
+                
+                    <ul>
+                        <li>{% include_relative /test/validation-w3c.html %}
+                    
+                            <h3>Advanced Validation</h3>
+
+                            <ul>
+                                <li>
+                            
+                                    {% include_relative /test/validation-w3c-dom.html %} - <span>Runs validation on entire DOM, including <strong>script generated content</strong>. Cannot be linked to.</span>
+            
+                                </li>
+                                <li>
+            
+                                    {% include_relative /test/validation-w3c-wcag-parse.html %} - <span>Not all errors may affect accessibility. Run on W3C Validator <em>results page</em> to remove non-WCAG issues.</span>
+            
+                                </li>
+                            </ul>
+                                    
+                        </li>
+                    </ul>
+
+                    {% include_relative /test/validation-markup.html %}
+
                 </details>
 
             </div>
