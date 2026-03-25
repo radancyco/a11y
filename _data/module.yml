@@ -466,7 +466,7 @@ components:
     desc: "Allow user to choose an item from a select menu, updating the content on the same page."
     path: "select-internal"
     title: "Select Navigation (Internal)"
-    version: "1.7"
+    version: "1.8"
     examples:
       
       - name: "Default Setup"
@@ -484,6 +484,9 @@ components:
 
       - name: "Placeholder Option (Optgroup)" 
         id: "optgroup"
+
+      - name: "Option (Optgroup) - Custom Select" 
+        id: "optgroup-custom"
 
   - id: "step-indicator"
     desc: "Use the step indicator to show a user's progress in a multi-step process, commonly seen in forms or workflow screens."
