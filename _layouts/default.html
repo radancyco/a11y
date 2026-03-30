@@ -138,6 +138,8 @@
 
 <body id="{% if page.bodyid %}{{ page.bodyid }}{% else %}rad-{{ page.path | replace:'.html',''|  replace:'.md','' | replace:'_','' | replace: '/', '-' | replace:'feeds-',''}}{% endif %}" tabindex="-1">
 
+  <a class="access-link" href="#content">Skip to main content</a>
+  
   <header class="primary-header" id="banner">
 
     <div class="primary-header__container">
@@ -154,7 +156,7 @@
 
         <nav aria-label="Main" class="primary-header__navigation">
 
-          <div class="primary-header__navigation__content">
+          <div class="primary-header__navigation__content" id="primary-navigation">
 
             <ul>
               <li><a data-nav-id="rad-home-index" href="/">Home</a></li>
@@ -263,7 +265,7 @@
                   <summary>MagicBullet</summary>
                    
                   <ul>
-                    <li><a data-nav-id="rad-magicbullet-index" href="/magicbullet/"><span class="visually-hidden">MagicBullet</span> Home</a>
+                    <li><a data-nav-id="rad-magicbullet-index" href="/magicbullet/"><span class="visually-hidden">MagicBullet</span> Home</a></li>
                     <li><a data-nav-id="rad-a11y-index" href="/magicbullet/a11y/">Accessibility Patch</a></li>
                     <li><a data-nav-id="rad-ccpa-index" href="/magicbullet/ccpa/" class="alert">California Consumer Privacy Act (CCPA) Notice (Deprecated)</a></li>
                     <li><a data-nav-id="rad-gdpr-index" href="/magicbullet/gdpr/" class="alert">General Data Protection Regulation (GDPR) Notice (Deprecated)</a></li>
